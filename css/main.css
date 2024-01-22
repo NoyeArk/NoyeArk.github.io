@@ -1197,7 +1197,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #9e0b46;
+  background: #242b61;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1539,6 +1539,16 @@ pre .javascript .function {
     left: 20px;
     opacity: 0.8;
   }
+}
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 3px;
+  left: 0;
+  position: fixed;
+  width: 0;
+  z-index: 1500;
+  top: 0;
 }
 .post-body {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -2229,7 +2239,7 @@ hr {
   }
 }
 .header {
-  background: var(--content-bg-color);
+  background: var('../image/background.jpg');
 }
 .header-inner {
   align-items: center;
@@ -2418,11 +2428,4 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
-}
-body {
-  background: url("/images/background.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
 }
