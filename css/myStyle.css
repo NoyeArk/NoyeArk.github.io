@@ -15,6 +15,30 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 ​
 }
+
+/* 一级菜单居中 */
+#nav .menus_items {
+	/* display: inline; 这个带不带都可以，本来就是inline */
+	position: absolute;
+	width: fit-content;
+	left: 50%;
+	transform: translateX(-50%);
+}
+  
+.nav-fixed #nav{
+    transform: translateY(0px)!important;
+    -webkit-transform: translateY(0px)!important;
+    -moz-transform: translateY(0px)!important;
+    -ms-transform: translateY(0px)!important;
+    -o-transform: translateY(0px)!important;
+}
+#nav{
+    transition: none!important;
+    -webkit-transition: none!important;
+    -moz-transition: none!important;
+    -ms-transition: none!important;
+    -o-transition: none!important;
+}
 ​
 /* 主页所有文章页面背景 */
 #aside_content .card-widget,
@@ -51,3 +75,4 @@
 .layout>#archive {
     background: rgba(255, 255, 255, .6);
 }
+
