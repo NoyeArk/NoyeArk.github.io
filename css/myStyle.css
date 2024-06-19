@@ -14,7 +14,7 @@
     background: linear-gradient(to right, #EAECC6, #2BC0E4);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 ​
-}
+};
 
 /* 一级菜单居中 */
 #nav .menus_items {
@@ -27,7 +27,6 @@
 }
   
 
-​
 /* 主页所有文章页面背景 */
 #aside_content .card-widget,
 #recent-posts>.recent-post-item,
