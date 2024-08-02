@@ -10526,4 +10526,69 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
         <tag>数据结构</tag>
       </tags>
   </entry>
+  <entry>
+    <title>数据结构面经2：线性表</title>
+    <url>/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
+    <content><![CDATA[<p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_eiTTTEcjAb.png"></p>
+<h1 id="1-各种线性表"><a href="#1-各种线性表" class="headerlink" title="1 各种线性表"></a>1 各种线性表</h1><h2 id="1-1-优缺点"><a href="#1-1-优缺点" class="headerlink" title="1.1 优缺点"></a>1.1 优缺点</h2><p><strong>顺序表</strong></p>
+<ul>
+<li>优点：可以随机存取，快；存储密度大</li>
+<li>缺点：插入、删除效率低；存储空间固定，分多了浪费，分少了又不足</li>
+</ul>
+<p><strong>单链表</strong></p>
+<ul>
+<li>优点：插入、删除效率高；空间可动态分配</li>
+<li>缺点：不能随机存取，要顺序存取，慢；存储密度不大（有指针域）</li>
+</ul>
+<p><strong>静态链表</strong>：融合顺序表和单链表的优点，既能快速访问元素，又能快速插入、删除元素</p>
+<h2 id="1-2-对比"><a href="#1-2-对比" class="headerlink" title="1.2 对比"></a>1.2 对比</h2><h3 id="1-2-1-存取（读写）方式"><a href="#1-2-1-存取（读写）方式" class="headerlink" title="1.2.1 存取（读写）方式"></a>1.2.1 存取（读写）方式</h3><p>顺序表可以顺序存取，也可以随机存取，链表只能从表头顺序存取元素。例如在第i个位置上执行存或取的操作，顺序表仅需一次访问，而链表则需从表头开始依次访问i次。</p>
+<h3 id="1-2-2-逻辑结构与物理结构"><a href="#1-2-2-逻辑结构与物理结构" class="headerlink" title="1.2.2 逻辑结构与物理结构"></a>1.2.2 逻辑结构与物理结构</h3><p>采用顺序存储时，逻辑上相邻的元素，对应的物理存储位置也相邻。而采用链式存储时，逻辑上相邻的元素，物理存储位置则不一定相邻，对应的逻辑关系是通过指针链接来表示的。</p>
+<h3 id="1-2-3-查找、插入和删除操作"><a href="#1-2-3-查找、插入和删除操作" class="headerlink" title="1.2.3 查找、插入和删除操作"></a>1.2.3 查找、插入和删除操作</h3><p>对于按值查找，顺序表无序时，两者的时间复杂度均为$O(n)$；顺序表有序时，可采用折半查找，此</p>
+<p>时的时间复杂度为$O(log_2n)$ 。</p>
+<p>对于按序号查找，顺序表支持随机访问，时间复杂度仅为$O(1)$, 而链表的平均时间复杂度为$O(n)$ 。</p>
+<p>顺序表的插入、删除操作，平均需要移动半个表长的元素。</p>
+<p>链表的插入、删除操作，只需修改相关结点的指针域即可。由于链表的每个结点都带有指针域，故而存储密度不够大。</p>
+<h3 id="1-2-4-空间分配"><a href="#1-2-4-空间分配" class="headerlink" title="1.2.4 空间分配"></a>1.2.4 空间分配</h3><p>顺序存储在静态存储分配情形下，一旦存储空间装满就不能扩充，若再加入新元素，则会出现内存溢出，因此需要预先分配足够大的存储空间。预先分配过大，可能会导致顺序表后部大量闲置；预先分配过小，又会造成溢出。动态存储分配虽然存储空间可以扩充，但需要移动大量元素，导致操作效率降低，而且若内存中没有更大块的连续存储空间，则会导致分配失败。</p>
+<p>链式存储的结点空间只在需要时申请分配，只要内存有空间就可以分配，操作灵活、高效。</p>
+<hr>
+<h1 id="2-单链表"><a href="#2-单链表" class="headerlink" title="2 单链表"></a>2 单链表</h1><h2 id="2-1-插入"><a href="#2-1-插入" class="headerlink" title="2.1 插入"></a>2.1 插入</h2><p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_acNdwMKBRB.png"></p>
+<h2 id="2-2-删除"><a href="#2-2-删除" class="headerlink" title="2.2 删除"></a>2.2 删除</h2><p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_u26L9zHWen.png"></p>
+<hr>
+<h1 id="3-循环链表"><a href="#3-循环链表" class="headerlink" title="3 循环链表"></a>3 循环链表</h1><h2 id="3-1-单向循环链表"><a href="#3-1-单向循环链表" class="headerlink" title="3.1 单向循环链表"></a>3.1 单向循环链表</h2><p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_u9u8s8qiMB.png"></p>
+<h2 id="3-2-双向循环链表"><a href="#3-2-双向循环链表" class="headerlink" title="3.2 双向循环链表"></a>3.2 双向循环链表</h2><p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_bL4ah4O1pV.png"></p>
+<hr>
+<h1 id="4-静态链表"><a href="#4-静态链表" class="headerlink" title="4 静态链表"></a>4 静态链表</h1><p>静态链表需分配连续的内存空间，借助数组来描述链表，每个结点包含数据+游标（下一个元素的数组索引）。</p>
+<p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_ipkzMcMSNx.png"></p>
+<hr>
+<h1 id="5-头指针和头结点的区别？"><a href="#5-头指针和头结点的区别？" class="headerlink" title="5 头指针和头结点的区别？"></a>5 头指针和头结点的区别？</h1><ul>
+<li><strong>头指针</strong>：指向第一个节点存储位置的指针，具有标识作用，头指针是链表的必要元素，无论链表是否为空，头指针都存在。</li>
+<li><strong>头结点</strong>：放在第一个元素节点之前，便于在第一个元素节点之前进行插入和删除的操作，头结点不是链表的必须元素，可有可无，头结点的数据域也可以不存储任何信息。</li>
+</ul>
+<hr>
+<h1 id="6-查找单链表中倒数第-k-个结点"><a href="#6-查找单链表中倒数第-k-个结点" class="headerlink" title="6 查找单链表中倒数第 k 个结点"></a>6 查找单链表中倒数第 k 个结点</h1><ol>
+<li>建立两个指针：fast、slow</li>
+<li>先让fast走k步</li>
+<li>再让fast和slow一起走，直到fast走到末尾后一位，slow指向的就是倒数第k个结点</li>
+</ol>
+<p><img src="/2024/08/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%9D%A2%E7%BB%8F2%EF%BC%9A%E7%BA%BF%E6%80%A7%E8%A1%A8/image_Pr6uT0PdTl.png"></p>
+<hr>
+<h1 id="7-单链表就地逆序（空间复杂度为O-1-）"><a href="#7-单链表就地逆序（空间复杂度为O-1-）" class="headerlink" title="7 单链表就地逆序（空间复杂度为O(1)）"></a>7 单链表就地逆序（空间复杂度为O(1)）</h1><ol>
+<li>建立两个指针：p、q</li>
+<li>p用于遍历链表中的每个结点</li>
+<li>q用于头插法创建新的逆序链表</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">reverse</span><span class="params">(ListNode* head)</span> </span><br><span class="line">&#123;</span><br><span class="line">    ListNode *p, *q;</span><br><span class="line">    p = head-&gt;next;</span><br><span class="line">    head-&gt;next = nullptr;</span><br><span class="line">    <span class="keyword">while</span> (p)  <span class="comment">// p用于遍历每个节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        q = p;</span><br><span class="line">        p = p-&gt;next;  <span class="comment">// 在该节点的next指针改变前更新p</span></span><br><span class="line">        q-&gt;next = head-&gt;next;  <span class="comment">// 类似头插法</span></span><br><span class="line">        head-&gt;next = q; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="8-判断链表有没有环"><a href="#8-判断链表有没有环" class="headerlink" title="8 判断链表有没有环"></a>8 判断链表有没有环</h1><p>法1：使用map来保存对应的内存地址，如果重复访问，则一定有环</p>
+<p>法2：快慢指针法，从头开始设置两个指针，快指针每次走2 步，慢指针每次走1 步，如果快指针先碰到尾，则无环，否则两个指针之后一定会重合，则有环。</p>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>面经</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
 </search>
