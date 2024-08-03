@@ -4820,7 +4820,7 @@
 <li>F的左上角是一个单位矩阵，其余元素全为0</li>
 <li>$m \times n$矩阵A，总可经过初等变换（行变换和列变换），将其化为标准形</li>
 </ol>
-<p>$$<br>\boldsymbol{F}&#x3D;\left(\begin{array}{ll}\boldsymbol{E}<em>{r} &amp; \boldsymbol{O} \ \boldsymbol{O} &amp; \boldsymbol{O}\end{array}\right)</em>{m \times n}<br>$$</p>
+<p><img src="/2024/06/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/image.png"></p>
 <p>此标准型由m，n，r三个数完全决定，其中r是行阶梯形矩阵中非零行的行数。</p>
 <p>所有与A等价的矩阵组成一个集合，标准形F是这个集合中形状最简单的矩阵。</p>
 <h2 id="1-2-初等矩阵"><a href="#1-2-初等矩阵" class="headerlink" title="1.2 初等矩阵"></a>1.2 初等矩阵</h2><p>由<strong>单位矩阵</strong>经过一次初等变换得到的矩阵称为<strong>初等矩阵</strong>。</p>
@@ -4846,7 +4846,7 @@
 <li>$E(i(k))^{-1}&#x3D;E\left(i\left(\frac{1}{k}\right)\right)$</li>
 <li>$E(i j(k))^{-1}&#x3D;E(i j(-k))$</li>
 </ol>
-<h3 id="1-2-2-性质2"><a href="#1-2-2-性质2" class="headerlink" title="1.2.2 性质2"></a>1.2.2 性质2</h3><p>方阵A可逆的充分必要条件是：存在有限个初等矩阵${P}<em>{1}, {P}</em>{2}, \cdots, {P}_{l}$，使得</p>
+<h3 id="1-2-2-性质2"><a href="#1-2-2-性质2" class="headerlink" title="1.2.2 性质2"></a>1.2.2 性质2</h3><p>方阵A可逆的充分必要条件是：存在有限个初等矩阵 $ P_1, P_2,…, P_l $ ，使得</p>
 <p>$$<br>A&#x3D;P_{1} P_{2} \cdots P_{l}<br>$$</p>
 <p><strong>定理</strong>：设A与B是$m \times n$矩阵，则$A \sim B$的充要条件是存在m阶可逆矩阵P及n阶可逆矩阵Q，使得$PAQ&#x3D;B$。</p>
 <p><strong>推论</strong>：方阵A可逆$\ce{&lt;-&gt;}$${A} \stackrel{r}{\sim} {E}$</p>
@@ -4882,7 +4882,8 @@
 <li>矩阵秩的性质</li>
 </ol>
 <hr>
-<h1 id="3-线性方程组的解"><a href="#3-线性方程组的解" class="headerlink" title="3 线性方程组的解"></a>3 线性方程组的解</h1><h2 id="3-1-线性方程组解的判定条件"><a href="#3-1-线性方程组解的判定条件" class="headerlink" title="3.1 线性方程组解的判定条件"></a>3.1 线性方程组解的判定条件</h2><p>设有n个未知数m个方程的线性方程组</p>
+<h1 id="3-线性方程组的解"><a href="#3-线性方程组的解" class="headerlink" title="3 线性方程组的解"></a>3 线性方程组的解</h1><p><img src="/2024/06/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/image1.png"></p>
+<h2 id="3-1-线性方程组解的判定条件"><a href="#3-1-线性方程组解的判定条件" class="headerlink" title="3.1 线性方程组解的判定条件"></a>3.1 线性方程组解的判定条件</h2><p>设有n个未知数m个方程的线性方程组</p>
 <p><img src="/2024/06/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/image_-B2lgR7wg6.png"></p>
 <p>可以写成以向量x为未知元的向量方程：$Ax&#x3D;b$。</p>
 <p>【定理1】n元线性方程组$Ax&#x3D;b$</p>
@@ -6644,7 +6645,7 @@
 <li>一般的适配器都包括了数据链路层和物理层这两层的功能。</li>
 </ul>
 <hr>
-<h1 id="2-数据链路层（或帧的）的-3H-问题-x20"><a href="#2-数据链路层（或帧的）的-3H-问题-x20" class="headerlink" title="2 数据链路层（或帧的）的 3H 问题&#x20;"></a>2 数据链路层（或帧的）的 3H 问题&#x20;</h1><ol>
+<h1 id="2-数据链路层的-3H-问题"><a href="#2-数据链路层的-3H-问题" class="headerlink" title="2 数据链路层的 3H 问题"></a>2 数据链路层的 3H 问题</h1><ol>
 <li>How to 封装成帧</li>
 <li>How to 透明传输</li>
 <li>How to 差错控制</li>
@@ -6664,8 +6665,8 @@
 <li>用字节填充法解决透明传输问题</li>
 </ul>
 <p><img src="/2024/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image_dSyYis-LrJ.png"></p>
-<h2 id="2-3-差错检测"><a href="#2-3-差错检测" class="headerlink" title="2.3 差错检测"></a>2.3 差错检测</h2><p>在传输过程中可能会产生比特差错：1 可能会变成 0，而 0 也可能变成 1。在一段时间内，传输错误的比特占所传输比特总数的比率称为误码率 BER (Bit Error Rate)。</p>
-<p>误码率与信噪比有很大的关系。为了保证数据传输的可靠性，在计算机网络传输数据时，必须采用各种<em>差错检测</em>措施。</p>
+<h2 id="2-3-差错检测"><a href="#2-3-差错检测" class="headerlink" title="2.3 差错检测"></a>2.3 差错检测</h2><p>在传输过程中可能会产生比特差错：1 可能会变成 0，而 0 也可能变成 1。在一段时间内，传输错误的比特占所传输比特总数的比率称为<strong>误码率 BER</strong> (Bit Error Rate)。</p>
+<p>误码率与信噪比有很大的关系。为了保证数据传输的可靠性，在计算机网络传输数据时，必须采用各种差错检测措施。</p>
 <h3 id="2-3-1-循环冗余检验"><a href="#2-3-1-循环冗余检验" class="headerlink" title="2.3.1 循环冗余检验"></a>2.3.1 循环冗余检验</h3><p>在数据链路层传送的帧中，广泛使用了循环冗余检验 CRC 的检错技术。</p>
 <ul>
 <li>在发送端，先把数据划分为组，假定每组 k 个比特。&#x20;</li>
@@ -6813,14 +6814,14 @@
 <p>以太网发送的数据都使用曼彻斯特(Manchester)编码，码元1是前高后低，码元0是前低后高，这就保证了在每一个比特的正中间出现一次电压的转换，而接收端就利用这种电压的转换很方便地把位同步信号提取出来。</p>
 <p>但是从曼彻斯特编码的波形图可以看出，其所占频带宽度比原始的基带信号增加了一倍（因为每秒传送的码元数加倍了）。</p>
 <p><img src="/2024/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image_BcS5yAacKB.png"></p>
-<p>CSMA&#x2F;CD 表示 Carrier Sense Multiple Access with Collision etection，即载波监听、多点接入、碰撞检测。</p>
+<p>CSMA&#x2F;CD 表示 Carrier Sense Multiple Access with Collision etection，即<strong>载波监听、多点接入、碰撞检测</strong>。</p>
 <ul>
-<li><p>“多点接入”表示许多计算机以多点接入的方式连接在一根总线上。</p>
+<li><p>“<strong>多点接入</strong>”表示许多计算机以多点接入的方式连接在一根总线上。</p>
 </li>
-<li><p>“载波监听”是指每一个站在发送数据之前先要检测一下总线上是否有其他计算机在发送数据，如果有，则暂时不要发送数据，以免发生碰撞。&#x20;</p>
+<li><p>“<strong>载波监听</strong>”是指每一个站在发送数据之前先要检测一下总线上是否有其他计算机在发送数据，如果有，则暂时不要发送数据，以免发生碰撞。&#x20;</p>
 <p>总线上并没有什么“载波”。因此， “载波监听”就是用电子技术检测总线上有没有其他计算机发送的数据信号。</p>
 </li>
-<li><p>“碰撞检测”就是计算机边发送数据边检测信道上的信号电压大小。</p>
+<li><p>“<strong>碰撞检测</strong>”就是计算机边发送数据边检测信道上的信号电压大小。</p>
 </li>
 </ul>
 <p>当几个站同时在总线上发送数据时，总线上的信号电压摆动值将会增大（互相叠加）。当一个站检测到的信号电压摆动值超过一定的门限值时，就认为总线上至少有两个站同时在发送数据，表明产生了碰撞。所谓“碰撞”就是发生了冲突。因此“碰撞检测”也称为“冲突检测”。</p>
@@ -6828,8 +6829,8 @@
 <p>每一个正在发送数据的站，一旦发现总线上出现了碰撞，就要立即停止发送，免得继续浪费网络资源，然后等待一段随机时间后再次发送。</p>
 <h3 id="4-3-1-电磁波在总线上的有限传播速率的影响"><a href="#4-3-1-电磁波在总线上的有限传播速率的影响" class="headerlink" title="4.3.1 电磁波在总线上的有限传播速率的影响"></a>4.3.1 电磁波在总线上的有限传播速率的影响</h3><p>当某个站监听到总线是空闲时，也可能总线并非真正是空闲的。A 向 B 发出的信息，要经过一定的时间后才能传送到 B。</p>
 <p>B 若在 A 发送的信息到达 B 之前发送自己的帧(因为这时 B 的载波监听检测不到 A 所发送的信息)，则必然要在某个时间和 A 发送的帧发生碰撞。碰撞的结果是两个帧都变得无用。</p>
-<p>因此，使用 CSMA&#x2F;CD 协议的以太网不能进行全双工通信而只能进行双向交替通信（半双工通信）。每个站在发送数据之后的一小段时间内，存在着遭遇碰撞的可能性。 这种发送的不确定性使整个以太网的平均通信量远小于以太网的最高数据率。 &#x20;</p>
-<p>最先发送数据的A站在至多经过时间２t就可知道有没有发生碰撞，因此以太网的端到端往返时间2t又被称为<strong>争用期</strong>，也叫<strong>碰撞窗口</strong>。只有经过争用期时间还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
+<p>因此，使用 CSMA&#x2F;CD 协议的以太网不能进行全双工通信而只能进行双向交替通信（半双工通信）。每个站在发送数据之后的一小段时间内，存在着遭遇碰撞的可能性。 这种发送的不确定性使整个以太网的平均通信量远小于以太网的最高数据率。</p>
+<p>最先发送数据的A站在至多经过时间$2t$就可知道有没有发生碰撞，因此以太网的端到端往返时间$2t$又被称为<strong>争用期</strong>，也叫<strong>碰撞窗口</strong>。只有经过争用期时间还没有检测到碰撞，才能肯定这次发送不会发生碰撞。</p>
 <h3 id="4-3-2-二进制指数类型退避算法"><a href="#4-3-2-二进制指数类型退避算法" class="headerlink" title="4.3.2 二进制指数类型退避算法"></a>4.3.2 二进制指数类型退避算法</h3><p>发生碰撞的站在停止发送数据后，要推迟（退避）一个随机时间才能再发送数据。</p>
 <p>为了尽可能减小重传时再次发生冲突的概率，退避算法有以下具体的规定：</p>
 <ol>
@@ -6842,7 +6843,7 @@
 </li>
 </ol>
 <p>$$<br>k&#x3D; \min [重传次数, 10]<br>$$</p>
-<ol>
+<ol start="4">
 <li>当重传达 16 次仍不能成功时即丢弃该帧，并向高层报告。</li>
 </ol>
 <p>如果发生冲突，就一定是在发送的前 64 字节之内。由于一检测到冲突就立即中止发送，这时已经发送出去的数据一定小于 64 字节。&#x20;</p>
@@ -6920,11 +6921,10 @@
 <p>对于检查出的无效 MAC 帧就简单地丢弃。以太网不负责重传丢弃的帧。&#x20;</p>
 <hr>
 <h1 id="5-扩展的以太网"><a href="#5-扩展的以太网" class="headerlink" title="5 扩展的以太网"></a>5 扩展的以太网</h1><p>讨论如何把以太网的覆盖范围扩展。</p>
-<p>在物理层扩展局域网</p>
-<p>主机使用光纤和一对光纤调制解调器连接到集线器。</p>
+<p>在物理层扩展局域网：主机使用光纤和一对光纤调制解调器连接到集线器。</p>
 <p><img src="/2024/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image_3qxcgK1jM-.png"></p>
 <p>光纤调制解调器的作用就是进行电信号和光信号的转换，光纤的时延很小，并且带宽很宽，因此可以很容易使主机和几公里之外的集线器相连接。</p>
-<p>用多个集线器可连成更大的局域，某大学有三个系，各自有一个局域网<br>。</p>
+<p>用多个集线器可连成更大的局域，某大学有三个系，各自有一个局域网。</p>
 <p><img src="/2024/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image_8caVwXWgAa.png"></p>
 <p>用集线器组成更大的局域网都在一个碰撞域中。</p>
 <p><img src="/2024/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image_CuFlIqA6jw.png"></p>
@@ -10589,6 +10589,122 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <tags>
         <tag>面经</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Diffusion Model</title>
+    <url>/2024/08/03/Diffusion-Model/</url>
+    <content><![CDATA[<h1 id="1-Diffusion-Model原理"><a href="#1-Diffusion-Model原理" class="headerlink" title="1 Diffusion Model原理"></a>1 Diffusion Model原理</h1><h2 id="1-1-整体实现"><a href="#1-1-整体实现" class="headerlink" title="1.1 整体实现"></a>1.1 整体实现</h2><p><img src="/2024/08/03/Diffusion-Model/image_AgtDFmAa5A.png"></p>
+<p>首先要生成一个和要生成图片相同大小的杂讯的图，然后没通过一个Denoise Network就把噪音过滤掉一些，把这个过程做很多次，就可以得到想要的图片。其中Denoise进行的步骤是实现规定好的，对每个Denoise分配一个编号，越靠近最终的图片，编号越小。想要的图片其实就在噪音中，只不过把不想要的部分去除，</p>
+<p>上述过程称为<code>reverser process</code>，把同一个<code>Denoise Model</code>使用很多次。但是由于每次输入的图片差异较大，因此如果是同一个模型，可能不一定做的很好。</p>
+<p>所以这个<code>model</code>除了会接收图片的输入，还会接收一个当前这个图片noise的程度的输入，1000代表现在noise部分很大，而1代表现在噪音占比很小。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_HAd3PaYqTD.png"></p>
+<h2 id="1-2-Denoise内部实现"><a href="#1-2-Denoise内部实现" class="headerlink" title="1.2 Denoise内部实现"></a>1.2 Denoise内部实现</h2><p><img src="/2024/08/03/Diffusion-Model/image_E9xoatePZE.png"></p>
+<ul>
+<li>Noise Predicter：预测这张图片中杂讯的分布，先学习加噪，再进行减噪</li>
+</ul>
+<p>把Noise Predicter输出预测的杂讯剪掉一开始的输入，就得到去掉部分噪音之后的图片。</p>
+<p>为什么要这么设计：因为产生满足噪声分布的数据更简单，因此学习噪声的分布。</p>
+<h2 id="1-3-如何训练Noise-Predictor"><a href="#1-3-如何训练Noise-Predictor" class="headerlink" title="1.3 如何训练Noise Predictor"></a>1.3 如何训练Noise Predictor</h2><p><img src="/2024/08/03/Diffusion-Model/image_zqpItAq3AG.png"></p>
+<p>Noise Predictor的训练数据是人为创造出来的，自己不断对其加噪音，最后得到一个全是噪音的图片。</p>
+<p>这个加噪音的过程称为forward process，又称为duffsion process。通过这个过程，就有了Noise Predictor的训练数据—带噪音的图片以及这是第几次加噪音。</p>
+<p>怎么把用户输入的文字考虑进来？在进行训练的过程中，训练数据需要是图片和文字成对的资料。</p>
+<p>现在常见的文本到图像的生成模型的训练数据中就有很多种语言的数据，现在Denoise部分除了有图片的输入外，还有文字的输入。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_Ulmf-b2QY3.png"></p>
+<p>通常在Noise Predictor中需要加上一个文字的输入，如下：</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_t6D7k70B62.png"></p>
+<p>训练的部分也需要进行修改，通常在昨晚diffusion process之后，训练的同时给Noise Predicter也是3个输入：图片、文字和第几步。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_zobMtVoPPk.png"></p>
+<hr>
+<h1 id="2-常见模型分析"><a href="#2-常见模型分析" class="headerlink" title="2 常见模型分析"></a>2 常见模型分析</h1><h2 id="2-1-模型架构"><a href="#2-1-模型架构" class="headerlink" title="2.1 模型架构"></a>2.1 模型架构</h2><p><img src="/2024/08/03/Diffusion-Model/image_LDDopOz3OV.png"></p>
+<p>现在比较好的图像生成模型主要包含三个部分：</p>
+<ol>
+<li><strong>文本编码器</strong>：把文字的叙述变成一个向量</li>
+<li><strong>生成模型</strong>：输出一个中间产物，代表图片被压缩后的版本，可以是一个人可以看懂的模糊的内容，也可以是人看不懂的内容</li>
+<li><strong>解码器</strong>：从压缩后的版本还原为原来的图像</li>
+</ol>
+<p>通常这三个部分分开训练，最后组合在一起使用。</p>
+<h2 id="2-2-模型举例"><a href="#2-2-模型举例" class="headerlink" title="2.2 模型举例"></a>2.2 模型举例</h2><h3 id="2-2-1-Stable-Diffusion"><a href="#2-2-1-Stable-Diffusion" class="headerlink" title="2.2.1 Stable Diffusion"></a>2.2.1 Stable Diffusion</h3><p><img src="/2024/08/03/Diffusion-Model/image_z_REBDlH5V.png"></p>
+<h3 id="2-2-2-Dall-E系列"><a href="#2-2-2-Dall-E系列" class="headerlink" title="2.2.2 Dall-E系列"></a>2.2.2 Dall-E系列</h3><p><img src="/2024/08/03/Diffusion-Model/image_sRWqtHT6h-.png"></p>
+<p>首先是一个文本编码器，之后是一个生成模型，在DALL-E系列中，生成模型有2个：</p>
+<ol>
+<li>Autoregressive model</li>
+<li>Diffusion model</li>
+</ol>
+<h3 id="2-2-3-Imagen"><a href="#2-2-3-Imagen" class="headerlink" title="2.2.3 Imagen"></a>2.2.3 Imagen</h3><p><img src="/2024/08/03/Diffusion-Model/image_DzjceXv4ya.png"></p>
+<ul>
+<li>在imagen中生成的内容就是人可以看懂的内容</li>
+</ul>
+<hr>
+<h1 id="3-模型架构具体分析"><a href="#3-模型架构具体分析" class="headerlink" title="3 模型架构具体分析"></a>3 模型架构具体分析</h1><h2 id="3-1-Text-Encoder"><a href="#3-1-Text-Encoder" class="headerlink" title="3.1 Text Encoder"></a>3.1 Text Encoder</h2><p><img src="/2024/08/03/Diffusion-Model/image_763Q_lDG6-.png"></p>
+<p>可以用GPT或Bert当作encoder，由上图可以分析，文本编码器对于最终的结果影响还是挺大的。</p>
+<p>CLIP Score越大越好，由图a可以分析，随着使用的encoder模型越来越大，所生成的图片的质量越来越高。</p>
+<p>相对而言，从图b可以分析，diffusion model的大小相对来说没有那么重要。</p>
+<h2 id="3-2-Decoder"><a href="#3-2-Decoder" class="headerlink" title="3.2 Decoder"></a>3.2 Decoder</h2><p>只需要使用图片数据就可以训练出来，不用影像和文字的成对的资料。</p>
+<p>如果Decoder的输入是一个小图，那么就找很多个小图和大图的数据来进行训练即可，如下：</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_ex6LcMg4j8.png"></p>
+<p>如果输入是中间产物，这时候需要训练一个Auto-encoder，用于把一个图片编码成一个中间产物，然后把这个中间产物作为Decoder的输入。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_4rvb1qn8G9.png"></p>
+<p>此时需要训练Encoder和Decoder。</p>
+<h2 id="3-3-Generation-Model"><a href="#3-3-Generation-Model" class="headerlink" title="3.3 Generation Model"></a>3.3 Generation Model</h2><p>生成模型的输入是文字、图片以及步骤数，输出是中间产物。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_qwE4WZCqrD.png"></p>
+<p>如果要训练一个输出是中间产物的生成模型，则输入就应该是sample噪音之后的中间产物。</p>
+<h2 id="3-4-评估指标"><a href="#3-4-评估指标" class="headerlink" title="3.4 评估指标"></a>3.4 评估指标</h2><h3 id="3-4-1-FID"><a href="#3-4-1-FID" class="headerlink" title="3.4.1 FID"></a>3.4.1 FID</h3><p><img src="/2024/08/03/Diffusion-Model/image_F3Zq-kHGM6.png"></p>
+<p>有一个提前训练好的CNN，然后将模型生成的图像输入到这个CNN中，之后将真实影像的输出结果与生成的分布越接近，那么生成的图像与真实的图像越接近。</p>
+<p>如何计算这两个分布的差距？</p>
+<ul>
+<li>假设这两个分布都是高斯分布，然后计算这两个高斯分布的<code>Frechet Distance</code>，虽然结果看起来比较粗糙，但是结果看起来不错。</li>
+</ul>
+<p>FID需要sample大量的image，才能进行衡量，在图b中的纵坐标的10k就是指采样了10k张image来衡量FID的好坏。</p>
+<h3 id="3-4-2-CLIP"><a href="#3-4-2-CLIP" class="headerlink" title="3.4.2 CLIP"></a>3.4.2 CLIP</h3><p><img src="/2024/08/03/Diffusion-Model/image_31A-U5MAIf.png"></p>
+<p>CLIP是用400 million个图片—文本的数据所训练出来的一个模型，模型里有一个Text Encoder和一个Image Encoder，其中文本编码器输入一段文本，产生一个向量，图像编码器输入一个图片，产生一个向量。如果文本和图像是相关的，那么它们的向量越接近越好。</p>
+<hr>
+<h1 id="4-背后的数学原理"><a href="#4-背后的数学原理" class="headerlink" title="4 背后的数学原理"></a>4 背后的数学原理</h1><h2 id="4-1-训练过程"><a href="#4-1-训练过程" class="headerlink" title="4.1 训练过程"></a>4.1 训练过程</h2><p><img src="/2024/08/03/Diffusion-Model/image_Ion6IaixBV.png"></p>
+<p>详细分析一下训练的算法：</p>
+<ul>
+<li>步骤1：重复操作2~5</li>
+<li>步骤2：采样一个“干净”的图$x_0$出来</li>
+<li>步骤3：从$[1,T]$之间采样一个整数$t$出来</li>
+<li>步骤4：从一个正态分布$N(0,1)$中采样一个$\epsilon$出来，大小和image一样大</li>
+<li>步骤5：实现确定好一个权重$\alpha$，然后将$x_0$和采样得到的$\epsilon$进行加和，得到一个有杂讯的图，其中$\bar{\alpha}<em>{1}, \bar{\alpha}</em>{2}, \ldots \bar{\alpha}_{T}$的设计是从大到小进行变化，所以$t$越大，则$\alpha_t$越大，则在$x_0$上加的噪音越多</li>
+</ul>
+<p>图示过程如下：</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_x-RtHTtQ8D.png"></p>
+<h2 id="4-2-推理过程"><a href="#4-2-推理过程" class="headerlink" title="4.2 推理过程"></a>4.2 推理过程</h2><p><img src="/2024/08/03/Diffusion-Model/image_zbJOaNXqBu.png"></p>
+<p>详细分析一下推理的算法：</p>
+<ul>
+<li>步骤1：从$N(0,1)$中采样一个全是噪音的图记为$x_T$</li>
+<li>步骤2：做reverse process，产生图片</li>
+<li>步骤3：在每次生图的时候先从$N(0,1)$中产生一个噪音$z$</li>
+<li>步骤4：生图的过程，准备2组超参数$\alpha_T$和$\bar{\alpha}<em>T$，然后先将$x_t$送入$\boldsymbol{\epsilon}</em>{\theta}\left(\mathbf{x}<em>{t}, t\right)$产生一个杂讯，然后使用$x_t$减去，之后再乘$\frac{1}{\sqrt{\alpha</em>{t}}}$，但是这里还要再加上一个sample出来的杂讯$z$，得到结果</li>
+</ul>
+<p>推理过程图示如下：</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_su7aVnAY3v.png"></p>
+<hr>
+<h1 id="5-影像生成模型本质上共同目标"><a href="#5-影像生成模型本质上共同目标" class="headerlink" title="5 影像生成模型本质上共同目标"></a>5 影像生成模型本质上共同目标</h1><p><img src="/2024/08/03/Diffusion-Model/image_PNTQp5a7Rb.png"></p>
+<p>当向模型中输入一段文字时，网络的目标其实是<strong>产生一个所有图像的分布</strong>。</p>
+<p>例如，当提示“一只正在奔跑的狗”，此时产生一个有关于奔跑的狗的分布。此外，有语言提示的模型和没有文字提示的模型在本质上没有区别，因此在接下来讨论数学原理时，假设没有文本提示。</p>
+<h2 id="5-1-最大似然估计"><a href="#5-1-最大似然估计" class="headerlink" title="5.1 最大似然估计"></a>5.1 最大似然估计</h2><p>目标是使学习到的分布和目标的分布之间越接近越好。</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_LQvW0VvQEP.png"></p>
+<p>假设模型的参数是$\theta$，模型输出的分布是$P_\theta(x)$，真实的分布是$P_{data}(x)$，进行一下运算：</p>
+<ol>
+<li>首先从$P_{data}(x)$中采样一些数据$\left{x^{1}, x^{2}, \ldots, x^{m}\right}$</li>
+<li>假设能够计算$P_\theta(x^i)$，使用最大似然估计$\theta^{*}&#x3D;\arg \max <em>{\theta} \prod</em>{i&#x3D;1}^{m} P_{\theta}\left(x^{i}\right)$</li>
+</ol>
+<h3 id="5-1-1-最大似然估计和两个分布之间的距离的关系"><a href="#5-1-1-最大似然估计和两个分布之间的距离的关系" class="headerlink" title="5.1.1 最大似然估计和两个分布之间的距离的关系"></a>5.1.1 最大似然估计和两个分布之间的距离的关系</h3><p>$$<br>\begin{aligned} \theta^{*}&#x3D; &amp; \arg \max <em>{\theta} \prod</em>{i&#x3D;1}^{m} P_{\theta}\left(x^{i}\right)&#x3D;\arg \max <em>{\theta} \log \prod</em>{i&#x3D;1}^{m} P_{\theta}\left(x^{i}\right) \ &amp; &#x3D;\arg \max <em>{\theta} \sum</em>{i&#x3D;1}^{m} \log P_{\theta}\left(x^{i}\right) \approx \arg \max <em>{\theta} E</em>{x \sim P_{d a t a}}\left[\log P_{\theta}(x)\right] \ &amp; &#x3D;\arg \max <em>{\theta} \int</em>{x} P_{\text {data }}(x) \log P_{\theta}(x) d x-\int_{x} P_{\text {data }}(x) \log P_{\text {data }}(x) d x \ \quad &amp; &#x3D;\arg \max <em>{\theta} \int</em>{x} P_{\text {data }}(x) \log \frac{P_{\theta}(x)}{P_{d a t a}(x)} d x&#x3D;\arg \min <em>{\theta} K L\left(P</em>{\text {data }} | P_{\theta}\right)\end{aligned}<br>$$</p>
+<p>最后推导出最小化两个分布之间的KL距离，KL越大，代表2个分布之间的差距越大，越小则代表之间的差距越小。</p>
+<h2 id="5-2-VAE"><a href="#5-2-VAE" class="headerlink" title="5.2 VAE"></a>5.2 VAE</h2><p><img src="/2024/08/03/Diffusion-Model/image_9aSZVUk0gZ.png"></p>
+<p>先从高斯分布中采样一个$z$，然后计算得到$G(z)$代表的是一个高斯分布的均值，则有以下：</p>
+<p>$$<br>\begin{array}{l}P_{\theta}(x|z) \propto \exp \left(-|G(z)-x|_{2}\right)\end{array}<br>$$</p>
+<p>具体推导如下（看不懂😭）：</p>
+<p><img src="/2024/08/03/Diffusion-Model/image_GpSDH5Krdn.png"></p>
+<h2 id="5-3-DDPM"><a href="#5-3-DDPM" class="headerlink" title="5.3 DDPM"></a>5.3 DDPM</h2><p><img src="/2024/08/03/Diffusion-Model/image_aGMahJ-c9A.png"></p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>扩散模型</tag>
       </tags>
   </entry>
 </search>
