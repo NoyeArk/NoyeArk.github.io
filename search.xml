@@ -10853,4 +10853,99 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
         <tag>数据结构</tag>
       </tags>
   </entry>
+  <entry>
+    <title>信息安全实验6：SQL注入（数字注入）</title>
+    <url>/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="1-实验环境"><a href="#1-实验环境" class="headerlink" title="1 实验环境"></a>1 实验环境</h1><ol>
+<li>操作系统版本：Windows 11 家庭中文版23H2</li>
+<li>VMware® Workstation 16 Pro：16.2.3 build-19376536</li>
+<li>Metasploitable2虚拟机版本：2.6.24-16-server</li>
+<li>Kali虚拟机版本：6.6.9-amd64</li>
+</ol>
+<hr>
+<h1 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2 实验内容"></a>2 实验内容</h1><h2 id="2-1-判断注入点与注入类型"><a href="#2-1-判断注入点与注入类型" class="headerlink" title="2.1 判断注入点与注入类型"></a>2.1 <strong>判断注入点与注入类型</strong></h2><p>（1）分别测试输入：1、1”和1’。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_iNJl-bbt6N.png"></p>
+<center>图2.1  判断注入类型：输入1</center>
+
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_1_GLdAzPGj_4.png"></p>
+<center>图2.2  判断注入类型：输入1”</center>
+
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_2_Xi57bk6Ffp.png"></p>
+<center>图2.3  判断注入类型：输入1’</center>
+
+<p>由图2.1所示，从url可知，页面采用GET方法提交数据。由图2.2和图2.3可知，输入１”和1’后不能正确得到查询结果，所以推测注入类型为数字型注入，同时输入的单引号和双引号均被转义，可以推测数据库为MySQL。</p>
+<p>（2）测试输入：2 and 2 &#x3D; 2和2 or 2 &#x3D; 2</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_3_2lKmw2hSgv.png"></p>
+<center>图2.4  判断注入类型：输入2 and 2 = 2</center>
+
+<p>由图2.4可知，当输入“2 and 2 &#x3D; 2”时，其中后面的and条件始终成立，所以查询的条件还是前面的1起作用，所以查询的结果即为查询id是1的信息。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_4_Cc0lARlWpv.png"></p>
+<center>图2.5  判断注入类型：输入2 or 2 = 2</center>
+
+<p>图2.5可以通过使用or条件判断来使得整个where判断为true，所以会显示所有用户的信息。</p>
+<h2 id="2-2-获取SQL语句中的字段数"><a href="#2-2-获取SQL语句中的字段数" class="headerlink" title="2.2 获取SQL语句中的字段数"></a>2.2 <strong>获取SQL语句中的字段数</strong></h2><p>使用order by来判断SQL语句中由多少个字段，</p>
+<p>（1）输入：１ order by 1#</p>
+<p>order by 1表示按照第一个列进行排序。在SQL中，`order by`子句用于指定查询结果的排序方式，后面可以跟列名或者列的位置（从1开始计数）。因此，`order by 1`表示按照第一个列（查询结果中的第一个列）进行升序排序。`#`符号是SQL中的注释符号，表示后面的内容将被忽略。因此，整个SQL语句的含义是选择数据并按照第一个列进行排序。</p>
+<p>结果如图2.6所示，可以看成执行查询成功，所以SQL语句中字段数大于等于１。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_5_IuYLGb8Yyw.png"></p>
+<center>图2.6  判断字段数：输入1 order by 1#</center>
+
+<p>（2）输入：3 order by 2#</p>
+<p>结果如图2.7所示，可以看成执行查询成功，所以SQL语句中字段数大于等于2。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_6_phuPxaoUOb.png"></p>
+<center>图2.7  判断字段数：输入3 order by 2#</center>
+
+<p>（3）输入：4 order by 3#</p>
+<p>结果如图2.8所示，查询失败，所以可以确定SQL语句中查询字段数为2。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_7_l52qnrcgGK.png"></p>
+<center>图2.8  判断注入类型：输入4 order by 3#</center>
+
+<h2 id="2-3-判断回显位置"><a href="#2-3-判断回显位置" class="headerlink" title="2.3 判断回显位置"></a>2.3 <strong>判断回显位置</strong></h2><p>判断回显位置用来判断目标信息的输出位置，使用union关键字进行分析。输入：6 union select 123, 456#</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_8_IDRJuHKKnN.png"></p>
+<center>图2.9  判断回显位置</center>
+
+<p>如图2.9所示，查询结果的显示位置是在First name和Surname字段之后。</p>
+<h2 id="2-4-获取数据库信息"><a href="#2-4-获取数据库信息" class="headerlink" title="2.4 获取数据库信息"></a>2.4 <strong>获取数据库信息</strong></h2><p>输入：7 union select 24,database()#，如图2.10所示，可以得到数据库名为“dvwa”。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_9_n4GHURcNv_.png"></p>
+<center>图2.10  获取数据库信息</center>
+
+<h2 id="2-5-获取数据库中表名"><a href="#2-5-获取数据库中表名" class="headerlink" title="2.5 获取数据库中表名"></a>2.5 <strong>获取数据库中表名</strong></h2><p>输入：8 union select 25, table_name from information_schema.tables where table_schema&#x3D;database()#。如图2.11所示，可以得到数据库dvwa中有2个表，分别为guestbook和users。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_10_SOPmB2a2R4.png"></p>
+<center>图2.11  获取数据库中的表名</center>
+
+<h2 id="2-6-获取数据库中表中字段名"><a href="#2-6-获取数据库中表中字段名" class="headerlink" title="2.6 获取数据库中表中字段名"></a>2.6 <strong>获取数据库中表中字段名</strong></h2><p>这里查询users表中的列名，在构造SQL语句的过程中需要注意，因为是数字型注入，我们不能直接输入table_name&#x3D;users，需要将users转换为对应的ASCII码，构造的SQL语句如下：5 union select 26, column_name from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;0x7573657273#，如图2.12所示。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_11_hKz2GSqh2N.png"></p>
+<center>图2.12  获取users表中的字段名</center>
+
+<p>可以得到users表中一共有user_id、first_name、last_name、user、password和avatar6个列。</p>
+<h2 id="2-7-获取字段中的值"><a href="#2-7-获取字段中的值" class="headerlink" title="2.7 获取字段中的值"></a>2.7 <strong>获取字段中的值</strong></h2><p>获取users表中的user_id和avatar字段数据为例，输入：4 union select user_id, avatar from users#，如图2.13所示，查询得到了所有的用户id以及对应的头像。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_12_eS9tPFkrG1.png"></p>
+<center>图2.13  获取users表中的user\_id和avatar字段</center>
+
+<h2 id="2-8-通过SQL注入获取guestbook表中的字段"><a href="#2-8-通过SQL注入获取guestbook表中的字段" class="headerlink" title="2.8 通过SQL注入获取guestbook表中的字段"></a>2.8 <strong>通过SQL注入获取guestbook表中的字段</strong></h2><p>要获取guestbook表中的字段值，可以使用类似上述的查询语句，输入：<code>3 union select 6666, column\_name from information\_schema.columns where table\_schema=database() and table\_name=0x6775657374626f6f6b#</code>，查询结果如图2.14所示。</p>
+<p><img src="/2024/08/05/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C6%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%EF%BC%88%E6%95%B0%E5%AD%97%E6%B3%A8%E5%85%A5%EF%BC%89/image_13_724eSkatFQ.png"></p>
+<center>图2.14  获取guestbook表中的字段名</center>
+
+<p>可以看到guestbook表中的信息有comment_id、comment和name，之后也可以查询一些guestbook表中的其他信息，过程与上面查询users表类似，不再赘述。</p>
+<hr>
+<h1 id="3-实验总结"><a href="#3-实验总结" class="headerlink" title="3 实验总结"></a>3 实验总结</h1><ol>
+<li>从这个实验可以发现，我们在开发自己的系统过程中，如果我们不对SQL注入进行防护，那么攻击者可以掌握数据库中的所有信息，包括一些用户的个人隐私。所以，以后在开发系统或网站时使用的数据库，一定要防护SQL注入攻击。</li>
+<li>从这次实验可以得到SQL注入攻击的一般流程：<ul>
+<li><strong>判断注入类型，数字型还是字符型</strong>：在注入攻击中，攻击者通常会尝试输入不同类型的数据来判断目标系统对输入数据的处理方式。可以通过尝试输入数字和字符来判断。</li>
+<li><strong>猜解SQL查询语句中的字段数</strong>：攻击者可以通过构造不同的SQL查询语句来尝试猜解查询语句中的字段数，从而更好地构造攻击。</li>
+<li><strong>确定字段的回显位置</strong>：在SQL注入攻击中，攻击者通常会通过观察系统的响应来确定注入的语句是否成功执行，以及注入点是否位于目标字段中。</li>
+<li><strong>获取当前数据库</strong>：通过SQL注入攻击，攻击者可以构造查询语句来获取当前数据库的信息，例如MySQL中的SELECT DATABASE()。</li>
+<li><strong>获取数据库中的表</strong>：通过类似SHOW TABLES或者查询系统表来获取数据库中的表信息。</li>
+<li><strong>获取表中的字段名</strong>：通过查询数据库的系统表或者信息模式，攻击者可以获取表中的字段名信息，例如SHOW COLUMNS FROM table_name或者查询系统表INFORMATION_SCHEMA.COLUMNS。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>信息安全</tag>
+      </tags>
+  </entry>
 </search>
