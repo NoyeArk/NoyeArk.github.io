@@ -2531,7 +2531,7 @@
 </ol>
 <p>如何表示顶点间的关系？</p>
 <h2 id="1-1-邻接矩阵"><a href="#1-1-邻接矩阵" class="headerlink" title="1.1 邻接矩阵"></a>1.1 邻接矩阵</h2><p>图的邻接矩阵(Adjacency Matrix) 存储方式是用两个数组来表示图。一个一维数组存储图中顶点信息，一个二维数组(称为邻接矩阵)存储图中的边或弧的信息。</p>
-<p>设图 G 有 n 个顶点，则邻接矩阵 A 是一个n ∗ n的方阵，定义为:</p>
+<p>设图 G 有 n 个顶点，则邻接矩阵 A 是一个$n ∗ n$的方阵，定义为:</p>
 <p><img src="https://img-blog.csdnimg.cn/20210301095908432.png#pic_center"></p>
 <p>下图是一个无向图和它的邻接矩阵：</p>
 <p><img src="https://img-blog.csdnimg.cn/202103011006555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JlYWxfRm9vbF8=,size_16,color_FFFFFF,t_70#pic_center"></p>
@@ -2539,7 +2539,11 @@
 <ol>
 <li>无向图的邻接矩阵一定是一个对称矩阵(即从矩阵的左上角到右下角的主对角线为轴，右上角的元与左下角相对应的元全都是相等的)。 因此，在实际存储邻接矩阵时只需存储上(或下)三角矩阵的元素。</li>
 <li>对于无向图，邻接矩阵的第i行(或第i列)非零元素(或非∞元素)的个数正好是第i个顶点的度。</li>
-<li>有向图中：<br>-  顶点 $ V_{i} $ 的出度是A中第 i 行元素之和<br>-  顶点 $ V_{i} $ 的入度是A中第 i 列元素之和</li>
+<li>有向图中：<ul>
+<li>顶点 $ V_{i} $ 的出度是A中第 i 行元素之和</li>
+<li>顶点 $ V_{i} $ 的入度是A中第 i 列元素之和</li>
+</ul>
+</li>
 </ol>
 <p><strong>邻接矩阵存储适用于稠密图。</strong></p>
 <h2 id="1-2-邻接表"><a href="#1-2-邻接表" class="headerlink" title="1.2 邻接表"></a>1.2 邻接表</h2><p>当一个图为稀疏图时（边数相对顶点较少），使用邻接矩阵法显然要浪费大量的存储空间，如下图所示：</p>
@@ -2553,10 +2557,10 @@
 <p><img src="https://img-blog.csdnimg.cn/20210301165232511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JlYWxfRm9vbF8=,size_16,color_FFFFFF,t_70#pic_center"></p>
 <h3 id="1-2-1-邻接表表示的特点"><a href="#1-2-1-邻接表表示的特点" class="headerlink" title="1.2.1 邻接表表示的特点"></a>1.2.1 邻接表表示的特点</h3><ol>
 <li>无向图中顶点Vi的度为第i个单链表中的结点数</li>
-<li>有向图中<ol>
+<li>有向图中<ul>
 <li>顶点Vi的出度为第i个单链表中的结点个数</li>
 <li>顶点Vi的入度为整个单链表中邻接点域值是i的结点个数</li>
-</ol>
+</ul>
 </li>
 <li>逆邻接表：有向图中对每个结点建立以Vi为头的弧的单链表</li>
 </ol>
@@ -2576,14 +2580,14 @@
 
 <h2 id="1-4-邻接多重表"><a href="#1-4-邻接多重表" class="headerlink" title="1.4 邻接多重表"></a>1.4 邻接多重表</h2><p>邻接多重表是<strong>无向图</strong>的另一种链式存储结构。</p>
 <p>在邻接表中，容易求得顶点和边的各种信息，但在邻接表中求两个顶点之间是否存在边而对边执行删除等操作时，需要分别在两个顶点的边表中遍历，效率较低。</p>
-<p>比如下图中，若要删除左图的（v<del>0</del>, v<del>2</del>）这条边，需要对邻接表结构中右边表的阴影两个结点进行删除操作，显然这是比较烦琐的。</p>
+<p>比如下图中，若要删除左图的（$v_0$, $v_2$）这条边，需要对邻接表结构中右边表的阴影两个结点进行删除操作，显然这是比较烦琐的。</p>
 <p><img src="https://img-blog.csdnimg.cn/20210301182203109.png#pic_center"></p>
 <p>重新定义的边表结点结构如下表所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/20210301183315496.png#pic_center"></p>
-<p>其中 ivex 和 jvex 是与某条边依附的两个顶点在顶点表中下标。ilink 指向依附顶点 ivex 的下一条边，jlink 指向依附顶点 jvex 的下一条边。这就是邻接多重表结构。</p>
+<p>其中 $ivex$ 和 $jvex$ 是与某条边依附的两个顶点在顶点表中下标。$ilink$ 指向依附顶点 $ivex$ 的下一条边，$jlink$ 指向依附顶点 $jvex$ 的下一条边。这就是邻接多重表结构。</p>
 <p>每个顶点也用一一个结点表示，它由如下所示的两个域组成。</p>
 <p><img src="https://img-blog.csdnimg.cn/20210301183423578.png#pic_center"></p>
-<p>其中，data 域存储该顶点的相关信息，firstedge 域指示第一条依附于该顶点的边。</p>
+<p>其中，$data$ 域存储该顶点的相关信息，$firstedge$ 域指示第一条依附于该顶点的边。</p>
 <p><strong>举例如下：</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20210301185220315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JlYWxfRm9vbF8=,size_16,color_FFFFFF,t_70#pic_center"></p>
 <hr>
@@ -2603,10 +2607,10 @@
 <li>基于邻接表遍历所得到的DFS序列和BFS序列是不唯一的</li>
 </ul>
 <h3 id="2-1-2-性能分析"><a href="#2-1-2-性能分析" class="headerlink" title="2.1.2 性能分析"></a>2.1.2 性能分析</h3><ul>
-<li><strong>空间复杂度</strong>：递归算法，需要使用递归栈，空间复杂度为O(V)，V为顶点数</li>
+<li><strong>空间复杂度</strong>：递归算法，需要使用递归栈，空间复杂度为$O(V)$，$V$为顶点数</li>
 <li><strong>时间复杂度</strong>：遍历过程实际上是查找每个点的临界点的过程<ul>
-<li>邻接矩阵：查找每个顶点的邻接点需要时间为O(|V|)，总时间复杂度为O(|V²|)</li>
-<li>邻接表：查找每个顶点的邻接点需要时间为O(|E|)，总时间复杂度为O(|V|+|E|)</li>
+<li>邻接矩阵：查找每个顶点的邻接点需要时间为$O(|V|)$，总时间复杂度为$O(|V^2|)$</li>
+<li>邻接表：查找每个顶点的邻接点需要时间为$O(|E|)$，总时间复杂度为$O(|V|+|E|)$</li>
 </ul>
 </li>
 </ul>
@@ -2616,10 +2620,10 @@
 
 <p><img src="https://hackr.io/blog/media/architecture-of-bfs.png"></p>
 <h3 id="2-2-2-性能分析"><a href="#2-2-2-性能分析" class="headerlink" title="2.2.2 性能分析"></a>2.2.2 性能分析</h3><ul>
-<li><strong>空间复杂度</strong>：无论使用什么存储方式，BFS都需要借助一个辅助队列Q，因此最坏情况下，空间复杂度为O(|V|)</li>
+<li><strong>空间复杂度</strong>：无论使用什么存储方式，BFS都需要借助一个辅助队列$Q$，因此最坏情况下，空间复杂度为$O(|V|)$</li>
 <li><strong>时间复杂度</strong>：分析同DFS<ul>
-<li>邻接矩阵：O(|V|²)</li>
-<li>邻接表：O(|V|+|E|)</li>
+<li>邻接矩阵：$O(|V|^2)$</li>
+<li>邻接表：$O(|V|+|E|)$</li>
 </ul>
 </li>
 </ul>
@@ -2635,29 +2639,29 @@
 </ol>
 <p>含n个顶点n-1条边的图不一定是生成树。</p>
 <h2 id="3-1-普利姆（Prim）算法"><a href="#3-1-普利姆（Prim）算法" class="headerlink" title="3.1 普利姆（Prim）算法"></a>3.1 普利姆（Prim）算法</h2><h3 id="3-1-1-算法思想"><a href="#3-1-1-算法思想" class="headerlink" title="3.1.1 算法思想"></a>3.1.1 算法思想</h3><ul>
-<li>初始令$U&#x3D;{u_{0}}，(u_{0}∈V), TE&#x3D;ɸ$；</li>
-<li>在所有u∈U，v∈V-U的边(u,v)∈E中，找一条代价最小的边($u_{0}$，$v_{0}$)；</li>
+<li>初始令$U&#x3D;{u_{0}}，(u_{0}∈V), TE&#x3D;\phi$；</li>
+<li>在所有$u∈U，v∈V-U$的边$(u,v)∈E$中，找一条代价最小的边($u_{0}$，$v_{0}$)；</li>
 <li>将($u_{0}$，$v_{0}$)并入集合TE，同时$v_{0}$并入U；</li>
-<li>重复上述操作直至U&#x3D;V为止，则T&#x3D;(V,{TE})为N的最小生成树；</li>
+<li>重复上述操作直至$U&#x3D;V$为止，则$T&#x3D;(V,{TE})$为N的最小生成树；</li>
 </ul>
 <h3 id="3-1-2-算法过程"><a href="#3-1-2-算法过程" class="headerlink" title="3.1.2 算法过程"></a>3.1.2 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/3e8389add71f4f4f8ff01d977bda755d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0Njg1NTg0,size_16,color_FFFFFF,t_70"></p>
 <h3 id="3-1-3-代码实现"><a href="#3-1-3-代码实现" class="headerlink" title="3.1.3 代码实现"></a>3.1.3 代码实现</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">510</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> dist[N];</span><br><span class="line"><span class="type">int</span> g[N][N];</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">	dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> t = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">			<span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j]))</span><br><span class="line">				t = j;</span><br><span class="line">		st[t] = <span class="literal">true</span>;</span><br><span class="line">		res += dist[t];</span><br><span class="line">		<span class="comment">// 这个一定要加，防止溢出</span></span><br><span class="line">		<span class="keyword">if</span> (res &gt; <span class="number">0x3f3f3f3f</span> / <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">			dist[j] = <span class="built_in">min</span>(dist[j], g[t][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> g);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">while</span> (m --)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> a, b, c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">		g[a][b] = g[b][a] = <span class="built_in">min</span>(g[a][b], c);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> ans = <span class="built_in">prim</span>();</span><br><span class="line">	<span class="keyword">if</span> (ans &gt; <span class="number">0x3f3f3f3f</span> / <span class="number">2</span>) cout &lt;&lt; <span class="string">&quot;impossible&quot;</span>;</span><br><span class="line">	<span class="keyword">else</span> cout &lt;&lt; ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-1-4-性能分析"><a href="#3-1-4-性能分析" class="headerlink" title="3.1.4 性能分析"></a>3.1.4 性能分析</h3><ul>
-<li><strong>空间复杂度</strong>：使用一个dist数组用于记录距离，O(|V|)</li>
-<li><strong>时间复杂度</strong>：两重循环，O(|V|²)，不依赖于E，<strong>适合求解边稠密图的最小生成树</strong></li>
+<li><strong>空间复杂度</strong>：使用一个dist数组用于记录距离，$O(|V|)$</li>
+<li><strong>时间复杂度</strong>：两重循环，$O(|V|^2)$，不依赖于E，<strong>适合求解边稠密图的最小生成树</strong></li>
 </ul>
 <h2 id="3-2-克鲁斯卡尔（Kruskal）算法"><a href="#3-2-克鲁斯卡尔（Kruskal）算法" class="headerlink" title="3.2 克鲁斯卡尔（Kruskal）算法"></a>3.2 克鲁斯卡尔（Kruskal）算法</h2><h3 id="3-2-1-算法思想"><a href="#3-2-1-算法思想" class="headerlink" title="3.2.1 算法思想"></a>3.2.1 算法思想</h3><p>按边权选择合适的边来构造最小生成树。</p>
 <ul>
-<li>初始状态为只有n个顶点而无边的非连通图T&#x3D;(V,{ɸ})，每个顶点自成一个连通分量；</li>
-<li>在E中选取代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中；否则，舍去此边，选取下一条代价最小的边依此类推，直至T中所有顶点都在同一连通分量上为止；</li>
+<li>初始状态为只有$n$个顶点而无边的非连通图$T&#x3D;(V,{\phi})$，每个顶点自成一个连通分量；</li>
+<li>在$E$中选取代价最小的边，若该边依附的顶点落在$T$中不同的连通分量上，则将此边加入到$T$中；否则，舍去此边，选取下一条代价最小的边依此类推，直至$T$中所有顶点都在同一连通分量上为止；</li>
 </ul>
 <h3 id="3-2-2-算法过程"><a href="#3-2-2-算法过程" class="headerlink" title="3.2.2 算法过程"></a>3.2.2 算法过程</h3><p><img src="https://img-blog.csdnimg.cn/2020052116522528.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NDIzMTY2,size_16,color_FFFFFF,t_70"></p>
 <h3 id="3-2-3-代码实现"><a href="#3-2-3-代码实现" class="headerlink" title="3.2.3 代码实现"></a>3.2.3 代码实现</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a, b, w;</span><br><span class="line">&#125;edges[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> pre[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Edge&amp; x, Edge&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x.w &lt; y.w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> pre[x] = (pre[x] == x ? x : <span class="built_in">find</span>(pre[x]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Kruskal</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> res = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">auto</span> e = edges[i];</span><br><span class="line">		<span class="type">int</span> a = <span class="built_in">find</span>(e.a), b = <span class="built_in">find</span>(e.b);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (a == b) <span class="keyword">continue</span>;</span><br><span class="line">		pre[a] = b;</span><br><span class="line">		res += e.w, cnt ++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> cnt &lt; n - <span class="number">1</span> ? <span class="number">0x3f3f3f3f</span> : res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="comment">// 初始化并查集</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) pre[i] = i;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++) </span><br><span class="line">		cin &gt;&gt; edges[i].a &gt;&gt; edges[i].b &gt;&gt; edges[i].w;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sort</span>(edges + <span class="number">1</span>, edges + <span class="number">1</span> + m, cmp);</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> ans = <span class="built_in">Kruskal</span>();</span><br><span class="line">	<span class="keyword">if</span> (ans == <span class="number">0x3f3f3f3f</span>) cout &lt;&lt; <span class="string">&quot;impossible&quot;</span>;</span><br><span class="line">	<span class="keyword">else</span> cout &lt;&lt; ans;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-2-4-性能分析"><a href="#3-2-4-性能分析" class="headerlink" title="3.2.4 性能分析"></a>3.2.4 性能分析</h3><ul>
-<li><strong>空间复杂度</strong>：使用一个dist数组用于记录距离，O(|V|)</li>
-<li><strong>时间复杂度</strong>：通常采用堆来存放边的集合，选择边权最小的边需要O(log|E|)的时间，同时遍历每条边，时间复杂度为O(|E|log|E|)，<strong>适用于求解边稀疏而顶点较多的图</strong></li>
+<li><strong>空间复杂度</strong>：使用一个$dist$数组用于记录距离，$O(|V|)$</li>
+<li><strong>时间复杂度</strong>：通常采用堆来存放边的集合，选择边权最小的边需要$O(log|E|)$的时间，同时遍历每条边，时间复杂度为$O(|E|log|E|)$，<strong>适用于求解边稀疏而顶点较多的图</strong></li>
 </ul>
 <h3 id="3-2-5-具体应用"><a href="#3-2-5-具体应用" class="headerlink" title="3.2.5 具体应用"></a>3.2.5 具体应用</h3><ul>
 <li>n个城市间建立通信联络网</li>
@@ -2688,20 +2692,20 @@
 <h3 id="4-1-3-代码实现"><a href="#4-1-3-代码实现" class="headerlink" title="4.1.3 代码实现"></a>4.1.3 代码实现</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 稠密图，采用邻接矩阵存储</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">510</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> g[N][N], dist[N];</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j])) </span><br><span class="line">                t = j;</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 更新到其他点的距离</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">            dist[j] = <span class="built_in">min</span>(dist[j], dist[t] + g[t][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dist[n] == <span class="number">0x3f3f3f3f</span> ? <span class="number">-1</span> : dist[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> g);</span><br><span class="line">    <span class="keyword">while</span> (m --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a, b, c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">        g[a][b] = <span class="built_in">min</span>(g[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">dijkstra</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-1-4-性能分析"><a href="#4-1-4-性能分析" class="headerlink" title="4.1.4 性能分析"></a>4.1.4 性能分析</h3><ul>
-<li><strong>时间复杂度</strong>：O(n²)</li>
-<li><strong>空间复杂度</strong>：O(n)</li>
+<li><strong>时间复杂度</strong>：$O(n²)$</li>
+<li><strong>空间复杂度</strong>：$O(n)$</li>
 </ul>
 <p>Dijkstra算法是基于贪心策略，当边上带有负值时，该算法并不适用，会进入死循环。</p>
 <h2 id="4-2-Floyd算法"><a href="#4-2-Floyd算法" class="headerlink" title="4.2 Floyd算法"></a>4.2 Floyd算法</h2><p>如何求每一对顶点之间的最短路径？</p>
 <ol>
-<li><p>每次以一个顶点为源点，重复执行Dijkstra算法n次：T(n)&#x3D;O(n³)。</p>
+<li><p>每次以一个顶点为源点，重复执行Dijkstra算法n次：$T(n)&#x3D;O(n^3)$。</p>
 </li>
 <li><p>弗洛伊德(Floyd)算法</p>
 </li>
 </ol>
 <p><strong>算法思想</strong>：逐个顶点试探法。</p>
 <h3 id="4-2-1-求最短路径步骤-xA"><a href="#4-2-1-求最短路径步骤-xA" class="headerlink" title="4.2.1 求最短路径步骤&#xA;"></a>4.2.1 求最短路径步骤&#xA;</h3><ol>
-<li>初始时设置一个n阶方阵，令其对角线元素为0，若存在弧&lt;Vi,Vj&gt;，则对应元素为权值；否则为∞。</li>
+<li>初始时设置一个n阶方阵，令其对角线元素为0，若存在弧$&lt;V_i,V_j&gt;$，则对应元素为权值；否则为∞。</li>
 <li>逐步试着在原直接路径中增加中间顶点，若加入中间点后路径变短，则修改之；否则维持原值。</li>
 <li>所有顶点试探完毕，算法结束。</li>
 </ol>
@@ -2710,8 +2714,8 @@
 <h3 id="4-2-2-代码实现"><a href="#4-2-2-代码实现" class="headerlink" title="4.2.2 代码实现"></a>4.2.2 代码实现</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">210</span>;</span><br><span class="line"><span class="type">int</span> dist[N][N];</span><br><span class="line"><span class="type">int</span> n, m, q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">floyd</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k ++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">                dist[i][j] = <span class="built_in">min</span>(dist[i][j], dist[i][k] + dist[k][j]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">            <span class="keyword">if</span> (i == j) dist[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> dist[i][j] = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (m --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a, b, c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">        dist[a][b] = <span class="built_in">min</span>(dist[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">floyd</span>();</span><br><span class="line">    <span class="keyword">while</span> (q --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x, y; cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="keyword">if</span> (dist[x][y] &gt; <span class="number">0x3f3f3f3f</span> / <span class="number">2</span>) cout &lt;&lt; <span class="string">&quot;impossible&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; dist[x][y] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-2-3-性能分析"><a href="#4-2-3-性能分析" class="headerlink" title="4.2.3 性能分析"></a>4.2.3 性能分析</h3><ul>
-<li><strong>时间复杂度</strong>：O(n³)，不过由于其代码很紧凑，且不包含其他复杂的数据结构，因此隐含的常数系数是很小的。</li>
-<li><strong>空间复杂度</strong>：O(n²)</li>
+<li><strong>时间复杂度</strong>：$O(n^3)$，不过由于其代码很紧凑，且不包含其他复杂的数据结构，因此隐含的常数系数是很小的。</li>
+<li><strong>空间复杂度</strong>：$O(n^2)$</li>
 </ul>
 <p>Floyd算法允许图中有带负权值的边，但不允许有包含带负权值的边组成的回路。</p>
 <hr>
@@ -2730,8 +2734,8 @@
 <h2 id="5-3-代码实现"><a href="#5-3-代码实现" class="headerlink" title="5.3 代码实现"></a>5.3 代码实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> d[N];</span><br><span class="line"><span class="type">int</span> q[N], hh, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="type">int</span> h[N], e[N], ne[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">top_sort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		<span class="keyword">if</span> (!d[i]) q[++ tt] = i;</span><br><span class="line">	<span class="keyword">while</span> (hh &lt;= tt)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> t = q[hh ++];</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> j = e[i];</span><br><span class="line">			<span class="keyword">if</span> (-- d[j] == <span class="number">0</span>)</span><br><span class="line">				q[++ tt] = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tt == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">while</span> (m --)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> a, b; cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		d[b] ++;</span><br><span class="line">		e[idx] = b, ne[idx] = h[a], h[a] = idx ++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">top_sort</span>())</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= tt; i ++)	cout &lt;&lt; q[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="keyword">else</span> cout &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="5-4-性能分析"><a href="#5-4-性能分析" class="headerlink" title="5.4 性能分析"></a>5.4 性能分析</h2><ul>
-<li><strong>空间复杂度</strong>：使用一个辅助队列Q，O(|V|)</li>
-<li><strong>时间复杂度</strong>：从队列中取出每个点的同时还要遍历从它出发的边，所以时间复杂度为O(|V|+|E|)</li>
+<li><strong>空间复杂度</strong>：使用一个辅助队列$Q$，$O(|V|)$</li>
+<li><strong>时间复杂度</strong>：从队列中取出每个点的同时还要遍历从它出发的边，所以时间复杂度为$O(|V|+|E|)$</li>
 </ul>
 <h2 id="5-5-逆拓扑排序"><a href="#5-5-逆拓扑排序" class="headerlink" title="5.5 逆拓扑排序"></a>5.5 逆拓扑排序</h2><p>与上述拓扑排序过程相反，先输出出度为0的点，然后删除所有以该顶点为终点的有向边，直到当前AVO网为空。</p>
 <h3 id="5-5-1-具体应用"><a href="#5-5-1-具体应用" class="headerlink" title="5.5.1 具体应用"></a>5.5.1 具体应用</h3><ul>
@@ -2783,10 +2787,16 @@
 <h1 id="1-总览"><a href="#1-总览" class="headerlink" title="1 总览"></a>1 总览</h1><p><strong>查找表</strong>：查找表是由同一类型的数据元素（或记录）构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵便的数据结构，可以用其他的数据结构来实现。</p>
 <p><strong>动态查找表</strong>：若在查找的同时对表做修改操作（插入删除等）则相应的表称之为动态查找表；否则称之为静态查找表。</p>
 <p><strong>平均查找长度ASL</strong>（查找算法的评价指标）：为确定记录在查找表中的位置，需和给定值进行比较的关键字个数的期望值，称为查找算法在查找成功时的平均查找长度（Average Search Length）。</p>
-<h2 id="对查找表常进行的3种操作：1-查询某个特定的值是否在表中2-插入一个元素3-删除一个元素"><a href="#对查找表常进行的3种操作：1-查询某个特定的值是否在表中2-插入一个元素3-删除一个元素" class="headerlink" title="对查找表常进行的3种操作：1. 查询某个特定的值是否在表中2. 插入一个元素3. 删除一个元素"></a><strong>对查找表常进行的3种操作：</strong><br>1. 查询某个特定的值是否在表中<br>2. 插入一个元素<br>3. 删除一个元素</h2><h1 id="2-顺序查找和折半查找"><a href="#2-顺序查找和折半查找" class="headerlink" title="2 顺序查找和折半查找"></a>2 顺序查找和折半查找</h1><h2 id="2-1-顺序查找"><a href="#2-1-顺序查找" class="headerlink" title="2.1 顺序查找"></a>2.1 顺序查找</h2><p><strong>算法思想</strong></p>
-<p>通过数组下标递增来顺序操作每个元素，返回结果。</p>
+<p><strong>对查找表常进行的3种操作：</strong></p>
+<ol>
+<li>查询某个特定的值是否在表中</li>
+<li>插入一个元素</li>
+<li>删除一个元素</li>
+</ol>
+<hr>
+<h1 id="2-顺序查找和折半查找"><a href="#2-顺序查找和折半查找" class="headerlink" title="2 顺序查找和折半查找"></a>2 顺序查找和折半查找</h1><h2 id="2-1-顺序查找"><a href="#2-1-顺序查找" class="headerlink" title="2.1 顺序查找"></a>2.1 顺序查找</h2><p><strong>算法思想</strong>：通过数组下标递增来顺序操作每个元素，返回结果。</p>
 <p><strong>优点</strong>：对数据存储结构没有任何要求。</p>
-<p><strong>缺点</strong>：平均查找长度ASL&#x3D;n，效率较低。</p>
+<p><strong>缺点</strong>：平均查找长度$ASL&#x3D;n$，效率较低。</p>
 <h2 id="2-2-折半查找"><a href="#2-2-折半查找" class="headerlink" title="2.2 折半查找"></a>2.2 折半查找</h2><p>折半查找是一种效率高效的查找方法，但是仅适用于有序的顺序表。</p>
 <p>折半查找算法思路：（非递归）</p>
 <ol>
@@ -2798,21 +2808,21 @@
 
 <p>折半查找的过程可以用判定树来表示，把顺序表中的每个元素查找到所用的查找次数写出来，然后次数为1的作为树的根结点，然后查找次数为2的放到第二层，依次把每个元素放到树中。</p>
 <p>查找成功时的查找长度为从根结点到目的结点的路径上的结点数，而查找失败为从根结点到对应失败结点的父结点的路径上的结点数。每个结点的值均大于其左子结点，均小于其右子结点。<br><img src="https://img-blog.csdnimg.cn/20200427202441822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NjczMzQ0Mg==,size_16,color_FFFFFF,t_70"></p>
-<p>折半查找的时间复杂度为O(logn)，要求线性表必须具有随机存取的特性，仅适用于顺序存储结构，不适于链式存储结构。</p>
+<p>折半查找的时间复杂度为$O(logn)$，要求线性表必须具有随机存取的特性，仅适用于顺序存储结构，不适于链式存储结构。</p>
 <h2 id="2-3-分块查找"><a href="#2-3-分块查找" class="headerlink" title="2.3 分块查找"></a>2.3 分块查找</h2><p>分块查找是一种性能介于顺序查找和折半查找之间的一种查找方法。</p>
 <p><strong>算法思想</strong></p>
 <ol>
-<li>将表分成几块，且表或者有序，或者分块有序；即若i &lt; j，则第j块中所有记录的关键字均大于第i块中的最大关键字。（注意在块内元素可以是无序的）。</li>
+<li>将表分成几块，且表或者有序，或者分块有序；即若$i &lt; j$，则第j块中所有记录的关键字均大于第$i$块中的最大关键字。（注意在块内元素可以是无序的）。</li>
 <li>建立索引表（每个结点含有最大关键字域和指向本块第一个结点的指针，且按关键字有序）。</li>
 </ol>
 <p><strong>查找过程</strong>：首先确定待查记录所在块（顺序或折半查找），再在块内查找（顺序查找）。<br><img src="https://img-blog.csdnimg.cn/47f709bfc2084ffe8f944480a906915a.png"></p>
 <h2 id="2-4-上述三种查找对比"><a href="#2-4-上述三种查找对比" class="headerlink" title="2.4 上述三种查找对比"></a>2.4 上述三种查找对比</h2><p><img src="https://img-blog.csdnimg.cn/72c32d9944ef463889185f44c3d49e5e.png"></p>
 <hr>
-<h1 id="3-B树"><a href="#3-B树" class="headerlink" title="3 B树"></a>3 B树</h1><p>B树，又称<strong>多路平衡查找树</strong>，B树中所有结点的孩子个数的最大值成为B树的<strong>阶</strong>，通常用m表示。</p>
+<h1 id="3-B-树"><a href="#3-B-树" class="headerlink" title="3 B 树"></a>3 B 树</h1><p>B树，又称<strong>多路平衡查找树</strong>，B树中所有结点的孩子个数的最大值成为B树的<strong>阶</strong>，通常用$m$表示。</p>
 <p>在大多数的平衡查找树（Self-balancing search trees），比如 AVL 树和红黑树，都假设所有的数据放在主存当中。那为什么要使用 B-树呢（或者说为啥要有 B-树呢）？要解释清楚这一点，我们假设我们的数据量达到了亿级别，主存当中根本存储不下，我们只能以块的形式从磁盘读取数据，与主存的访问时间相比，磁盘的 I&#x2F;O 操作相当耗时，而提出 B-树的主要目的就是<strong>减少磁盘的 I&#x2F;O 操作</strong>。</p>
-<p>大多数平衡树的操作（查找、插入、删除，最大值、最小值等等）需要O(h)次磁盘访问操作，其中 h 是树的高度。但是对于 B-树而言，树的高度将不再是 O(logn) （其中 n 是树中的结点个数），而是一个我们可控的高度 h（通过调整 B-树中结点所包含的键【你也可以叫做数据库中的索引，本质上就是在磁盘上的一个位置信息】的数目，使得 B-树的高度保持一个较小的值）。</p>
-<p>一般而言，B-树的结点所包含的键的数目和磁盘块大小一样，从数个到数千个不等。由于B-树的高度 h 可控（一般远小于 logn），所以与 AVL 树和红黑树相比，B-树的磁盘访问时间将极大地降低。</p>
-<h2 id="3-1-B树的特性"><a href="#3-1-B树的特性" class="headerlink" title="3.1 B树的特性"></a>3.1 B树的特性</h2><ol>
+<p>大多数平衡树的操作（查找、插入、删除，最大值、最小值等等）需要$O(h)$次磁盘访问操作，其中 $h$ 是树的高度。但是对于 B-树而言，树的高度将不再是 $O(logn)$ （其中 $n$ 是树中的结点个数），而是一个我们可控的高度 $h$（通过调整 B-树中结点所包含的键【你也可以叫做数据库中的索引，本质上就是在磁盘上的一个位置信息】的数目，使得 B-树的高度保持一个较小的值）。</p>
+<p>一般而言，B-树的结点所包含的键的数目和磁盘块大小一样，从数个到数千个不等。由于B-树的高度 $h$ 可控（一般远小于 $logn$），所以与 AVL 树和红黑树相比，B-树的磁盘访问时间将极大地降低。</p>
+<h2 id="3-1-B-树的特性"><a href="#3-1-B-树的特性" class="headerlink" title="3.1 B 树的特性"></a>3.1 B 树的特性</h2><ol>
 <li>所有的叶子结点都出现在同一层上，并且不带信息(可以看做是外部结点或查找失败的结点，实际上这些结点不存在，指向这些结点的指针为空)。</li>
 <li>每个结点包含的关键字个数有上界和下界。用一个被称为 B-树的<strong>最小度数</strong>的固定整数 t ≥ 2 来表示这些界，其中 t 取决于磁盘块的大小：<ul>
 <li>除根结点以外的每个结点必须至少有 t - 1 个关键字。因此，除了根结点以外的每个内部结点有 t 个孩子。如果树非空，根结点至少有一个关键字。</li>
@@ -2822,9 +2832,9 @@
 <li>一个包含 x 个关键字的结点有 x + 1 个孩子；</li>
 <li>一个结点中的所有关键字升序排列，两个关键字 $ k_{1} $ 和 $ k_{2} $ 之间的孩子结点的所有关键字 key 在 ($ k_{1} $, $ k_{2} $) 的范围之内。</li>
 <li>与二叉排序树不同， B-树的搜索是从根结点开始，根据结点的孩子树做多路分支选择，而二叉排序树做的是二路分支选择，每一次判断都会进行一次磁盘 I&#x2F;O 操作。</li>
-<li>与其他平衡二叉树类似，B-树查找、插入和删除操作的时间复杂度为 O(logn) 量级。<br><img src="https://cdn.acwing.com/media/article/image/2022/02/16/150576_ad9a775d8e-1.png"></li>
+<li>与其他平衡二叉树类似，B-树查找、插入和删除操作的时间复杂度为 $O(logn)$ 量级。<br><img src="https://cdn.acwing.com/media/article/image/2022/02/16/150576_ad9a775d8e-1.png"></li>
 </ol>
-<h2 id="3-2-B树的查找"><a href="#3-2-B树的查找" class="headerlink" title="3.2 B树的查找"></a>3.2 B树的查找</h2><p>B树的查找包含两个基本操作：</p>
+<h2 id="3-2-B-树的查找"><a href="#3-2-B-树的查找" class="headerlink" title="3.2 B 树的查找"></a>3.2 B 树的查找</h2><p>B树的查找包含两个基本操作：</p>
 <ol>
 <li>在B树中找结点</li>
 <li>在结点内找关键字</li>
@@ -2832,12 +2842,12 @@
 <p>B树常存储在磁盘上，第一个操作是在磁盘上进行的，后一个查找操作是在内存中进行的。在结点内通常采用顺序查找或折半查找。</p>
 <ol>
 <li>将给定值与根结点关键字相比较，如果相等，那么查找成功。</li>
-<li>如果小于Ki，那么下次从以 Ai-1 为根的子树中查找。否则下次从以 Ai+1 为根的子树中查找。</li>
+<li>如果小于$K_i$，那么下次从以 $A_i-1$ 为根的子树中查找。否则下次从以 $A_i+1$ 为根的子树中查找。</li>
 <li>如果查找到叶子结点，那么查找失败。</li>
 </ol>
 <p><img src="/2024/06/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC7%E7%AB%A0%EF%BC%9A%E6%9F%A5%E6%89%BE/image.png"></p>
 <p>例如，在4阶B-树中查找给定值26，首先与根结点上的关键字35比较。因为26&lt;35，所以，由A0找到结点B。因为26&gt;18，再与结点E上的关键字比较，26&lt;27，而该结点的A0子树为失误结点叶子。所以，确定该树中不存在26，查找失败。</p>
-<h2 id="3-3-B树的插入"><a href="#3-3-B树的插入" class="headerlink" title="3.3 B树的插入"></a>3.3 B树的插入</h2><p>在B树中找到插入的位置后，并不能简单地将其添加到终端结点，因为此时可能会导致整棵树不符合B树定义中的要求，插入过程如下：</p>
+<h2 id="3-3-B-树的插入"><a href="#3-3-B-树的插入" class="headerlink" title="3.3 B 树的插入"></a>3.3 B 树的插入</h2><p>在B树中找到插入的位置后，并不能简单地将其添加到终端结点，因为此时可能会导致整棵树不符合B树定义中的要求，插入过程如下：</p>
 <ol>
 <li>从根结点开始按照查找的过程确定给定值应插入的结点位置P。</li>
 <li>如果该结点上的关键字个数少于 m - 1 个，则将给定值直接插到该结点上。</li>
@@ -2845,20 +2855,20 @@
 </ol>
 <p><strong>分裂的方法是：</strong></p>
 <ul>
-<li><p>取一个新的结点，在插入key后的原结点，从中间位置 m &#x2F; 2（向上取整）将其中的关键字分为两部分，左部分包含的关键字放在原结点，右部分的关键字放在新结点中，中间位置 m &#x2F; 2（向上取整）的结点插入原结点的父节点。</p>
+<li><p>取一个新的结点，在插入key后的原结点，从中间位置 m  &#x2F; 2（向上取整）将其中的关键字分为两部分，左部分包含的关键字放在原结点，右部分的关键字放在新结点中，中间位置 m &#x2F; 2（向上取整）的结点插入原结点的父节点。</p>
 </li>
 <li><p>如果此时导致父结点的关键字个数也超过了上限，继续进行这种分裂，直到传递到根节点位置。</p>
 </li>
 </ul>
 <p><strong>举例如下：</strong><br><img src="/2024/06/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC7%E7%AB%A0%EF%BC%9A%E6%9F%A5%E6%89%BE/B%E6%A0%91.png"></p>
-<h2 id="3-4-B树的删除"><a href="#3-4-B树的删除" class="headerlink" title="3.4 B树的删除"></a>3.4 B树的删除</h2><p>B树的删除操作与插入类似，但是复杂一些，因为可能涉及结点的合并。</p>
+<h2 id="3-4-B-树的删除"><a href="#3-4-B-树的删除" class="headerlink" title="3.4 B 树的删除"></a>3.4 B 树的删除</h2><p>B树的删除操作与插入类似，但是复杂一些，因为可能涉及结点的合并。</p>
 <hr>
 <h1 id="4-B-树"><a href="#4-B-树" class="headerlink" title="4 B+树"></a>4 B+树</h1><p>B+树是应数据库所需出现的一种B树的变形树。</p>
 <p>一棵m阶的B+树和m阶的B-树的差异在于:</p>
 <ol>
 <li>有n棵子树的结点中含有n个关键字。</li>
 <li>所有的叶子结点中包含了全部关键字的信息，以及指向含这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</li>
-<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树(根结点）中的最大（或最小）关键字。</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树（根结点）中的最大（或最小）关键字。</li>
 </ol>
 <p><img src="https://ts1.cn.mm.bing.net/th/id/R-C.fd4e3f2d62108717948e2da04c4711a5?rik=c96a3k0WlXaoUA&riu=http://picture-pool.oss-cn-beijing.aliyuncs.com/2019-05-30-044400.png&ehk=qNgFmNlml668IfAuXQdOLMYoBVxKVSwdeiVBzufDg6U=&risl=&pid=ImgRaw&r=0"></p>
 <p>可以看出，分支结点的某个关键字是其子树中最大关键字的副本。通常在B+树中有两个头指针：一个指向根节点，另一个指向关键字最小的叶结点。</p>
@@ -2873,17 +2883,17 @@
 </ul>
 <hr>
 <h1 id="5-散列表"><a href="#5-散列表" class="headerlink" title="5 散列表"></a>5 散列表</h1><p>前面讨论的线性表、树表结构的查找方法，这类查找方法都是以关键字的比较为基础的。而散列表的思想是通过对元素的关键字值进行某种运算，直接求出元素的地址，即使用关键字到地址的直接转换方法，而不需要反复比较。</p>
-<p>散列函数和散列地址：在记录的存储位置p和其关键字key之间建立一个确定的对应的关系H，使p&#x3D;H(key)，称这个对应关系H为散列函数，p为散列地址。</p>
-<p>散列方法（杂凑法）：选取某个函数，依该函数按关键字计算元素的存储位置，并按此存放；查找时，由同一个函数对给定值k计算地址，将k与地址单元中元素关键码进行比对，确定查找是否成功。</p>
-<p>散列表：一个有限连续的地址空间，用以存储按散列函数计算得到相应散列地址的数据记录。通常散列表的存储空间是一个一维数组，散列地址是数组的下标。</p>
-<p>冲突和同义词：对不同的关键字可能得到同一散列地址，即key1!&#x3D;key2，而H(key1) &#x3D; H(key2)，这种现象称为冲突。具有相同函数值的关键对该散列函数来说称作同义词，key1与key2互称为同义词(冲突是不可避免的，我们只能尽可能减少)。</p>
+<p><strong>散列函数和散列地址</strong>：在记录的存储位置$p$和其关键字$key$之间建立一个确定的对应的关系$H$，使$p&#x3D;H(key)$，称这个对应关系$H$为散列函数，$p$为散列地址。</p>
+<p><strong>散列方法（杂凑法）</strong>：选取某个函数，依该函数按关键字计算元素的存储位置，并按此存放；查找时，由同一个函数对给定值$k$计算地址，将k与地址单元中元素关键码进行比对，确定查找是否成功。</p>
+<p><strong>散列表</strong>：一个有限连续的地址空间，用以存储按散列函数计算得到相应散列地址的数据记录。通常散列表的存储空间是一个一维数组，散列地址是数组的下标。</p>
+<p><strong>冲突和同义词</strong>：对不同的关键字可能得到同一散列地址，即$key1 \neq key2$，而$H(key1) &#x3D; H(key2)$，这种现象称为冲突。具有相同函数值的关键对该散列函数来说称作同义词，$key1$与$key2$互称为同义词（冲突是不可避免的，我们只能尽可能减少）。</p>
 <h2 id="5-1-散列函数的构造方法"><a href="#5-1-散列函数的构造方法" class="headerlink" title="5.1 散列函数的构造方法"></a>5.1 散列函数的构造方法</h2><p>在构造散列函数时，必须注意以下几点：</p>
 <ol>
 <li>构造好的散列函数，所选函数尽可能简单，以便提高转换速度。</li>
 <li>所选函数对关键码计算出的地址，应在散列地址集中致均匀分布，以减少空间浪费。</li>
 <li>制定一个好的解决冲突的方案，查找时如果从散列函数计算出的地址查不到关键码，则应当依据解决冲突的规则，有规律的查询其它相关单元。</li>
 </ol>
-<h3 id="5-1-1-直接定址法"><a href="#5-1-1-直接定址法" class="headerlink" title="5.1.1 直接定址法"></a>5.1.1 直接定址法</h3><p>直接取关键字的某个线性函数值为散列地址，散列函数为H(key) &#x3D; a × key + b。</p>
+<h3 id="5-1-1-直接定址法"><a href="#5-1-1-直接定址法" class="headerlink" title="5.1.1 直接定址法"></a>5.1.1 直接定址法</h3><p>直接取关键字的某个线性函数值为散列地址，散列函数为$H(key) &#x3D; a × key + b$。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200504114709427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3MTQ5MDYy,size_16,color_FFFFFF,t_70"></p>
 <p>这类函数计算简单，分布均匀，不会产生冲突，但要求地址集合与关键词集合大小相同，因此，对于较大的关键词集合不适用。所以在现实应用中并不常用。</p>
 <h3 id="5-1-2-除留余数法"><a href="#5-1-2-除留余数法" class="headerlink" title="5.1.2 除留余数法"></a>5.1.2 除留余数法</h3><p>现实应用中比较常用的方法是除留取余法。假设散列表长为TableSize（TableSize的选取，通常由关键词集合的大小n和允许最大装填因子α决定，一般将TableSize取为 n &#x2F; α ）,选择一个正整数p&lt;&#x3D;TableSize，散列函数为：</p>
