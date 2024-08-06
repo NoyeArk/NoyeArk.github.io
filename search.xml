@@ -3186,11 +3186,11 @@
 </ol>
 <hr>
 <h1 id="2-离散型随机变量及其分布律"><a href="#2-离散型随机变量及其分布律" class="headerlink" title="2 离散型随机变量及其分布律"></a>2 离散型随机变量及其分布律</h1><h2 id="2-1-离散型随机变量分布律的定义"><a href="#2-1-离散型随机变量分布律的定义" class="headerlink" title="2.1 离散型随机变量分布律的定义"></a>2.1 离散型随机变量分布律的定义</h2><p><strong>定义1</strong>：若随机变量X的所有可能取值是有限多个或可列无限多个，这种随机变量称为<strong>离散型随机变量</strong>。</p>
-<p><strong>定义2</strong>：设 xk (k&#x3D;1,2, …) 是离散型随机变量 X 所取的一切可能值，称</p>
-<p>$$<br>\boldsymbol{P}\left{X&#x3D;\boldsymbol{x}<em>{k}\right}&#x3D;\boldsymbol{p}</em>{k}, \quad k&#x3D;1,2, \cdots<br>$$</p>
+<p><strong>定义2</strong>：设 $x_k (k&#x3D;1,2, …)$ 是离散型随机变量 X 所取的一切可能值，称</p>
+<p>$$<br>P \{ X &#x3D; x_k \} &#x3D; p_k, \quad k&#x3D;1,2, \cdots<br>$$</p>
 <p>为离散型随机变量 X 的分布律。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_mnkSvdKJe4.png"></p>
-<h2 id="2-2-离散型随机变量分布律表示方法"><a href="#2-2-离散型随机变量分布律表示方法" class="headerlink" title="2.2 离散型随机变量分布律表示方法"></a>2.2 离散型随机变量分布律表示方法</h2><h3 id="2-2-1-公式法-xD"><a href="#2-2-1-公式法-xD" class="headerlink" title="2.2.1 公式法&#xD;"></a>2.2.1 公式法&#xD;</h3><p>$$<br>\boldsymbol{P}\left{X&#x3D;x_{k}\right}&#x3D;p_{k}, \quad k&#x3D;1,2, \cdots<br>$$</p>
+<h2 id="2-2-离散型随机变量分布律表示方法"><a href="#2-2-离散型随机变量分布律表示方法" class="headerlink" title="2.2 离散型随机变量分布律表示方法"></a>2.2 离散型随机变量分布律表示方法</h2><h3 id="2-2-1-公式法-xD"><a href="#2-2-1-公式法-xD" class="headerlink" title="2.2.1 公式法&#xD;"></a>2.2.1 公式法&#xD;</h3><p>$$<br>{P}\{X&#x3D;x_{k}\}&#x3D;p_{k}, \quad k&#x3D;1,2, \cdots<br>$$</p>
 <h3 id="2-2-2-列表法"><a href="#2-2-2-列表法" class="headerlink" title="2.2.2 列表法"></a>2.2.2 列表法</h3><p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_Y4xo0Lfcia.png"></p>
 <blockquote>
 <p>例1 ：一辆汽车开往目的地需要经过四组信号灯，每组信号灯以p的概率允许或禁止汽车通过。以X表示汽车首次停下时已经过的信号灯的组数（各信号灯之间相互独立），求X的分布律。</p>
@@ -3199,11 +3199,11 @@
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_MpxRi63Pxo.png"></p>
 <p>$$<br>P{X&#x3D;k}&#x3D;(1-p)^{k} p, \quad k&#x3D;0,1,2,3<br>$$</p>
 <h2 id="2-3-几种常见分布"><a href="#2-3-几种常见分布" class="headerlink" title="2.3 几种常见分布"></a>2.3 几种常见分布</h2><h3 id="2-3-1-两点分布"><a href="#2-3-1-两点分布" class="headerlink" title="2.3.1 两点分布"></a>2.3.1 两点分布</h3><p>设随机变量 X 只可能取0与1两个值 , 它的分布律为：</p>
-<p>$$<br>P{X&#x3D;k}&#x3D;p^{k}(1-p)^{1-k}, k&#x3D;0,1<br>$$</p>
+<p>$$<br>P\{X&#x3D;k\}&#x3D;p^{k}(1-p)^{1-k}, k&#x3D;0,1<br>$$</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_6u63ck_gVv.png"></p>
 <p>则称 X 服从 (0—1) 分布或两点分布。</p>
 <blockquote>
-<p>例2：200件产品中, 有190件合格品, 10件不合格品, 现从中随机抽取一件, 那么，若规定$X&#x3D;\left{\begin{array}{l}1, \text { 取得不合格品, } \ 0, \text { 取得合格品. }\end{array}\right.$，则随机变量 X 服从(0 -1)分布。</p>
+<p>例2：200件产品中, 有190件合格品, 10件不合格品, 现从中随机抽取一件, 那么，若规定$X&#x3D;\begin{array}{l}1, \text { 取得不合格品, } \ 0, \text { 取得合格品. }\end{array}.$，则随机变量 X 服从(0 -1)分布。</p>
 </blockquote>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_64735wTy_F.png"></p>
 <h3 id="2-3-2-等可能分布"><a href="#2-3-2-等可能分布" class="headerlink" title="2.3.2 等可能分布"></a>2.3.2 等可能分布</h3><p>如果随机变量 X 的分布律为：</p>
@@ -3217,7 +3217,7 @@
 <p>这样的试验E称为伯努利试验。</p>
 <p>将伯努利试验E独立地重复地进行n次,则称这一串重复的独立试验为n重伯努利试验 .</p>
 <ul>
-<li><strong>“重复”</strong>是指这 n 次试验中P(A)&#x3D; p 保持不变.</li>
+<li><strong>“重复”</strong>是指这 n 次试验中$P(A)&#x3D; p $保持不变.</li>
 <li><strong>“独立”</strong>是指各次试验的结果互不影响 .</li>
 </ul>
 <p>因此A在n次试验中发生k次的概率为：</p>
@@ -3246,20 +3246,20 @@
 <p>$$<br>\sum_{\mathrm{k}&#x3D;0}^{\infty} P(X&#x3D;k)&#x3D;\sum_{\mathrm{k}&#x3D;0}^{\infty} \frac{\lambda^{k} e^{-\lambda}}{k!}&#x3D;e^{-\lambda} \sum_{\mathrm{k}&#x3D;0}^{\infty} \frac{\lambda^{k}}{k!}&#x3D;e^{-\lambda} e^{\lambda}&#x3D;1<br>$$</p>
 <h3 id="2-3-5-二项分布与泊松分布的关系-xD"><a href="#2-3-5-二项分布与泊松分布的关系-xD" class="headerlink" title="2.3.5 二项分布与泊松分布的关系&#xD;"></a>2.3.5 二项分布与泊松分布的关系&#xD;</h3><p>历史上，泊松分布是作为二项分布的近似，于1837年由法国数学家泊松引入的 .</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_r490-PQL4O.png"></p>
-<p>Poisson定理说明若X ~ b(n, p), 则当n 较大，p 较小, 而$n p&#x3D;\lambda$适中, 则可以用近似公式：</p>
+<p>Poisson定理说明若$X \sim b(n, p)$, 则当n 较大，p 较小, 而$n p&#x3D;\lambda$适中, 则可以用近似公式：</p>
 <p>$$<br>C_{n}^{k} p^{k}(1-p)^{n-k} \approx e^{-\lambda} \frac{\lambda^{k}}{k!}, \quad k&#x3D;0,1,2, \cdots<br>$$</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_UnBz4vAt2Q.png"></p>
 <hr>
-<h1 id="3-随机变量的分布函数"><a href="#3-随机变量的分布函数" class="headerlink" title="3 随机变量的分布函数"></a>3 随机变量的分布函数</h1><h2 id="3-1-分布函数的定义"><a href="#3-1-分布函数的定义" class="headerlink" title="3.1 分布函数的定义"></a>3.1 分布函数的定义</h2><p>设 X 是一个 随机变量，x为任意实数，函数$F(x)&#x3D;P{X \leq x},-\infty&lt;x&lt;\infty$，称为 X 的分布函数。</p>
+<h1 id="3-随机变量的分布函数"><a href="#3-随机变量的分布函数" class="headerlink" title="3 随机变量的分布函数"></a>3 随机变量的分布函数</h1><h2 id="3-1-分布函数的定义"><a href="#3-1-分布函数的定义" class="headerlink" title="3.1 分布函数的定义"></a>3.1 分布函数的定义</h2><p>设 X 是一个 随机变量，x为任意实数，函数$F(x)&#x3D;P\{X \leq x\},-\infty&lt;x&lt;\infty$，称为 X 的分布函数。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_VdcK4meIJ2.png"></p>
-<p>如果将 X 看作数轴上随机点的坐标，那么分布函数 F(x) 的值就表示 X 落在区间(-∞, x]内的概率。</p>
+<p>如果将 X 看作数轴上随机点的坐标，那么分布函数 $F(x)$ 的值就表示 X 落在区间$(-∞, x]$内的概率。</p>
 <p>注意：</p>
 <ol>
 <li>在分布函数的定义中,  X是随机变量, x是参变量.</li>
 <li>F(x) 是随机变量 X 取值不大于 x 的概率.</li>
-<li>对任意实数 x1&lt;x2，随机点落在区间( x1 ,  x2]内的概率为：</li>
+<li>对任意实数 $x_1 \leq x_2$，随机点落在区间$( x_1 ,  x_2]$内的概率为：</li>
 </ol>
-<p>$$<br>\begin{array}{l}P\left{x_{1}&lt;X \leq x_{2}\right}&#x3D;P\left{X \leq x_{2}\right}-P\left{X \leq x_{1}\right}&#x3D;F\left(x_{2}\right)-F\left(x_{1}\right)\end{array}<br>$$</p>
+<p>$$<br>\begin{array}{l}P\{x_{1}&lt;X \leq x_{2}\}&#x3D;P\{X \leq x_{2}\}-P\{X \leq x_{1}\}&#x3D;F(x_{2})-F(x_{1})\end{array}<br>$$</p>
 <h3 id="3-1-1-分布函数的性质"><a href="#3-1-1-分布函数的性质" class="headerlink" title="3.1.1 分布函数的性质"></a>3.1.1 分布函数的性质</h3><p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_DttX0d4WCh.png"></p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_9gaP5MWsUO.png"></p>
 <p>如果一个函数具有上述性质，则一定是某个随机变量X 的分布函数. 也就是说，性质(1)–(3)是鉴别一个函数是否是某随机变量的分布函数的充分必要条件.</p>
@@ -3267,46 +3267,38 @@
 <h1 id="4-连续型随机变量及其概率密度"><a href="#4-连续型随机变量及其概率密度" class="headerlink" title="4 连续型随机变量及其概率密度"></a>4 连续型随机变量及其概率密度</h1><h2 id="4-1-连续型随机变量及其概率密度的定义"><a href="#4-1-连续型随机变量及其概率密度的定义" class="headerlink" title="4.1 连续型随机变量及其概率密度的定义"></a>4.1 连续型随机变量及其概率密度的定义</h2><p>对于随机变量 X , 如果存在非负可积函数 f(x)，$x \in(-\infty,+\infty)$，使得对任意实数x，有：</p>
 <p>$$<br>F(x)&#x3D;\int_{-\infty}^{x} f(t) \mathrm{d} t<br>$$</p>
 <p>则称 X为连续型随机变量, 称 f(x)为 X 的概率密度函数，简称为概率密度。连续型随机变量的分布函数在 R 上连续。</p>
-<hr>
 <h2 id="4-2-概率密度的性质"><a href="#4-2-概率密度的性质" class="headerlink" title="4.2 概率密度的性质"></a>4.2 概率密度的性质</h2><ol>
 <li>$f(x) \geq 0$</li>
-<li>$\int_{-\infty}^{+\infty} f(x) \mathrm{d} x&#x3D;1$<ul>
-<li>这两条性质是判定一个函数 f(x)是否为某分布的概率密度的充要条件。</li>
-</ul>
-</li>
-<li>对于任意实数 x1 , x2 , (x1 &lt; x2 ) ,$P\left{x_{1}&lt;X \leq x_{2}\right}&#x3D;\int_{x_{1}}^{x_{2}} f(x) d x$</li>
+<li>$\int_{-\infty}^{+\infty} f(x) \mathrm{d} x&#x3D;1$<br> 这两条性质是判定一个函数 f(x)是否为某分布的概率密度的充要条件。</li>
+<li>对于任意实数 x1 , x2 , (x1 &lt; x2 ) ,$P\{x_{1}&lt;X \leq x_{2}\}&#x3D;\int_{x_{1}}^{x_{2}} f(x) dx$</li>
 </ol>
 <p>利用概率密度可确定随机点落在某个范围内的概率。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_hCdRKFCCDi.png"></p>
-<ol>
-<li>若 f (x) 在点 x 处连续 , 则有$F^{\prime}(x)&#x3D;f(x)$。</li>
+<ol start="4">
+<li>若 $f (x)$ 在点 x 处连续 , 则有$F^{\prime}(x)&#x3D;f(x)$。</li>
 </ol>
-<p>对 f(x)的进一步理解，若 x 是  f(x) 的连续点，则：</p>
-<p>$$<br>\begin{aligned} f(x) &amp; &#x3D;\lim _{\Delta x \rightarrow 0^{+}} \frac{F(x+\Delta x)-F(x)}{\Delta x} \ &amp; &#x3D;\lim _{\Delta x \rightarrow 0^{+}} \frac{P{x&lt;X \leq x+\Delta x}}{\Delta x}\end{aligned}<br>$$</p>
-<p>故X的密度 f(x) 在 x 这一点的值，恰好是X 落在区间$(x, x+\Delta x]$上的概率与区间长度$\Delta x$之比的极限.  这里，如果把概率理解为质量，f(x)相当于线密度。</p>
+<p>对 $f(x)$的进一步理解，若 x 是 $ f(x)$ 的连续点，则：</p>
+<p>$$<br>\begin{aligned} f(x) &amp; &#x3D;\lim _{\Delta x \rightarrow 0^{+}} \frac{F(x+\Delta x)-F(x)}{\Delta x} &#x3D;\lim _{\Delta x \rightarrow 0^{+}} \frac{P{x&lt;X \leq x+\Delta x}}{\Delta x}\end{aligned}<br>$$</p>
+<p>故X的密度 $f(x$) 在 x 这一点的值，恰好是X 落在区间$(x, x+\Delta x]$上的概率与区间长度$\Delta x$之比的极限.  这里，如果把概率理解为质量，$f(x)$相当于线密度。</p>
 <p>若不计高阶无穷小，有$P{x&lt;X \leq x+\Delta x}&#x3D;f(x) \Delta x$，表示随机变量 X 取值于$(x, x+\Delta x]$的概率近似等于$f(x)\Delta x$。</p>
-<h3 id="4-2-1-注意"><a href="#4-2-1-注意" class="headerlink" title="4.2.1 注意"></a>4.2.1 注意</h3><ul>
-<li>连续型随机变量取任一指定实数值a 的概率均为0. 即$P{X&#x3D;a}&#x3D;0$。这是因为连续型随机变量的分布函数 F(x) 是连续的，且</li>
-</ul>
-<p>$$<br>\begin{aligned} 0 \leq P{X&#x3D;a} &amp; \leq P{a-\Delta x&lt;X \leq a} \ &amp; &#x3D;F(a)-F(a-\Delta x)\end{aligned}<br>$$</p>
+<h3 id="4-2-1-注意"><a href="#4-2-1-注意" class="headerlink" title="4.2.1 注意"></a>4.2.1 注意</h3><p>连续型随机变量取任一指定实数值 $a$ 的概率均为0. 即$P\{X&#x3D;a\}&#x3D;0$。这是因为连续型随机变量的分布函数 $F(x)$ 是连续的，且</p>
+<p>$$<br>\begin{aligned} 0 \leq P\{X&#x3D;a\} &amp; \leq P\{a-\Delta x&lt;X \leq a\} &#x3D; F(a)-F(a-\Delta x)\end{aligned}<br>$$</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_oqGGf7Y-37.png"></p>
-<ul>
-<li>对连续型随机变量X , 有</li>
-</ul>
+<p>对连续型随机变量X , 有</p>
 <p>$$<br>P{a \leq X \leq b}&#x3D;P{a&lt;X \leq b}&#x3D;P{a \leq X&lt;b}&#x3D;P{a&lt;X&lt;b}<br>$$</p>
 <hr>
 <h2 id="4-3-常见的连续型随机变量"><a href="#4-3-常见的连续型随机变量" class="headerlink" title="4.3 常见的连续型随机变量"></a>4.3 常见的连续型随机变量</h2><h3 id="4-3-1-均匀分布"><a href="#4-3-1-均匀分布" class="headerlink" title="4.3.1 均匀分布"></a>4.3.1 均匀分布</h3><p>若随机变量X的概率密度为：</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_nG-EwZ7Mpx.png"></p>
-<p>则称X在区间( a, b)上服从均匀分布，记作$X \sim U(a, b)$。</p>
+<p>则称$X$在区间$(a, b)$上服从均匀分布，记作$X \sim U(a, b)$。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_OpDUbfUN8C.png"></p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_rzzginMTWP.png"></p>
-<h3 id="4-3-2-指数分布"><a href="#4-3-2-指数分布" class="headerlink" title="4.3.2 指数分布"></a>4.3.2 指数分布</h3><p>若随机变量X具有概率密度</p>
-<p>$$<br>f(x)&#x3D;\left{\begin{array}{ll}\frac{1}{\theta} e^{-\frac{x}{\theta}}, &amp; x&gt;0 \ 0, &amp; \text { 其它 }\end{array}\right.<br>$$</p>
-<p>其中$\theta&gt;0$为常数，则称 X 服从参数为$\theta$的指数分布。指数分布常用于可靠性统计研究中，如元件的寿命。</p>
+<h3 id="4-3-2-指数分布"><a href="#4-3-2-指数分布" class="headerlink" title="4.3.2 指数分布"></a>4.3.2 指数分布</h3><p>若随机变量$X$具有概率密度</p>
+<p>$$<br>f(x)&#x3D;\left\{\begin{array}{cc}\frac{1}{\theta}e^{-\frac{x}{\theta}},&amp;x&gt;0\\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
+<p>其中$\theta&gt;0$为常数，则称$ X $服从参数为$\theta$的指数分布。指数分布常用于可靠性统计研究中，如元件的寿命。</p>
 <p>若X 服从参数为$\theta$的指数分布, 则其分布函数为：</p>
-<p>$$<br>F(x)&#x3D;P{X \leq x}&#x3D;\left{\begin{array}{ll}1-e^{-x &#x2F; \theta}, &amp; x&gt;0 \ 0, &amp; \text { 其它 }\end{array}\right.<br>$$</p>
+<p>$$<br>F(x)&#x3D;P\{X\leq x\}&#x3D;\left\{\begin{array}{ll}1-e^{-x&#x2F;\theta},&amp;x&gt;0\\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
 <blockquote>
-<p>例3   设某类日光灯管的使用寿命 X 服从参数为θ&#x3D;2000的指数分布(单位:小时).<br>(1) 任取一只这种灯管, 求能正常使用1000小时以上的概率. &#x20;<br>(2) 有一只这种灯管已经正常使用了1000 小时以上,求还能使用1000小时以上的概率.&#x20;</p>
+<p>例3   设某类日光灯管的使用寿命 $X$ 服从参数为θ&#x3D;2000的指数分布(单位:小时).<br>(1) 任取一只这种灯管, 求能正常使用1000小时以上的概率. &#x20;<br>(2) 有一只这种灯管已经正常使用了1000 小时以上,求还能使用1000小时以上的概率.&#x20;</p>
 </blockquote>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_VCMMwh21HB.png"></p>
 <p>指数分布的重要性质 :“无记忆性”.</p>
@@ -4296,28 +4288,28 @@
     <title>第二期AI夏令营任务3：实现RAG应用</title>
     <url>/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<h1 id="1-Gradio技术入门"><a href="#1-Gradio技术入门" class="headerlink" title="1 Gradio技术入门"></a>1 <code>Gradio</code>技术入门</h1><p><a href="https://www.gradio.app/" title="Gradio ">Gradio </a>是一个开源的 Python 库，用于快速构建机器学习和数据科学演示应用。它使得开发者可以在几行代码中创建一个简单、可调整的用户界面，用于展示机器学习模型或数据科学工作流程。<code>Gradio</code>支持多种输入输出组件，如文本、图片、视频、音频等，并且可以轻松地分享应用，包括在互联网上分享和在局域网内分享.</p>
-<p>简单来说,利用 Gradio 库,我们可以很容易实现一个具有对话功能的前端页面，实现最简单人机交互功能。</p>
+<p>简单来说,利用 <code>Gradio</code> 库,我们可以很容易实现一个具有对话功能的前端页面，实现最简单人机交互功能。</p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_mHHa_R5sqe.gif"></p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_LiZaB_D9CZ.png"></p>
-<p>在目前的深度学习软件开发中，使用gradio熟练展示demo已经成为了基础必备技能，你可以在任何地方（无论是学术还是工业界）见到 gradio 展示，但我们本次可以只从一个简单的对话demo开始，来逐渐展开gradio的熟悉之旅。</p>
-<p>我们可以简单的理解为 gradio 就是在搭积木，或者说简单理解为所有的前端框架都是在利用一块块积木创造出最好的效果。</p>
-<p>在gradio中，我们可以把每个组件创建在 gr.Blocks() 包裹的块当中，你可以把它当作一个展示台，我们可以在展示台上放满不同的组件（比如这里的 gr.Button, gr.Textbox 等等），你可以自由组合组件来实现想要的目标。此外，在gradio中同样也有各类可注册事件，这有助于我们在和组件互动时、互动后来指定我们想要发生的事情（比如执行一段函数），比如我们希望按钮按下后执行一个函数，然后根据某些组件的输入输出做反应，我们就可以像下面的 .click 以及 .submit 一样注册相应的事件，根据绑定的函数创作出更多样的可能。</p>
-<p>最后，我们只需要 launch 我们的”展示台“，就可以看到<code>gradio</code>前端展示画面。</p>
+<p>在目前的深度学习软件开发中，使用<code>gradio</code>熟练展示demo已经成为了基础必备技能，你可以在任何地方（无论是学术还是工业界）见到 <code>gradio</code> 展示，但我们本次可以只从一个简单的对话demo开始，来逐渐展开<code>gradio</code>的熟悉之旅。</p>
+<p>我们可以简单的理解为<code>gradio</code>就是在搭积木，或者说简单理解为所有的前端框架都是在利用一块块积木创造出最好的效果。</p>
+<p>在<code>gradio</code>中，我们可以把每个组件创建在 <code>gr.Blocks()</code> 包裹的块当中，你可以把它当作一个展示台，我们可以在展示台上放满不同的组件（比如这里的 <code>gr.Button</code>, <code>gr.Textbox</code> 等等），你可以自由组合组件来实现想要的目标。此外，在<code>gradio</code>中同样也有各类可注册事件，这有助于我们在和组件互动时、互动后来指定我们想要发生的事情（比如执行一段函数），比如我们希望按钮按下后执行一个函数，然后根据某些组件的输入输出做反应，我们就可以像下面的 <code>.click</code> 以及 <code>.submit</code> 一样注册相应的事件，根据绑定的函数创作出更多样的可能。</p>
+<p>最后，我们只需要<code>launch</code>我们的”展示台“，就可以看到<code>gradio</code>前端展示画面。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> demo:</span><br><span class="line">  gr.Markdown(<span class="string">&quot;# Qwen 聊天机器人&quot;</span>)</span><br><span class="line">  chatbot = gr.Chatbot()</span><br><span class="line">  msg = gr.Textbox()</span><br><span class="line">  clear = gr.Button(<span class="string">&quot;清除&quot;</span>)</span><br><span class="line">  stop = gr.Button(<span class="string">&quot;停止生成&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 设置用户输入提交后的处理流程</span></span><br><span class="line">  msg.submit(user, [msg, chatbot], [msg, chatbot], queue=<span class="literal">False</span>).then(bot, chatbot, chatbot)</span><br><span class="line">  <span class="comment"># 清除按钮功能</span></span><br><span class="line">  clear.click(<span class="keyword">lambda</span>: <span class="literal">None</span>, <span class="literal">None</span>, chatbot, queue=<span class="literal">False</span>)</span><br><span class="line">  <span class="comment"># 停止生成按钮功能</span></span><br><span class="line">  stop.click(stop_generation, queue=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;启动 Gradio 界面...&quot;</span>)</span><br><span class="line">  <span class="comment"># 启用队列处理请求</span></span><br><span class="line">  demo.queue()</span><br><span class="line">  demo.launch()</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="2-Streamlit技术入门"><a href="#2-Streamlit技术入门" class="headerlink" title="2 Streamlit技术入门"></a>2 <code>Streamlit</code>技术入门</h1><p>简单来说, <a href="https://streamlit.io/" title="Streamlit">Streamlit</a>是一个Python库，用于快速构建交互式Web应用程序。它提供了一个简单的API，允许开发者使用Python代码来创建Web应用程序，而无需学习复杂的Web开发技术. 这听上去是不是与 <code>gradio</code>差不多?&#x20;</p>
+<h1 id="2-Streamlit技术入门"><a href="#2-Streamlit技术入门" class="headerlink" title="2 Streamlit技术入门"></a>2 <code>Streamlit</code>技术入门</h1><p>简单来说, <a href="https://streamlit.io/" title="Streamlit">Streamlit</a>是一个Python库，用于快速构建交互式Web应用程序。它提供了一个简单的API，允许开发者使用Python代码来创建Web应用程序，而无需学习复杂的Web开发技术. 这听上去是不是与 <code>gradio</code>差不多?</p>
 <p>你可以选择自己喜欢的一款前端库来完成对应 AI  应用的开发, 如果聪明的你稍加精进，我们甚至可以创造出五彩缤纷的前端界面：</p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_2_yefAEvJOw-.png"></p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_3_Jh_ObZMlco.png"></p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_4_vpSbC90JlJ.png"></p>
-<p>与 gradio 不同的是， streamlit 不需要复杂的 root_path 路由修改操作，我们只需要简单的运行就可以得到结果。</p>
+<p>与 <code>gradio</code> 不同的是， <code>streamlit</code> 不需要复杂的 root_path 路由修改操作，我们只需要简单的运行就可以得到结果。</p>
 <hr>
 <h1 id="3-RAG应用"><a href="#3-RAG应用" class="headerlink" title="3 RAG应用"></a>3 RAG应用</h1><h2 id="3-1-什么是-RAG"><a href="#3-1-什么是-RAG" class="headerlink" title="3.1 什么是 RAG"></a>3.1 什么是 RAG</h2><p>什么是 Retrieval-Augmented Generation（RAG）检索增强生成应用? 检索增强生成顾名思义，就是利用检索来增强大模型的生成结果。</p>
 <p>具体而言, RAG 主要是在这样的场景下被需要的：想象一下,当你有一个冷门的知识需要理解,但大模型没有基于这个知识训练过，或者说你想把这个知识全部输入大模型进行问答，但是大模型的上下文没有那么长；</p>
 <p>那么，我们需要一个好的方法让大模型可以基于我们新的知识进行对话，这就是 RAG的意义所在。</p>
 <p>检索增强生成 (RAG) 通过向量数据库检索的方式来获取我们问题预期想要回答涉及的知识，然后结合这个知识让大模型基于知识生成最后的问答结果,满足了我们对提问的真实性需求。</p>
-<p>在理解 RAG 之前，我们还需要理解什么是 Embedding。</p>
+<p>在理解 RAG 之前，我们还需要理解什么是 <code>Embedding</code>。</p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_5_2-cRltJrzC.png"></p>
 <p>在机器学习和自然语言处理（<code>NLP</code>）中，Embedding 是一种将非结构化数据，如单词、句子或者整个文档，转化为实数向量的技术。这些实数向量可以被计算机更好地理解和处理。我们可以把一个词(token)表示成有限维度空间中的表示。</p>
 <p>比如, 我们可以把苹果映射成 (5,5) ,把梨子映射成 (4,5),把芯片映射到 (1,2). 在这里,坐标的相近表示梨子和苹果的语义有很大的重复成分,而芯片与苹果的距离,自然比梨子与苹果的距离要远. 此时这些数字坐标映射就可以理解为简单的 Embedding.</p>
@@ -4393,7 +4385,7 @@
 
 <p>从代码中，我们可以很容易看到 RAG 系统构建过程。首先我们需要一个读取器，以便我们获取目标目录的对应数据，接着需要对这个数据进行 embedding 化即创建索引，把他转为可存储的向量表示。最后就可以用设定好的大模型，结合查询引擎进行检索增强生成的对话。</p>
 <hr>
-<h1 id="5-实现一个自己的-RAG"><a href="#5-实现一个自己的-RAG" class="headerlink" title="5 实现一个自己的 RAG"></a>5 实现一个自己的 RAG</h1><p>如果你觉得 <code>LlamaIndex</code>的封装还不够称心如意, 在这里我们还能够实现自己的 RAG 框架, 借助于 <a href="https://github.com/datawhalechina/tiny-universe/tree/main/content/TinyRAG" title="tiny-universe"><strong>tiny-universe</strong></a>** **, 我们可以很容易实现一个属于自己的 RAG 框架。</p>
+<h1 id="5-实现一个自己的-RAG"><a href="#5-实现一个自己的-RAG" class="headerlink" title="5 实现一个自己的 RAG"></a>5 实现一个自己的 RAG</h1><p>如果你觉得 <code>LlamaIndex</code>的封装还不够称心如意, 在这里我们还能够实现自己的 RAG 框架, 借助于 <a href="https://github.com/datawhalechina/tiny-universe/tree/main/content/TinyRAG" title="tiny-universe"><strong>tiny-universe</strong></a>, 我们可以很容易实现一个属于自己的 RAG 框架。</p>
 <p><img src="/2024/07/17/%E7%AC%AC%E4%BA%8C%E6%9C%9FAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%BB%BB%E5%8A%A13%EF%BC%9A%E5%AE%9E%E7%8E%B0RAG%E5%BA%94%E7%94%A8/image_17_ZQZs9yvySB.png"></p>
 <p>基于简单的结构，我们能够很容易实现属于自己的 Embedding 抽取、持久化、检索与对话；</p>
 <hr>
@@ -10950,6 +10942,110 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </ul>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>信息安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息安全实验7：情报收集</title>
+    <url>/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<h1 id="1-实验环境"><a href="#1-实验环境" class="headerlink" title="1 实验环境"></a>1 实验环境</h1><ol>
+<li>操作系统版本：Windows 11 家庭中文版23H2</li>
+<li>VMware® Workstation 16 Pro：16.2.3 build-19376536</li>
+<li>Metasploitable2虚拟机版本：2.6.24-16-server</li>
+<li>Kali虚拟机版本：6.6.9-amd64</li>
+</ol>
+<hr>
+<h1 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2 实验内容"></a>2 实验内容</h1><h2 id="2-1-系统信息收集"><a href="#2-1-系统信息收集" class="headerlink" title="2.1 系统信息收集"></a>2.1 系统信息收集</h2><h3 id="2-1-1-whois"><a href="#2-1-1-whois" class="headerlink" title="2.1.1 whois"></a>2.1.1 whois</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_8HuFT-9ugm.png"></p>
+<center>图2.1  使用whois命令查询</center>
+
+<p>图2.1所示是从使用whois命令查询到的IP地址范围的结果，具体来说是192.168.0.0到192.168.255.255这个范围，以下是各个字段的解释：</p>
+<ol>
+<li>NetRange（网络范围）：192.168.0.0~192.168.255.255，表示这个地址范围从192.168.0.0到192.168.255.255，共计65536个IP地址。</li>
+<li>CIDR（无类域间路由）：192.168.0.0&#x2F;16，这是用CIDR表示法表示的同样的地址范围，其中&#x2F;16表示了子网掩码为255.255.0.0。</li>
+<li>NetName（网络名称）：PRIVATE-ADDRESS-CBLK-RFC1918-IANA- RESERVED，这个名称用来标识这个IP地址范围的用途，它是保留给私有网络使用的地址块。</li>
+<li>NetHandle（网络句柄）：NET-192-168-0-0-1，这是在网络注册数据库中给这个地址范围分配的唯一标识符。</li>
+<li>Organization（组织）：Internet Assigned Numbers Authority（IANA），这是管理这个地址范围的组织。</li>
+<li>RegDate（注册日期）：1994-03-15，这个地址范围被注册的日期。</li>
+<li>Updated（更新日期）：2024-05-24，这是最近更新这个地址范围信息的日期。</li>
+</ol>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_1_O-Q9hCICtn.png"></p>
+<center>图2.2  使用whois命令查询结果</center>
+
+<p>图2.2是关于Internet Assigned Numbers Authority (IANA) 的组织信息，也是通过whois命令查询得到的。这段信息描述了IANA的基本信息和联系地址，说明了它在加利福尼亚州洛杉矶的办公地点，并提供了最近的更新日期。</p>
+<h3 id="2-1-2-dmitry"><a href="#2-1-2-dmitry" class="headerlink" title="2.1.2 dmitry"></a>2.1.2 dmitry</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_2_ng-ebfwenG.png"></p>
+<center>图2.3  使用dmitry命令查询结果</center>
+
+<p>如图2.3所示是dmitry工具进行TCP端口扫描后的结果，其中显示了每个端口的状态，可以看到目标主机有21、22、23和25等端口开放，其中可以看到80端口肯定在开放，因为靶机Metasploitable2向外部提供了Web服务，而HTTP协议就是使用的80端口。最后展示了扫描了150个端口，其中141个端口是关闭的。</p>
+<h3 id="2-1-3-whatweb"><a href="#2-1-3-whatweb" class="headerlink" title="2.1.3 whatweb"></a>2.1.3 whatweb</h3><p>图2.4所示是使用whatweb工具对192.168.160.136进行识别和分析后得到的结果。</p>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_3_t4jkuON8mg.png"></p>
+<center>图2.4  使用whatweb命令查询结果</center>
+
+<ol>
+<li>http:&#x2F;&#x2F;192.168.160.136[200 OK]：这表示对IP地址为192.168.160.136的HTTP服务进行了请求，并且服务器响应状态码为 200 OK，表示请求成功。</li>
+<li>Apache[2.2.8]：服务器使用的是Apache版本2.2.8。</li>
+<li>Country[RESERVED][ZZ]：由于IP地址 192.168.160.136 属于保留地址范围，所以其所属国家信息显示为RESERVED，ZZ则表示国家代码未知或无效。</li>
+<li>HTTPServer[Ubuntu Linux][Apache&#x2F;2.2.8 (Ubuntu) DAV&#x2F;2]：服务器操作系统是Ubuntu Linux，HTTP服务是Apache 2.2.8，并支持WebDAV（DAV&#x2F;2是指支持WebDAV协议版本2)。</li>
+<li>IP[192.168.160.136]：显示目标主机的IP地址为 192.168.160.136。</li>
+<li>PHP[5.2.4-2ubuntu5.10]：服务器上安装的PHP版本是5.2.4-2ubuntu5.10。</li>
+<li>Title[Metasploitable2 - Linux]：网页标题显示为Metasploitable2 - Linux，这表明目标主机可能正在运行Metasploitable2，这是一个用于安全测试的演示Linux虚拟机。</li>
+<li>WebDAV[2]：指示服务器支持的WebDAV协议版本为2。</li>
+<li>X-Powered-By[PHP&#x2F;5.2.4-2ubuntu5.10]：显示网页的动态内容由PHP 5.2.4-2ubuntu5.10提供。</li>
+</ol>
+<h3 id="2-1-4-dnsenum"><a href="#2-1-4-dnsenum" class="headerlink" title="2.1.4 dnsenum"></a>2.1.4 dnsenum</h3><p>图2.5所示，是使用<code>dnsenum</code>命令查询之后的结果，但是由于目标靶机没有其他任何域名，所以没有查询到任何的结果。</p>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_4_EXj63ZGDrl.png"></p>
+<center>图2.5  使用dnsenum命令查询结果</center>
+
+<p>所以再补充查询一个百度网址的域名，查询结果如图2.6所示。</p>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_5_DiNeVVmUpY.png"></p>
+<center>图2.6  使用dnsenum命令查询结果</center>
+
+<h2 id="2-2-端口扫描"><a href="#2-2-端口扫描" class="headerlink" title="2.2 端口扫描"></a>2.2 端口扫描</h2><p>Nmap（Network Mapper）是一个开源的网络探测和安全审核工具，广泛用于网络发现和安全评估。Nmap可以快速扫描网络，发现网络上的主机和服务。通过不同的扫描技术，如TCP SYN扫描、TCP Connect扫描、UDP扫描等，可以确定主机的在线状态和开放的端口。</p>
+<p>Nmap能够检测主机上运行的服务和开放的端口。它可以识别出每个端口上运行的具体服务（如SSH、HTTP、FTP等），并给出相应的版本信息。同时Nmap可以与其他漏洞扫描工具集成，用于扫描已知漏洞和弱点。通过识别服务和操作系统的版本信息，可以帮助安全团队找出潜在的安全问题并采取相应的措施。</p>
+<p>Nmap作为一款强大的网络探测和安全评估工具，被广泛应用于网络管理员、安全专家和渗透测试人员的工作中，帮助他们理解网络拓扑、评估安全风险并制定有效的安全策略。</p>
+<h3 id="2-2-1-主机发现"><a href="#2-2-1-主机发现" class="headerlink" title="2.2.1 主机发现"></a>2.2.1 主机发现</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_6_5cIXWcjlyT.png"></p>
+<center>图2.7  使用dnsenum命令查询结果</center>
+
+<p>整个扫描过程中，对255个IP地址进行了扫描，发现有4个主机是活跃的，扫描总共花费了2.69秒。</p>
+<p>这种类型的扫描对于快速确定一个网段中哪些主机是活跃的很有用，但它并没有深入探测主机上的具体服务和端口。</p>
+<h3 id="2-2-2-TCP端口扫描"><a href="#2-2-2-TCP端口扫描" class="headerlink" title="2.2.2 TCP端口扫描"></a>2.2.2 TCP端口扫描</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_7_q3BYDQ29WX.png"></p>
+<center>图2.8  使用nmap -sS命令查询结果</center>
+
+<p>扫描结果显示了该主机开放的TCP端口及其对应的服务，其中PORT展示了端口号及其协议（这里都是TCP）。STATE：端口的状态，这些端口都是开放（open）的，即主机正在监听这些端口。SERVICE：与每个端口关联的服务的名称。</p>
+<h3 id="2-2-3-版本侦测"><a href="#2-2-3-版本侦测" class="headerlink" title="2.2.3 版本侦测"></a>2.2.3 版本侦测</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_8_nRd-pvVx4Y.png"></p>
+<center>图2.9  TCP版本侦测</center>
+
+<p>使用-sV参数可以得到目标主机更详细的端口使用情况，如图2.9所示显示了详细的服务版本和相关信息。</p>
+<h3 id="2-2-4-操作系统侦测"><a href="#2-2-4-操作系统侦测" class="headerlink" title="2.2.4 操作系统侦测"></a>2.2.4 操作系统侦测</h3><p>使用Nmap工具的 -O 参数进行的操作系统检测（OS detection）的结果，结果如图2.10所示。</p>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_9_EGdOT_4WW_.png"></p>
+<center>图2.10  操作系统侦测</center>
+
+<ol>
+<li>MAC地址：00:0C:29:21:04:06，指示设备是一个VMware虚拟机的网络适配器的MAC地址。</li>
+<li>Device type：设备类型：general purpose，表示这是一个通用用途的设备，没有特定的专用设备类型。</li>
+<li>Running：运行的操作系统：Linux 2.6.X，这表示该设备正在运行Linux内核版本为2.6的操作系统。</li>
+<li>OS CPE：操作系统的CPE标识符：cpe:&#x2F;o:linux:linux_kernel:2.6，这是指对应的通用平台标识（Common Platform Enumeration），指定了Linux操作系统内核的版本为2.6。</li>
+<li>OS details：操作系统详细信息：Linux 2.6.9 - 2.6.33，这表示Nmap根据其特征匹配和检测，推测该设备运行的Linux操作系统版本范围在2.6.9到2.6.33之间。这是基于Nmap的OS检测引擎根据扫描结果推断出来的信息，而不是直接从设备上获取的精确版本号。</li>
+<li>Network Distance：网络距离：1 hop，表示从扫描源（Nmap运行的主机）到目标设备只有一个网络跳跃。</li>
+</ol>
+<h3 id="2-2-5-防火墙侦测"><a href="#2-2-5-防火墙侦测" class="headerlink" title="2.2.5 防火墙侦测"></a>2.2.5 防火墙侦测</h3><p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_10_Y9RQCMSkQ8.png"></p>
+<center>图2.11  防火墙侦测</center>
+
+<p>在ACK扫描中，Nmap发送TCP ACK包到目标端口，然后根据目标主机的响应（或者缺乏响应）来推断端口的状态。在这种情况下，所有端口都显示为“ignored states”，可能是因为目标主机的防火墙或网络配置对ACK扫描做了特殊处理，使得Nmap无法准确地确定端口的状态。</p>
+<h2 id="2-3-漏洞扫描"><a href="#2-3-漏洞扫描" class="headerlink" title="2.3 漏洞扫描"></a>2.3 漏洞扫描</h2><p>漏洞扫描是一种计算机安全评估技术，用于识别目标系统或网络中存在的安全漏洞和弱点。这些漏洞可能是由于配置错误、未修补的软件缺陷、弱密码、不安全的网络服务或其他安全实践不当而导致的。</p>
+<p>扫描工具会自动或半自动地对目标系统进行检测，以识别可能存在的漏洞和弱点。这些漏洞可以包括已知的软件漏洞、配置错误、缺少安全补丁等。</p>
+<p><img src="/2024/08/06/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C7%EF%BC%9A%E6%83%85%E6%8A%A5%E6%94%B6%E9%9B%86/image_11_AeX-WobnQt.png"></p>
+<center>图2.12  漏洞扫描</center>
+
+<p>图2.12展示了目标靶机Web服务的更详细的安全扫描报告，显示了更多的潜在安全风险和建议，这里选择其中一条进行分析。</p>
+<p>在扫描结果中提示发现了一个名为phpinfo.php的测试脚本，其运行了phpinfo()函数。phpinfo()函数会显示PHP配置和系统信息，这可能泄露给攻击者有关服务器配置和版本的详细信息。这种公开信息会增加攻击面，应该限制访问或删除不必要的测试脚本。</p>
+<hr>
+<h1 id="3-实验总结"><a href="#3-实验总结" class="headerlink" title="3 实验总结"></a>3 实验总结</h1><p>通过本次实验可以知道在攻击一个目标主机之前，可以先收集有关的信息，以更多的掌握目标主机的有关信息。同时本次实验中，也可以通过工具来发现目标主机中是否存在潜在的漏洞。</p>
+<p>反之，我们自己在搭建系统或者为他人提供一个web服务时，也可以使用这种方法来检测一下是否存在漏洞，起到预防作用。同时，渗透测试作为一种实验性质的安全评估方法，不仅能够发现系统中的潜在风险，还能为系统管理员提供有价值的安全改进建议，是信息安全管理中不可或缺的重要环节。</p>
 ]]></content>
       <categories>
         <category>专业课</category>
