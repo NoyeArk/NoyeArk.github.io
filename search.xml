@@ -5595,7 +5595,7 @@
 <p>常见的几种控制优先权的仲裁方式有三种： 链式查询、计数器定时查询和独立请求方式。</p>
 <h3 id="5-1-1-链式查询"><a href="#5-1-1-链式查询" class="headerlink" title="5.1.1 链式查询"></a>5.1.1 链式查询</h3><p><img src="/2024/06/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/image_Dv1eZ6rpUG.png"></p>
 <p>图中控制总线中有3根线用于总线控制（BS总线忙、BR总线请求和BG总线同意），其中总线同意信号BG是串行地从一个I&#x2F;0接口送到下一个l&#x2F;0接口。</p>
-<p><strong>如果BG到达的接口有总线请求，BG信号就不再往下传,意味着该接口获得了总线使用权，并建立总线忙BS信号，表示它占用了总线。</strong></p>
+<p><strong>如果BG到达的接口有总线请求，BG信号就不再往下传，意味着该接口获得了总线使用权，并建立总线忙BS信号，表示它占用了总线。</strong></p>
 <p>可见在链式查询中，<strong>离总线控制部件最近的设备具有最高的优先级。</strong></p>
 <p>这种方式的特点是：只需很少几根线就能按一定优先次序实现总线控制，并且很容易扩充设备，但对电路故障很敏感，且优先级别低的设备可能很难获得请求。即：</p>
 <ul>
@@ -11703,6 +11703,145 @@
       </categories>
       <tags>
         <tag>夏令营</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机组成原理第4章：存储器</title>
+    <url>/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="1-存储器概述"><a href="#1-存储器概述" class="headerlink" title="1 存储器概述"></a>1 存储器概述</h1><p>存储器是计算机系统中的记忆设备，用来存放程序和数据，计算机系统的运行速度在很大程度上受存储器制约。I&#x2F;O与存储器直接数据交换大大提高系统性能。</p>
+<h2 id="1-1-存储器的分类"><a href="#1-1-存储器的分类" class="headerlink" title="1.1 存储器的分类"></a>1.1 存储器的分类</h2><h3 id="1-1-1-按存储介质分类"><a href="#1-1-1-按存储介质分类" class="headerlink" title="1.1.1 按存储介质分类"></a>1.1.1 按存储介质分类</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_iIG0Xg6HUz.png"></p>
+<h3 id="1-1-2-按存取方式分类"><a href="#1-1-2-按存取方式分类" class="headerlink" title="1.1.2 按存取方式分类"></a>1.1.2 按存取方式分类</h3><p>分为随机存储器、只读存储器、顺序存取存储器和直接存取存储器。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_DS72d_NnQS.png"></p>
+<h3 id="1-1-3-按在计算机中的作用分类"><a href="#1-1-3-按在计算机中的作用分类" class="headerlink" title="1.1.3 按在计算机中的作用分类"></a>1.1.3 按在计算机中的作用分类</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_8nyq5r1Koi.png"></p>
+<h2 id="1-2-存储器的层次结构"><a href="#1-2-存储器的层次结构" class="headerlink" title="1.2 存储器的层次结构"></a>1.2 存储器的层次结构</h2><p>存储器有3个主要性能指标：速度、容量和位价。</p>
+<p>存储器三个主要特性的关系：</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image__GCj2edD8a.png"></p>
+<p>存储系统层次结构主要体现在缓存—主存和主存—辅存2个存储层次上。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_tiwblCt9qr.png"></p>
+<p>缓存—主存层次主要解决CPU与主存速度不匹配的问题，主存—辅存层次主要解决存储系统的容量问题。辅存的速度比主存的速度低，而且不能和CPU直接交换信息，但是容量比主存大得多，可以存放大量暂时未用到的信息，当CPU需要用到这些信息时，再将辅存的内容调入主存，供CPU直接访问。</p>
+<p>在主存—辅存这一层次的不断发展中，逐渐形成了虚拟存储系统。</p>
+<hr>
+<h1 id="2-主存储器"><a href="#2-主存储器" class="headerlink" title="2 主存储器"></a>2 主存储器</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><p>主存储器的基本组成如下：</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_iNgZcFDkOr.png"></p>
+<p>主存和CPU之间的联系：</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_cWXdqvumvP.png"></p>
+<h3 id="2-1-1-主存的技术指标"><a href="#2-1-1-主存的技术指标" class="headerlink" title="2.1.1 主存的技术指标"></a>2.1.1 主存的技术指标</h3><h4 id="2-1-1-1-存储容量"><a href="#2-1-1-1-存储容量" class="headerlink" title="2.1.1.1 存储容量"></a>2.1.1.1 存储容量</h4><p>存储容量：主存存放二进制代码的总位数</p>
+<p>$$<br>存储容量&#x3D;存储单元个数\times 存储字长<br>$$</p>
+<h4 id="2-1-1-2-存储速度"><a href="#2-1-1-2-存储速度" class="headerlink" title="2.1.1.2 存储速度"></a>2.1.1.2 存储速度</h4><p>存储速度是由存储时间和存储周期来表示的。</p>
+<ul>
+<li>存储时间：启动一次存储器操作到完成该操作所需的全部时间</li>
+<li>存取周期：进行连续两次独立的存储器操作（读或写）所需的最小间隔时间</li>
+</ul>
+<h4 id="2-1-1-3-存储器带宽"><a href="#2-1-1-3-存储器带宽" class="headerlink" title="2.1.1.3 存储器带宽"></a>2.1.1.3 存储器带宽</h4><p>单位时间内存储器存取的信息量，单位为位&#x2F;秒。</p>
+<hr>
+<h2 id="2-2-随机存取存储器"><a href="#2-2-随机存取存储器" class="headerlink" title="2.2 随机存取存储器"></a>2.2 随机存取存储器</h2><h3 id="2-2-1-静态RAM"><a href="#2-2-1-静态RAM" class="headerlink" title="2.2.1 静态RAM"></a>2.2.1 静态RAM</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_7epHjJN66d.png"></p>
+<p>静态RAM的工作原理是用触发器存储信息的，不需要再生，但是掉电后原存信息丢失。</p>
+<h3 id="2-2-2-动态RAM"><a href="#2-2-2-动态RAM" class="headerlink" title="2.2.2 动态RAM"></a>2.2.2 动态RAM</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_ftldNHK5gc.png"></p>
+<p>常见的动态RAM基本单元电路有三管式和单管式两种，共同特点都是靠电容存储电荷的原理来存储信息。</p>
+<p>必须在<code>2ms</code>内对其所有存储单元恢复一次原状态，这个过程称为<strong>再生</strong>或<strong>刷新</strong>。</p>
+<h3 id="2-2-3-动态RAM的刷新"><a href="#2-2-3-动态RAM的刷新" class="headerlink" title="2.2.3 动态RAM的刷新"></a>2.2.3 动态RAM的刷新</h3><p>刷新的过程实质上是先将原存信息读出，再由刷新放大器形成原信息并重新写入的再生过程。刷新周期一般为<code>2ms</code>，又称再生周期。</p>
+<p>通常有3种刷新方式：集中刷新、分散刷新和异步刷新。</p>
+<h4 id="2-2-3-1-集中刷新"><a href="#2-2-3-1-集中刷新" class="headerlink" title="2.2.3.1 集中刷新"></a>2.2.3.1 集中刷新</h4><p><strong>集中刷新</strong>是指在规定的一个刷新周期内，对全部存储单元集中一段时间逐行进行刷新，此时须停止读&#x2F;写操作。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_Gi2-qiLoaA.png"></p>
+<ul>
+<li>死区：$0.5\mu s \times 128&#x3D;64 \mu s$</li>
+<li>死时间率：$\frac{128}{4000} \times 100% &#x3D; 3.2%$</li>
+</ul>
+<h4 id="2-2-3-2-分散刷新"><a href="#2-2-3-2-分散刷新" class="headerlink" title="2.2.3.2 分散刷新"></a>2.2.3.2 分散刷新</h4><p>分散刷新是指对每行存储单元的刷新分散到每个存取周期内完成。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_BILflvUp_9.png"></p>
+<ul>
+<li>没有死区</li>
+</ul>
+<h4 id="2-2-3-3-异步刷新"><a href="#2-2-3-3-异步刷新" class="headerlink" title="2.2.3.3 异步刷新"></a>2.2.3.3 异步刷新</h4><p>异步刷新是前两种方式的结合，它既可以缩短“死时间”，又充分利用最大刷新间隔为<code>2ms</code>的特点。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_mGvX5-xsIH.png"></p>
+<p>每隔$15.6\mu s$（$2000\mu s \div 128$）刷新一次。将刷新安排在指令译码阶段，不会出现 “死区”。</p>
+<h3 id="2-2-4-动态-RAM-和静态-RAM-的比较"><a href="#2-2-4-动态-RAM-和静态-RAM-的比较" class="headerlink" title="2.2.4 动态 RAM 和静态 RAM 的比较"></a>2.2.4 动态 RAM 和静态 RAM 的比较</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">DRAM</th>
+<th align="center">SRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">存储原理</td>
+<td align="center">电容</td>
+<td align="center">触发器</td>
+</tr>
+<tr>
+<td align="center">集成度</td>
+<td align="center">高</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center">芯片引脚</td>
+<td align="center">少</td>
+<td align="center">多</td>
+</tr>
+<tr>
+<td align="center">功耗</td>
+<td align="center">小</td>
+<td align="center">大</td>
+</tr>
+<tr>
+<td align="center">价格</td>
+<td align="center">低</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="center">速度</td>
+<td align="center">慢</td>
+<td align="center">快</td>
+</tr>
+<tr>
+<td align="center">刷新</td>
+<td align="center">需要</td>
+<td align="center">不需要</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="2-3-只读存储器"><a href="#2-3-只读存储器" class="headerlink" title="2.3 只读存储器"></a>2.3 只读存储器</h2><h3 id="2-3-1-掩模-ROM-MROM"><a href="#2-3-1-掩模-ROM-MROM" class="headerlink" title="2.3.1 掩模 ROM ( MROM)"></a>2.3.1 掩模 ROM ( <code>MROM</code>)</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_QykDrUBipP.png"></p>
+<h3 id="2-3-2-PROM-一次性编程-xD"><a href="#2-3-2-PROM-一次性编程-xD" class="headerlink" title="2.3.2 PROM (一次性编程)&#xD;"></a>2.3.2 PROM (一次性编程)&#xD;</h3><p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_pUhXRWdVJv.png"></p>
+<h3 id="2-3-3-EPROM-多次性编程"><a href="#2-3-3-EPROM-多次性编程" class="headerlink" title="2.3.3 EPROM(多次性编程)"></a><code>2.3.3 EPROM</code>(多次性编程)</h3><p><code>EPROM</code>是一种可擦除可编程只读存储器。</p>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_f0q7lPZZGI.png"></p>
+<h3 id="2-3-4-EEPROM（多次性编程）"><a href="#2-3-4-EEPROM（多次性编程）" class="headerlink" title="2.3.4 EEPROM（多次性编程）"></a><code>2.3.4 EEPROM</code>（多次性编程）</h3><ul>
+<li>电可擦写</li>
+<li>局部擦写</li>
+<li>全部擦写</li>
+</ul>
+<h3 id="2-3-5-Flash-Memory-闪速型存储器"><a href="#2-3-5-Flash-Memory-闪速型存储器" class="headerlink" title="2.3.5 Flash Memory (闪速型存储器)"></a>2.3.5 Flash Memory (闪速型存储器)</h3><p>存储器访问周期短，功耗低以及与计算机接口简单等优点。</p>
+<hr>
+<h2 id="2-4-存储器与CPU的连接"><a href="#2-4-存储器与CPU的连接" class="headerlink" title="2.4 存储器与CPU的连接"></a>2.4 存储器与CPU的连接</h2><h3 id="2-4-1-存储容量的扩展"><a href="#2-4-1-存储容量的扩展" class="headerlink" title="2.4.1 存储容量的扩展"></a>2.4.1 存储容量的扩展</h3><p><strong>位扩展</strong>：增加存储字长，例如用2片<code>1K×4</code>位 存储芯片组成 <code>1K×8</code>位 的存储器。</p>
+<p><strong>字扩展</strong>：增加存储字的数量，例如用2片<code>1K×8</code>位 存储芯片组成<code>2K×8</code>位 的存储器。</p>
+<p><strong>字位扩展</strong>：既增加存储字的数量，又增加存储字长，例如用8片<code>1K ×4</code>位 存储芯片组成<code>4K× 8</code>位 的存储器<strong>。</strong></p>
+<h3 id="2-4-2-存储器与CPU的连接"><a href="#2-4-2-存储器与CPU的连接" class="headerlink" title="2.4.2 存储器与CPU的连接"></a>2.4.2 存储器与CPU的连接</h3><ul>
+<li><strong>地址线的连接</strong>：CPU的地址线往往比存储芯片的地址线要多，通常将CPU地址线的低位与存储芯片的地址线相连</li>
+<li><strong>数据线的连接</strong>：应使CPU的数据线与存储芯片的数据线位数相等</li>
+<li><strong>读&#x2F;写命令线的连接</strong>：CPU读&#x2F;写命令线一般与存储芯片的读&#x2F;写控制端相连，通常高电平为读，低电平为写</li>
+<li><strong>片选线的连接</strong>：片选有效信号与CPU的访存信号$\overline{\text { MREQ }}$（低电平）有效</li>
+</ul>
+<p>一般步骤：</p>
+<ol>
+<li>写出对应的二进制地址码</li>
+<li>确定芯片的数量及类型</li>
+<li>分配地址线</li>
+<li>确定片选信号</li>
+</ol>
+<p><img src="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/image_SRs7l84wJS.png"></p>
+<hr>
+<h2 id="2-5-存储器的校验"><a href="#2-5-存储器的校验" class="headerlink" title="2.5 存储器的校验"></a>2.5 存储器的校验</h2><p>任意两组合法代码之间二进制位数的最少差异称为编码的<strong>最小距离</strong>，编码的纠错 、检错能力与编码的最小距离有关。</p>
+<p>$$<br>L-1&#x3D;D+C(D \geq C)<br>$$</p>
+<ul>
+<li>L：编码的最小距离</li>
+<li>D：检测错误的位数</li>
+<li>C：纠正错误的位数</li>
+</ul>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
       </tags>
   </entry>
 </search>
