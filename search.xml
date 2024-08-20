@@ -3197,55 +3197,98 @@
 <p>解：设p为每组信号灯禁止汽车通过的概率，X的分布律为：</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_MpxRi63Pxo.png"></p>
 <p>$$<br>P{X&#x3D;k}&#x3D;(1-p)^{k} p, \quad k&#x3D;0,1,2,3<br>$$</p>
-<h2 id="2-3-几种常见分布"><a href="#2-3-几种常见分布" class="headerlink" title="2.3 几种常见分布"></a>2.3 几种常见分布</h2><h3 id="2-3-1-两点分布"><a href="#2-3-1-两点分布" class="headerlink" title="2.3.1 两点分布"></a>2.3.1 两点分布</h3><p>设随机变量 X 只可能取0与1两个值 , 它的分布律为：</p>
-<p>$$<br>P\{X&#x3D;k\}&#x3D;p^{k}(1-p)^{1-k}, k&#x3D;0,1<br>$$</p>
-<p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_6u63ck_gVv.png"></p>
-<p>则称 X 服从 (0—1) 分布或两点分布。</p>
+<h2 id="2-3-几种常见分布"><a href="#2-3-几种常见分布" class="headerlink" title="2.3 几种常见分布"></a>2.3 几种常见分布</h2><h3 id="2-3-1-两点分布"><a href="#2-3-1-两点分布" class="headerlink" title="2.3.1 两点分布"></a>2.3.1 两点分布</h3><p>设随机变量 $X$ 只可能取0与1两个值 , 它的分布律为：</p>
+<p>$$<br>P{X&#x3D;k}&#x3D;p^{k}(1-p)^{1-k}, k&#x3D;0,1<br>$$</p>
+<table>
+<thead>
+<tr>
+<th align="center">X</th>
+<th align="center">0</th>
+<th align="center">1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$p_k$</td>
+<td align="center">$1-p$</td>
+<td align="center">$p$</td>
+</tr>
+</tbody></table>
+<p>则称 $X$ 服从$ (0—1)$ 分布或两点分布。</p>
 <blockquote>
-<p>例2：200件产品中, 有190件合格品, 10件不合格品, 现从中随机抽取一件, 那么，若规定$X&#x3D;\begin{array}{l}1, \text { 取得不合格品, } \ 0, \text { 取得合格品. }\end{array}.$，则随机变量 X 服从(0 -1)分布。</p>
+<p>例2：200件产品中, 有190件合格品, 10件不合格品, 现从中随机抽取一件, 那么，若规定$X&#x3D;\begin{array}{l}1, \text { 取得不合格品, } \ 0, \text { 取得合格品. }\end{array}$，则随机变量 X 服从(0 -1)分布。</p>
 </blockquote>
-<p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_64735wTy_F.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">X</th>
+<th align="center">0</th>
+<th align="center">1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$p_k$</td>
+<td align="center">$\frac{190}{200}$</td>
+<td align="center">$\frac{10}{200}$</td>
+</tr>
+</tbody></table>
 <h3 id="2-3-2-等可能分布"><a href="#2-3-2-等可能分布" class="headerlink" title="2.3.2 等可能分布"></a>2.3.2 等可能分布</h3><p>如果随机变量 X 的分布律为：</p>
-<p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_qdaSOLEKNL.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">X</th>
+<th align="center">$a_1$</th>
+<th align="center">$a_2$</th>
+<th align="center">···</th>
+<th align="center">$a_n$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$p_k$</td>
+<td align="center">$\frac{1}{n}$</td>
+<td align="center">$\frac{1}{n}$</td>
+<td align="center">$\frac{1}{n}$</td>
+<td align="center">$\frac{1}{n}$</td>
+</tr>
+</tbody></table>
 <p>$其中 \left(a_{i} \neq a_{j}\right),(i \neq j), 则称 X 服从等可能分布.$</p>
-<h3 id="2-3-3-伯努利试验和二项分布"><a href="#2-3-3-伯努利试验和二项分布" class="headerlink" title="2.3.3 伯努利试验和二项分布"></a>2.3.3 伯努利试验和二项分布</h3><p>一般地，设在一次试验E中我们只考虑两个互逆的结果：A 或 $\bar{A}$ .</p>
+<h3 id="2-3-3-伯努利试验和二项分布"><a href="#2-3-3-伯努利试验和二项分布" class="headerlink" title="2.3.3 伯努利试验和二项分布"></a>2.3.3 伯努利试验和二项分布</h3><p>一般地，设在一次试验E中我们只考虑两个互逆的结果：$A$ 或 $\bar{A}$ .</p>
 <ol>
 <li>掷骰子：“掷出4点”，“未掷出4点”</li>
 <li>抽验产品：“是正品”，“是次品”</li>
 </ol>
-<p>这样的试验E称为伯努利试验。</p>
-<p>将伯努利试验E独立地重复地进行n次,则称这一串重复的独立试验为n重伯努利试验 .</p>
+<p>这样的试验$E$称为伯努利试验。</p>
+<p>将伯努利试验$E$独立地重复地进行$n$次,则称这一串重复的独立试验为$n$重伯努利试验 .</p>
 <ul>
-<li><strong>“重复”</strong>是指这 n 次试验中$P(A)&#x3D; p $保持不变.</li>
-<li><strong>“独立”</strong>是指各次试验的结果互不影响 .</li>
+<li><strong>重复</strong>是指这 $n$ 次试验中$P(A)&#x3D; p $保持不变.</li>
+<li><strong>独立</strong>是指各次试验的结果互不影响 .</li>
 </ul>
-<p>因此A在n次试验中发生k次的概率为：</p>
+<p>因此$A$在$n$次试验中发生$k$次的概率为：</p>
 <p>$$<br>C_{n}^{k} p^{k}(1-p)^{n-k} \stackrel{\text { 记 } \boldsymbol{q}&#x3D;\mathbf{1}-\boldsymbol{p}}{ } C_{n}^{k} p^{k} q^{n-k}<br>$$</p>
-<p>得X的分布律为：</p>
+<p>得$X$的分布律为：</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_O5kRKwRCFz.png"></p>
-<p>$$<br>P\{X&#x3D;k\}&#x3D;C_{n}^{k} p^{k}(1-p)^{n-k} \quad k&#x3D;0,1, \cdots, n<br>$$</p>
+<p>$$<br>P{X&#x3D;k}&#x3D;C_{n}^{k} p^{k}(1-p)^{n-k} \quad k&#x3D;0,1, \cdots, n<br>$$</p>
 <p>称这样的分布为二项分布，记为$X \sim b(n, p)$。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_XLu37eAfGO.png"></p>
 <blockquote>
-<p>例题：</p>
+<p>例题</p>
 </blockquote>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_m5__RbnPTn.png"></p>
 <blockquote>
-<p>分析：</p>
+<p>分析</p>
 </blockquote>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_x75P4zB2Ul.png"></p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_SURtB-u2ws.png"></p>
 <p>图示概率分布</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_mkozyR6VLz.png"></p>
-<h3 id="2-3-4-泊松分布"><a href="#2-3-4-泊松分布" class="headerlink" title="2.3.4 泊松分布"></a>2.3.4 泊松分布</h3><p>设随机变量所有可能的取值为0, 1, 2, …, 而取各个值的概率为：</p>
-<p>$$<br>P\{X&#x3D;k\}&#x3D;\frac{\lambda^{k}}{k!} \mathrm{e}^{-\lambda}, \quad k&#x3D;0,1,2, \cdots<br>$$</p>
+<h3 id="2-3-4-泊松分布"><a href="#2-3-4-泊松分布" class="headerlink" title="2.3.4 泊松分布"></a>2.3.4 泊松分布</h3><p>设随机变量所有可能的取值为$0, 1, 2, …,$ 而取各个值的概率为：</p>
+<p>$$<br>P{X&#x3D;k}&#x3D;\frac{\lambda^{k}}{k!} \mathrm{e}^{-\lambda}, \quad k&#x3D;0,1,2, \cdots<br>$$</p>
 <p>其中$\lambda&gt;0$是常数，则称 $X$ 服从参数为$\lambda$的泊松分布，记为$X \sim \pi(\lambda)$。</p>
 <p>泊松分布的图形</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_7aJVOraEwO.png"></p>
 <p>$$<br>\sum_{\mathrm{k}&#x3D;0}^{\infty} P(X&#x3D;k)&#x3D;\sum_{\mathrm{k}&#x3D;0}^{\infty} \frac{\lambda^{k} e^{-\lambda}}{k!}&#x3D;e^{-\lambda} \sum_{\mathrm{k}&#x3D;0}^{\infty} \frac{\lambda^{k}}{k!}&#x3D;e^{-\lambda} e^{\lambda}&#x3D;1<br>$$</p>
 <h3 id="2-3-5-二项分布与泊松分布的关系"><a href="#2-3-5-二项分布与泊松分布的关系" class="headerlink" title="2.3.5 二项分布与泊松分布的关系"></a>2.3.5 二项分布与泊松分布的关系</h3><p>历史上，泊松分布是作为二项分布的近似，于1837年由法国数学家泊松引入的 .</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_r490-PQL4O.png"></p>
-<p>Poisson定理说明若$X \sim b(n, p)$, 则当n 较大，p 较小, 而$n p&#x3D;\lambda$适中, 则可以用近似公式：</p>
+<p>Poisson定理说明若$X \sim b(n, p)$, 则当$n$ 较大，$p$ 较小, 而$n p&#x3D;\lambda$适中, 则可以用近似公式：</p>
 <p>$$<br>C_{n}^{k} p^{k}(1-p)^{n-k} \approx e^{-\lambda} \frac{\lambda^{k}}{k!}, \quad k&#x3D;0,1,2, \cdots<br>$$</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_UnBz4vAt2Q.png"></p>
 <hr>
@@ -3263,9 +3306,9 @@
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_9gaP5MWsUO.png"></p>
 <p>如果一个函数具有上述性质，则一定是某个随机变量X 的分布函数. 也就是说，性质(1)–(3)是鉴别一个函数是否是某随机变量的分布函数的充分必要条件.</p>
 <hr>
-<h1 id="4-连续型随机变量及其概率密度"><a href="#4-连续型随机变量及其概率密度" class="headerlink" title="4 连续型随机变量及其概率密度"></a>4 连续型随机变量及其概率密度</h1><h2 id="4-1-连续型随机变量及其概率密度的定义"><a href="#4-1-连续型随机变量及其概率密度的定义" class="headerlink" title="4.1 连续型随机变量及其概率密度的定义"></a>4.1 连续型随机变量及其概率密度的定义</h2><p>对于随机变量 X , 如果存在非负可积函数 f(x)，$x \in(-\infty,+\infty)$，使得对任意实数x，有：</p>
+<h1 id="4-连续型随机变量及其概率密度"><a href="#4-连续型随机变量及其概率密度" class="headerlink" title="4 连续型随机变量及其概率密度"></a>4 连续型随机变量及其概率密度</h1><h2 id="4-1-连续型随机变量及其概率密度的定义"><a href="#4-1-连续型随机变量及其概率密度的定义" class="headerlink" title="4.1 连续型随机变量及其概率密度的定义"></a>4.1 连续型随机变量及其概率密度的定义</h2><p>对于随机变量$ X$ , 如果存在非负可积函数 $f(x)$，$x \in(-\infty,+\infty)$，使得对任意实数$x$，有：</p>
 <p>$$<br>F(x)&#x3D;\int_{-\infty}^{x} f(t) \mathrm{d} t<br>$$</p>
-<p>则称 X为连续型随机变量, 称 f(x)为 X 的概率密度函数，简称为概率密度。连续型随机变量的分布函数在 R 上连续。</p>
+<p>则称 $X$为连续型随机变量, 称 $f(x)$为 $X$ 的概率密度函数，简称为概率密度。连续型随机变量的分布函数在 $R$ 上连续。</p>
 <h2 id="4-2-概率密度的性质"><a href="#4-2-概率密度的性质" class="headerlink" title="4.2 概率密度的性质"></a>4.2 概率密度的性质</h2><ol>
 <li>$f(x) \geq 0$</li>
 <li>$\int_{-\infty}^{+\infty} f(x) \mathrm{d} x&#x3D;1$<br> 这两条性质是判定一个函数 f(x)是否为某分布的概率密度的充要条件。</li>
@@ -3753,18 +3796,22 @@
   <entry>
     <title>概率论第4章：随机变量的数字特征</title>
     <url>/2024/06/12/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/</url>
-    <content><![CDATA[<h1 id="1-数学期望"><a href="#1-数学期望" class="headerlink" title="1 数学期望"></a>1 数学期望</h1><h2 id="1-1-随机变量的数学期望概念"><a href="#1-1-随机变量的数学期望概念" class="headerlink" title="1.1 随机变量的数学期望概念"></a>1.1 随机变量的数学期望概念</h2><p><strong>定义1</strong>：设X是离散型随机变量，它的分布律是：$P ( X&#x3D;x_{k} ) &#x3D;p_{k}, k&#x3D;1,2, \ldots$，若级数$\sum_{k&#x3D;1}^{\infty} x_{k} p_{k}$绝对收敛，则称级数$\sum_{k&#x3D;1}^{\infty} x_{k} p_{k}$的和为随机变量X的<strong>数学期望</strong>。</p>
+    <content><![CDATA[<h1 id="1-数学期望"><a href="#1-数学期望" class="headerlink" title="1 数学期望"></a>1 数学期望</h1><h2 id="1-1-随机变量的数学期望概念"><a href="#1-1-随机变量的数学期望概念" class="headerlink" title="1.1 随机变量的数学期望概念"></a>1.1 随机变量的数学期望概念</h2><p><strong>定义1</strong>：设$X$是离散型随机变量，它的分布律是：$P ( X&#x3D;x_{k} ) &#x3D;p_{k}, k&#x3D;1,2, \ldots$，若级数$\sum_{k&#x3D;1}^{\infty} x_{k} p_{k}$绝对收敛，则称级数$\sum_{k&#x3D;1}^{\infty} x_{k} p_{k}$的和为随机变量$X$的<strong>数学期望</strong>。</p>
 <p>$$<br>E(X)&#x3D;\sum_{k&#x3D;1}^{\infty} x_{k} p_{k}<br>$$</p>
-<p><strong>定义2</strong>：设连续型随机变量X的概率密度为f(x)，如果积分$\int_{-\infty}^{+\infty} x f(x) \mathrm{d} x$绝对收敛，则称该积分的值为随机变量X的数学期望或者均值，记为E(X)，即</p>
+<p><strong>定义2</strong>：设连续型随机变量$X$的概率密度为$f(x)$，如果积分$\int_{-\infty}^{+\infty} x f(x) \mathrm{d} x$绝对收敛，则称该积分的值为随机变量X的数学期望或者均值，记为$E(X)$，即</p>
 <p>$$<br>E(X)&#x3D;\int_{-\infty}^{+\infty} x f(x) \mathrm{d} x<br>$$</p>
-<h2 id="1-2-随机变量函数的数学期望"><a href="#1-2-随机变量函数的数学期望" class="headerlink" title="1.2 随机变量函数的数学期望"></a>1.2 随机变量函数的数学期望</h2><p><strong>定理1</strong>：设Y是随机变量X的函数:Y&#x3D;g(X) (g是连续函数)，</p>
-<p>(1)  当X为离散型时, 它的分布律为$P\left(X&#x3D;x_{k}\right)&#x3D;p_{k},(k&#x3D;1,2, \ldots)$，若级数$\sum_{k&#x3D;1}^{\infty} g\left(x_{k}\right) p_{k}$绝对收敛，则有：</p>
+<h2 id="1-2-随机变量函数的数学期望"><a href="#1-2-随机变量函数的数学期望" class="headerlink" title="1.2 随机变量函数的数学期望"></a>1.2 随机变量函数的数学期望</h2><p><strong>定理1</strong>：设$Y$是随机变量$X$的函数$Y&#x3D;g(X)$（ $g$ 是连续函数）：</p>
+<ol>
+<li>当$X$为离散型时, 它的分布律为$P\left(X&#x3D;x_{k}\right)&#x3D;p_{k},(k&#x3D;1,2, \ldots)$，若级数$\sum_{k&#x3D;1}^{\infty} g\left(x_{k}\right) p_{k}$绝对收敛，则有：</li>
+</ol>
 <p>$$<br>E(Y)&#x3D;E[g(X)]&#x3D;\sum_{k&#x3D;1}^{\infty} g\left(x_{k}\right) p_{k}<br>$$</p>
-<p>(2)  当X为连续型时, 它的密度函数为f(x)，若$\int_{-\infty}^{+\infty} g(x) f(x) d x$绝对收敛，则有：</p>
+<ol start="2">
+<li>当X为连续型时, 它的密度函数为f(x)，若$\int_{-\infty}^{+\infty} g(x) f(x) d x$绝对收敛，则有：</li>
+</ol>
 <p>$$<br>E(Y)&#x3D;E[g(X)]&#x3D;\int_{-\infty}^{+\infty} g(x) f(x) d x<br>$$</p>
 <p>总结如下：</p>
 <p><img src="/2024/06/12/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/image.png"></p>
-<p><strong>定理2</strong>：设Z&#x3D;g(X,Y) 是随机变量X、Y的函数，</p>
+<p><strong>定理2</strong>：设$Z&#x3D;g(X,Y)$ 是随机变量$X$、$Y$的函数，</p>
 <p>(1)  如果X、Y是离散型随机变量，联合概率分布为pij , i,j&#x3D;1,2, …，则&#x20;</p>
 <p>$$<br>E(Z)&#x3D;E[g(X, Y)]&#x3D;\sum_{i&#x3D;1}^{\infty} \sum_{j&#x3D;1}^{\infty} g\left(x_{i}, y_{j}\right) p_{i j}<br>$$</p>
 <p>(2)  如果X、Y是连续型随机变量，联合概率密度为f(x,y)，则&#x20;</p>
@@ -3795,17 +3842,17 @@
 <p><img src="/2024/06/12/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/image_e61hYBHyCX.png"></p>
 <p>$$<br>D(X)&#x3D;\mathrm{Var}(X)&#x3D;E{[X-E(X)]^2}.<br>$$</p>
 <p>称$\sqrt{D(X)}$为标准差或均方差，记为$\sigma(X)$。</p>
-<h2 id="2-2-方差的计算"><a href="#2-2-方差的计算" class="headerlink" title="2.2 方差的计算"></a>2.2 方差的计算</h2><h3 id="2-2-1-利用定义计算"><a href="#2-2-1-利用定义计算" class="headerlink" title="2.2.1 利用定义计算"></a>2.2.1 利用定义计算</h3><p><strong>离散型</strong>：$D(X)&#x3D;\sum_{k&#x3D;1}^{+\infty}\left[x_k-E(X)\right]^2p_k,$其中$P{X&#x3D;x_k}&#x3D;p_k,k&#x3D;1,2,\cdots,$是X的分布律。</p>
-<p><strong>连续性</strong>：$D(X)&#x3D;\int_{-\infty}^{+\infty}[x-E(X)]^2f(x) \mathrm{d}x$，其中f(x)为x的概率密度。</p>
+<h2 id="2-2-方差的计算"><a href="#2-2-方差的计算" class="headerlink" title="2.2 方差的计算"></a>2.2 方差的计算</h2><h3 id="2-2-1-利用定义计算"><a href="#2-2-1-利用定义计算" class="headerlink" title="2.2.1 利用定义计算"></a>2.2.1 利用定义计算</h3><p><strong>离散型</strong>：$D(X)&#x3D;\sum_{k&#x3D;1}^{+\infty}\left[x_k-E(X)\right]^2p_k,$其中$P{X&#x3D;x_k}&#x3D;p_k,k&#x3D;1,2,\cdots,$是$X$的分布律。</p>
+<p><strong>连续性</strong>：$D(X)&#x3D;\int_{-\infty}^{+\infty}[x-E(X)]^2f(x) \mathrm{d}x$，其中$f(x)$为$x$的概率密度。</p>
 <h3 id="2-2-2-利用公式计算-xD"><a href="#2-2-2-利用公式计算-xD" class="headerlink" title="2.2.2 利用公式计算&#xD;"></a>2.2.2 利用公式计算&#xD;</h3><p>$$<br>D(X)&#x3D;E(X^2)-[E(X)]^2.<br>$$</p>
-<h2 id="2-3-方差的性质"><a href="#2-3-方差的性质" class="headerlink" title="2.3 方差的性质"></a>2.3 方差的性质</h2><p>（1）设 C 是常数, 则有D(C)&#x3D;0。</p>
-<p>（2）设 X 是一个随机变量, C 是常数, 则有$D(CX)&#x3D;C^2D(X).$</p>
+<h2 id="2-3-方差的性质"><a href="#2-3-方差的性质" class="headerlink" title="2.3 方差的性质"></a>2.3 方差的性质</h2><p>（1）设 C 是常数, 则有$D(C)&#x3D;0$</p>
+<p>（2）设 X 是一个随机变量, C 是常数, 则有$D(CX)&#x3D;C^2D(X)$</p>
 <p>（3）设 X, Y  相互独立, D(X), D(Y) 存在, 则$D(X\pm Y)&#x3D;D(X)+D(Y).\quad D(X\pm C)&#x3D;D(X).$</p>
 <p>（4） D(X)&#x3D;0的充要条件是X以概率1取常数E(X)，即$P{X&#x3D;E(X)} &#x3D; 1$</p>
 <h2 id="2-4-切比雪夫不等式"><a href="#2-4-切比雪夫不等式" class="headerlink" title="2.4 切比雪夫不等式"></a>2.4 切比雪夫不等式</h2><p><img src="/2024/06/12/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/image_3VC-EgmE1a.png"></p>
 <h2 id="2-5-常见分布的期望与方差"><a href="#2-5-常见分布的期望与方差" class="headerlink" title="2.5 常见分布的期望与方差"></a>2.5 常见分布的期望与方差</h2><p><img src="/2024/06/12/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/image_hKk6egnLAf.png"></p>
 <hr>
-<h1 id="3-协方差及相关系数"><a href="#3-协方差及相关系数" class="headerlink" title="3 协方差及相关系数"></a>3 协方差及相关系数</h1><h2 id="3-1-协方差"><a href="#3-1-协方差" class="headerlink" title="3.1 协方差"></a>3.1 协方差</h2><p><strong>定义</strong>： 量$E{[X-E(X)][Y-E(Y)]}$称为随机变量X和Y的协方差,记为Cov(X,Y) ，即$\operatorname{Cov}(X, Y)&#x3D;E{[X-E(X)][Y-E(Y)]}$。</p>
+<h1 id="3-协方差及相关系数"><a href="#3-协方差及相关系数" class="headerlink" title="3 协方差及相关系数"></a>3 协方差及相关系数</h1><h2 id="3-1-协方差"><a href="#3-1-协方差" class="headerlink" title="3.1 协方差"></a>3.1 协方差</h2><p><strong>定义</strong>： 量$E{[X-E(X)][Y-E(Y)]}$称为随机变量$X$和$Y$的协方差，记为$Cov(X,Y)$，即$\operatorname{Cov}(X, Y)&#x3D;E{[X-E(X)][Y-E(Y)]}$。</p>
 <p>计算协方差的一个简单公式：$\operatorname{Cov}(X, Y)&#x3D;E(X Y)-E(X) E(Y)$</p>
 <h3 id="3-1-1-性质-xD"><a href="#3-1-1-性质-xD" class="headerlink" title="3.1.1 性质&#xD;"></a>3.1.1 性质&#xD;</h3><ol>
 <li>$\operatorname{Cov}(X, C)&#x3D;0, C 为常数$</li>
@@ -3813,11 +3860,11 @@
 <li>$\operatorname{Cov}(X, Y)&#x3D;\operatorname{Cov}(Y, X)$</li>
 <li>$\operatorname{Cov}\left(X_{1}+X_{2}, Y\right)&#x3D;\operatorname{Cov}\left(X_{1}, Y\right)+\operatorname{Cov}\left(X_{2}, Y\right)$</li>
 <li>$\operatorname{Cov}(a X, b Y)&#x3D;a b \operatorname{Cov}(X, Y) \quad a, b 是常数$</li>
-<li>$\operatorname{Cov}(a X+b, Y)&#x3D;a \operatorname{Cov}(X, Y) a, b 是常数$</li>
+<li>$\operatorname{Cov}(a X+b, Y)&#x3D;a \operatorname{Cov}(X, Y) \quad a, b 是常数$</li>
 <li>$D(X \pm Y)&#x3D;D(X)+D(Y) \pm 2 \operatorname{Cov}(X, Y)$</li>
-<li>若X与Y独立，则$\operatorname{Cov}(X, Y)&#x3D;0$</li>
+<li>若$X$与$Y$独立，则$\operatorname{Cov}(X, Y)&#x3D;0$</li>
 </ol>
-<h2 id="3-2-相关系数"><a href="#3-2-相关系数" class="headerlink" title="3.2 相关系数"></a>3.2 相关系数</h2><p>定义：$设 D(X)&gt;0, D(Y)&gt;0.$称$\rho_{X Y}&#x3D;\frac{\operatorname{Cov}(X, Y)}{\sqrt{D(X) D(Y)}}$为随机变量X和Y的相关系数，$\rho_{X Y} 简记为 \rho$.</p>
+<h2 id="3-2-相关系数"><a href="#3-2-相关系数" class="headerlink" title="3.2 相关系数"></a>3.2 相关系数</h2><p><strong>定义</strong>：$设 D(X)&gt;0, D(Y)&gt;0，$称$\rho_{X Y}&#x3D;\frac{\operatorname{Cov}(X, Y)}{\sqrt{D(X) D(Y)}}$为随机变量$X$和$Y$的相关系数，$\rho_{X Y} 简记为 \rho$。</p>
 <h3 id="3-2-1-性质"><a href="#3-2-1-性质" class="headerlink" title="3.2.1 性质"></a>3.2.1 性质</h3><ol>
 <li>$|\rho| \leq 1$</li>
 <li>$\left|\rho_{X Y}\right|&#x3D;1 \Leftrightarrow P{Y&#x3D;a+b X}&#x3D;1$</li>
@@ -5128,9 +5175,9 @@
   <entry>
     <title>编译原理第3章：词法分析</title>
     <url>/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="1-词法分析程序的设计"><a href="#1-词法分析程序的设计" class="headerlink" title="1  词法分析程序的设计"></a>1  词法分析程序的设计</h1><h2 id="1-1-词法分析流程"><a href="#1-1-词法分析流程" class="headerlink" title="1.1 词法分析流程"></a>1.1 词法分析流程</h2><p>逐个读入源程序字符并按照构词规则切分成一系列单词(token)。</p>
+    <content><![CDATA[<h1 id="1-词法分析程序的设计"><a href="#1-词法分析程序的设计" class="headerlink" title="1  词法分析程序的设计"></a>1  词法分析程序的设计</h1><h2 id="1-1-词法分析流程"><a href="#1-1-词法分析流程" class="headerlink" title="1.1 词法分析流程"></a>1.1 词法分析流程</h2><p>逐个读入源程序字符并按照构词规则切分成一系列单词（token）。</p>
 <p>单词是语言中具有独立意义的最小单位，包括保留关键字、标识符、常量、运算符、标点符号、分界符等。</p>
-<p>词法分析是编译过程中的一个阶段，在语法分析前进行。也可和语法分析结合在一起作为一遍，由语法分析程序调用词法分析程序来获得当前单词供语法分析使用。</p>
+<p>词法分析是编译过程中的一个阶段，在语法分析前进行，也可和语法分析结合在一起作为一遍，由语法分析程序调用词法分析程序来获得当前单词供语法分析使用。</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_Iv8-XUTlin.png"></p>
 <p>词法分析程序的主要任务及输出：</p>
 <ol>
@@ -5141,10 +5188,10 @@
 </ol>
 <hr>
 <h1 id="2-正则表达式"><a href="#2-正则表达式" class="headerlink" title="2 正则表达式"></a>2 正则表达式</h1><p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_dhT23JXZRd.png"></p>
-<p>正则表达式(Regular Expression，RE)是一种用来描述正则语言的更紧凑的表示方法。</p>
-<p>例如：$r&#x3D;a(a \mid b)^{<em>}(\varepsilon \mid(. \mid _)(a \mid b)(a \mid b)^{</em>})$</p>
-<p>正则表达式可以由较小的正则表达式按照特定规则递归地构建。每个正则表达式 r定义（表示）一个语言，记为L(r)。</p>
-<p>这个语言也是根据r 的子表达式所表示的语言递归定义的</p>
+<p>正则表达式（Regular Expression，RE）是一种用来描述正则语言的更紧凑的表示方法。</p>
+<p>例如：$r &#x3D; a (a \mid b)^*  (\varepsilon \mid(. \mid \_ )(a \mid b)(a \mid b)^*)$</p>
+<p>正则表达式可以由较小的正则表达式按照特定规则递归地构建。每个正则表达式 $r$ 定义（表示）一个语言，记为$L(r)$。</p>
+<p>这个语言也是根据 $r$ 的子表达式所表示的语言递归定义的。</p>
 <h2 id="2-1-正则表达式的定义"><a href="#2-1-正则表达式的定义" class="headerlink" title="2.1 正则表达式的定义"></a>2.1 正则表达式的定义</h2><p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_vVi1poYUec.png"></p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_aWyUHZS-tD.png"></p>
 <blockquote>
@@ -5165,10 +5212,10 @@
 <p>$$<br>\begin{array}{c}d_{1} \rightarrow r_{1} \ d_{2} \rightarrow r_{2} \ \cdots \ d_{n} \rightarrow r_{n}\end{array}<br>$$</p>
 <p>其中：</p>
 <ul>
-<li>每个$d_i$都是一个新符号，它们都不在字母表 Σ中，而且各不相同</li>
-<li>每个$r_i$是字母表$\Sigma \cup{d_{1}, d_{2}, \ldots, d_{i-1}}$上的正则表达式</li>
+<li>每个 $d_i$ 都是一个新符号，它们都不在字母表 Σ 中，而且各不相同</li>
+<li>每个 $r_i$ 是字母表$\Sigma \cup{d_{1}, d_{2}, \ldots, d_{i-1}}$上的正则表达式</li>
 </ul>
-<p>给一些RE命名，并在之后的RE中像使用字母表中的符号一样使用这些名字。	</p>
+<p>给一些 RE 命名，并在之后的 RE 中像使用字母表中的符号一样使用这些名字。	</p>
 <blockquote>
 <p>例1：C语言中标识符的正则定义</p>
 </blockquote>
@@ -5193,22 +5240,22 @@
 <p>系统只需要根据当前所处的状态和当前面临的输入信息就可以决定系统的后继行为。每当系统处理了当前的输入后，系统的内部状态也将发生改变。</p>
 <h2 id="4-1-FA模型"><a href="#4-1-FA模型" class="headerlink" title="4.1 FA模型"></a>4.1 FA模型</h2><p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_jEUugDSLdG.png"></p>
 <ul>
-<li><strong>输入带</strong>(input tape)：用来存放输入符号串</li>
-<li><strong>读头</strong>(head)：从左向右逐个读取输入符号，不能修改（只读）、不能往返移动</li>
-<li><strong>有穷控制器</strong>(finite control)：具有有穷个状态数，根据当前的状态和当前输入符号控制转入下一状态</li>
+<li><strong>输入带</strong>（input tape）：用来存放输入符号串</li>
+<li><strong>读头</strong>（head）：从左向右逐个读取输入符号，不能修改（只读）、不能往返移动</li>
+<li><strong>有穷控制器</strong>（finite control）：具有有穷个状态数，根据当前的状态和当前输入符号控制转入下一状态</li>
 </ul>
-<h2 id="4-2-转换图-Transition-Graph"><a href="#4-2-转换图-Transition-Graph" class="headerlink" title="4.2 转换图 (Transition Graph)"></a>4.2 转换图 (Transition Graph)</h2><p>结点：FA的状态</p>
+<h2 id="4-2-转换图"><a href="#4-2-转换图" class="headerlink" title="4.2 转换图"></a>4.2 转换图</h2><p>结点：FA的状态</p>
 <ul>
 <li>初始状态（开始状态）：只有一个，由start箭头指向</li>
 <li>终止状态（接收状态）：可以有多个，用双圈表示</li>
 </ul>
-<p>带标记的有向边：如果对于输入a，存在一个从状态p到状态q的转换，就在p、q之间画一条有向边，并标记上a。</p>
+<p>带标记的有向边：如果对于输入$a$，存在一个从状态$p$到状态$q$的转换，就在$p$、$q$之间画一条有向边，并标记上$a$。</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_DuZE9Yxn59.png"></p>
-<h2 id="4-3-FA定义（接收）的语言"><a href="#4-3-FA定义（接收）的语言" class="headerlink" title="4.3 FA定义（接收）的语言"></a>4.3 FA定义（接收）的语言</h2><p>给定输入串x，如果存在一个对应于串x的从初始状态到某个终止状态的转换序列，则称符号串x被该FA接收。</p>
-<p>由一个有穷自动机M接收的所有符号串构成的集合称为是该FA定义（或接收）的语言，记为L(M)。</p>
+<h2 id="4-3-FA定义（接收）的语言"><a href="#4-3-FA定义（接收）的语言" class="headerlink" title="4.3 FA定义（接收）的语言"></a>4.3 FA定义（接收）的语言</h2><p>给定输入串$x$，如果存在一个对应于串$x$的从初始状态到某个终止状态的转换序列，则称符号串$x$被该FA接收。</p>
+<p>由一个有穷自动机M接收的所有符号串构成的集合称为是该FA定义（或接收）的语言，记为$L(M)$。</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_Fha7_BC36o.png"></p>
 <ul>
-<li>L(M) &#x3D;所有以<code>abb</code>结尾的字母表{a, b}上的符号串的集合</li>
+<li>$L(M)$ &#x3D;所有以<code>abb</code>结尾的字母表$\{a, b\}$上的符号串的集合</li>
 </ul>
 <h3 id="4-3-1-最长子串匹配原则"><a href="#4-3-1-最长子串匹配原则" class="headerlink" title="4.3.1 最长子串匹配原则"></a>4.3.1 最长子串匹配原则</h3><p>当输入串的多个前缀与一个或多个模式匹配时，总是选择最长的前缀进行匹配。</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_StcOS-UGEz.png"></p>
@@ -5221,18 +5268,18 @@
 </ol>
 <h2 id="5-1-确定的有穷自动机-DFA"><a href="#5-1-确定的有穷自动机-DFA" class="headerlink" title="5.1 确定的有穷自动机 (DFA)"></a>5.1 确定的有穷自动机 (DFA)</h2><p>$$<br>M &#x3D; ( S，Σ ，δ，s_0，F )<br>$$</p>
 <ul>
-<li>S：有穷状态集</li>
-<li>Σ：输入字母表，即输入符号集合。假设ε不是Σ中的元素</li>
-<li>δ：将S× Σ映射到S的转换函数。 $\forall s \in S$，$a \in \Sigma$，$\delta(s, a)$表示从状态s出发，沿着标记为a的边所能到达的状态</li>
+<li>$S$：有穷状态集</li>
+<li>$Σ$：输入字母表，即输入符号集合。假设$ε$不是$Σ$中的元素</li>
+<li>$δ$：将$S× Σ$映射到$S$的转换函数。 $\forall s \in S$，$a \in \Sigma$，$\delta(s, a)$表示从状态$s$出发，沿着标记为$a$的边所能到达的状态</li>
 <li>$s_0$：开始状态 (或初始状态)，$s_0 \in S$</li>
-<li>F：接收状态（或终止状态）集合，$F \subseteq S$</li>
+<li>$F$：接收状态（或终止状态）集合，$F \subseteq S$</li>
 </ul>
 <h3 id="5-1-1-一个DFA"><a href="#5-1-1-一个DFA" class="headerlink" title="5.1.1 一个DFA"></a>5.1.1 一个DFA</h3><p>可以用转换表表示<code>DFA</code>。</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_wq6LZ7ABM3.png"></p>
 <h3 id="5-1-2-DFA的算法实现"><a href="#5-1-2-DFA的算法实现" class="headerlink" title="5.1.2 DFA的算法实现"></a>5.1.2 DFA的算法实现</h3><p><strong>输入</strong>：以文件结束符<code>eof</code>结尾的字符串x。<code>DFA</code>：D 的开始状态$s_0$，接收状态集 F，转换函数move</p>
 <p><strong>输出</strong>：如果 D接收 x，则回答“yes”，否则回答“ no”</p>
 <p><strong>方法</strong>：将下述算法应用于输入串 x</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s = s0;</span><br><span class="line">c = <span class="built_in">nextChar</span>();</span><br><span class="line"><span class="keyword">while</span> (c! = eof) &#123;</span><br><span class="line">    s = <span class="built_in">move</span> ( s , c ) ;</span><br><span class="line">    c = <span class="built_in">nextChar</span> ( ) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (s在F中) <span class="keyword">return</span>“yes”; </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> “ no” ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">s = s0;</span><br><span class="line">c = <span class="built_in">nextChar</span>();</span><br><span class="line"><span class="keyword">while</span> (c! = eof) &#123;</span><br><span class="line">    s = <span class="built_in">move</span>(s, c);</span><br><span class="line">    c = <span class="built_in">nextChar</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (s在F中) <span class="keyword">return</span> <span class="string">&quot;yes&quot;</span>; </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="string">&quot;no;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>函数<code>nextChar()</code>返回输入串x的下一个符号</li>
@@ -5282,7 +5329,7 @@
 </blockquote>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_6DX99HoNFh.png"></p>
 <hr>
-<h1 id="7-从NFA到DFA的转换"><a href="#7-从NFA到DFA的转换" class="headerlink" title="7 从NFA到DFA的转换"></a>7 从NFA到DFA的转换</h1><p><code>DFA</code>是<code>NFA</code>的特例，对每个<code>NFA</code>：N一定存在一个<code>DFA</code>：M，使得L(M)&#x3D;L(N)。</p>
+<h1 id="7-从NFA到DFA的转换"><a href="#7-从NFA到DFA的转换" class="headerlink" title="7 从NFA到DFA的转换"></a>7 从NFA到DFA的转换</h1><p><code>DFA</code>是<code>NFA</code>的特例，对每个<code>NFA</code>：N一定存在一个<code>DFA</code>：M，使得$L(M)&#x3D;L(N)$。</p>
 <p>将<code>NFA</code>转换成接受同样语言的<code>DFA</code>的方法——<strong>子集法</strong>，与某一<code>NFA</code>等价的<code>DFA</code>不唯一。</p>
 <h2 id="7-1-子集法"><a href="#7-1-子集法" class="headerlink" title="7.1 子集法"></a>7.1 子集法</h2><p>设NFA：$N&#x3D;\left(K, \sum, f, K_{0}, K_{t}\right)$，按如下办法构造一个DFA：$M&#x3D;\left(S, \Sigma, d, S_{0}, S_{t}\right)$，使得$L(M)&#x3D;L(N)$：</p>
 <p><img src="/2024/06/29/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_t7XJ-hwYLb.png"></p>
@@ -5974,7 +6021,7 @@
     <title>编译原理第4章：自顶向下的语法分析</title>
     <url>/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h1 id="1-自顶向下分析概述"><a href="#1-自顶向下分析概述" class="headerlink" title="1 自顶向下分析概述"></a>1 自顶向下分析概述</h1><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_tEHP2eRtHk.png"></p>
-<p>从分析树的顶部（根节点）向底部（叶节点）方向构造分析树，可以看成是从文法开始符号S推导出词串w的过程。</p>
+<p>从分析树的顶部（根节点）向底部（叶节点）方向构造分析树，可以看成是从文法开始符号$S$推导出词串$w$的过程。</p>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_A6OnfpprDm.png"></p>
 <p>每一步推导中，都需要做两个选择：</p>
 <ol>
@@ -5996,15 +6043,15 @@
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_8p6NTn3ABN.png"></p>
 <h2 id="1-4-自顶向下语法分析的通用形式"><a href="#1-4-自顶向下语法分析的通用形式" class="headerlink" title="1.4 自顶向下语法分析的通用形式"></a>1.4 自顶向下语法分析的通用形式</h2><h3 id="1-4-1-递归下降分析-Recursive-Descent-Parsing"><a href="#1-4-1-递归下降分析-Recursive-Descent-Parsing" class="headerlink" title="1.4.1 递归下降分析 (Recursive-Descent Parsing)"></a>1.4.1 递归下降分析 (Recursive-Descent Parsing)</h3><ul>
 <li>由一组过程组成，每个过程对应一个非终结符</li>
-<li>从文法开始符号S对应的过程开始，其中递归调用文法中其它非终结符对应的过程。如果S对应的过程体恰好扫描了整个输入串，则成功完成语法分析</li>
+<li>从文法开始符号$S$对应的过程开始，其中递归调用文法中其它非终结符对应的过程。如果$S$对应的过程体恰好扫描了整个输入串，则成功完成语法分析</li>
 </ul>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_qv6M0C5xF0.png"></p>
 <h2 id="1-5-预测分析"><a href="#1-5-预测分析" class="headerlink" title="1.5 预测分析"></a>1.5 预测分析</h2><p>预测分析是递归下降分析技术的一个特例，通过在输入中向前看固定个数（通常是一个）符号来选择正确的A-产生式。</p>
-<p>可以对某些文法构造出向前看k个输入符号的预测分析器，该类文法有时也称为<strong>LL(k) 文法类</strong>。</p>
+<p>可以对某些文法构造出向前看$k$个输入符号的预测分析器，该类文法有时也称为<strong>LL(k) 文法类</strong>。</p>
 <p>预测分析<strong>不需要回溯</strong>，是一种确定的自顶向下分析方法。</p>
 <hr>
-<h1 id="2-文法转换"><a href="#2-文法转换" class="headerlink" title="2 文法转换"></a>2 文法转换</h1><p>左递归文法会使递归下降分析器陷入无限循环，含有A→Aα形式产生式的文法称为是<strong>直接左递归</strong>的(immediate left recursive)。</p>
-<p>如果一个文法中有一个非终结符A使得对某个串α存在$A \Rightarrow^{+} A \alpha$，那么这个文法就是<strong>左递归</strong>的。</p>
+<h1 id="2-文法转换"><a href="#2-文法转换" class="headerlink" title="2 文法转换"></a>2 文法转换</h1><p>左递归文法会使递归下降分析器陷入无限循环，含有$A→Aα$形式产生式的文法称为是<strong>直接左递归</strong>的(immediate left recursive)。</p>
+<p>如果一个文法中有一个非终结符$A$使得对某个串$α$存在$A \Rightarrow^{+} A \alpha$，那么这个文法就是<strong>左递归</strong>的。</p>
 <p>经过两步或两步以上推导产生的左递归称为是<strong>间接左递归</strong>的。</p>
 <h2 id="2-1-消除左递归"><a href="#2-1-消除左递归" class="headerlink" title="2.1 消除左递归"></a>2.1 消除左递归</h2><h3 id="2-1-1-消除直接左递归"><a href="#2-1-1-消除直接左递归" class="headerlink" title="2.1.1 消除直接左递归"></a>2.1.1 消除直接左递归</h3><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_NXoVDIqW8Z.png"></p>
 <h3 id="2-1-2-消除直接左递归的一般形式"><a href="#2-1-2-消除直接左递归的一般形式" class="headerlink" title="2.1.2 消除直接左递归的一般形式"></a>2.1.2 消除直接左递归的一般形式</h3><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_IT0PziampE.png"></p>
