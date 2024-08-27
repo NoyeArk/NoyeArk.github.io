@@ -1473,8 +1473,8 @@
 <p>检查主码的各个属性是否为空，只要有一个为空就拒绝插入或修改。</p>
 <hr>
 <h1 id="3-参照完整性"><a href="#3-参照完整性" class="headerlink" title="3 参照完整性"></a>3 参照完整性</h1><h2 id="3-1-参照完整性定义"><a href="#3-1-参照完整性定义" class="headerlink" title="3.1 参照完整性定义"></a>3.1 参照完整性定义</h2><ul>
-<li>在CREATE  TABLE中用FOREIGN KEY短语定义哪些列为外码</li>
-<li>用REFERENCES短语指明这些外码参照哪些表的主码</li>
+<li>在<code>CREATE TABLE</code>中用<code>FOREIGN KEY</code>短语定义哪些列为外码</li>
+<li>用<code>REFERENCES</code>短语指明这些外码参照哪些表的主码</li>
 </ul>
 <blockquote>
 <p>例如，关系SC中一个元组表示一个学生选修的某门课程的成绩，（Sno，Cno）是主码。Sno，Cno分别参照引用Student表的主码和Course表的主码</p>
@@ -1484,10 +1484,9 @@
 <h2 id="3-2-参照完整性检查和违约处理"><a href="#3-2-参照完整性检查和违约处理" class="headerlink" title="3.2 参照完整性检查和违约处理"></a>3.2 参照完整性检查和违约处理</h2><p>可能破坏参照完整性的情况及违约处理：</p>
 <p><img src="/2024/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7/image_gGEGvS1hRK.png"></p>
 <ol>
-<li><p>拒绝(NO ACTION)执行，默认策略，不允许该操作执行。</p>
+<li><p>拒绝（NO ACTION）执行，默认策略，不允许该操作执行。</p>
 </li>
-<li><p>级联(CASCADE)操作</p>
-<p>当删除或修改被参照表的一个元组导致与参照表的不一致时，删除或修改参照表中所有导致不一致的元组。</p>
+<li><p>级联（CASCADE）操作<br>当删除或修改被参照表的一个元组导致与参照表的不一致时，删除或修改参照表中所有导致不一致的元组。</p>
 </li>
 <li><p>设置为空值（SET-NULL）</p>
 <p>当删除或修改被参照表的一个元组导致与参照表的不一致时，则将参照表中的所有造成不一致的元组的对应树形设置为空值。</p>
@@ -3312,7 +3311,7 @@
 <h2 id="4-2-概率密度的性质"><a href="#4-2-概率密度的性质" class="headerlink" title="4.2 概率密度的性质"></a>4.2 概率密度的性质</h2><ol>
 <li>$f(x) \geq 0$</li>
 <li>$\int_{-\infty}^{+\infty} f(x) \mathrm{d} x&#x3D;1$<br> 这两条性质是判定一个函数 f(x)是否为某分布的概率密度的充要条件。</li>
-<li>对于任意实数 x1 , x2 , (x1 &lt; x2 ) ,$P\{x_{1}&lt;X \leq x_{2}\}&#x3D;\int_{x_{1}}^{x_{2}} f(x) dx$</li>
+<li>对于任意实数 $x_1 , x_2 , (x_1 &lt; x_2 ) ,P{x_{1}&lt;X \leq x_{2}}&#x3D;\int_{x_{1}}^{x_{2}} f(x) dx$</li>
 </ol>
 <p>利用概率密度可确定随机点落在某个范围内的概率。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_hCdRKFCCDi.png"></p>
@@ -3328,28 +3327,31 @@
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_oqGGf7Y-37.png"></p>
 <p>对连续型随机变量X , 有</p>
 <p>$$<br>P{a \leq X \leq b}&#x3D;P{a&lt;X \leq b}&#x3D;P{a \leq X&lt;b}&#x3D;P{a&lt;X&lt;b}<br>$$</p>
-<hr>
-<h2 id="4-3-常见的连续型随机变量"><a href="#4-3-常见的连续型随机变量" class="headerlink" title="4.3 常见的连续型随机变量"></a>4.3 常见的连续型随机变量</h2><h3 id="4-3-1-均匀分布"><a href="#4-3-1-均匀分布" class="headerlink" title="4.3.1 均匀分布"></a>4.3.1 均匀分布</h3><p>若随机变量X的概率密度为：</p>
+<h2 id="4-3-常见的连续型随机变量"><a href="#4-3-常见的连续型随机变量" class="headerlink" title="4.3 常见的连续型随机变量"></a>4.3 常见的连续型随机变量</h2><h3 id="4-3-1-均匀分布"><a href="#4-3-1-均匀分布" class="headerlink" title="4.3.1 均匀分布"></a>4.3.1 均匀分布</h3><p>若随机变量$X$的概率密度为：</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_nG-EwZ7Mpx.png"></p>
 <p>则称$X$在区间$(a, b)$上服从均匀分布，记作$X \sim U(a, b)$。</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_OpDUbfUN8C.png"></p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_rzzginMTWP.png"></p>
 <h3 id="4-3-2-指数分布"><a href="#4-3-2-指数分布" class="headerlink" title="4.3.2 指数分布"></a>4.3.2 指数分布</h3><p>若随机变量$X$具有概率密度</p>
-<p>$$<br>f(x)&#x3D;\left\{\begin{array}{cc}\frac{1}{\theta}e^{-\frac{x}{\theta}},&amp;x&gt;0\\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
-<p>其中$\theta&gt;0$为常数，则称$ X $服从参数为$\theta$的指数分布。指数分布常用于可靠性统计研究中，如元件的寿命。</p>
+<p>$$<br>f(x)&#x3D;\left{\begin{array}{cc}\frac{1}{\theta}e^{-\frac{x}{\theta}},&amp;x&gt;0\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
+<p>其中$\theta&gt;0$为常数，则称$X$ 服从参数为 $\theta$ 的指数分布。指数分布常用于可靠性统计研究中，如元件的寿命。</p>
 <p>若$X$服从参数为 $\theta$ 的指数分布, 则其分布函数为：</p>
-<p>$$<br>F(x)&#x3D;P\{X\leq x\}&#x3D;\left\{\begin{array}{ll}1-e^{-x&#x2F;\theta},&amp;x&gt;0\\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
+<p>$$<br>F(x)&#x3D;P{X\leq x}&#x3D;\left{\begin{array}{ll}1-e^{-x&#x2F;\theta},&amp;x&gt;0\0,&amp;\text{其它}\end{array}\right.<br>$$</p>
 <blockquote>
-<p>例3   设某类日光灯管的使用寿命 $X$ 服从参数为θ&#x3D;2000的指数分布(单位:小时).<br>(1) 任取一只这种灯管, 求能正常使用1000小时以上的概率. &#x20;<br>(2) 有一只这种灯管已经正常使用了1000 小时以上,求还能使用1000小时以上的概率.&#x20;</p>
+<p>例3  设某类日光灯管的使用寿命 $X$ 服从参数为θ&#x3D;2000的指数分布(单位:小时).<br>(1) 任取一只这种灯管, 求能正常使用1000小时以上的概率. &#x20;<br>(2) 有一只这种灯管已经正常使用了1000 小时以上,求还能使用1000小时以上的概率.&#x20;</p>
 </blockquote>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_VCMMwh21HB.png"></p>
 <p>指数分布的重要性质 :“无记忆性”.</p>
 <h3 id="4-3-3-正态分布"><a href="#4-3-3-正态分布" class="headerlink" title="4.3.3 正态分布"></a>4.3.3 正态分布</h3><p>若连续型随机变量$ X $的概率密度为：</p>
 <p>$$<br>f(x)&#x3D;\frac{1}{\sqrt{2 \pi} \sigma} \mathrm{e}^{-\frac{(x-\mu)^{2}}{2 \sigma^{2}}},-\infty&lt;x&lt;\infty<br>$$</p>
 <p>其中$\mu$和$\sigma$($\sigma$&gt;0)都是常数, 则称$X$服从参数为$(\mu, \sigma)$的正态分布或高斯分布，记作$X \sim N\left(\mu, \sigma^{2}\right)$。</p>
-<h4 id="4-3-3-1-f-x-具有下述性质"><a href="#4-3-3-1-f-x-具有下述性质" class="headerlink" title="4.3.3.1 f(x)具有下述性质"></a>4.3.3.1 <code>f(x)</code>具有下述性质</h4><p>（1）$f(x) \geq 0$</p>
-<p>（2）$\int_{-\infty}^{\infty} f(x) d x&#x3D;1$</p>
-<p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_BG0HOY48li.png"></p>
+<h4 id="4-3-3-1-f-x-具有下述性质"><a href="#4-3-3-1-f-x-具有下述性质" class="headerlink" title="4.3.3.1 f(x)具有下述性质"></a>4.3.3.1 f(x)具有下述性质</h4><ol>
+<li>$f(x) \geq 0$</li>
+<li>$\int_{-\infty}^{\infty} f(x) d x&#x3D;1$</li>
+<li>函数$f(x)$在$(-∞, \mu]$上单调增加，在$[\mu, ∞)$上单调减少，在$x&#x3D;\mu$取得最大值</li>
+</ol>
+<p>$$f(\mu)&#x3D;\frac1{\sqrt{2\pi}\sigma}$$</p>
+<p>函数图像如下：</p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_VwIlgYMkbg.png"></p>
 <p><img src="/2024/06/11/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/image_WcyCS5bR0n.png"></p>
 <p>正态分布$N\left(\mu, \sigma^{2}\right)$的图形特点：</p>
@@ -3372,7 +3374,7 @@
 <p>这说明，X的取值几乎全部集中在$[-3,3]$区间内，超出这个范围的可能性仅占不到0.3%。</p>
 <p>将上述结论推广到一般的正态分布,  $\boldsymbol{X} \sim N\left(\mu, \sigma^{2}\right) 时, \quad \boldsymbol{Y}&#x3D;\frac{\boldsymbol{X}-\mu}{\sigma} \sim N(0,1)$，有以下规律：</p>
 <p>$$<br>\begin{array}{l}P(\mu-\sigma \leq X \leq \mu+\sigma)&#x3D;0.6826 \ P(\mu-2 \sigma \leq X \leq \mu+2 \sigma)&#x3D;0.9544 \ P(\mu-3 \sigma \leq X \leq \mu+3 \sigma)&#x3D;0.9974\end{array}<br>$$</p>
-<p>可以认为，$X$的取值几乎全部集中在$[\mu-3\sigma, \mu+3\sigma]$区间内,这在统计学上称为“$3\sigma$准则”。</p>
+<p>可以认为，$X$的取值几乎全部集中在$[\mu-3\sigma, \mu+3\sigma]$区间内，这在统计学上称为“$3\sigma$准则”。</p>
 <p>（4）标准正态分布的上$α$分位点：$设{X} \sim N(0,1)$，若数$z_a$满足条件</p>
 <p>$$<br>    {P}\{X&gt;z_{\alpha}\}&#x3D;\alpha, 0&lt;\alpha&lt;1 \Longrightarrow P\{X&lt;-z_{\alpha}\}&#x3D;\alpha<br>$$</p>
 <p>则称点 $z_{\alpha}$ 为标准正态分布的上$ {\alpha}$ 分位点.</p>
@@ -4259,7 +4261,7 @@
 <p>$$<br>P{|\frac{\bar{X}-\mu_{0}}{\sigma &#x2F; \sqrt{n}}| \geq z_{\alpha &#x2F; 2}}&#x3D;\alpha<br>$$</p>
 <p>即$\left|\frac{\bar{X}-\mu_{0}}{\sigma &#x2F; \sqrt{n}}\right| \geq z_{\alpha &#x2F; 2}$是一个小概率事件。如果在一次实验中，上述不等式成立，则有理由怀疑原来的假设$H_0$的正确性，因而拒绝假设$H_0$。</p>
 <h2 id="1-3-假设检验的相关概念"><a href="#1-3-假设检验的相关概念" class="headerlink" title="1.3 假设检验的相关概念"></a>1.3 假设检验的相关概念</h2><h3 id="1-3-1-显著性水平"><a href="#1-3-1-显著性水平" class="headerlink" title="1.3.1 显著性水平"></a>1.3.1 显著性水平</h3><p>若$|z|&#x3D;\left|\frac{\bar{x}-\mu_{0}}{\sigma &#x2F; \sqrt{n}}\right| \geq k$，则称$\bar x$与$\mu_0$的差异是显著的，则拒绝假设$H_0$，反之接受$H_0$。</p>
-<p>其中k由α决定，α称为<strong>显著性水平</strong>。</p>
+<p>其中$k$由$α$决定，$α$称为<strong>显著性水平</strong>。</p>
 <h3 id="1-3-2-检验统计量"><a href="#1-3-2-检验统计量" class="headerlink" title="1.3.2 检验统计量"></a>1.3.2 检验统计量</h3><p>统计量$Z&#x3D;\frac{\bar{X}-\mu_{0}}{\sigma &#x2F; \sqrt{n}}$称为<strong>检验统计量</strong>。</p>
 <h3 id="1-3-3-原假设与备择假设"><a href="#1-3-3-原假设与备择假设" class="headerlink" title="1.3.3 原假设与备择假设"></a>1.3.3 原假设与备择假设</h3><p>假设检验问题通常叙述为：在显著性水平α下：</p>
 <ul>
@@ -4267,25 +4269,27 @@
 <li>$H_{1}: \mu \neq \mu_{0}$</li>
 </ul>
 <p>其中$H_0$称为<strong>原假设</strong>或<strong>零假设</strong>，$H_1$称为<strong>备择假设</strong>。</p>
-<h3 id="1-3-4-拒绝域与临界点"><a href="#1-3-4-拒绝域与临界点" class="headerlink" title="1.3.4 拒绝域与临界点"></a>1.3.4 拒绝域与临界点</h3><p>当检验统计量取某个区域C中的值时, 我们拒绝原假设$H_0$，则称区域C为<strong>拒绝域</strong>，拒绝域的边界点称为<strong>临界点</strong>。</p>
+<h3 id="1-3-4-拒绝域与临界点"><a href="#1-3-4-拒绝域与临界点" class="headerlink" title="1.3.4 拒绝域与临界点"></a>1.3.4 拒绝域与临界点</h3><p>当检验统计量取某个区域$C$中的值时, 我们拒绝原假设$H_0$，则称区域$C$为<strong>拒绝域</strong>，拒绝域的边界点称为<strong>临界点</strong>。</p>
 <p>如在例1中：</p>
 <ul>
 <li>拒绝域为$|z| \geq z_{\alpha &#x2F; 2}$</li>
 <li>临界点为$z&#x3D;-z_{\alpha &#x2F; 2}$和$z&#x3D;z_{\alpha &#x2F; 2}$</li>
 </ul>
 <h3 id="1-3-5-两类错误及记号"><a href="#1-3-5-两类错误及记号" class="headerlink" title="1.3.5 两类错误及记号"></a>1.3.5 两类错误及记号</h3><p><img src="/2024/06/20/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/image_PFV4iYSzFK.png"></p>
-<p>第I类错误的概率记为：$P { 当 H_{0} 为真拒绝 .H_{0}} 或 P_{\mu \in H_{0}}{. 拒绝 .H_{0}}$</p>
-<p>第II类错误的概率记为：$P_{ 当 H_{0} 不真接受 .H_{0}} 或 P_{\mu \in H_{1}}{. 接受 .H_{0}}$</p>
-<h3 id="1-3-6-显著性检验"><a href="#1-3-6-显著性检验" class="headerlink" title="1.3.6 显著性检验"></a>1.3.6 显著性检验</h3><p>只对犯第一类错误的概率加以控制, 而不考虑犯第二类错误的概率的检验, 称为显著性检验.</p>
+<p>第I类错误的概率记为：$P_{ 当 H_{0} 为真拒绝H_{0}} $或$ P_{\mu \in H_{0}}\{拒绝H_{0}\}$</p>
+<p>第II类错误的概率记为：$P_{ 当 H_{0} 不真接受H_{0}} $或$ P_{\mu \in H_{1}}\{接受H_{0}\}$</p>
+<h3 id="1-3-6-显著性检验"><a href="#1-3-6-显著性检验" class="headerlink" title="1.3.6 显著性检验"></a>1.3.6 显著性检验</h3><p>只对犯第一类错误的概率加以控制，而不考虑犯第二类错误的概率的检验，称为显著性检验.</p>
 <h3 id="1-3-7-双边备择假设与双边假设检验"><a href="#1-3-7-双边备择假设与双边假设检验" class="headerlink" title="1.3.7 双边备择假设与双边假设检验"></a>1.3.7 双边备择假设与双边假设检验</h3><p><img src="/2024/06/20/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/image_QZlc6kIoK4.png"></p>
 <h3 id="1-3-8-右边检验与左边检验"><a href="#1-3-8-右边检验与左边检验" class="headerlink" title="1.3.8 右边检验与左边检验"></a>1.3.8 右边检验与左边检验</h3><ul>
 <li>右边检验：形如$H_{0}: \mu \leq \mu_{0}$，$H_{1}: \mu&gt;\mu_{0}$的假设检验</li>
 <li>左边检验：形如$H_{0}: \mu \geq \mu_{0}$，$H_{1}: \mu &lt; \mu_{0}$的假设检验</li>
 </ul>
 <p>右边检验与左边检验统称为<strong>单边检验</strong>。</p>
-<h3 id="1-3-9-单边检验的拒绝域"><a href="#1-3-9-单边检验的拒绝域" class="headerlink" title="1.3.9 单边检验的拒绝域"></a>1.3.9 单边检验的拒绝域</h3><p><img src="/2024/06/20/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/image_EekiQaXFB5.png"></p>
-<p>1.4 假设检验的一般步骤</p>
-<ol>
+<h3 id="1-3-9-单边检验的拒绝域"><a href="#1-3-9-单边检验的拒绝域" class="headerlink" title="1.3.9 单边检验的拒绝域"></a>1.3.9 单边检验的拒绝域</h3><p>右边检验的拒绝域为：</p>
+<p>$$z&#x3D;\frac{\overline{x}-\mu_0}{\sigma&#x2F;\sqrt{n}}\geq z_\alpha $$</p>
+<p>左边检验的拒绝域为：</p>
+<p>$$z&#x3D;\frac{\overline{x}-\mu_0}{\sigma&#x2F;\sqrt{n}} \leq - z_\alpha $$</p>
+<h2 id="1-4-假设检验的一般步骤"><a href="#1-4-假设检验的一般步骤" class="headerlink" title="1.4 假设检验的一般步骤"></a>1.4 假设检验的一般步骤</h2><ol>
 <li>根据实际问题的要求，提出原假设$H_0$及备择假设$H_1$</li>
 <li>选择待检参数的估计量，确定检验统计量以及拒绝域的形式</li>
 <li>求出拒绝域</li>
@@ -4645,9 +4649,6 @@
 <p><img src="/2024/06/21/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97/image_yz7PEIM8ly.png"></p>
 <p><img src="/2024/06/21/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97/image_W6bDBXOpnw.png"></p>
 <p><img src="/2024/06/21/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97/image_Mu-kPEml8D.png"></p>
-<blockquote>
-<p>试说明行列式和矩阵的区别。</p>
-</blockquote>
 <p>行列式和矩阵有本质的区别：</p>
 <ul>
 <li>行列式是一个算式，一个数字行列式经过计算得到一个数值，<strong>并且行列式的行数和列数一定相等</strong>；</li>
@@ -4674,9 +4675,9 @@
 </ol>
 <h2 id="2-4-矩阵的乘法运算"><a href="#2-4-矩阵的乘法运算" class="headerlink" title="2.4 矩阵的乘法运算"></a>2.4 矩阵的乘法运算</h2><p>设$A&#x3D;\left(a_{i j}\right)$是一个$m \times s$矩阵，$B&#x3D;\left(b_{i j}\right)$是一个$s \times n$矩阵，规定矩阵A与矩阵B的乘法是一个$m \times n$矩阵$C&#x3D;\left(c_{i j}\right)$，其中</p>
 <p>$$<br>c_{i j}&#x3D;a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i s} b_{s j}&#x3D;\sum_{k&#x3D;1}^{s} a_{i k} b_{k j}<br>$$</p>
-<p>并将此乘积记为C&#x3D;AB。</p>
+<p>并将此乘积记为$C&#x3D;AB$。</p>
 <p>注意：只有当第一个矩阵A（左矩阵）的列数等于第二个矩阵B（右矩阵）的行数时，两个矩阵才能相乘，并且乘积矩阵AB的行数等于A的行数，而列数等于B的列数。</p>
-<h3 id="2-4-1-乘法运算的运算律"><a href="#2-4-1-乘法运算的运算律" class="headerlink" title="2.4.1 乘法运算的运算律"></a>2.4.1 乘法运算的运算律</h3><p>设A、B和C均为矩阵,$\lambda$是数，有如下运算规律：</p>
+<h3 id="2-4-1-乘法运算的运算律"><a href="#2-4-1-乘法运算的运算律" class="headerlink" title="2.4.1 乘法运算的运算律"></a>2.4.1 乘法运算的运算律</h3><p>设A、B和C均为矩阵，$\lambda$是数，有如下运算规律：</p>
 <ol>
 <li>乘法的结合律：$(A B) C&#x3D;A(B C)$</li>
 <li>$\lambda(A B)&#x3D;A(\lambda B)$</li>
@@ -4781,7 +4782,6 @@
 <p><img src="/2024/06/21/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97/image_vvk613rUso.png"></p>
 <h3 id="4-2-3-定理3"><a href="#4-2-3-定理3" class="headerlink" title="4.2.3 定理3"></a>4.2.3 定理3</h3><p>若线性方程组（2）的系数行列式$D \neq 0$，则（2）只有零解，没有非零解。</p>
 <h3 id="4-2-4-定理4"><a href="#4-2-4-定理4" class="headerlink" title="4.2.4 定理4"></a>4.2.4 定理4</h3><p>若线性方程组（2）有非零解，则（2）的系数行列式$D&#x3D;0$。</p>
-<hr>
 <h2 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3 总结"></a>4.3 总结</h2><p>（1）利用克拉默法则解线性方程组的条件：</p>
 <ul>
 <li>方程的个数&#x3D;未知数的个数</li>
@@ -5398,130 +5398,6 @@
       </tags>
   </entry>
   <entry>
-    <title>编译原理第6章：自顶向上的语法分析</title>
-    <url>/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="1-自底向上分析概述"><a href="#1-自底向上分析概述" class="headerlink" title="1 自底向上分析概述"></a>1 自底向上分析概述</h1><p>从分析树的底部(叶节点)向顶部(根节点)方向构造分析树，可以看成是将输入串w归约为文法开始符号S的过程。</p>
-<ul>
-<li>自顶向下的语法分析采用最左推导方式</li>
-<li>自底向上的语法分析采用最左归约方式（反向构造最右推导）</li>
-</ul>
-<p>自底向上语法分析的通用框架：移入-归约分析(Shift-Reduce Parsing)。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_qdNBMdVK4Y.png"></p>
-<h2 id="1-1-移入-归约分析的工作过程"><a href="#1-1-移入-归约分析的工作过程" class="headerlink" title="1.1 移入-归约分析的工作过程"></a>1.1 移入-归约分析的工作过程</h2><p>在对输入串的一次从左到右扫描过程中，语法分析器将零个或多个输入符号移入到栈的顶端，直到它可以对栈顶的一个文法符号串β进行归约为止。</p>
-<p>然后，它将β归约为某个产生式的左部，语法分析器不断地重复这个循环，直到它检测到一个语法错误，或者栈中包含了开始符号且输入缓冲区为空(当出现这种情况时，语法分析器停止运行，并宣称成功完成了语法分析)为止。</p>
-<h2 id="1-2-移入-归约分析器可采取的4种动作"><a href="#1-2-移入-归约分析器可采取的4种动作" class="headerlink" title="1.2 移入-归约分析器可采取的4种动作"></a>1.2 移入-归约分析器可采取的4种动作</h2><ul>
-<li><strong>移入</strong>：将下一个输入符号移到栈的顶端</li>
-<li><strong>归约</strong>：被归约的符号串的右端必然处于栈顶。语法分析器在栈中确定这个串的左端，并决定用哪个非终结符来替换这个串</li>
-<li><strong>接收</strong>：宣布语法分析过程成功完成</li>
-<li><strong>报错</strong>：发现一个语法错误，并调用错误恢复子例程</li>
-</ul>
-<p>移入-归约分析中存在的问题：如何正确地识别句柄？</p>
-<hr>
-<h1 id="2-LR分析概述"><a href="#2-LR分析概述" class="headerlink" title="2 LR分析概述"></a>2 LR分析概述</h1><p>LR文法(Knuth, 1963) 是最大的、可以构造出相应移入-归约语法分析器的文法类。</p>
-<ul>
-<li>L：对输入进行从左到右的扫描</li>
-<li>R：反向构造出一个最右推导序列</li>
-</ul>
-<p>LR(k)分析：需要向前查看k个输入符号的LR分析。其中，k&#x3D; 0 和 k &#x3D; 1 这两种情况具有实践意义，当省略(k)时，表示k &#x3D;1。</p>
-<h2 id="2-1-LR-分析法的基本原理"><a href="#2-1-LR-分析法的基本原理" class="headerlink" title="2.1 LR 分析法的基本原理"></a>2.1 LR 分析法的基本原理</h2><p>自底向上分析的关键问题是如何正确地识别句柄，句柄是逐步形成的，用“状态”表示句柄识别的进展程度。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_98PmbOgupx.png"></p>
-<h2 id="2-2-LR-分析器（自动机）的总体结构"><a href="#2-2-LR-分析器（自动机）的总体结构" class="headerlink" title="2.2 LR 分析器（自动机）的总体结构"></a>2.2 LR 分析器（自动机）的总体结构</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_YMk2k0gFHT.png"></p>
-<h2 id="2-3-LR-分析器的工作过程"><a href="#2-3-LR-分析器的工作过程" class="headerlink" title="2.3 LR 分析器的工作过程"></a>2.3 LR 分析器的工作过程</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_NMP4T0iFeG.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_7kqN7zkFZK.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_xabUIsjCjy.png"></p>
-<h2 id="2-4-LR分析算法"><a href="#2-4-LR分析算法" class="headerlink" title="2.4 LR分析算法"></a>2.4 LR分析算法</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WMBTxRr0mH.png"></p>
-<p>如何构造给定文法的LR分析表？</p>
-<ul>
-<li>LR(0)分析</li>
-<li>SLR分析</li>
-<li>LR(1)分析</li>
-<li>LALR分析</li>
-</ul>
-<hr>
-<h1 id="3-LR-0-分析"><a href="#3-LR-0-分析" class="headerlink" title="3  LR(0)分析"></a>3  LR(0)分析</h1><p>右部某位置标有圆点的产生式称为相应文法的一个LR(0)项目（简称为项目）。</p>
-<p>$$<br>A \rightarrow \alpha_{1} \cdot \alpha_{2}<br>$$</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_Hr-eStVwz5.png"></p>
-<h2 id="3-1-增广文法"><a href="#3-1-增广文法" class="headerlink" title="3.1 增广文法"></a>3.1 增广文法</h2><p>如果G 是一个以S为开始符号的文法，则G的增广文法 G’ 就是在G中加上新开始符号S’ 和产生式S’ → S而得到的文法。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_EA5Hqa_IF_.png"></p>
-<p>引入这个新的开始产生式的目的是使得文法开始符号仅出现在一个产生式的左边，从而使得分析器只有一个接受状态。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_dDv_gi68y7.png"></p>
-<h3 id="3-1-1-后继项目"><a href="#3-1-1-后继项目" class="headerlink" title="3.1.1 后继项目"></a>3.1.1 后继项目</h3><p>同属于一个产生式的项目，但圆点的位置只相差一个符号，则称后者是前者的后继项目。</p>
-<p>A→α· Xβ的后继项目是A→αX·β。</p>
-<p>上述15个项目中是否会有某些项目是等价的？</p>
-<p>可以把等价的项目组成一个项目集(I)，称为<strong>项目集闭包</strong>(Closure of Item Sets)，每个项目集闭包对应着自动机的一个状态。</p>
-<h2 id="3-2-LR-0-自动机"><a href="#3-2-LR-0-自动机" class="headerlink" title="3.2 LR(0)自动机"></a>3.2 LR(0)自动机</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_kaQzEsWreT.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_6vWnPIdK6F.png"></p>
-<h2 id="3-3-移进规约冲突"><a href="#3-3-移进规约冲突" class="headerlink" title="3.3 移进规约冲突"></a>3.3 移进规约冲突</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_fwkpuRwl2Q.png"></p>
-<p>表达式文法的LR(0)分析表含有移进&#x2F;归约冲突：</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_7nT-c4FlQ3.png"></p>
-<p>如果LR(0)分析表中没有语法分析动作冲突，那么给定的文法就称为LR(0)文法。</p>
-<p>不是所有CFG都能用LR(0)方法进行分析，也就是说，CFG不总是LR(0)文法。</p>
-<hr>
-<h1 id="4-SLR分析"><a href="#4-SLR分析" class="headerlink" title="4 SLR分析"></a>4 SLR分析</h1><p>SLR(1)分析法的基本思想：看要规约项目的FOLLOW集中是否包含输入的符号。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_x0XKooBSra.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_b4r1I409zl.png"></p>
-<h2 id="4-1-SLR-1-分析表构造算法"><a href="#4-1-SLR-1-分析表构造算法" class="headerlink" title="4.1 SLR(1) 分析表构造算法"></a>4.1 SLR(1) 分析表构造算法</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_kf3ekvMi75.png"></p>
-<p>如果给定文法的SLR(1)分析表中不存在有冲突的动作，那么该文法称为SLR(1)文法。</p>
-<hr>
-<h1 id="5-LR-1-分析"><a href="#5-LR-1-分析" class="headerlink" title="5 LR(1)分析"></a>5 LR(1)分析</h1><h2 id="5-1-LR-1-分析法的提出"><a href="#5-1-LR-1-分析法的提出" class="headerlink" title="5.1 LR(1)分析法的提出"></a>5.1 LR(1)分析法的提出</h2><p>SLR(1)分析存在的问题：</p>
-<p>SLR(1)只是简单地考察下一个输入符号b是否属于与归约项目A→α相关联的FOLLOW(A)，但b∈FOLLOW(A)只是归约α的一个必要条件，而非充分条件。</p>
-<p>对于产生式 A→α的归约，在不同的使用位置，A会要求不同的后继符号。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_tNVNMy-eaK.png"></p>
-<p>在特定位置，A的后继符集合是FOLLOW(A)的子集。</p>
-<h2 id="5-2-规范LR-1-项目"><a href="#5-2-规范LR-1-项目" class="headerlink" title="5.2 规范LR(1)项目"></a>5.2 规范LR(1)项目</h2><p>将一般形式为 [A→α·β, a]的项称为 LR(1) 项，其中A→αβ 是一个产生式，a 是一个终结符(这里将$视为一个特殊的终结符)它表示在当前状态下，A后面必须紧跟的终结符，称为该项的<strong>展望符</strong>(<code>lookahead</code>)。</p>
-<ul>
-<li>LR(1)中的1指的是第二个分量的长度</li>
-</ul>
-<p>在形如[A→α·β, a]且β ≠ ε的项中，展望符a没有任何作用，但是一个形如[A→α·, a]的项在只有在下一个输入符号等于a时才可以按照A→α 进行归约。</p>
-<p>这样的a的集合总是FOLLOW(A)的子集，而且它通常是一个真子集。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_1Z9kZ5A7X5.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WFd6vdq-Ls.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_c_cBuqxbob.png"></p>
-<hr>
-<h1 id="6-LALR分析"><a href="#6-LALR分析" class="headerlink" title="6 LALR分析"></a>6 LALR分析</h1><h2 id="6-1-LALR-lookahead-LR-分析的基本思想"><a href="#6-1-LALR-lookahead-LR-分析的基本思想" class="headerlink" title="6.1 LALR(lookahead-LR)分析的基本思想"></a>6.1 LALR(lookahead-LR)分析的基本思想</h2><p>寻找具有相同核心的LR (1) 项集，并将这些项集合并为一个项集。 所谓项集的核心就是其第一分量的集合。</p>
-<p>然后根据合并后得到的项集族构造语法分析表，如果分析表中没有语法分析动作冲突，给定的文法就称为<code>LALR(1)</code>文法，就可以根据该分析表进行语法分析。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_o4Go5S4qLk.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_SB7t8duKQ5.png"></p>
-<p>合并同心项集后，虽然节省了空间，也不产生冲突，但可能会推迟错误的发现，同时<code>LALR</code>分析法可能会作多余的归约动作，但绝不会作错误的移进操作。</p>
-<h2 id="6-2-LALR-1-的特点"><a href="#6-2-LALR-1-的特点" class="headerlink" title="6.2 LALR(1)的特点"></a>6.2 LALR(1)的特点</h2><ol>
-<li>形式上与LR(1)相同</li>
-<li>大小上与LR(0)&#x2F;SLR相当</li>
-<li>分析能力介于SLR和LR(1)二者之间，即$S L R&lt;L A L R(1)&lt;L R(1)$</li>
-<li>合并后的展望符集合仍为FOLLOW集的子集</li>
-</ol>
-<hr>
-<h1 id="7-二义性文法的LR分析"><a href="#7-二义性文法的LR分析" class="headerlink" title="7 二义性文法的LR分析"></a>7 二义性文法的LR分析</h1><p>每个二义性文法都不是LR的，某些类型的二义性文法在语言的描述和实现中很有用。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WMhDAJlISO.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_H5sDw1aSR6.png"></p>
-<p>二义性文法的使用：</p>
-<p>应该保守地使用二义性文法，并且必须在严格控制之下使用，因为稍有不慎就会导致语法分析器所识别的语言出现偏差。</p>
-<hr>
-<h1 id="8-LR分析中的错误处理"><a href="#8-LR分析中的错误处理" class="headerlink" title="8 LR分析中的错误处理"></a>8 LR分析中的错误处理</h1><p><strong>语法错误的检测</strong>：</p>
-<p>当LR分析器在查询分析表并发现一个报错条目时，就检测到了一个语法错误。</p>
-<p><strong>错误恢复策略</strong>：</p>
-<ul>
-<li>恐慌模式错误恢复</li>
-<li>短语层次错误恢复</li>
-</ul>
-<h2 id="8-1-恐慌模式错误恢复"><a href="#8-1-恐慌模式错误恢复" class="headerlink" title="8.1 恐慌模式错误恢复"></a>8.1 恐慌模式错误恢复</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_eimLFfNnsP.png"></p>
-<p>从栈顶向下扫描，直到发现某个状态$s_i$，它有一个对应于某个非终结符A的<code>GOTO</code>目标，可以认为从这个A推导出的串中包含错误。</p>
-<p>然后丢弃0个或多个输入符号，直到发现一个可能合法地跟在A之后的符号a为止。</p>
-<p>之后将$s_{i+1}&#x3D;G O T O\left(s_{i}, A\right)$压入栈中，继续进行正常的语法分析。</p>
-<h2 id="8-2-短语层次错误恢复"><a href="#8-2-短语层次错误恢复" class="headerlink" title="8.2 短语层次错误恢复"></a>8.2 短语层次错误恢复</h2><p>检查LR分析表中的每一个报错条目，并根据语言的使用方法来决定程序员所犯的何种错误最有可能引起这个语法错误，然后构造出适当的恢复过程。</p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_S8VIlNOJa9.png"></p>
-<h3 id="8-2-1-带有错误处理子程序的算术表达式文法LR分析表"><a href="#8-2-1-带有错误处理子程序的算术表达式文法LR分析表" class="headerlink" title="8.2.1 带有错误处理子程序的算术表达式文法LR分析表"></a>8.2.1 带有错误处理子程序的算术表达式文法LR分析表</h3><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_zfJ5RwpI-8.png"></p>
-<h2 id="8-3-自底向上语法分析小结"><a href="#8-3-自底向上语法分析小结" class="headerlink" title="8.3 自底向上语法分析小结"></a>8.3 自底向上语法分析小结</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_QOWXOfg8Ei.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_c7hAFtthKx.png"></p>
-<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_NY3M92gfMH.png"></p>
-]]></content>
-      <categories>
-        <category>专业课</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机组成原理第3章：系统总线</title>
     <url>/2024/06/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/</url>
     <content><![CDATA[<h1 id="1-总线的基本概念"><a href="#1-总线的基本概念" class="headerlink" title="1 总线的基本概念"></a>1 总线的基本概念</h1><p>计算机系统的五大部件之间的互连方式有两种：</p>
@@ -6041,7 +5917,7 @@
 <li>根据输入流中的下一个终结符，选择最左非终结符的一个候选式</li>
 </ol>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_8p6NTn3ABN.png"></p>
-<h2 id="1-4-自顶向下语法分析的通用形式"><a href="#1-4-自顶向下语法分析的通用形式" class="headerlink" title="1.4 自顶向下语法分析的通用形式"></a>1.4 自顶向下语法分析的通用形式</h2><h3 id="1-4-1-递归下降分析-Recursive-Descent-Parsing"><a href="#1-4-1-递归下降分析-Recursive-Descent-Parsing" class="headerlink" title="1.4.1 递归下降分析 (Recursive-Descent Parsing)"></a>1.4.1 递归下降分析 (Recursive-Descent Parsing)</h3><ul>
+<h2 id="1-4-自顶向下语法分析的通用形式"><a href="#1-4-自顶向下语法分析的通用形式" class="headerlink" title="1.4 自顶向下语法分析的通用形式"></a>1.4 自顶向下语法分析的通用形式</h2><h3 id="1-4-1-递归下降分析"><a href="#1-4-1-递归下降分析" class="headerlink" title="1.4.1 递归下降分析"></a>1.4.1 递归下降分析</h3><ul>
 <li>由一组过程组成，每个过程对应一个非终结符</li>
 <li>从文法开始符号$S$对应的过程开始，其中递归调用文法中其它非终结符对应的过程。如果$S$对应的过程体恰好扫描了整个输入串，则成功完成语法分析</li>
 </ul>
@@ -6067,43 +5943,43 @@
 <h3 id="2-2-1-提取左公因子算法"><a href="#2-2-1-提取左公因子算法" class="headerlink" title="2.2.1 提取左公因子算法"></a>2.2.1 提取左公因子算法</h3><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_93dVEWdjQl.png"></p>
 <hr>
 <h1 id="3-LL-1-文法"><a href="#3-LL-1-文法" class="headerlink" title="3 LL(1)文法"></a>3 LL(1)文法</h1><h2 id="3-1-S-文法"><a href="#3-1-S-文法" class="headerlink" title="3.1 S_文法"></a>3.1 S_文法</h2><p><strong>预测分析法的工作过程</strong>：</p>
-<p>从文法开始符号出发，在每一步推导过程中根据当前句型的最左非终结符A和当前输入符号a，选择正确的A-产生式。</p>
+<p>从文法开始符号出发，在每一步推导过程中根据当前句型的最左非终结符$A$和当前输入符号$a$，选择正确的A-产生式。</p>
 <p>为保证分析的确定性，选出的候选式必须是唯一的。</p>
 <p>S_文法是一种简单的确定性文法，要求如下：</p>
 <ol>
 <li>每个产生式的右部都以终结符开始</li>
 <li>同一非终结符的各个候选式的首终结符都不同</li>
-<li>S_文法不含ε产生式</li>
+<li>S_文法不含 $ε$ 产生式</li>
 </ol>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_BiGMcHKJvR.png"></p>
-<h2 id="3-2-非终结符的后继符号集"><a href="#3-2-非终结符的后继符号集" class="headerlink" title="3.2 非终结符的后继符号集"></a>3.2 非终结符的后继符号集</h2><p>可能在某个句型中紧跟在A后边的终结符a的集合，记为FOLLOW(A)。</p>
+<h2 id="3-2-非终结符的后继符号集"><a href="#3-2-非终结符的后继符号集" class="headerlink" title="3.2 非终结符的后继符号集"></a>3.2 非终结符的后继符号集</h2><p>可能在某个句型中紧跟在$A$后边的终结符$a$的集合，记为$FOLLOW(A)$。</p>
 <p>$$<br>    \mathrm{FOLLOW}(A) &#x3D; \{ a \mid S\Rightarrow^*\alpha Aa\beta, a \in V_T,\alpha, \beta\in(V_T\cup V_N)^* \}<br>$$</p>
-<p>如果 A是某个句型的最右符号，则将结束符“$”添加到FOLLOW(A)中。</p>
-<h2 id="3-3-产生式的可选集"><a href="#3-3-产生式的可选集" class="headerlink" title="3.3 产生式的可选集"></a>3.3 产生式的可选集</h2><p>产生式A→β的可选集是指可以选用该产生式进行推导时对应的输入符号的集合，记为SELECT(A→β)。</p>
+<p>如果 $A$ 是某个句型的最右符号，则将结束符“\$”添加到 $FOLLOW(A)$ 中。</p>
+<h2 id="3-3-产生式的可选集"><a href="#3-3-产生式的可选集" class="headerlink" title="3.3 产生式的可选集"></a>3.3 产生式的可选集</h2><p>产生式$A→β$的可选集是指可以选用该产生式进行推导时对应的输入符号的集合，记为$SELECT(A→β)$。</p>
 <ul>
-<li>$S E L E C T(A \rightarrow a \beta)&#x3D;{a}$</li>
+<li>$\operatorname{SELECT}(A \rightarrow a \beta)&#x3D;{a}$</li>
 <li>$\operatorname{SELECT}(A \rightarrow \varepsilon)&#x3D;F O L L O W(A)$</li>
 </ul>
 <h2 id="3-4-q-文法"><a href="#3-4-q-文法" class="headerlink" title="3.4 q_文法"></a>3.4 q_文法</h2><ol>
-<li>每个产生式的右部或为ε ，或以终结符开始</li>
+<li>每个产生式的右部或为$ε$，或以终结符开始</li>
 <li>具有相同左部的产生式有不相交的可选集</li>
 </ol>
 <p>q_文法不含右部以非终结符开始的产生式。</p>
 <h2 id="3-5-串首终结符集"><a href="#3-5-串首终结符集" class="headerlink" title="3.5 串首终结符集"></a>3.5 串首终结符集</h2><p>串首终结符集：串首第一个符号，并且是终结符，简称首终结符。</p>
-<p>给定一个文法符号串α，α的串首终结符集FIRST(α)被定义为可以从α推导出的所有串首终结符构成的集合。</p>
-<p>如果α ⇒* ε，那么ε也在FIRST(α)中。</p>
+<p>给定一个文法符号串$α$，$α$的串首终结符集$FIRST(α)$被定义为可以从$α$推导出的所有串首终结符构成的集合。</p>
+<p>如果$α ⇒* ε$，那么$ε$也在$FIRST(α)$中。</p>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_ydF5aeqvoD.png"></p>
 <h3 id="3-5-1-计算文法符号X的FIRST-X"><a href="#3-5-1-计算文法符号X的FIRST-X" class="headerlink" title="3.5.1 计算文法符号X的FIRST(X)"></a>3.5.1 计算文法符号X的FIRST(X)</h3><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_O7vmrG3O8m.png"></p>
-<h3 id="3-5-2-算法"><a href="#3-5-2-算法" class="headerlink" title="3.5.2 算法"></a>3.5.2 算法</h3><p>不断应用下列规则，直到没有新的终结符或ε可以被加入到任何FIRST集合中为止：</p>
+<h3 id="3-5-2-算法"><a href="#3-5-2-算法" class="headerlink" title="3.5.2 算法"></a>3.5.2 算法</h3><p>不断应用下列规则，直到没有新的终结符$ε$可以被加入到任何$FIRST$集合中为止：</p>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_3dS2E65fb5.png"></p>
 <h3 id="3-5-3-计算非终结符A的FOLLOW-A"><a href="#3-5-3-计算非终结符A的FOLLOW-A" class="headerlink" title="3.5.3 计算非终结符A的FOLLOW(A)"></a>3.5.3 计算非终结符A的FOLLOW(A)</h3><p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_AjwPYJkJX6.png"></p>
-<h3 id="3-5-4-算法"><a href="#3-5-4-算法" class="headerlink" title="3.5.4 算法"></a>3.5.4 算法</h3><p>不断应用下列规则，直到没有新的终结符可以被加入到任何FOLLOW集合中为止：</p>
+<h3 id="3-5-4-算法"><a href="#3-5-4-算法" class="headerlink" title="3.5.4 算法"></a>3.5.4 算法</h3><p>不断应用下列规则，直到没有新的终结符可以被加入到任何$FOLLOW$集合中为止：</p>
 <p><img src="/2024/06/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_JS7nPdtyYZ.png"></p>
-<h2 id="3-6-产生式的可选集的重新定义"><a href="#3-6-产生式的可选集的重新定义" class="headerlink" title="3.6 产生式的可选集的重新定义"></a>3.6 产生式的可选集的重新定义</h2><p>产生式A→β的可选集是指可以选用该产生式进行推导时对应的输入符号的集合，记为SELECT(A→β)。</p>
-<p>产生式A→α的可选集SELECT：</p>
+<h2 id="3-6-产生式的可选集的重新定义"><a href="#3-6-产生式的可选集的重新定义" class="headerlink" title="3.6 产生式的可选集的重新定义"></a>3.6 产生式的可选集的重新定义</h2><p>产生式$A→β$的可选集是指可以选用该产生式进行推导时对应的输入符号的集合，记为$SELECT(A→β)$。</p>
+<p>产生式$A→α$的可选集$SELECT$：</p>
 <ul>
-<li>如果 ε∉FIRST(α), 那么SELECT(A→α) &#x3D; FIRST(α)</li>
-<li>如果 ε∈FIRST(α), 那么SELECT(A→α)&#x3D;( FIRST(α)-{ε} )∪FOLLOW(A)</li>
+<li>如果 $ε∉FIRST(α)$, 那么$SELECT(A→α) &#x3D; FIRST(α)$</li>
+<li>如果 $ε∈FIRST(α)$, 那么$SELECT(A→α)&#x3D;( FIRST(α)-{ε} )∪FOLLOW(A)$</li>
 </ul>
 <h2 id="3-7-LL-1-文法"><a href="#3-7-LL-1-文法" class="headerlink" title="3.7 LL(1)文法"></a>3.7 LL(1)文法</h2><p>一个上下文无关文法是LL(1)文法的充要条件是，对每个非终结符A的任意两个不同产生式A → α ，A → β ，满足：</p>
 <p>$$<br>S E L E C T(A \rightarrow \alpha) \cap S E L E C T(A \rightarrow \beta)&#x3D;\Phi<br>$$</p>
@@ -8672,9 +8548,9 @@
     <url>/2024/06/06/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%BE%AE%E5%88%86/</url>
     <content><![CDATA[<h1 id="1-导数概念"><a href="#1-导数概念" class="headerlink" title="1 导数概念"></a>1 导数概念</h1><h2 id="1-1-函数在一点处可导的概念"><a href="#1-1-函数在一点处可导的概念" class="headerlink" title="1.1 函数在一点处可导的概念"></a>1.1 函数在一点处可导的概念</h2><h3 id="1-1-1-导数定义"><a href="#1-1-1-导数定义" class="headerlink" title="1.1.1 导数定义"></a>1.1.1 导数定义</h3><p><img src="/2024/06/06/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%BE%AE%E5%88%86/image_vrCFDu5Uxk.png"></p>
 <p>数学定义为：</p>
-<p>$$<br>f^{\prime}\left(x_{0}\right)&#x3D;\lim <em>{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x}&#x3D;\lim <em>{\Delta x \rightarrow 0} \frac{f\left(x</em>{0}+\Delta x\right)-f\left(x</em>{0}\right)}{\Delta x}<br>$$</p>
+<p>$$f’\left(x_0\right)&#x3D;\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}&#x3D;\lim_{\Delta x\to0}\frac{f\left(x_0+\Delta x\right)-f\left(x_0\right)}{\Delta x}$$</p>
 <p>也可记作：</p>
-<p>$$<br>\left.\left.y^{\prime}\right|<em>{x&#x3D;x</em>{0}} \frac{\mathrm{d} y}{\mathrm{~d} x}\right|<em>{x&#x3D;x</em>{0}} 或 \left.\frac{\mathrm{d} f(x)}{\mathrm{d} x}\right|<em>{x&#x3D;x</em>{0}}<br>$$</p>
+<p>$$y’|_{x&#x3D;x_0}, \frac{\mathrm{d}y}{\mathrm{d}x} |_{x&#x3D;x_0} \text{或}\frac{\mathrm{d}f(x)}{\mathrm{d}x}|_{x&#x3D;x_0}$$</p>
 <ul>
 <li>导数的实质：变化率</li>
 </ul>
@@ -11889,6 +11765,236 @@
       </categories>
       <tags>
         <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编译原理第6章：自底向上的语法分析</title>
+    <url>/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="1-自底向上分析概述"><a href="#1-自底向上分析概述" class="headerlink" title="1 自底向上分析概述"></a>1 自底向上分析概述</h1><p>从分析树的底部(叶节点)向顶部(根节点)方向构造分析树，可以看成是将输入串w归约为文法开始符号S的过程。</p>
+<ul>
+<li>自顶向下的语法分析采用最左推导方式</li>
+<li>自底向上的语法分析采用最左归约方式（反向构造最右推导）</li>
+</ul>
+<p>自底向上语法分析的通用框架：移入-归约分析(Shift-Reduce Parsing)。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_qdNBMdVK4Y.png"></p>
+<h2 id="1-1-移入-归约分析的工作过程"><a href="#1-1-移入-归约分析的工作过程" class="headerlink" title="1.1 移入-归约分析的工作过程"></a>1.1 移入-归约分析的工作过程</h2><p>在对输入串的一次从左到右扫描过程中，语法分析器将零个或多个输入符号移入到栈的顶端，直到它可以对栈顶的一个文法符号串β进行归约为止。</p>
+<p>然后，它将β归约为某个产生式的左部，语法分析器不断地重复这个循环，直到它检测到一个语法错误，或者栈中包含了开始符号且输入缓冲区为空(当出现这种情况时，语法分析器停止运行，并宣称成功完成了语法分析)为止。</p>
+<h2 id="1-2-移入-归约分析器可采取的4种动作"><a href="#1-2-移入-归约分析器可采取的4种动作" class="headerlink" title="1.2 移入-归约分析器可采取的4种动作"></a>1.2 移入-归约分析器可采取的4种动作</h2><ul>
+<li><strong>移入</strong>：将下一个输入符号移到栈的顶端</li>
+<li><strong>归约</strong>：被归约的符号串的右端必然处于栈顶。语法分析器在栈中确定这个串的左端，并决定用哪个非终结符来替换这个串</li>
+<li><strong>接收</strong>：宣布语法分析过程成功完成</li>
+<li><strong>报错</strong>：发现一个语法错误，并调用错误恢复子例程</li>
+</ul>
+<p>移入-归约分析中存在的问题：如何正确地识别句柄？</p>
+<hr>
+<h1 id="2-LR分析概述"><a href="#2-LR分析概述" class="headerlink" title="2 LR分析概述"></a>2 LR分析概述</h1><p>LR文法（Knuth, 1963）是最大的、可以构造出相应移入-归约语法分析器的文法类。</p>
+<ul>
+<li>L：对输入进行从左到右的扫描</li>
+<li>R：反向构造出一个最右推导序列</li>
+</ul>
+<p>LR(k)分析：需要向前查看k个输入符号的LR分析。其中，$k&#x3D; 0$ 和 $k &#x3D; 1$ 这两种情况具有实践意义，当省略(k)时，表示k &#x3D;1。</p>
+<h2 id="2-1-LR-分析法的基本原理"><a href="#2-1-LR-分析法的基本原理" class="headerlink" title="2.1 LR 分析法的基本原理"></a>2.1 LR 分析法的基本原理</h2><p>自底向上分析的关键问题是如何正确地识别句柄，句柄是逐步形成的，用“状态”表示句柄识别的进展程度。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_98PmbOgupx.png"></p>
+<h2 id="2-2-LR-分析器（自动机）的总体结构"><a href="#2-2-LR-分析器（自动机）的总体结构" class="headerlink" title="2.2 LR 分析器（自动机）的总体结构"></a>2.2 LR 分析器（自动机）的总体结构</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_YMk2k0gFHT.png"></p>
+<h2 id="2-3-LR-分析器的工作过程"><a href="#2-3-LR-分析器的工作过程" class="headerlink" title="2.3 LR 分析器的工作过程"></a>2.3 LR 分析器的工作过程</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_NMP4T0iFeG.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_7kqN7zkFZK.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_xabUIsjCjy.png"></p>
+<h2 id="2-4-LR分析算法"><a href="#2-4-LR分析算法" class="headerlink" title="2.4 LR分析算法"></a>2.4 LR分析算法</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WMBTxRr0mH.png"></p>
+<p>如何构造给定文法的LR分析表？</p>
+<ul>
+<li>LR(0)分析</li>
+<li>SLR分析</li>
+<li>LR(1)分析</li>
+<li>LALR分析</li>
+</ul>
+<hr>
+<h1 id="3-LR-0-分析"><a href="#3-LR-0-分析" class="headerlink" title="3  LR(0)分析"></a>3  LR(0)分析</h1><p>右部某位置标有圆点的产生式称为相应文法的一个LR(0)项目（简称为项目）。</p>
+<p>$$<br>A \rightarrow \alpha_{1} \cdot \alpha_{2}<br>$$</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_Hr-eStVwz5.png"></p>
+<h2 id="3-1-增广文法"><a href="#3-1-增广文法" class="headerlink" title="3.1 增广文法"></a>3.1 增广文法</h2><p>如果$G$是一个以$S$为开始符号的文法，则$G$的增广文法$G’$就是在$G$中加上新开始符号$S’$和产生式$S’ → S$而得到的文法。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_EA5Hqa_IF_.png"></p>
+<p>引入这个新的开始产生式的目的是使得文法开始符号仅出现在一个产生式的左边，从而使得分析器只有一个接受状态。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_dDv_gi68y7.png"></p>
+<h3 id="3-1-1-后继项目"><a href="#3-1-1-后继项目" class="headerlink" title="3.1.1 后继项目"></a>3.1.1 后继项目</h3><p>同属于一个产生式的项目，但圆点的位置只相差一个符号，则称后者是前者的后继项目。</p>
+<p>$A→α· Xβ$的后继项目是$A→αX·β$。</p>
+<p>上述15个项目中是否会有某些项目是等价的？</p>
+<p>可以把等价的项目组成一个项目集(I)，称为<strong>项目集闭包</strong>（Closure of Item Sets），每个项目集闭包对应着自动机的一个状态。</p>
+<h2 id="3-2-LR-0-自动机"><a href="#3-2-LR-0-自动机" class="headerlink" title="3.2 LR(0)自动机"></a>3.2 LR(0)自动机</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_kaQzEsWreT.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_6vWnPIdK6F.png"></p>
+<h2 id="3-3-移进规约冲突"><a href="#3-3-移进规约冲突" class="headerlink" title="3.3 移进规约冲突"></a>3.3 移进规约冲突</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_fwkpuRwl2Q.png"></p>
+<p>表达式文法的LR(0)分析表含有移进&#x2F;归约冲突：</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_7nT-c4FlQ3.png"></p>
+<p>如果LR(0)分析表中没有语法分析动作冲突，那么给定的文法就称为LR(0)文法。</p>
+<p>不是所有CFG都能用LR(0)方法进行分析，也就是说，CFG不总是LR(0)文法。</p>
+<hr>
+<h1 id="4-SLR分析"><a href="#4-SLR分析" class="headerlink" title="4 SLR分析"></a>4 SLR分析</h1><p>SLR(1)分析法的基本思想：看要规约项目的FOLLOW集中是否包含输入的符号。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_x0XKooBSra.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_b4r1I409zl.png"></p>
+<h2 id="4-1-SLR-1-分析表构造算法"><a href="#4-1-SLR-1-分析表构造算法" class="headerlink" title="4.1 SLR(1) 分析表构造算法"></a>4.1 SLR(1) 分析表构造算法</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_kf3ekvMi75.png"></p>
+<p>如果给定文法的SLR(1)分析表中不存在有冲突的动作，那么该文法称为SLR(1)文法。</p>
+<hr>
+<h1 id="5-LR-1-分析"><a href="#5-LR-1-分析" class="headerlink" title="5 LR(1)分析"></a>5 LR(1)分析</h1><h2 id="5-1-LR-1-分析法的提出"><a href="#5-1-LR-1-分析法的提出" class="headerlink" title="5.1 LR(1)分析法的提出"></a>5.1 LR(1)分析法的提出</h2><p>SLR(1)分析存在的问题：</p>
+<p>SLR(1)只是简单地考察下一个输入符号b是否属于与归约项目A→α相关联的FOLLOW(A)，但b∈FOLLOW(A)只是归约α的一个必要条件，而非充分条件。</p>
+<p>对于产生式 A→α的归约，在不同的使用位置，A会要求不同的后继符号。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_tNVNMy-eaK.png"></p>
+<p>在特定位置，A的后继符集合是FOLLOW(A)的子集。</p>
+<h2 id="5-2-规范LR-1-项目"><a href="#5-2-规范LR-1-项目" class="headerlink" title="5.2 规范LR(1)项目"></a>5.2 规范LR(1)项目</h2><p>将一般形式为 [A→α·β, a]的项称为 LR(1) 项，其中A→αβ 是一个产生式，a 是一个终结符(这里将$视为一个特殊的终结符)它表示在当前状态下，A后面必须紧跟的终结符，称为该项的<strong>展望符</strong>(<code>lookahead</code>)。</p>
+<ul>
+<li>LR(1)中的1指的是第二个分量的长度</li>
+</ul>
+<p>在形如[A→α·β, a]且β ≠ ε的项中，展望符a没有任何作用，但是一个形如[A→α·, a]的项在只有在下一个输入符号等于a时才可以按照A→α 进行归约。</p>
+<p>这样的a的集合总是FOLLOW(A)的子集，而且它通常是一个真子集。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_1Z9kZ5A7X5.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WFd6vdq-Ls.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_c_cBuqxbob.png"></p>
+<hr>
+<h1 id="6-LALR分析"><a href="#6-LALR分析" class="headerlink" title="6 LALR分析"></a>6 LALR分析</h1><h2 id="6-1-LALR-lookahead-LR-分析的基本思想"><a href="#6-1-LALR-lookahead-LR-分析的基本思想" class="headerlink" title="6.1 LALR(lookahead-LR)分析的基本思想"></a>6.1 LALR(lookahead-LR)分析的基本思想</h2><p>寻找具有相同核心的LR (1) 项集，并将这些项集合并为一个项集。 所谓项集的核心就是其第一分量的集合。</p>
+<p>然后根据合并后得到的项集族构造语法分析表，如果分析表中没有语法分析动作冲突，给定的文法就称为<code>LALR(1)</code>文法，就可以根据该分析表进行语法分析。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_o4Go5S4qLk.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_SB7t8duKQ5.png"></p>
+<p>合并同心项集后，虽然节省了空间，也不产生冲突，但可能会推迟错误的发现，同时<code>LALR</code>分析法可能会作多余的归约动作，但绝不会作错误的移进操作。</p>
+<h2 id="6-2-LALR-1-的特点"><a href="#6-2-LALR-1-的特点" class="headerlink" title="6.2 LALR(1)的特点"></a>6.2 LALR(1)的特点</h2><ol>
+<li>形式上与LR(1)相同</li>
+<li>大小上与LR(0)&#x2F;SLR相当</li>
+<li>分析能力介于SLR和LR(1)二者之间，即$S L R&lt;L A L R(1)&lt;L R(1)$</li>
+<li>合并后的展望符集合仍为FOLLOW集的子集</li>
+</ol>
+<hr>
+<h1 id="7-二义性文法的LR分析"><a href="#7-二义性文法的LR分析" class="headerlink" title="7 二义性文法的LR分析"></a>7 二义性文法的LR分析</h1><p>每个二义性文法都不是LR的，某些类型的二义性文法在语言的描述和实现中很有用。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_WMhDAJlISO.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_H5sDw1aSR6.png"></p>
+<p>二义性文法的使用：</p>
+<p>应该保守地使用二义性文法，并且必须在严格控制之下使用，因为稍有不慎就会导致语法分析器所识别的语言出现偏差。</p>
+<hr>
+<h1 id="8-LR分析中的错误处理"><a href="#8-LR分析中的错误处理" class="headerlink" title="8 LR分析中的错误处理"></a>8 LR分析中的错误处理</h1><p><strong>语法错误的检测</strong>：</p>
+<p>当LR分析器在查询分析表并发现一个报错条目时，就检测到了一个语法错误。</p>
+<p><strong>错误恢复策略</strong>：</p>
+<ul>
+<li>恐慌模式错误恢复</li>
+<li>短语层次错误恢复</li>
+</ul>
+<h2 id="8-1-恐慌模式错误恢复"><a href="#8-1-恐慌模式错误恢复" class="headerlink" title="8.1 恐慌模式错误恢复"></a>8.1 恐慌模式错误恢复</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_eimLFfNnsP.png"></p>
+<p>从栈顶向下扫描，直到发现某个状态$s_i$，它有一个对应于某个非终结符A的<code>GOTO</code>目标，可以认为从这个A推导出的串中包含错误。</p>
+<p>然后丢弃0个或多个输入符号，直到发现一个可能合法地跟在A之后的符号a为止。</p>
+<p>之后将$s_{i+1}&#x3D;G O T O\left(s_{i}, A\right)$压入栈中，继续进行正常的语法分析。</p>
+<h2 id="8-2-短语层次错误恢复"><a href="#8-2-短语层次错误恢复" class="headerlink" title="8.2 短语层次错误恢复"></a>8.2 短语层次错误恢复</h2><p>检查LR分析表中的每一个报错条目，并根据语言的使用方法来决定程序员所犯的何种错误最有可能引起这个语法错误，然后构造出适当的恢复过程。</p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_S8VIlNOJa9.png"></p>
+<h3 id="8-2-1-带有错误处理子程序的算术表达式文法LR分析表"><a href="#8-2-1-带有错误处理子程序的算术表达式文法LR分析表" class="headerlink" title="8.2.1 带有错误处理子程序的算术表达式文法LR分析表"></a>8.2.1 带有错误处理子程序的算术表达式文法LR分析表</h3><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_zfJ5RwpI-8.png"></p>
+<h2 id="8-3-自底向上语法分析小结"><a href="#8-3-自底向上语法分析小结" class="headerlink" title="8.3 自底向上语法分析小结"></a>8.3 自底向上语法分析小结</h2><p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_QOWXOfg8Ei.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_c7hAFtthKx.png"></p>
+<p><img src="/2024/07/02/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/image_NY3M92gfMH.png"></p>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文精读3-1：《GNN》图结构介绍</title>
+    <url>/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>原文链接：<a href="https://distill.pub/2021/gnn-intro/" title="https://distill.pub/2021/gnn-intro/">https://distill.pub/2021/gnn-intro/</a></p>
+<h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h1><p>神经网络已适应利用图的结构和属性。我们探索构建图神经网络所需的组件——并激发它们背后的设计选择。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_JJb-OCn5Iy.png"></p>
+<p>图就在我们身边；现实世界的对象通常是根据它们与其他事物的联系来定义的。一组对象以及它们之间的联系自然地表达为图形。十多年来，研究人员开发了对图数据进行操作的神经网络（称为图神经网络，或 <code>GNN</code>）。最近的发展提高了他们的能力和表达能力。我们开始看到抗菌药物发现等领域的实际应用，例如physics simulations（物理模拟）、fake news detection（假新闻检测）、traffic prediction（交通预测）和recommendation systems（推荐系统）。</p>
+<p>本文探讨并解释了现代图神经网络。我们将这项工作分为四个部分。首先，我们看看哪种数据最自然地表达为图表，以及一些常见的示例。其次，我们探讨图表与其他类型数据的不同之处，以及使用图表时必须做出的一些专门选择。第三，我们构建了一个现代 <code>GNN</code>，从该领域历史性的建模创新开始，遍历模型的每个部分。我们逐渐从简单的实现转向最先进的 <code>GNN</code>模型。第四，也是最后，我们提供了一个 <code>GNN</code>的playground，您可以在其中尝试真实的任务和数据集，以对 <code>GNN</code>模型的每个组件如何对其做出的预测做出贡献建立更强烈的直觉。</p>
+<hr>
+<h1 id="2-什么是图"><a href="#2-什么是图" class="headerlink" title="2 什么是图"></a>2 什么是图</h1><p>首先，让我们先确定什么是图表。图表示实体（<em>节点</em>）集合之间的关系（<em>边</em>）。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_WWOIcW5f5r.png"></p>
+<p>为了进一步描述每个节点、边或整个图，我们可以在图的每个部分中存储信息。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_13_EPBR6kE.png"></p>
+<p>我们还可以通过将方向性与边（<em>有向、无向</em>）相关联来专门化图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_uWuLawbUeK.png"></p>
+<p>图是非常灵活的数据结构，如果现在这看起来很抽象，我们将在下一节中通过示例将其具体化。</p>
+<hr>
+<h1 id="3-图结构以及应用"><a href="#3-图结构以及应用" class="headerlink" title="3 图结构以及应用"></a>3 图结构以及应用</h1><p>你可能已经熟悉某些类型的图形数据，例如社交网络。然而，图表是一种极其强大且通用的数据表示形式，我们将展示两种您可能认为无法建模为图的数据类型：图像和文本。虽然违反直觉，但人们可以通过将图像和文本视为图形来更多地了解图像和文本的对称性和结构，并建立一种直觉，这将有助于理解其他不太像网格的图形数据，我们将在稍后讨论。</p>
+<h2 id="3-1-图片作为图"><a href="#3-1-图片作为图" class="headerlink" title="3.1 图片作为图"></a>3.1 图片作为图</h2><p>我们通常将图像视为具有图像通道的矩形网格，将它们表示为数组（例如，$244 \times 244 \times 3 $浮点数）。<strong>另一种将图像视为具有规则结构的图，其中每个像素代表一个节点，并通过边缘连接到相邻像素</strong>。每个非边界像素正好有 8 个邻居，每个节点存储的信息是表示该像素的 <code>RGB</code>值的 3 维向量。</p>
+<p>可视化图的连通性的一种方法是通过其邻接矩阵。我们对节点进行排序，在本例中，每个节点是一个简单的$ 5 \times 5$笑脸图像中的 25 个像素，并填充一个矩阵$n_{nodes}×n_{nodes}$。如果两个节点共享一条边，则有一个条目。请注意，下面这三种表示形式都是同一数据的不同视图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_eV65VuyS1Y.png"></p>
+<h2 id="3-2-文本作为图"><a href="#3-2-文本作为图" class="headerlink" title="3.2 文本作为图"></a>3.2 文本作为图</h2><p>我们可以通过将索引与每个字符、单词或标记相关联，并将文本表示为这些索引的序列来数字化文本。这将创建一个简单的有向图，其中每个字符或索引都是一个节点，并通过边连接到其后面的节点。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_43WROtz4Cx.png"></p>
+<p>当然，在实践中，这通常不是文本和图像的编码方式：这些图形表示是多余的，因为所有图像和所有文本都将具有非常规则的结构。例如，图像的邻接矩阵具有带状结构，因为所有节点（像素）都连接在网格中。文本的邻接矩阵只是一条对角线，因为每个单词仅连接到前一个单词和下一个单词。</p>
+<h2 id="3-3-其他可以表示为图的数据"><a href="#3-3-其他可以表示为图的数据" class="headerlink" title="3.3 其他可以表示为图的数据"></a>3.3 其他可以表示为图的数据</h2><p>图表是描述您可能已经熟悉的数据的有用工具。让我们继续讨论结构更加异构的数据。在这些示例中，每个节点的邻居数量是可变的（与图像和文本的固定邻居大小相反）。除了图之外，这些数据很难以任何其他方式表达。</p>
+<h3 id="分子作为图"><a href="#分子作为图" class="headerlink" title="分子作为图"></a><strong>分子作为图</strong></h3><p>分子是物质的组成部分，由 <code>3D</code>空间中的原子和电子构成。所有粒子都相互作用，但是当一对原子彼此保持稳定的距离时，我们说它们共享共价键。不同的原子对和键具有不同的距离（例如单键、双键）。将这个 <code>3D</code>对象描述为图是一个非常方便且常见的抽象，其中节点是原子，边是共价键。</p>
+<p>以下是两种常见的分子及其相关图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_6arxU_lmat.png"></p>
+<blockquote>
+<p>（左）香茅醛分子的 <code>3D</code>表示（中）分子中键的邻接矩阵（右）分子的图形表示</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_CFhCnxk506.png"></p>
+<blockquote>
+<p>（左）咖啡因分子的 <code>3D</code>表示（中）分子中键的邻接矩阵（右）分子的图形表示</p>
+</blockquote>
+<h3 id="社交网络作为图表"><a href="#社交网络作为图表" class="headerlink" title="社交网络作为图表"></a><strong>社交网络作为图表</strong></h3><p>社交网络是研究人们、机构和组织集体行为模式的工具。我们可以通过将个体建模为节点并将他们的关系建模为边来构建表示人群的图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_Cp1ogDsGwr.png"></p>
+<blockquote>
+<p>（左）戏剧《奥赛罗》中的场景图像。（中）剧中角色之间互动的邻接矩阵。 （右）这些交互的图形表示。</p>
+</blockquote>
+<p>与图像和文本数据不同，社交网络不具有相同的邻接矩阵。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_dgZR-f83G6.png"></p>
+<blockquote>
+<p>（左）空手道锦标赛的图片。（中）空手道俱乐部中人与人之间互动的邻接矩阵。（右）这些交互的图形表示。</p>
+</blockquote>
+<h3 id="引用作为图表"><a href="#引用作为图表" class="headerlink" title="引用作为图表"></a><strong>引用作为图表</strong></h3><p>科学家在发表论文时经常引用其他科学家的工作。我们可以将这些引用网络可视化为一个图，其中每篇论文都是一个节点，每个有向边是一篇论文与另一篇论文之间的引用。此外，我们可以将每篇论文的信息添加到每个节点中，例如摘要的词嵌入。</p>
+<h3 id="其他例子"><a href="#其他例子" class="headerlink" title="其他例子"></a><strong>其他例子</strong></h3><p>在计算机视觉中，我们有时想要标记视觉场景中的对象。然后，我们可以通过将这些对象视为节点，并将它们的关系视为边来构建图。<a href="https://www.tensorflow.org/tensorboard/graphs" title="机器学习模型">机器学习模型</a>，<a href="https://openreview.net/pdf?id=BJOFETxR-" title="编程代码">编程代码</a>和数学方程也可以表述为图，其中变量是节点，边是将这些变量作为输入和输出的操作。您可能会在其中一些上下文中看到术语“数据流图”。</p>
+<p>现实世界的图的结构在不同类型的数据之间可能有很大差异——有些图有很多节点，但它们之间的连接很少，反之亦然。图数据集在节点数、边数和节点连接性方面可能存在很大差异（在给定数据集内以及数据集之间）。</p>
+<blockquote>
+<p>对现实世界中发现的图进行汇总统计。数字取决于特征化决策。更多有用的统计数据和图表可以在 <code>KONECT</code>中找到。</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_rAaQWTRK97.png"></p>
+<hr>
+<h1 id="4-图结构化数据可以解决哪些类型的问题"><a href="#4-图结构化数据可以解决哪些类型的问题" class="headerlink" title="4 图结构化数据可以解决哪些类型的问题"></a>4 图结构化数据可以解决哪些类型的问题</h1><p>我们已经描述了一些自然图表的示例，但是我们想要对这些数据执行什么任务？图上的预测任务一般分为三种类型：图级、节点级和边级。</p>
+<p>在图级任务中，我们预测整个图的单个属性。对于节点级任务，我们预测图中每个节点的一些属性。对于边级任务，我们想要预测图中边的属性或存在。</p>
+<p>对于上述三个级别的预测问题（图级、节点级和边级），我们将证明以下所有问题都可以使用单个模型类<code>GNN</code>来解决。但首先，让我们更详细地浏览一下三类图预测问题，并提供每一类的具体示例。</p>
+<h2 id="4-1-图层面任务"><a href="#4-1-图层面任务" class="headerlink" title="4.1 图层面任务"></a>4.1 图层面任务</h2><p>在图级任务中，我们的目标是预测整个图的属性。例如，对于用图表表示的分子，我们可能想要预测该分子闻起来像什么，或者它是否会与与疾病有关的受体结合。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_87qYixmMC1.png"></p>
+<p>这类似于 <code>MNIST</code>和 <code>CIFAR</code>的图像分类问题，我们希望将标签与整个图像相关联。对于文本，类似的问题是情感分析，我们希望立即识别整个句子的情绪或情感。</p>
+<h2 id="4-2-顶点层面任务"><a href="#4-2-顶点层面任务" class="headerlink" title="4.2 顶点层面任务"></a>4.2 顶点层面任务</h2><p>节点级任务涉及预测图中每个节点的身份或角色。</p>
+<p>节点级预测问题的一个典型例子是扎克的空手道俱乐部。该数据集是一个单一的社交网络图，由在政治分歧后宣誓效忠两个空手道俱乐部之一的个人组成。故事是这样的，Hi 先生（教练）和 John H（管理员）之间的不和在空手道俱乐部中造成了分裂。节点代表各个空手道练习者，边代表空手道之外这些成员之间的互动。预测问题是对给定成员在不和之后是否忠诚于 Mr. Hi 或 John H 进行分类。在这种情况下，节点与讲师或管理员之间的距离与该标签高度相关。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_0qftmMrFGH.png"></p>
+<blockquote>
+<p>左边是问题的初始条件，右边是可能的解决方案，其中每个节点都根据联盟进行了分类。该数据集可用于其他图问题，例如无监督学习。</p>
+</blockquote>
+<p>按照图像类比，节点级预测问题类似于图像分割，我们试图标记图像中每个像素的作用。对于文本，类似的任务是预测句子中每个单词的词性（例如名词、动词、副词等）。</p>
+<h2 id="4-3-边层面任务"><a href="#4-3-边层面任务" class="headerlink" title="4.3 边层面任务"></a>4.3 边层面任务</h2><p>图中剩下的预测问题是边缘预测。</p>
+<p>边缘级推理的一个例子是图像场景理解。除了识别图像中的对象之外，深度学习模型还可用于预测它们之间的关系。我们可以将其表述为边缘级分类：给定代表图像中对象的节点，我们希望预测这些节点中的哪些共享边缘或该边缘的值是什么。如果我们希望发现实体之间的连接，我们可以考虑完全连接的图，并根据其预测值修剪边缘以得到稀疏图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_GLsVcLbw70.png"></p>
+<blockquote>
+<p>在上面的 (b) 中，原始图像 (a) 被分割为五个实体：每位拳手、裁判、观众和垫子。 (C) 显示了这些实体之间的关系。</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_ZBsSF7Tp_b.png"></p>
+<blockquote>
+<p>在左侧，有一个根据之前的视觉场景构建的初始图。右侧是当根据模型的输出修剪一些连接时该图可能的边缘标记。</p>
+</blockquote>
+<hr>
+<h1 id="5-在机器学习中使用图的挑战"><a href="#5-在机器学习中使用图的挑战" class="headerlink" title="5 在机器学习中使用图的挑战"></a>5 在机器学习中使用图的挑战</h1><p>那么，如何使用神经网络来解决这些不同的图形任务呢？第一步是考虑如何表示与神经网络兼容的图。</p>
+<p>机器学习模型通常采用矩形或类似网格的数组作为输入。因此，如何以与深度学习兼容的格式表示它们并不是立即直观的。图形最多包含四种类型的信息，我们可能希望使用这些信息来进行预测：节点、边、全局上下文和连通性。前三个相对简单：例如，对于节点，我们可以通过为每个节点分配一个索引$i$并将特征存储在$node_i$中来形成结点特征矩阵$N$。虽然这些矩阵的样本数量可变，但无需任何特殊技术即可进行处理。</p>
+<p>但是，表示图形的连通性更为复杂。也许最明显的选择是使用邻接矩阵，因为这很容易被拉伸。但是，这种表示方式有一些缺点。从示例数据集表中，我们看到图中的节点数量可能约为数百万个，并且每个节点的边数量可能变化很大。通常，这会导致非常稀疏的邻接矩阵，这在空间上效率低下。</p>
+<p>另一个问题是，有许多邻接矩阵可以编码相同的连通性，并且不能保证这些不同的矩阵会在深度神经网络中产生相同的结果（也就是说，它们不是置换不变的）。</p>
+<p>例如，之前的<a href="https://distill.pub/2021/gnn-intro/mols-as-graph-othello" title="奥赛罗图">奥赛罗图</a>可以等同于这两个邻接矩阵来描述。它也可以用节点的所有其他可能的排列来描述。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_1jivbZq-ZV.png"></p>
+<blockquote>
+<p>表示同一图形的两个邻接矩阵。</p>
+</blockquote>
+<p>下面的示例显示了可以描述这个包含 4 个节点的小图的每个邻接矩阵。这已经是相当多的邻接矩阵——对于像奥赛罗这样的大例子，这个数字是站不住脚的。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image__Yeq04lNKf.png"></p>
+<blockquote>
+<p>所有这些邻接矩阵都表示同一个图形。单击边以将其删除，在“虚拟边”上添加它，矩阵将相应地更新。</p>
+</blockquote>
+<p>表示稀疏矩阵的一种优雅且节省内存的方法是一种表示邻接列表。它们将节点$n_i$和$n_j$之间的边$e_k$联通性描述为邻接列表的第$k$个条目中的元组$(i,j)$。由于我们预计边的数量远低于邻接矩阵的条目数$(n^2_{nodes})$，因此我们避免了在图形的不连贯部分进行计算和存储。</p>
+<p>为了使这个概念具体化，我们可以看到在此规范下如何表示不同图形中的信息：</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_mRIIixd3NB.png"></p>
+<blockquote>
+<p>一边是小图，另一边是张量表示中的图信息。</p>
+</blockquote>
+<p>应该注意的是，该图使用每个节点&#x2F;边&#x2F;全局的标量值，但大多数实际的张量表示每个图属性都有向量。我们将处理大小为$[n_{nodes},node_{dim}]$的节点张量，而不是大小为$[n_{nodes}]$的节点张量，其他图形属性也是如此。</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>GNN</tag>
       </tags>
   </entry>
 </search>

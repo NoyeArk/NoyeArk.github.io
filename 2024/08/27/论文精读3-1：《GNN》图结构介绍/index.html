@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>论文精读3-1：《GNN》图结构介绍 | 诺亚方舟</title><meta name="author" content="弘树"><meta name="copyright" content="弘树"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="原文链接：https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;gnn-intro&#x2F; 1 引言神经网络已适应利用图的结构和属性。我们探索构建图神经网络所需的组件——并激发它们背后的设计选择。  图就在我们身边；现实世界的对象通常是根据它们与其他事物的联系来定义的。一组对象以及它们之间的联系自然地表达为图形。十多年来，研究人员开发了对图数据进行操作的神经网络（称为图神经网络，或 GNN）。最近的发展提高">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文精读3-1：《GNN》图结构介绍">
+<meta property="og:url" content="http://zhouzimu.top/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="诺亚方舟">
+<meta property="og:description" content="原文链接：https:&#x2F;&#x2F;distill.pub&#x2F;2021&#x2F;gnn-intro&#x2F; 1 引言神经网络已适应利用图的结构和属性。我们探索构建图神经网络所需的组件——并激发它们背后的设计选择。  图就在我们身边；现实世界的对象通常是根据它们与其他事物的联系来定义的。一组对象以及它们之间的联系自然地表达为图形。十多年来，研究人员开发了对图数据进行操作的神经网络（称为图神经网络，或 GNN）。最近的发展提高">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-3601304d88287b2b8e1736ded4036a43_1440w.jpg?source=172ae18b">
+<meta property="article:published_time" content="2024-08-27T01:19:16.000Z">
+<meta property="article:modified_time" content="2024-08-27T01:24:56.176Z">
+<meta property="article:author" content="弘树">
+<meta property="article:tag" content="GNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic4.zhimg.com/v2-3601304d88287b2b8e1736ded4036a43_1440w.jpg?source=172ae18b"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://zhouzimu.top/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 弘树","link":"链接: ","source":"来源: 诺亚方舟","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '论文精读3-1：《GNN》图结构介绍',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-27 09:24:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myStyle.css"><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/update/"><i class="fa-fw fas fa-archive"></i><span> 更新日志</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://pic4.zhimg.com/v2-3601304d88287b2b8e1736ded4036a43_1440w.jpg?source=172ae18b')"><nav id="nav"><span id="blog-info"><a href="/" title="诺亚方舟"><span class="site-name">诺亚方舟</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/update/"><i class="fa-fw fas fa-archive"></i><span> 更新日志</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">论文精读3-1：《GNN》图结构介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-08-27T01:19:16.000Z" title="发表于 2024-08-27 09:19:16">2024-08-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="论文精读3-1：《GNN》图结构介绍"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>原文链接：<a target="_blank" rel="noopener" href="https://distill.pub/2021/gnn-intro/" title="https://distill.pub/2021/gnn-intro/">https://distill.pub/2021/gnn-intro/</a></p>
+<h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h1><p>神经网络已适应利用图的结构和属性。我们探索构建图神经网络所需的组件——并激发它们背后的设计选择。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_JJb-OCn5Iy.png"></p>
+<p>图就在我们身边；现实世界的对象通常是根据它们与其他事物的联系来定义的。一组对象以及它们之间的联系自然地表达为图形。十多年来，研究人员开发了对图数据进行操作的神经网络（称为图神经网络，或 <code>GNN</code>）。最近的发展提高了他们的能力和表达能力。我们开始看到抗菌药物发现等领域的实际应用，例如physics simulations（物理模拟）、fake news detection（假新闻检测）、traffic prediction（交通预测）和recommendation systems（推荐系统）。</p>
+<p>本文探讨并解释了现代图神经网络。我们将这项工作分为四个部分。首先，我们看看哪种数据最自然地表达为图表，以及一些常见的示例。其次，我们探讨图表与其他类型数据的不同之处，以及使用图表时必须做出的一些专门选择。第三，我们构建了一个现代 <code>GNN</code>，从该领域历史性的建模创新开始，遍历模型的每个部分。我们逐渐从简单的实现转向最先进的 <code>GNN</code>模型。第四，也是最后，我们提供了一个 <code>GNN</code>的playground，您可以在其中尝试真实的任务和数据集，以对 <code>GNN</code>模型的每个组件如何对其做出的预测做出贡献建立更强烈的直觉。</p>
+<hr>
+<h1 id="2-什么是图"><a href="#2-什么是图" class="headerlink" title="2 什么是图"></a>2 什么是图</h1><p>首先，让我们先确定什么是图表。图表示实体（<em>节点</em>）集合之间的关系（<em>边</em>）。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_WWOIcW5f5r.png"></p>
+<p>为了进一步描述每个节点、边或整个图，我们可以在图的每个部分中存储信息。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_13_EPBR6kE.png"></p>
+<p>我们还可以通过将方向性与边（<em>有向、无向</em>）相关联来专门化图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_uWuLawbUeK.png"></p>
+<p>图是非常灵活的数据结构，如果现在这看起来很抽象，我们将在下一节中通过示例将其具体化。</p>
+<hr>
+<h1 id="3-图结构以及应用"><a href="#3-图结构以及应用" class="headerlink" title="3 图结构以及应用"></a>3 图结构以及应用</h1><p>你可能已经熟悉某些类型的图形数据，例如社交网络。然而，图表是一种极其强大且通用的数据表示形式，我们将展示两种您可能认为无法建模为图的数据类型：图像和文本。虽然违反直觉，但人们可以通过将图像和文本视为图形来更多地了解图像和文本的对称性和结构，并建立一种直觉，这将有助于理解其他不太像网格的图形数据，我们将在稍后讨论。</p>
+<h2 id="3-1-图片作为图"><a href="#3-1-图片作为图" class="headerlink" title="3.1 图片作为图"></a>3.1 图片作为图</h2><p>我们通常将图像视为具有图像通道的矩形网格，将它们表示为数组（例如，$244 \times 244 \times 3 $浮点数）。<strong>另一种将图像视为具有规则结构的图，其中每个像素代表一个节点，并通过边缘连接到相邻像素</strong>。每个非边界像素正好有 8 个邻居，每个节点存储的信息是表示该像素的 <code>RGB</code>值的 3 维向量。</p>
+<p>可视化图的连通性的一种方法是通过其邻接矩阵。我们对节点进行排序，在本例中，每个节点是一个简单的$ 5 \times 5$笑脸图像中的 25 个像素，并填充一个矩阵$n_{nodes}×n_{nodes}$。如果两个节点共享一条边，则有一个条目。请注意，下面这三种表示形式都是同一数据的不同视图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_eV65VuyS1Y.png"></p>
+<h2 id="3-2-文本作为图"><a href="#3-2-文本作为图" class="headerlink" title="3.2 文本作为图"></a>3.2 文本作为图</h2><p>我们可以通过将索引与每个字符、单词或标记相关联，并将文本表示为这些索引的序列来数字化文本。这将创建一个简单的有向图，其中每个字符或索引都是一个节点，并通过边连接到其后面的节点。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_43WROtz4Cx.png"></p>
+<p>当然，在实践中，这通常不是文本和图像的编码方式：这些图形表示是多余的，因为所有图像和所有文本都将具有非常规则的结构。例如，图像的邻接矩阵具有带状结构，因为所有节点（像素）都连接在网格中。文本的邻接矩阵只是一条对角线，因为每个单词仅连接到前一个单词和下一个单词。</p>
+<h2 id="3-3-其他可以表示为图的数据"><a href="#3-3-其他可以表示为图的数据" class="headerlink" title="3.3 其他可以表示为图的数据"></a>3.3 其他可以表示为图的数据</h2><p>图表是描述您可能已经熟悉的数据的有用工具。让我们继续讨论结构更加异构的数据。在这些示例中，每个节点的邻居数量是可变的（与图像和文本的固定邻居大小相反）。除了图之外，这些数据很难以任何其他方式表达。</p>
+<h3 id="分子作为图"><a href="#分子作为图" class="headerlink" title="分子作为图"></a><strong>分子作为图</strong></h3><p>分子是物质的组成部分，由 <code>3D</code>空间中的原子和电子构成。所有粒子都相互作用，但是当一对原子彼此保持稳定的距离时，我们说它们共享共价键。不同的原子对和键具有不同的距离（例如单键、双键）。将这个 <code>3D</code>对象描述为图是一个非常方便且常见的抽象，其中节点是原子，边是共价键。</p>
+<p>以下是两种常见的分子及其相关图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_6arxU_lmat.png"></p>
+<blockquote>
+<p>（左）香茅醛分子的 <code>3D</code>表示（中）分子中键的邻接矩阵（右）分子的图形表示</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_CFhCnxk506.png"></p>
+<blockquote>
+<p>（左）咖啡因分子的 <code>3D</code>表示（中）分子中键的邻接矩阵（右）分子的图形表示</p>
+</blockquote>
+<h3 id="社交网络作为图表"><a href="#社交网络作为图表" class="headerlink" title="社交网络作为图表"></a><strong>社交网络作为图表</strong></h3><p>社交网络是研究人们、机构和组织集体行为模式的工具。我们可以通过将个体建模为节点并将他们的关系建模为边来构建表示人群的图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_Cp1ogDsGwr.png"></p>
+<blockquote>
+<p>（左）戏剧《奥赛罗》中的场景图像。（中）剧中角色之间互动的邻接矩阵。 （右）这些交互的图形表示。</p>
+</blockquote>
+<p>与图像和文本数据不同，社交网络不具有相同的邻接矩阵。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_dgZR-f83G6.png"></p>
+<blockquote>
+<p>（左）空手道锦标赛的图片。（中）空手道俱乐部中人与人之间互动的邻接矩阵。（右）这些交互的图形表示。</p>
+</blockquote>
+<h3 id="引用作为图表"><a href="#引用作为图表" class="headerlink" title="引用作为图表"></a><strong>引用作为图表</strong></h3><p>科学家在发表论文时经常引用其他科学家的工作。我们可以将这些引用网络可视化为一个图，其中每篇论文都是一个节点，每个有向边是一篇论文与另一篇论文之间的引用。此外，我们可以将每篇论文的信息添加到每个节点中，例如摘要的词嵌入。</p>
+<h3 id="其他例子"><a href="#其他例子" class="headerlink" title="其他例子"></a><strong>其他例子</strong></h3><p>在计算机视觉中，我们有时想要标记视觉场景中的对象。然后，我们可以通过将这些对象视为节点，并将它们的关系视为边来构建图。<a target="_blank" rel="noopener" href="https://www.tensorflow.org/tensorboard/graphs" title="机器学习模型">机器学习模型</a>，<a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=BJOFETxR-" title="编程代码">编程代码</a>和数学方程也可以表述为图，其中变量是节点，边是将这些变量作为输入和输出的操作。您可能会在其中一些上下文中看到术语“数据流图”。</p>
+<p>现实世界的图的结构在不同类型的数据之间可能有很大差异——有些图有很多节点，但它们之间的连接很少，反之亦然。图数据集在节点数、边数和节点连接性方面可能存在很大差异（在给定数据集内以及数据集之间）。</p>
+<blockquote>
+<p>对现实世界中发现的图进行汇总统计。数字取决于特征化决策。更多有用的统计数据和图表可以在 <code>KONECT</code>中找到。</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_rAaQWTRK97.png"></p>
+<hr>
+<h1 id="4-图结构化数据可以解决哪些类型的问题"><a href="#4-图结构化数据可以解决哪些类型的问题" class="headerlink" title="4 图结构化数据可以解决哪些类型的问题"></a>4 图结构化数据可以解决哪些类型的问题</h1><p>我们已经描述了一些自然图表的示例，但是我们想要对这些数据执行什么任务？图上的预测任务一般分为三种类型：图级、节点级和边级。</p>
+<p>在图级任务中，我们预测整个图的单个属性。对于节点级任务，我们预测图中每个节点的一些属性。对于边级任务，我们想要预测图中边的属性或存在。</p>
+<p>对于上述三个级别的预测问题（图级、节点级和边级），我们将证明以下所有问题都可以使用单个模型类<code>GNN</code>来解决。但首先，让我们更详细地浏览一下三类图预测问题，并提供每一类的具体示例。</p>
+<h2 id="4-1-图层面任务"><a href="#4-1-图层面任务" class="headerlink" title="4.1 图层面任务"></a>4.1 图层面任务</h2><p>在图级任务中，我们的目标是预测整个图的属性。例如，对于用图表表示的分子，我们可能想要预测该分子闻起来像什么，或者它是否会与与疾病有关的受体结合。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_87qYixmMC1.png"></p>
+<p>这类似于 <code>MNIST</code>和 <code>CIFAR</code>的图像分类问题，我们希望将标签与整个图像相关联。对于文本，类似的问题是情感分析，我们希望立即识别整个句子的情绪或情感。</p>
+<h2 id="4-2-顶点层面任务"><a href="#4-2-顶点层面任务" class="headerlink" title="4.2 顶点层面任务"></a>4.2 顶点层面任务</h2><p>节点级任务涉及预测图中每个节点的身份或角色。</p>
+<p>节点级预测问题的一个典型例子是扎克的空手道俱乐部。该数据集是一个单一的社交网络图，由在政治分歧后宣誓效忠两个空手道俱乐部之一的个人组成。故事是这样的，Hi 先生（教练）和 John H（管理员）之间的不和在空手道俱乐部中造成了分裂。节点代表各个空手道练习者，边代表空手道之外这些成员之间的互动。预测问题是对给定成员在不和之后是否忠诚于 Mr. Hi 或 John H 进行分类。在这种情况下，节点与讲师或管理员之间的距离与该标签高度相关。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_0qftmMrFGH.png"></p>
+<blockquote>
+<p>左边是问题的初始条件，右边是可能的解决方案，其中每个节点都根据联盟进行了分类。该数据集可用于其他图问题，例如无监督学习。</p>
+</blockquote>
+<p>按照图像类比，节点级预测问题类似于图像分割，我们试图标记图像中每个像素的作用。对于文本，类似的任务是预测句子中每个单词的词性（例如名词、动词、副词等）。</p>
+<h2 id="4-3-边层面任务"><a href="#4-3-边层面任务" class="headerlink" title="4.3 边层面任务"></a>4.3 边层面任务</h2><p>图中剩下的预测问题是边缘预测。</p>
+<p>边缘级推理的一个例子是图像场景理解。除了识别图像中的对象之外，深度学习模型还可用于预测它们之间的关系。我们可以将其表述为边缘级分类：给定代表图像中对象的节点，我们希望预测这些节点中的哪些共享边缘或该边缘的值是什么。如果我们希望发现实体之间的连接，我们可以考虑完全连接的图，并根据其预测值修剪边缘以得到稀疏图。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_GLsVcLbw70.png"></p>
+<blockquote>
+<p>在上面的 (b) 中，原始图像 (a) 被分割为五个实体：每位拳手、裁判、观众和垫子。 (C) 显示了这些实体之间的关系。</p>
+</blockquote>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_ZBsSF7Tp_b.png"></p>
+<blockquote>
+<p>在左侧，有一个根据之前的视觉场景构建的初始图。右侧是当根据模型的输出修剪一些连接时该图可能的边缘标记。</p>
+</blockquote>
+<hr>
+<h1 id="5-在机器学习中使用图的挑战"><a href="#5-在机器学习中使用图的挑战" class="headerlink" title="5 在机器学习中使用图的挑战"></a>5 在机器学习中使用图的挑战</h1><p>那么，如何使用神经网络来解决这些不同的图形任务呢？第一步是考虑如何表示与神经网络兼容的图。</p>
+<p>机器学习模型通常采用矩形或类似网格的数组作为输入。因此，如何以与深度学习兼容的格式表示它们并不是立即直观的。图形最多包含四种类型的信息，我们可能希望使用这些信息来进行预测：节点、边、全局上下文和连通性。前三个相对简单：例如，对于节点，我们可以通过为每个节点分配一个索引$i$并将特征存储在$node_i$中来形成结点特征矩阵$N$。虽然这些矩阵的样本数量可变，但无需任何特殊技术即可进行处理。</p>
+<p>但是，表示图形的连通性更为复杂。也许最明显的选择是使用邻接矩阵，因为这很容易被拉伸。但是，这种表示方式有一些缺点。从示例数据集表中，我们看到图中的节点数量可能约为数百万个，并且每个节点的边数量可能变化很大。通常，这会导致非常稀疏的邻接矩阵，这在空间上效率低下。</p>
+<p>另一个问题是，有许多邻接矩阵可以编码相同的连通性，并且不能保证这些不同的矩阵会在深度神经网络中产生相同的结果（也就是说，它们不是置换不变的）。</p>
+<p>例如，之前的<a target="_blank" rel="noopener" href="https://distill.pub/2021/gnn-intro/mols-as-graph-othello" title="奥赛罗图">奥赛罗图</a>可以等同于这两个邻接矩阵来描述。它也可以用节点的所有其他可能的排列来描述。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_1jivbZq-ZV.png"></p>
+<blockquote>
+<p>表示同一图形的两个邻接矩阵。</p>
+</blockquote>
+<p>下面的示例显示了可以描述这个包含 4 个节点的小图的每个邻接矩阵。这已经是相当多的邻接矩阵——对于像奥赛罗这样的大例子，这个数字是站不住脚的。</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image__Yeq04lNKf.png"></p>
+<blockquote>
+<p>所有这些邻接矩阵都表示同一个图形。单击边以将其删除，在“虚拟边”上添加它，矩阵将相应地更新。</p>
+</blockquote>
+<p>表示稀疏矩阵的一种优雅且节省内存的方法是一种表示邻接列表。它们将节点$n_i$和$n_j$之间的边$e_k$联通性描述为邻接列表的第$k$个条目中的元组$(i,j)$。由于我们预计边的数量远低于邻接矩阵的条目数$(n^2_{nodes})$，因此我们避免了在图形的不连贯部分进行计算和存储。</p>
+<p>为了使这个概念具体化，我们可以看到在此规范下如何表示不同图形中的信息：</p>
+<p><img src="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/image_mRIIixd3NB.png"></p>
+<blockquote>
+<p>一边是小图，另一边是张量表示中的图信息。</p>
+</blockquote>
+<p>应该注意的是，该图使用每个节点&#x2F;边&#x2F;全局的标量值，但大多数实际的张量表示每个图属性都有向量。我们将处理大小为$[n_{nodes},node_{dim}]$的节点张量，而不是大小为$[n_{nodes}]$的节点张量，其他图形属性也是如此。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://zhouzimu.top">弘树</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://zhouzimu.top/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/">http://zhouzimu.top/2024/08/27/论文精读3-1：《GNN》图结构介绍/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhouzimu.top" target="_blank">诺亚方舟</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/GNN/">GNN</a></div><div class="post_share"><div class="social-share" data-image="https://pic4.zhimg.com/v2-3601304d88287b2b8e1736ded4036a43_1440w.jpg?source=172ae18b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>码字不易，如果对你有帮助的话请喝一杯奶茶吧~</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/" title="计算机组成原理第4章：存储器"><img class="cover" src="https://img.dramx.com/website/dramx/20210305153456_%E5%AD%98%E5%82%A8%E5%99%A8.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机组成原理第4章：存储器</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">弘树</div><div class="author-info__description">在我坚定无比的内心，总以最坚强的节奏接开案情</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/NoyeArk"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/NoyeArk" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:horiki0@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%BC%95%E8%A8%80"><span class="toc-text">1 引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%BE"><span class="toc-text">2 什么是图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%A5%E5%8F%8A%E5%BA%94%E7%94%A8"><span class="toc-text">3 图结构以及应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%9B%BE%E7%89%87%E4%BD%9C%E4%B8%BA%E5%9B%BE"><span class="toc-text">3.1 图片作为图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%96%87%E6%9C%AC%E4%BD%9C%E4%B8%BA%E5%9B%BE"><span class="toc-text">3.2 文本作为图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%85%B6%E4%BB%96%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E4%B8%BA%E5%9B%BE%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">3.3 其他可以表示为图的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%AD%90%E4%BD%9C%E4%B8%BA%E5%9B%BE"><span class="toc-text">分子作为图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%BA%E5%9B%BE%E8%A1%A8"><span class="toc-text">社交网络作为图表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BD%9C%E4%B8%BA%E5%9B%BE%E8%A1%A8"><span class="toc-text">引用作为图表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BE%8B%E5%AD%90"><span class="toc-text">其他例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%9B%BE%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">4 图结构化数据可以解决哪些类型的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%9B%BE%E5%B1%82%E9%9D%A2%E4%BB%BB%E5%8A%A1"><span class="toc-text">4.1 图层面任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E9%A1%B6%E7%82%B9%E5%B1%82%E9%9D%A2%E4%BB%BB%E5%8A%A1"><span class="toc-text">4.2 顶点层面任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E8%BE%B9%E5%B1%82%E9%9D%A2%E4%BB%BB%E5%8A%A1"><span class="toc-text">4.3 边层面任务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%9C%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%9A%84%E6%8C%91%E6%88%98"><span class="toc-text">5 在机器学习中使用图的挑战</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/" title="论文精读3-1：《GNN》图结构介绍"><img src="https://pic4.zhimg.com/v2-3601304d88287b2b8e1736ded4036a43_1440w.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论文精读3-1：《GNN》图结构介绍"/></a><div class="content"><a class="title" href="/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/" title="论文精读3-1：《GNN》图结构介绍">论文精读3-1：《GNN》图结构介绍</a><time datetime="2024-08-27T01:19:16.000Z" title="发表于 2024-08-27 09:19:16">2024-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/" title="计算机组成原理第4章：存储器"><img src="https://img.dramx.com/website/dramx/20210305153456_%E5%AD%98%E5%82%A8%E5%99%A8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机组成原理第4章：存储器"/></a><div class="content"><a class="title" href="/2024/08/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E5%AD%98%E5%82%A8%E5%99%A8/" title="计算机组成原理第4章：存储器">计算机组成原理第4章：存储器</a><time datetime="2024-08-19T07:10:52.000Z" title="发表于 2024-08-19 15:10:52">2024-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/17/2024%E5%B9%B4%E8%A5%BF%E4%BA%A4%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B0%8F%E7%BB%84%E8%80%83%E6%A0%B8%E4%BB%BB%E5%8A%A12/" title="2024年西交多媒体小组考核任务2"><img src="https://th.bing.com/th/id/R.d1e77ebe7e1ef13b001be24eaa7eaaff?rik=Q3Ynuc9AkNFC%2fw&amp;riu=http%3a%2f%2fedu.cnr.cn%2feduzt%2fxajtdx%2fxyyyxa%2f20170515%2fW020170515616781459243.jpg&amp;ehk=Td19yXpzYjCP8oc%2fnAnzvHZI017jtc23%2bpNlBydTtw0%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0&amp;sres=1&amp;sresct=1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024年西交多媒体小组考核任务2"/></a><div class="content"><a class="title" href="/2024/08/17/2024%E5%B9%B4%E8%A5%BF%E4%BA%A4%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B0%8F%E7%BB%84%E8%80%83%E6%A0%B8%E4%BB%BB%E5%8A%A12/" title="2024年西交多媒体小组考核任务2">2024年西交多媒体小组考核任务2</a><time datetime="2024-08-17T06:08:35.000Z" title="发表于 2024-08-17 14:08:35">2024-08-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/16/2024%E5%B9%B4%E8%A5%BF%E4%BA%A4%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B0%8F%E7%BB%84%E8%80%83%E6%A0%B8%E4%BB%BB%E5%8A%A11/" title="2024年西交多媒体小组考核任务1"><img src="https://p1-bk.byteimg.com/tos-cn-i-mlhdmxsy5m/3f2b1548a7c44c0ca72b469abae9e8e0~tplv-mlhdmxsy5m-q75:0:0.image" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024年西交多媒体小组考核任务1"/></a><div class="content"><a class="title" href="/2024/08/16/2024%E5%B9%B4%E8%A5%BF%E4%BA%A4%E5%A4%9A%E5%AA%92%E4%BD%93%E5%B0%8F%E7%BB%84%E8%80%83%E6%A0%B8%E4%BB%BB%E5%8A%A11/" title="2024年西交多媒体小组考核任务1">2024年西交多媒体小组考核任务1</a><time datetime="2024-08-16T06:05:09.000Z" title="发表于 2024-08-16 14:05:09">2024-08-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const loadUtterances = () => {
+    let ele = document.createElement('script')
+    ele.id = 'utterances_comment'
+    ele.src = 'https://utteranc.es/client.js'
+    ele.setAttribute('repo', 'NoyeArk/noyeark.github.io')
+    ele.setAttribute('issue-term', 'pathname')
+    const nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+    ele.setAttribute('theme', nowTheme)
+    ele.crossOrigin = 'anonymous'
+    ele.async = true
+    document.getElementById('utterances-wrap').appendChild(ele)
+  }
+
+  const utterancesTheme = theme => {
+    const iframe = document.querySelector('.utterances-frame')
+    if (iframe) {
+      const theme = theme === 'dark' ? 'photon-dark' : 'github-light'
+      const message = {
+        type: 'set-theme',
+        theme: theme
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+  }
+
+  btf.addGlobalFn('themeChange', utterancesTheme, 'utterances')
+
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/jquery.js"></script><script src="/js/footer.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div><!-- hexo injector body_end start -->
+  <script data-pjax src="https://npm.elemecdn.com/reverse-stu-allversions@1.0.1/butterfly/diy/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?user=NoyeArk";
+            var git_color =['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'];
+            var git_user ="user=NoyeArk";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --></body></html>
