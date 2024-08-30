@@ -12165,4 +12165,80 @@
         <tag>成瘾机制</tag>
       </tags>
   </entry>
+  <entry>
+    <title>编译原理第8章：语义分析和中间代码生成</title>
+    <url>/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/</url>
+    <content><![CDATA[<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_oy-v9hCdN4.png"></p>
+<h1 id="1-声明语句的翻译"><a href="#1-声明语句的翻译" class="headerlink" title="1 声明语句的翻译"></a>1 声明语句的翻译</h1><p><strong>主要任务</strong>：分析所声明$id$的性质、类型和地址，在符号表中为$id$建立一条记录。</p>
+<h2 id="1-1-类型表达式"><a href="#1-1-类型表达式" class="headerlink" title="1.1 类型表达式"></a>1.1 类型表达式</h2><p>设有C程序片段：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stype</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">8</span>];</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line">stype table[<span class="number">50</span>];</span><br><span class="line">stype* p;</span><br></pre></td></tr></table></figure>
+
+<p>和<code>stype</code>绑定的类型表达式：<code>record((name × array(8, char)) × (score × integer))</code></p>
+<p>和<code>table</code>绑定的类型表达式：<code>array(50, stype)</code></p>
+<p>和<code>p</code>绑定的类型表达式：<code>pointer(stype)</code></p>
+<h2 id="1-2-局部变量的存储分配"><a href="#1-2-局部变量的存储分配" class="headerlink" title="1.2 局部变量的存储分配"></a>1.2 局部变量的存储分配</h2><p>对于声明语句，语义分析的主要任务就是<strong>收集标识符的类型</strong>等属性信息，并为每一个名字分配一个<strong>相对地址</strong>。</p>
+<ul>
+<li>从类型表达式可以知道该类型在运行时刻所需的存储单元数量称为<strong>类型的宽度</strong>$(width)$</li>
+<li>在<strong>编译时刻</strong>，可以使用类型的宽度为每一个名字分配一个<strong>相对地址</strong></li>
+</ul>
+<p>名字的类型和相对地址信息保存在相应的符号表记录中。</p>
+<hr>
+<h1 id="2-赋值语句翻译"><a href="#2-赋值语句翻译" class="headerlink" title="2 赋值语句翻译"></a>2 赋值语句翻译</h1><p>赋值语句的基本文法：</p>
+<ol>
+<li>$S \rightarrow \mathrm{id}&#x3D;E$</li>
+<li>$E \rightarrow E_1+E_2$</li>
+<li>$E\rightarrow E_1 * E_2$</li>
+<li>$E \rightarrow-E_{1}$</li>
+<li>$E \rightarrow\left(E_{1}\right)$</li>
+<li>$E \rightarrow id$</li>
+</ol>
+<p>赋值语句翻译的主要任务：生成对表达式求值的三地址码</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image__vZdnjXIc1.png"></p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_KO5XTTTz-P.png"></p>
+<h2 id="2-1-含有数组引用的赋值语句的翻译"><a href="#2-1-含有数组引用的赋值语句的翻译" class="headerlink" title="2.1 含有数组引用的赋值语句的翻译"></a>2.1 含有数组引用的赋值语句的翻译</h2><p>将数组引用翻译成三地址码时要解决的主要问题是确定数组元素的存放地址，也就是数组元素的寻址。</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_XraXEzFpTv.png"></p>
+<hr>
+<h1 id="3-控制流语句的翻译"><a href="#3-控制流语句的翻译" class="headerlink" title="3 控制流语句的翻译"></a>3 控制流语句的翻译</h1><p>在跳转代码中，逻辑运算符&amp;&amp;、|| 和 ! 被翻译成跳转指令。运算符本身不出现在代码中，布尔表达式的值是通过代码序列中的位置来表示的。</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_A_jVt3vDHU.png"></p>
+<h2 id="3-1-布尔表达式的SDT"><a href="#3-1-布尔表达式的SDT" class="headerlink" title="3.1 布尔表达式的SDT"></a>3.1 布尔表达式的SDT</h2><p>$$<br>\begin{array}{l}B \rightarrow E_{1} \text { relop } E_{2}{\text { gen(‘if’ } E_{1} \text { addr relop } E_{2} \text {.addr ‘goto’ B.true }) ;  \text { gen(‘goto’ B.false); }}\end{array}<br>$$</p>
+<p>$$<br>B \rightarrow \operatorname{true}\{ gen(&#39;goto’ B.true); \}<br>$$</p>
+<p>$$<br>{B} \rightarrow false \{ gen(&#39;goto’ B.false ) ;\}<br>$$</p>
+<p>$$<br>{B} \rightarrow(\{B_{1}.true &#x3D; B. true ; B_{1}.false &#x3D; B.false;\} {B}_{1})<br>$$</p>
+<p>$$<br>{B} \rightarrow {not}\{B_{1}.true &#x3D; B. false; B_{1}. false &#x3D; B.true;\} {B}_{1}<br>$$</p>
+<h3 id="3-1-1-B-rightarrow-B-1-or-B-2"><a href="#3-1-1-B-rightarrow-B-1-or-B-2" class="headerlink" title="$3.1.1  B \rightarrow B_{1} or B_{2}$"></a>$3.1.1  B \rightarrow B_{1} or B_{2}$</h3><p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_lZol__TZxh.png"></p>
+<h3 id="3-1-2-B-rightarrow-B-1-and-B-2"><a href="#3-1-2-B-rightarrow-B-1-and-B-2" class="headerlink" title="$3.1.2  B \rightarrow B_{1} and B_{2}$"></a>$3.1.2  B \rightarrow B_{1} and B_{2}$</h3><p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_tqKs9DEHy_.png"></p>
+<h2 id="3-2-控制流语句的代码结构"><a href="#3-2-控制流语句的代码结构" class="headerlink" title="3.2 控制流语句的代码结构"></a>3.2 控制流语句的代码结构</h2><p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_iRW-CORI_G.png"></p>
+<h2 id="3-3-控制流语句SDT编写要点"><a href="#3-3-控制流语句SDT编写要点" class="headerlink" title="3.3 控制流语句SDT编写要点"></a>3.3 控制流语句SDT编写要点</h2><p>分析每一个非终结符之前：</p>
+<ol>
+<li>先计算继承属性</li>
+<li>再观察代码结构图中该非终结符对应的方框顶部是否有导入箭头。如果有，调用label( )函数</li>
+</ol>
+<p>上一个代码框执行完不顺序执行下一个代码框时，生成一条显式跳转指令。</p>
+<p>有自下而上的箭头时，设置begin属性。且定义后直接调用label( )函数绑定地址。</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_eew0EutSRD.png"></p>
+<p>控制流语句翻译的一个关键是确定跳转指令的目标标号，存在问题：生成跳转指令时，目标标号还不能确定。</p>
+<p><strong>解决办法</strong>：生成一些临时变量用来存放标号，将临时变量的地址作为继承属性传递到标号可以确定的地方。也就是说，当目标标号的值确定下来以后再赋给相应的变量。</p>
+<p><strong>缺点</strong>：需要进行两遍处理</p>
+<ol>
+<li>第一遍生成临时的指令</li>
+<li>第二遍将指令中的临时变量的地址改为具体的标号，从而得到最终的三地址指令</li>
+</ol>
+<hr>
+<h1 id="4-语义分析中的错误检测"><a href="#4-语义分析中的错误检测" class="headerlink" title="4 语义分析中的错误检测"></a>4 语义分析中的错误检测</h1><p><strong>错误1</strong>：变量或过程未经声明就使用 （赋值&#x2F;过程调用语句翻译）</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_ipKii7BzSr.png"></p>
+<p><strong>错误2</strong>：变量或过程名重复声明（声明语句翻译）</p>
+<p>$$<br>{D} \rightarrow {T} {i d} ;\{ enter( id.lexeme, T.type, offset ) ; offset &#x3D; offset + T.width ;\} {D}<br>$$</p>
+<p><strong>错误3</strong>：运算分量类型不匹配（赋值语句翻译）</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_rrxJvJo8im.png"></p>
+<p><strong>错误4</strong>：操作符与操作数之间的类型不匹配</p>
+<p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_2NJFGVJ4JW.png"></p>
+<h2 id="4-1-基本语句的语法制导翻译过程"><a href="#4-1-基本语句的语法制导翻译过程" class="headerlink" title="4.1 基本语句的语法制导翻译过程"></a>4.1 基本语句的语法制导翻译过程</h2><p><img src="/2024/08/30/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/image_ff295lthaO.png"></p>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>编译原理</tag>
+      </tags>
+  </entry>
 </search>
