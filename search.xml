@@ -12241,4 +12241,242 @@
         <tag>编译原理</tag>
       </tags>
   </entry>
+  <entry>
+    <title>计算机组成原理第8章：CPU的结构和功能</title>
+    <url>/2024/09/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC8%E7%AB%A0%EF%BC%9ACPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h1>1 CPU的结构</h1>
+<h2 id="1-1-cpu的功能">1.1 CPU的功能</h2>
+<p>CPU实质包括运算器和控制器两大部分。控制器负责协调并控制计算机各部件执行程序的指令序列，其基本功能是取指令、分析指令和执行指令。</p>
+<p><strong>简述CPU的功能如下</strong>：</p>
+<ol>
+<li>CPU具有控制程序的顺序执行，<strong>即指令控制</strong></li>
+<li>产生完成每条指令所需的控制命令，<strong>即操作控制</strong></li>
+<li>对各种操作实施时间上的控制，<strong>即时间控制</strong></li>
+<li>对操作数进行算术运算和逻辑运算，<strong>即数据加工</strong></li>
+<li><strong>处理中断</strong></li>
+</ol>
+<h2 id="1-2-cpu的结构框图">1.2 CPU的结构框图</h2>
+<p>指令控制需要：寄存器、控制单元CU；数据加工需要：ALU；中断控制需要：中断系统。此外，还需要系统总线，即控制总线、地址总线和数据总线。</p>
+<p><img src="image_1O8uCB4gGp.png" alt=""></p>
+<h2 id="1-3-cpu的寄存器">1.3 CPU的寄存器</h2>
+<p>CPU的寄存器大致可分为两类：</p>
+<ol>
+<li>一类属于用户可见寄存器，用户可以这类寄存器编程。</li>
+<li>另一类属于控制和状态寄存器，用户不可对这类寄存器编程，它们被控制部件使用，以控制CPU的操作。</li>
+</ol>
+<h3 id="1-3-1-用户可见寄存器">1.3.1 用户可见寄存器</h3>
+<ol>
+<li><strong>通用寄存器</strong>：可由程序设计者指定许多功能，可用于存放操作数，也可作为满足某种寻址方式所需的寄存器。</li>
+<li><strong>数据寄存器</strong>：用于存放操作数。</li>
+<li><strong>地址寄存器</strong>：用于存放地址，其位数应满足最大的地址范围。</li>
+<li><strong>条件码寄存器</strong>：存放条件码，可作程序分支的依据，例如正、负、零、溢出、进位等。</li>
+</ol>
+<h3 id="1-3-2-控制和状态寄存器">1.3.2 控制和状态寄存器</h3>
+<p>CPU中还有一类寄存器用于控制CPU的操作或运算，如以下四种寄存器：</p>
+<ol>
+<li><strong>MAR</strong>：存储器地址寄存器，用于存放将被访问的存储单元的地址</li>
+<li><strong>MDR</strong>：存储器数据寄存器，用于存放欲存入存储器中的数据或最近从存储器中读出的数据</li>
+<li><strong>PC</strong>：程序计数器，存放现行指令的地址，通常具有计数功能</li>
+<li><strong>IR</strong>：指令寄存器，存放当前欲执行的指令</li>
+</ol>
+<h2 id="1-4-控制单元-cu-和中断系统">1.4 控制单元 CU 和中断系统</h2>
+<p>控制单元（CU）是提供完成计算机全部指令操作的微操作命令序列部件。微操作命令序列的形成方法有两种：</p>
+<ol>
+<li>组合逻辑设计方法</li>
+<li>微程序设计方法</li>
+</ol>
+<p>中断系统主要用于处理计算机的各种中断。</p>
+<hr>
+<h1>2 指令周期</h1>
+<h2 id="2-1-基本概念">2.1 基本概念</h2>
+<p>CPU每取出并执行一条指令所需的全部时间称为<strong>指令周期</strong>。由于各种指令操作功能不同，因此各种指令的指令周期是不相同的。</p>
+<p>一个完整的指令周期应包括取值、间址、执行和中断4个子周期。</p>
+<p><img src="image_LeHggw3om8.png" alt=""></p>
+<p>设置CPU工作周期标志触发器对设计控制单元十分有利。</p>
+<h2 id="2-2-指令周期的数据流">2.2 指令周期的数据流</h2>
+<h3 id="2-2-1-取值周期数据流">2.2.1 取值周期数据流</h3>
+<p>PC中存放现行指令的地址，该地址送到MAR并送至地址总线，然后由控制部件CU向存储器发读命令，使对应MAR所指单元的内容（指令）经数据总线送至MDR，再送至IR，并且CU控制PC内容加1，形成下一条指令的地址。</p>
+<p><img src="image_sBJY67zGPA.png" alt=""></p>
+<h3 id="2-2-2-间址周期数据流">2.2.2 间址周期数据流</h3>
+<p>一旦取指周期结束，CU便检查IR中的内容，以确定其是否有间址操作，如果需要间址操作，则MDR中指示形式地址的右N位（记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>d</mi><mo stretchy="false">(</mo><mi>M</mi><mi>D</mi><mi>R</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Ad(MDR)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">)</span></span></span></span>）将被送到MAR，又送至地址总线，此后CU向存储器发读命令，以获得有效地址并存至MDR。</p>
+<p><img src="image__GPPJzuymx.png" alt=""></p>
+<h3 id="2-2-3-执行周期的数据流">2.2.3 执行周期的数据流</h3>
+<p>由于不同的指令在执行周期的操作不同，因此执行周期的数据流是多种多样的，可能涉及CPU内部寄存器间的数据传送、对存储器（或I/O）进行读写操作或对ALU的操作。</p>
+<h3 id="2-2-4-中断周期的数据流">2.2.4 中断周期的数据流</h3>
+<p>CPU进入中断周期要完成一系列操作，其中PC当前的内容必须保存起来，以待执行完中断服务程序后可以准确返回到该程序的间断处。</p>
+<p><img src="image_uadilPQ1fP.png" alt=""></p>
+<p>CU把用于保存程序断点的存储器特殊地址送往MAR，并送到地址总线上，然后由CU向存储器发写命令，并将PC的内容（程序断点）送到MDR，最终使程序断点经数据总线存入存储器。</p>
+<p>此外，CU还需将中断服务程序的入口地址送至PC，为下一个指令周期的取指周期做好准备。</p>
+<hr>
+<h1>3 指令流水</h1>
+<p>如何提高机器速度？</p>
+<ol>
+<li>提高访存速度：高速芯片、Cache、多体并行</li>
+<li>提高 I/O 和主机之间的传送速度：中断、DMA、通道、I/O 处理机、多总线</li>
+<li>提高运算器速度：高速芯片、改进算法、快速进位链</li>
+<li><strong>提高整机处理能力：高速器件、改进系统结构 ，开发系统的并行性</strong></li>
+</ol>
+<p>所谓并行，包含同时性和并发性两个方面。</p>
+<ul>
+<li>同时性：两个或两个以上事件在<strong>同一时刻</strong>发生</li>
+<li>并发性：两个或两个以上事件在<strong>同一时间段</strong>发生</li>
+</ul>
+<h2 id="3-1-指令流水原理">3.1  指令流水原理</h2>
+<p>为了进一步提高处理速度，可将指令的处理过程分解为更细的几个阶段：</p>
+<ol>
+<li><strong>取值（FI）</strong>：从存储器取出一条指令并暂时存入指令部件的缓冲区</li>
+<li><strong>指令译码（DI）</strong>：确定操作性质和操作输地址的形成方式</li>
+<li><strong>计算操作数地址（CO）</strong>：计算操作数的有效地址</li>
+<li><strong>取操作数（FO）</strong>：从存储器中取操作数（若操作数在寄存器中，则无需此操作）</li>
+<li><strong>执行指令（EI）</strong>：执行指令所需的操作，并将结果存于目的寄存器</li>
+<li>写操作数（WO）：将结果存入存储器</li>
+</ol>
+<p><img src="image_zymAKkTxha.png" alt=""></p>
+<h2 id="3-2-影响指令流水线性能的因素">3.2 影响指令流水线性能的因素</h2>
+<p>流水线在流动过程中通常会出现三种相关，即结构相关、数据相关和控制相关。</p>
+<h3 id="3-2-1-结构相关">3.2.1 结构相关</h3>
+<p><strong>结构相关</strong>是当指令在重叠执行过程中，不同指令争用同一功能部件产生资源冲突时产生的，故又有<strong>资源相关</strong>之称。</p>
+<p>解决方法：</p>
+<ol>
+<li>暂停一个时钟周期</li>
+<li>设置两个独立的存储器分别存放操作数和指令，以免取指令和取操作数同时进行时互相冲突</li>
+</ol>
+<h3 id="3-2-2-数据相关">3.2.2 数据相关</h3>
+<p><strong>数据相关</strong>是流水线中的各条指令因重叠操作，可能改变对操作数的读写访问顺序，从而导致了数据相关冲突。</p>
+<p><img src="image_QxpeuaXc4q.png" alt=""></p>
+<p>解决方法：</p>
+<ol>
+<li><strong>后推法</strong>：遇到数据相关时，停顿后续指令的运行，直到前面指令的结果已经生成</li>
+<li><strong>数据旁路</strong>：直接将执行结果送到其他指令所需要的地方</li>
+</ol>
+<h3 id="3-2-3-控制相关">3.2.3 控制相关</h3>
+<p>控制相关主要是由转移指令引起的。可以采用尽早判别转移是否发生，尽早生成转移目标地址；</p>
+<h2 id="3-3-流水线性能">3.3 流水线性能</h2>
+<p>流水线性能通常用吞吐率、加速比和效率3项指标来衡量。</p>
+<h3 id="3-3-1-吞吐率">3.3.1 吞吐率</h3>
+<p>吞吐率是指在单位时间内<strong>流水线所完成指令</strong>或<strong>输出结果</strong>的<strong>数量</strong>，又分为最大吞吐率和实际吞吐率。</p>
+<p><strong>最大吞吐率</strong>是指流水线在连续流动达到稳定状态后所获得的吞吐率，对于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>段的指令流水线而言，若各段的时间均为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span>，则最大吞吐率为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>p</mi><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">T_{pmax}=\frac{1}{\Delta t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><strong>实际吞吐率</strong>是指流水线完成<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>条指令的实际吞吐率，故实际吞吐率的计算公式为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>=</mo><mfrac><mi>n</mi><mrow><mi>m</mi><mo>⋅</mo><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>⋅</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">T_{p}=\frac{n}{m \cdot \Delta t+(n-1) \cdot \Delta t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0435600000000003em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="3-3-2-加速比s-p">3.3.2 加速比<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">S_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></h3>
+<p><strong>加速比</strong>是指<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>段的流水线的速度与等功能的<strong>非流水线的速度</strong>之比，加速比的计算公式如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>p</mi></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mi>m</mi><mo>⋅</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mi>m</mi><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mi>m</mi></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">S_{p}=\frac{n m \cdot \Delta t}{m \Delta t+(n-1) \Delta t}=\frac{n m}{m+n-1}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mord">Δ</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.8768900000000002em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="3-3-3-效率">3.3.3 效率</h3>
+<p><strong>效率</strong>是指流水线中各功能段的<strong>利用率</strong>。因为流水线有建立时间和排空时间，因此各功能段的设备不可能一直处于工作状态，总有一段空闲时间。通常用流水线各段处于工作时间的时空区与流水线中各段总的时空区纸币来衡量流水线的效率。用公式表示为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><mi>m</mi><mi>n</mi><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mi>n</mi><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><msub><mi>S</mi><mi>p</mi></msub><mi>m</mi></mfrac><mo>=</mo><msub><mi>T</mi><mi>p</mi></msub><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">E=\frac{mn\Delta t}{m(m+n-1)\Delta t}=\frac{n}{m+n-1}=\frac{S_p}{m}=T_p \Delta t
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.8768900000000002em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span></span></p>
+<h2 id="3-4-流水线的多发技术">3.4 流水线的多发技术</h2>
+<p>为了进一步发展，还可开发流水线中的多发技术，设法在一个时钟周期（机器主频的到数）内产生更多条指令的结果。</p>
+<p>常见的多发技术有超标量技术、超流水线技术和超长指令字技术。</p>
+<h3 id="3-4-1-超标量技术">3.4.1 超标量技术</h3>
+<p>超标量技术是指每个时钟周期内可<strong>并发多条独立指令</strong>，即以并行操作方式将两条或两条以上的指令编译执行。</p>
+<p><img src="image_niWOob2Kid.png" alt=""></p>
+<p>超标量计算机不能重新安排指令的执行顺序，但可以通过编译优化技术，在高级语言翻译成机器语言时精心安排，把能并行执行的指令搭配起来，挖掘更多的指令并行性。</p>
+<h3 id="3-4-2-超流水线技术">3.4.2 超流水线技术</h3>
+<p>超流水线技术是将一些流水线寄存器插入流水线段中，好比将流水线再分段。</p>
+<p><img src="image_YBiJjDwG4A.png" alt=""></p>
+<h3 id="3-4-3-超长指令字技术">3.4.3 超长指令字技术</h3>
+<p>超长指令字技术是由编译程序<strong>挖掘</strong>出指令间<strong>潜在</strong>的<strong>并行性</strong>后，将<strong>多条</strong>能<strong>并行操作</strong>的指令组合成一条具有<strong>多个操作码字段</strong>的<strong>超长指令字</strong>（可达几百位）。</p>
+<p><img src="image_bHTGB9RRAj.png" alt=""></p>
+<p>超长指令字较超标量具有更高的并行处理能力，但对优化编译器的要求更高，对Cache的容量要求更大。</p>
+<hr>
+<h1>4 中断系统</h1>
+<p>为了处理各种中断，CPU内通常设有处理中断的机构——中断系统，以解决各种中断的共性问题。</p>
+<p>引起中断的各种因素如下：</p>
+<ol>
+<li>人为设置的中断：一般称为<strong>自愿中断</strong></li>
+<li>程序性事故：如定点溢出、浮点溢出等，属于由程序设计不周而引起的 中断</li>
+<li>硬件故障</li>
+<li>I/O设备</li>
+<li>外部事件：例如键盘输入</li>
+</ol>
+<p>中断源可分两大类：不可屏蔽中断和可屏蔽中断。</p>
+<p>中断系统需要解决的问题：</p>
+<ol>
+<li>各中断源<strong>如何</strong>向 CPU** 提出请求**？</li>
+<li>各中断源同时提出请求怎么办 ？</li>
+<li>CPU什么条件、什么时间、以什么方式响应中断？</li>
+<li>如何保护现场？</li>
+<li>如何寻找入口地址？</li>
+<li>如何恢复现场，如何返回？</li>
+<li>处理中断的过程中又出现新的中断怎么办？</li>
+</ol>
+<h2 id="4-1-中断请求标记和中断判优逻辑">4.1 中断请求标记和中断判优逻辑</h2>
+<h3 id="4-1-1-中断请求标记">4.1.1 中断请求标记</h3>
+<p>为了判断是哪个中断源提出请求，在中断系统中必须设置中断请求标记触发器，简称<strong>中断请求触发器</strong>，记作INTR。多个INTR可以组成中断请求标记寄存器。</p>
+<p><img src="image_Q2gSJOqfLe.png" alt=""></p>
+<p>尽管中断请求标记寄存器是由各中断触发器组成的，但这些触发器可以集中在CPU的中断系统内，也可以分散到各个中断源。</p>
+<h3 id="4-1-2-中断判优逻辑">4.1.2 中断判优逻辑</h3>
+<p>当某一个时刻有多个中断源提出中断请求时，中断系统必须按其优先顺序予以响应，这称为<strong>中断判优</strong>。</p>
+<h4 id="4-1-2-1-硬件排队">4.1.2.1 硬件排队</h4>
+<p>分为两种，一种是链式排队器，对应中断请求触发器分散在各个接口电路中的情况。</p>
+<p>另一种排队器设在CPU内，如下图所示：</p>
+<p><img src="image_d0HzBNgvGO.png" alt=""></p>
+<h4 id="4-1-2-2-软件排队">4.1.2.2 软件排队</h4>
+<p>软件排队通过编写查询程序实现的，程序按一下逻辑从高至低逐级查询各中断源是否有中断请求，这样可以保证CPU首先响应级别高的中断源的请求。</p>
+<p><img src="image_qsRsm9T3A2.png" alt=""></p>
+<h2 id="4-2-中断服务程序入口地址的寻找">4.2 中断服务程序入口地址的寻找</h2>
+<h3 id="4-2-1-硬件向量法">4.2.1 硬件向量法</h3>
+<p><strong>硬件向量法</strong>就是利用硬件产生向量地址，再由向量地址找到中断服务程序的入口地址。</p>
+<p><img src="image_dWKli0jhj-.png" alt=""></p>
+<h3 id="4-2-2-软件查询法">4.2.2 软件查询法</h3>
+<p>用软件寻找中断服务程序入口地址的方法称为<strong>软件查询法</strong>。当查到某一中断源有中断请求时，接着安排一条转移指令，直接指向此中断源的中断服务程序入口地址。</p>
+<p><img src="image_bxA6NkeVLh.png" alt=""></p>
+<h2 id="4-3-中断响应">4.3 中断响应</h2>
+<h3 id="4-3-1-响应中断的条件">4.3.1 响应中断的条件</h3>
+<p>CPU响应I/O中断的条件是允许中断触发器必须为“1”。在中断系统中有一个允许中断触发器EINT，它可被开中断指令置“1”，也可被关中断指令置“0”。即只有当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>I</mi><mi>N</mi><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">EINT=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>并且有中断请求时，CPU可以响应中断。</p>
+<h3 id="4-3-2-响应中断的时间">4.3.2 响应中断的时间</h3>
+<p>在指令执行周期结束后，若有中断，CPU则进入中断周期；若无中断，则进入下一条指令的取值周期。</p>
+<h3 id="4-3-3-中断隐指令">4.3.3 中断隐指令</h3>
+<p>CPU响应中断后，即进入中断周期。在中断周期内，CPU要自动完成一系列操作，具体如下：</p>
+<ol>
+<li><strong>保护程序断点</strong>：将PC的内容保存到存储器中，可以存在特定单元（0号地址），也可以存入堆栈</li>
+<li><strong>寻找中断服务程序的入口地址</strong>：有硬件向量法和软件查询法两种</li>
+<li><strong>关中断</strong>：INT为状态“1”，同时<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>I</mi><mi>N</mi><mi>T</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">EINT=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></li>
+</ol>
+<h2 id="4-4-保护现场和恢复现场">4.4 保护现场和恢复现场</h2>
+<p><strong>保护现场</strong>应该包括<strong>保护程序断点</strong>和<strong>保护CPU内部寄存器内容的现场</strong>两个方面。</p>
+<p><strong>恢复现场</strong>是指在中断返回前，必须将寄存器的内容恢复到中断处理前的状态，这部分工作也由<strong>中断服务程序</strong>完成。</p>
+<h2 id="4-5-中断屏蔽技术">4.5 中断屏蔽技术</h2>
+<h3 id="4-5-1-多重中断">4.5.1 多重中断</h3>
+<p>CPU正在执行某个中断服务程序时，另一个中断源又提出了新的中断请求，而CPU又响应了这个新的请求，暂时停止正在运行的服务程序，这称为<strong>多重中断</strong>。</p>
+<p>实现多重中断的条件：</p>
+<ol>
+<li>提前设置“开中断”指令</li>
+<li>优先级别高的中断源有权中断优先级别低的中断源</li>
+</ol>
+<h3 id="4-5-2-屏蔽技术">4.5.2 屏蔽技术</h3>
+<h4 id="4-5-2-1-屏蔽触发器与屏蔽字">4.5.2.1 屏蔽触发器与屏蔽字</h4>
+<p>当该中断源被屏蔽时（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi><mi>S</mi><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">MASK=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>），此时即使<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">D=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，中断查询信号到来时刻只能将<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>N</mi><mi>T</mi><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">INTR=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，CPU接收不到该中断源的中断请求，即它被屏蔽。</p>
+<p>如果排队器集中设在CPU内，加上屏蔽条件，就可组成具有屏蔽功能的排队器，如下图所示：</p>
+<p><img src="image_jIGREIzzRM.png" alt=""></p>
+<p>显然，对应每个中断请求触发器就有一个屏蔽触发器，将所有的屏蔽触发器组合在一起，便构成一个屏蔽寄存器，屏蔽寄存器的内容称为<strong>屏蔽字</strong>。下图是16个中断源的优先级按照降序排序：</p>
+<p><img src="image_hE6w7cf49b.png" alt=""></p>
+<p>在中断服务程序中设置适当的屏蔽字，能起到对优先级别不同的中断源的屏蔽作用。</p>
+<h4 id="4-5-2-2-屏蔽技术可改变优先等级">4.5.2.2 屏蔽技术可改变优先等级</h4>
+<p>优先级包含响应优先级和处理优先级。响应优先级是指CPU响应各中断源请求的优先次序，这种次序往往是<strong>硬件线路</strong>已设置好的，不便于改动。处理优先级是指CPU实际对各中断源请求的处理优先次序。</p>
+<p>如果不采用屏蔽技术，响应的优先次序就是处理的优先次序。采用了屏蔽技术之后，可以改变各中断源的优先等级，从而改变CPU执行程序的轨迹。</p>
+<blockquote>
+<p>CPU 执行程序轨迹（原屏蔽字）</p>
+</blockquote>
+<p><img src="image_yqCd8VJtE8.png" alt=""></p>
+<blockquote>
+<p>CPU 执行程序轨迹（新屏蔽字）</p>
+</blockquote>
+<p><img src="image_FfnYxEtLex.png" alt=""></p>
+<p>在不改变CPU响应中断的次序下，通过改变屏蔽字可以改变CPU处理中断的次序。</p>
+<h3 id="4-5-3-多重中断的断点保护">4.5.3 多重中断的断点保护</h3>
+<p>中断系统对断点的保存都是在中断周期内由<strong>中断隐指令</strong>实现的，对用户是<strong>透明</strong>的。断点可以保存在堆栈内，也可保存在特定的存储单元内。</p>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
 </search>
