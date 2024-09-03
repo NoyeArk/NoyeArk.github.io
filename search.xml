@@ -12479,4 +12479,91 @@
         <tag>计算机组成原理</tag>
       </tags>
   </entry>
+  <entry>
+    <title>计算机组成原理第9章：控制单元的功能</title>
+    <url>/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h1 id="1-微操作命令的分析"><a href="#1-微操作命令的分析" class="headerlink" title="1 微操作命令的分析"></a>1 微操作命令的分析</h1><p>控制单元具有发出各种微操作命令（即控制信号）序列的功能。</p>
+<h2 id="1-1-取值周期"><a href="#1-1-取值周期" class="headerlink" title="1.1 取值周期"></a>1.1 取值周期</h2><p>假设CPU内含有4个寄存器：</p>
+<ul>
+<li><strong>MAR</strong>与地址总线相连，存放欲访问的存储单元地址</li>
+<li><strong>MDR</strong>与数据总线相连，存放欲写入存储器的信息或最新从存储器中读出的信息</li>
+<li><strong>PC</strong>存放现行指令的地址，有计数功能</li>
+<li><strong>IR</strong>存放现行指令</li>
+</ul>
+<p>取值周期的过程归纳如下：</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_1t3TFoikyp.png"></p>
+<h2 id="1-2-间址周期"><a href="#1-2-间址周期" class="headerlink" title="1.2 间址周期"></a>1.2 间址周期</h2><p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_NCIfbPSipX.png"></p>
+<h2 id="1-3-执行周期"><a href="#1-3-执行周期" class="headerlink" title="1.3 执行周期"></a>1.3 执行周期</h2><p>不同指令的指令周期的微操作是不同的，下面分别讨论非访存指令、访存指令和转移类指令的微操作。</p>
+<h3 id="1-3-1-非访存指令"><a href="#1-3-1-非访存指令" class="headerlink" title="1.3.1 非访存指令"></a>1.3.1 非访存指令</h3><ol>
+<li>清除累加器指令CLA：$0 \rightarrow \mathrm{ACC}$</li>
+<li>累加器取反指令COM：$\overline{\mathrm{ACC}} \rightarrow \mathrm{ACC}$</li>
+<li>算术右移一位指令SHR：$\mathrm{L}(\mathrm{ACC}) \rightarrow \mathrm{R}(\mathrm{ACC}), \mathrm{ACC}<em>{0} \rightarrow \mathrm{ACC}</em>{0}$</li>
+<li>循环左移一位指令CSL：$\mathrm{R}(\mathrm{ACC}) \rightarrow \mathrm{L}(\mathrm{ACC}), \mathrm{ACC}<em>{0} \rightarrow \mathrm{ACC}</em>{n}$</li>
+<li>停机指令STP：$0 \rightarrow \mathrm{G}$</li>
+</ol>
+<h3 id="1-3-2-访存指令"><a href="#1-3-2-访存指令" class="headerlink" title="1.3.2 访存指令"></a>1.3.2 访存指令</h3><p>这类指令在执行阶段都需要访存存储器，这里只考虑直接寻址的情况，不考虑其他寻址方式。</p>
+<h4 id="1-3-2-1-加法指令ADD-X"><a href="#1-3-2-1-加法指令ADD-X" class="headerlink" title="1.3.2.1 加法指令ADD X"></a>1.3.2.1 加法指令ADD X</h4><p>$$<br>\begin{array}{l}\operatorname{Ad}(\mathrm{IR}) \rightarrow \mathrm{MAR} \ 1 \rightarrow \mathrm{R} \ \mathrm{M}(\mathrm{MAR}) \rightarrow \mathrm{MDR} \ (\mathrm{ACC})+(\mathrm{MDR}) \rightarrow \mathrm{ACC}\end{array}<br>$$</p>
+<h4 id="1-3-2-2-存数指令STA-X"><a href="#1-3-2-2-存数指令STA-X" class="headerlink" title="1.3.2.2 存数指令STA X"></a>1.3.2.2 存数指令STA X</h4><p>$$<br>\begin{array}{l}\operatorname{Ad}(\mathrm{IR}) \rightarrow \mathrm{MAR} \ 1 \rightarrow \mathrm{W} \ \mathrm{ACC} \rightarrow \mathrm{MDR} \ \mathrm{MDR} \rightarrow \mathrm{M}(\mathrm{MAR})\end{array}<br>$$</p>
+<h4 id="1-3-2-3-取数指令LDA-X"><a href="#1-3-2-3-取数指令LDA-X" class="headerlink" title="1.3.2.3 取数指令LDA X"></a>1.3.2.3 取数指令LDA X</h4><p>$$<br>\begin{array}{l}\mathrm{Ad}(\mathrm{IR}) \rightarrow \mathrm{MAR} \ 1 \rightarrow \mathrm{R} \ \mathrm{M}(\mathrm{MAR}) \rightarrow \mathrm{MDR} \ \mathrm{MDR} \rightarrow \mathrm{ACC}\end{array}<br>$$</p>
+<h3 id="1-3-3-转移指令"><a href="#1-3-3-转移指令" class="headerlink" title="1.3.3 转移指令"></a>1.3.3 转移指令</h3><ol>
+<li>无条件转移指令JMP X：$\operatorname{Ad}(\mathrm{IR}) \rightarrow \mathrm{PC}$</li>
+<li>条件转移（负则转）指令BAN X：$\mathrm{A}<em>{0} \cdot \mathrm{Ad}(\mathrm{IR})+\overline{\mathrm{A}}</em>{0}(\mathrm{PC}) \rightarrow \mathrm{PC}$</li>
+</ol>
+<h3 id="1-3-4-三类指令的指令周期"><a href="#1-3-4-三类指令的指令周期" class="headerlink" title="1.3.4 三类指令的指令周期"></a>1.3.4 三类指令的指令周期</h3><p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_7Yt3OMTwcg.png"></p>
+<h2 id="1-4-中断周期"><a href="#1-4-中断周期" class="headerlink" title="1.4 中断周期"></a>1.4 中断周期</h2><p>在执行周期结束时刻，CPU要查询是否有请求中断的事件发生，如果有则进入中断周期。</p>
+<p>在中断周期，由中断隐指令自动完成保护断点、寻找中断服务程序入口地址以及硬件关中断的操作。在中断周期需完成如下操作：</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_7zKAqsA-J4.png"></p>
+<hr>
+<h1 id="2-控制单元的功能"><a href="#2-控制单元的功能" class="headerlink" title="2 控制单元的功能"></a>2 控制单元的功能</h1><h2 id="2-1-控制单元的外特性"><a href="#2-1-控制单元的外特性" class="headerlink" title="2.1 控制单元的外特性"></a>2.1 控制单元的外特性</h2><p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_tV5VshyTKJ.png"></p>
+<h3 id="2-1-1-输入信号"><a href="#2-1-1-输入信号" class="headerlink" title="2.1.1 输入信号"></a>2.1.1 输入信号</h3><ol>
+<li><strong>时钟</strong>：为了使控制单元按一定的先后顺序、一定的节奏法出各个控制信号，控制单元必须受时钟控制。</li>
+<li><strong>指令寄存器</strong>：控制信号和操作码有关</li>
+<li><strong>标志</strong>：CU有时需要依赖CPU当前所处的状态产生控制信号</li>
+<li><strong>来自系统总线（控制总线）的控制信号</strong>：如中断请求、DMA请求</li>
+</ol>
+<h3 id="2-1-2-输出信号"><a href="#2-1-2-输出信号" class="headerlink" title="2.1.2 输出信号"></a>2.1.2 输出信号</h3><ol>
+<li><strong>CPU内的控制信号</strong>：用于CPU内的寄存器之间的传送和控制ALU实现不同的操作</li>
+<li><strong>送至系统总线（控制总线）的信号</strong>：例如，命令主存或Ｉ／Ｏ读写、中断响应等</li>
+</ol>
+<h2 id="2-2-多级时序系统"><a href="#2-2-多级时序系统" class="headerlink" title="2.2 多级时序系统"></a>2.2 多级时序系统</h2><h3 id="2-2-1-机器周期"><a href="#2-2-1-机器周期" class="headerlink" title="2.2.1 机器周期"></a>2.2.1 机器周期</h3><p><strong>机器周期</strong>可以看作所有指令执行过程中的一个基准时间，确定机器周期需要考虑<strong>每条指令的执行步骤</strong>和<strong>每一步骤所需的时间</strong>，可以有以下2种确定方式：</p>
+<ol>
+<li>以<strong>完成最复杂指令功能</strong>的时间<strong>为基准</strong></li>
+<li>以<strong>访问一次存储器</strong>的时间<strong>为基准</strong></li>
+</ol>
+<p>由于不论执行什么指令，都需要访问存储器取出指令，因此在存储字长等于指令字长的前提下，取指周期也可以看作机器周期。</p>
+<h3 id="2-2-2-时钟周期"><a href="#2-2-2-时钟周期" class="headerlink" title="2.2.2 时钟周期"></a>2.2.2 时钟周期</h3><p>一个机器周期内可完成若干个微操作，每个微操作需一定的时间，将一个机器周期分成若干个时间相等的<strong>时间段</strong>（节拍、状态、时钟周期）。<strong>时钟周期是控制计算机操作的最小单位时间</strong>，用时钟周期控制产生一个或几个微操作命令。</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_wOWo5A3zUO.png"></p>
+<h3 id="2-2-3-多级时序系统"><a href="#2-2-3-多级时序系统" class="headerlink" title="2.2.3 多级时序系统"></a>2.2.3 多级时序系统</h3><p>一个指令周期包含若干个机器周期，一个机器周期包含若干个时钟周期。同时，每个指令周期内的机器周期数可以不等，每个机器周期内的时钟周期数也可以不等。</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_ZtE-EIEIWb.png"></p>
+<p>机器周期、节拍（状态）组成多级时序系统。</p>
+<h3 id="2-2-4-机器速度与机器主频的关系"><a href="#2-2-4-机器速度与机器主频的关系" class="headerlink" title="2.2.4 机器速度与机器主频的关系"></a>2.2.4 机器速度与机器主频的关系</h3><p>机器的<strong>主频</strong>$f$越快，机器的<strong>速度</strong>也越快，在机器周期所含<strong>时钟周期数相同</strong>的前提下，两机<strong>平均指令执行速度之比</strong>等于<strong>两机主频之比</strong>。</p>
+<p>$$<br>\frac{\operatorname{MIPS}<em>{1}}{\operatorname{MIPS}</em>{2}}&#x3D;\frac{f_{1}}{f_{2}}<br>$$</p>
+<p>机器速度不仅与<strong>主频</strong>有关，还与机器周期中所含<strong>时钟周期</strong>（主频的倒数）数以及指令周期中所含的<strong>机器周期数</strong>有关。</p>
+<h2 id="2-3-控制方式"><a href="#2-3-控制方式" class="headerlink" title="2.3 控制方式"></a>2.3 控制方式</h2><p>控制单元控制一条指令执行的过程实质上是依次执行一个确定的微操作序列的过程。通常将如何形成控制不同微操作序列所采用的时序控制方式称为<strong>CU的控制方式</strong>。</p>
+<p>常见的有同步控制、异步控制、联合控制和人工控制。</p>
+<h3 id="2-3-1-同步控制"><a href="#2-3-1-同步控制" class="headerlink" title="2.3.1 同步控制"></a>2.3.1 同步控制</h3><p>同步控制方式是指任一微操作均由<strong>统一基准时标</strong>的时序信号控制，每一个微操作都是事先确定的。</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_j0D_w9HWO_.png"></p>
+<p>在同步控制中，又划分为三种方案。</p>
+<h4 id="2-3-1-1-定长的机器周期"><a href="#2-3-1-1-定长的机器周期" class="headerlink" title="2.3.1.1 定长的机器周期"></a>2.3.1.1 定长的机器周期</h4><p>以<strong>最长</strong>的<strong>微操作序列</strong>和<strong>最繁</strong>的微操作作为<strong>标准</strong>机器周期，每个机器周期内的<strong>节拍数相同</strong>。</p>
+<h4 id="2-3-1-2-不定长的机器周期"><a href="#2-3-1-2-不定长的机器周期" class="headerlink" title="2.3.1.2 不定长的机器周期"></a>2.3.1.2 不定长的机器周期</h4><p>采用这种方案时，每个机器周期内的节拍数可以不等。</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_j4b76UUw_d.png"></p>
+<h4 id="2-3-1-3-中央控制和联合控制结合"><a href="#2-3-1-3-中央控制和联合控制结合" class="headerlink" title="2.3.1.3 中央控制和联合控制结合"></a>2.3.1.3 中央控制和联合控制结合</h4><p>这种方案将机器的大部分指令安排在统一的、较短的机器周期内完成，称为<strong>中央控制</strong>，而将少数操作复杂的指令中的某些操作采用<strong>局部控制</strong>方式。</p>
+<p><img src="/2024/09/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E7%9A%84%E5%8A%9F%E8%83%BD/image_e_77aft_8t.png"></p>
+<h3 id="2-3-2-异步控制方式"><a href="#2-3-2-异步控制方式" class="headerlink" title="2.3.2 异步控制方式"></a>2.3.2 异步控制方式</h3><p>异步控制方式不存在基准时标信号，没有固定的周期节拍和严格的时钟同步，执行每条指令和每个操作需要多少时间就占用多少时间。</p>
+<p>因此需要采用各种应答电路，故其结构比同步控制方式更加复杂。</p>
+<h3 id="2-3-3-联合控制方式"><a href="#2-3-3-联合控制方式" class="headerlink" title="2.3.3 联合控制方式"></a>2.3.3 联合控制方式</h3><p>同步控制和异步控制相结合就是<strong>联合控制方式</strong>。</p>
+<h3 id="2-3-4-人工控制方式"><a href="#2-3-4-人工控制方式" class="headerlink" title="2.3.4 人工控制方式"></a>2.3.4 人工控制方式</h3><p><strong>人工控制</strong>是为了调机和软件开发的需要，在机器面板或内部设置一些开关或按键，来达到人工控制的目的。</p>
+<ol>
+<li>Reset（复位）键</li>
+<li>连续或单条执行转换开关</li>
+<li>符合停机开关</li>
+</ol>
+]]></content>
+      <categories>
+        <category>专业课</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
 </search>
