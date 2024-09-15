@@ -2882,9 +2882,9 @@
 <hr>
 <h1 id="5-散列表"><a href="#5-散列表" class="headerlink" title="5 散列表"></a>5 散列表</h1><p>前面讨论的线性表、树表结构的查找方法，这类查找方法都是以关键字的比较为基础的。而散列表的思想是通过对元素的关键字值进行某种运算，直接求出元素的地址，即使用关键字到地址的直接转换方法，而不需要反复比较。</p>
 <p><strong>散列函数和散列地址</strong>：在记录的存储位置$p$和其关键字$key$之间建立一个确定的对应的关系$H$，使$p&#x3D;H(key)$，称这个对应关系$H$为散列函数，$p$为散列地址。</p>
-<p><strong>散列方法（杂凑法）</strong>：选取某个函数，依该函数按关键字计算元素的存储位置，并按此存放；查找时，由同一个函数对给定值$k$计算地址，将k与地址单元中元素关键码进行比对，确定查找是否成功。</p>
+<p><strong>散列方法（杂凑法）</strong>：选取某个函数，依该函数按关键字计算元素的存储位置，并按此存放；查找时，由同一个函数对给定值$k$计算地址，将$k$与地址单元中元素关键码进行比对，确定查找是否成功。</p>
 <p><strong>散列表</strong>：一个有限连续的地址空间，用以存储按散列函数计算得到相应散列地址的数据记录。通常散列表的存储空间是一个一维数组，散列地址是数组的下标。</p>
-<p><strong>冲突和同义词</strong>：对不同的关键字可能得到同一散列地址，即$key1 \neq key2$，而$H(key1) &#x3D; H(key2)$，这种现象称为冲突。具有相同函数值的关键对该散列函数来说称作同义词，$key1$与$key2$互称为同义词（冲突是不可避免的，我们只能尽可能减少）。</p>
+<p><strong>冲突和同义词</strong>：对不同的关键字可能得到同一散列地址，即$key_1 \neq key_2$，而$H(key_1) &#x3D; H(key_2)$，这种现象称为冲突。具有相同函数值的关键对该散列函数来说称作同义词，$key_1$与$key_2$互称为同义词（冲突是不可避免的，我们只能尽可能减少）。</p>
 <h2 id="5-1-散列函数的构造方法"><a href="#5-1-散列函数的构造方法" class="headerlink" title="5.1 散列函数的构造方法"></a>5.1 散列函数的构造方法</h2><p>在构造散列函数时，必须注意以下几点：</p>
 <ol>
 <li>构造好的散列函数，所选函数尽可能简单，以便提高转换速度。</li>
@@ -2895,7 +2895,7 @@
 <p><img src="https://img-blog.csdnimg.cn/20200504114709427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3MTQ5MDYy,size_16,color_FFFFFF,t_70"></p>
 <p>这类函数计算简单，分布均匀，不会产生冲突，但要求地址集合与关键词集合大小相同，因此，对于较大的关键词集合不适用。所以在现实应用中并不常用。</p>
 <h3 id="5-1-2-除留余数法"><a href="#5-1-2-除留余数法" class="headerlink" title="5.1.2 除留余数法"></a>5.1.2 除留余数法</h3><p>现实应用中比较常用的方法是除留取余法。假设散列表长为TableSize（TableSize的选取，通常由关键词集合的大小n和允许最大装填因子α决定，一般将TableSize取为 n &#x2F; α ）,选择一个正整数p&lt;&#x3D;TableSize，散列函数为：</p>
-<p>$$<br>h(key) &#x3D; key % p<br>$$</p>
+<p>$$<br>h(key) &#x3D; key \% p<br>$$</p>
 <p>即取关键词除以p的余数作为散列地址。使用除留取余法，选取合适的p很重要，一般选取p为小于或等于散列表长TableSize的某个最大素数比较好。</p>
 <p>用素数求得的余数作为散列地址，比较均匀分布在整个地址空间上的可能性较大。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200504114953419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3MTQ5MDYy,size_16,color_FFFFFF,t_70"></p>
@@ -2906,21 +2906,21 @@
 <p>适用范围：关键字的每位取值都不够均匀或均小于散列地址所需的位数。</p>
 <p>在不同的情况下，不同的散列函数具有不同的性能，因此不能笼统地说哪种散列函数最好。在实际选择中，采用何种构造散列函数的方法取决于关键字集合的情况，但目标是尽量降低产生冲突的可能性。</p>
 <h2 id="5-2-处理冲突的方法"><a href="#5-2-处理冲突的方法" class="headerlink" title="5.2 处理冲突的方法"></a>5.2 处理冲突的方法</h2><h3 id="5-2-1-开放定址法"><a href="#5-2-1-开放定址法" class="headerlink" title="5.2.1 开放定址法"></a>5.2.1 开放定址法</h3><p>当冲突发生时，形成一个探查序列；沿此序列逐个地址探查，直到找到一个空位置（开放的地址），将发生冲突的记录放到该地址中，即：</p>
-<p>$$<br>H i&#x3D;(H(k e y)+d i) M O D ~ m, \quad i&#x3D;1,2, \cdots \cdots \cdot k(k \leq m-1)<br>$$</p>
+<p>$$<br>H i&#x3D;(H(k e y)+d i) \% m, \quad i&#x3D;1,2, \cdots \cdots \cdot k(k \leq m-1)<br>$$</p>
 <p>其中：H(key)是哈希函数，m是哈希表表长，di是增量序列。</p>
 <p>取定某一增量序列后，对应的处理方法就是确定的，通常有以下4中取法。</p>
-<h4 id="5-2-1-1-线性探测法"><a href="#5-2-1-1-线性探测法" class="headerlink" title="5.2.1.1 线性探测法"></a>5.2.1.1 线性探测法</h4><p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) M O D m\left(d_{i}&#x3D;1,2,3, \cdots, m-1\right)<br>$$</p>
+<h4 id="5-2-1-1-线性探测法"><a href="#5-2-1-1-线性探测法" class="headerlink" title="5.2.1.1 线性探测法"></a>5.2.1.1 线性探测法</h4><p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) \% m\left(d_{i}&#x3D;1,2,3, \cdots, m-1\right)<br>$$</p>
 <p>使用该公式<strong>用于解决冲突的开放定址法</strong>称为<strong>线性探测法</strong>。</p>
 <p>对于<strong>线性探测法</strong>，在出现冲突时，它只能<strong>晚后一步一步检测</strong>看<strong>是否有空位置</strong>，假设此时该冲突位置<strong>后</strong>续<strong>没有可用位置</strong>，但前面<strong>有一个空位置</strong>。<strong>尽管</strong>可以不断地求余数后得到结果，但效率很差。</p>
 <h4 id="5-2-1-2-二次探测法"><a href="#5-2-1-2-二次探测法" class="headerlink" title="5.2.1.2 二次探测法"></a>5.2.1.2 二次探测法</h4><p>因此可以改进该算法，增加双向寻找可能的<strong>空位置</strong>，这种新算法称为<strong>二次探测法</strong>：</p>
-<p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) M O D m\left(d_{i}&#x3D;1^{2},-1^{2}, 2^{2},-2^{2}, \cdots, q^{2},-q^{2}, q \leq m &#x2F; 2\right)<br>$$</p>
+<p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) \% m\left(d_{i}&#x3D;1^{2},-1^{2}, 2^{2},-2^{2}, \cdots, q^{2},-q^{2}, q \leq m &#x2F; 2\right)<br>$$</p>
 <p>散列表长度m必须是一个可以表示成4k+3的素数，才能保证探测到所有位置。</p>
 <blockquote>
 <p>为什么？</p>
 </blockquote>
 <p>缺点是不能探测到散列表上的所有单元，但至少到探测到一半单元。</p>
 <h4 id="5-2-1-3-随机探测法"><a href="#5-2-1-3-随机探测法" class="headerlink" title="5.2.1.3 随机探测法"></a>5.2.1.3 随机探测法</h4><p>此外还有一种方法是，在冲突时，对于<strong>位移量</strong>$d_{i}$采用<strong>随机函数计算</strong>得到，称为<strong>随机探测法</strong>：</p>
-<p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) M O D m\left(d_{i}\right. 是一个随机数列 )<br>$$</p>
+<p>$$<br>f_{i}(k e y)&#x3D;\left(f(k e y)+d_{i}\right) \% m\left(d_{i}\right. 是一个随机数列 )<br>$$</p>
 <p>这里的随机其实是<strong>伪随机数</strong>，即设置<strong>相同</strong>的随机种子，则<strong>不断调用随机函数的过程中</strong>就<strong>可以生成不会重复的数列</strong>。</p>
 <p>同时，在查找时，用<strong>同样的随机种子</strong>，它每次得到的<strong>数列也是相同</strong>的。</p>
 <blockquote>
@@ -9647,7 +9647,7 @@
       </tags>
   </entry>
   <entry>
-    <title>论文精读1：《An Attention Free Transformer》</title>
+    <title>论文精读1：An Attention Free Transformer</title>
     <url>/2024/07/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB1%EF%BC%9A%E3%80%8AAn-Attention-Free-Transformer%E3%80%8B/</url>
     <content><![CDATA[<h1 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1 Abstract"></a>1 Abstract</h1><p>我们介绍了无注意力transformer(AFT)，这是Transformer的有效变体，消除了对点积自注意力的需要。在AFT层中，键和值首先与<strong>一组学习到的位置偏置组合</strong>在一起，其结果以element-wise的方式与查询相乘。</p>
 <p>这个新操作的内存复杂度与上下文大小和特征维度都是<strong>线性</strong>的，这使得它兼容于大的输入和模型大小。我们还介绍了<code>AFT-local</code>和<code>AFT-conv</code>两种模型变体，它们在保持全局连通性的同时利用了局域性和空间权重共享的思想。</p>
@@ -11217,7 +11217,7 @@
       </tags>
   </entry>
   <entry>
-    <title>论文精读2：《Training-Free Layout Control with Cross-Attention Guidance》</title>
+    <title>论文精读2：Training-Free Layout Control with Cross-Attention Guidance</title>
     <url>/2024/08/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB2%EF%BC%9A%E3%80%8ATraining-Free-Layout-Control-with-Cross-Attention-Guidance%E3%80%8B/</url>
     <content><![CDATA[<h1 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1 Abstract"></a>1 Abstract</h1><p>最近基于扩散的生成器可以从文本提示生成高质量的图像。然而，他们经常忽略指定组合空间布局的文本指令。我们提出了一种实现鲁棒布局控制的简单方法，而不需要对图像生成器进行训练或微调。我们的技术操纵模型使用的交叉注意力层来连接文本和视觉信息，并在给定的期望方向上引导生成，例如用户指定的布局。</p>
 <p>为了确定如何最好地指导注意力，我们研究了注意力图的作用，并探索两种替代策略：前向和后向指导。我们在三个基准上彻底评估了我们的方法，并对两种策略进行了比较分析，证明了后向引导与前向引导以及先前的工作相比的优越性。我们通过将布局引导扩展到编辑真实图像布局和上下文等应用程序来进一步演示布局引导的通用性。</p>
@@ -11885,7 +11885,7 @@
       </tags>
   </entry>
   <entry>
-    <title>论文精读3-1：《GNN》图结构介绍</title>
+    <title>论文精读3-1：GNN图结构介绍</title>
     <url>/2024/08/27/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-1%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<p>原文链接：<a href="https://distill.pub/2021/gnn-intro/" title="https://distill.pub/2021/gnn-intro/">https://distill.pub/2021/gnn-intro/</a></p>
 <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h1><p>神经网络已适应利用图的结构和属性。我们探索构建图神经网络所需的组件——并激发它们背后的设计选择。</p>
@@ -12567,7 +12567,7 @@
       </tags>
   </entry>
   <entry>
-    <title>论文精读3-2：《GNN》核心算法</title>
+    <title>论文精读3-2：GNN核心算法</title>
     <url>/2024/09/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB3-2%EF%BC%9A%E3%80%8AGNN%E3%80%8B%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="1-图神经网络"><a href="#1-图神经网络" class="headerlink" title="1 图神经网络"></a>1 图神经网络</h1><p>现在，图形的描述采用排列不变的矩阵格式，我们将描述使用图形神经网络 （GNN） 来解决图形预测任务。<strong>GNN 是对图的所有属性（节点、边、全局上下文）的可优化变换，它保留了图的对称性（排列不变性）。</strong>我们将使用 Gilmer 等人提出的“<strong>消息传递神经网络</strong>”框架来构建 GNN。</p>
 <p>使用 Battaglia 等人介绍的 Graph Nets 架构原理图。GNN采用“图进图”的架构，这意味着这些模型类型接受图作为输入，将信息加载到其节点、边和全局上下文中，并逐步转换这些嵌入，<strong>而不改变输入图的连通性</strong>。</p>
@@ -12844,6 +12844,106 @@
       </categories>
       <tags>
         <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文精读4：GAN</title>
+    <url>/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/</url>
+    <content><![CDATA[<h1 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1 Abstract"></a>1 Abstract</h1><p>我们提出了一种通过对抗过程估计生成模型的新框架，在该框架中，我们同时训练两个模型：一个生成模型$G$，它捕捉数据分布；以及一个判别模型$D$，它估计样本来自训练数据而非$G$的概率。$G$的训练过程是最大化$D$犯错误的概率。此框架对应于一个极小极大两人博弈。在任意函数$G$和$D$的空间中，存在一个唯一解，即$G$复现训练数据分布，而$D$在各处等于$\frac{1}{2}$。若模型$G$和$D$由MLP定义，整个系统可通过反向传播进行训练。在训练或样本生成过程中，无需任何马尔可夫链或展开的近似推断网络。实验通过定性和定量评估生成的样本来展示该框架的潜力。</p>
+<hr>
+<h1 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2 Introduction"></a>2 Introduction</h1><p>深度学习的潜力在于发现丰富的、层次化的模型[2]，这些模型能够表示人工智能应用中遇到的各种数据的概率分布，例如自然图像、包含语音的音频波形以及自然语言语料库中的符号。迄今为止，深度学习中最显著的成功涉及判别模型，通常是将高维、丰富的感官输入映射到类标记[14, 20]。这些显著的成功主要基于反向传播和暂退法算法，使用分段线性单元[17, 8, 9]，这些单元具有特别良好的梯度特性。深度生成式模型的影响较小，这是由于在极大似然估计及相关策略中，近似许多难以处理的概率计算存在困难，以及在生成式情境中利用分段线性单元优势的困难。我们提出了一种新的生成式模型估计程序，以规避这些难题。</p>
+<p>在提出的对抗网络框架中，生成式模型与对手——一个判别式模型相对立，该判别式模型学习判断一个样本是来自模型分布还是数据分布。生成式模型可以被视为类似于一群伪造者，试图制造假币并在不被发现的情况下使用，而判别式模型则类似于警察，试图检测这些假币。这种游戏中的竞争促使双方改进其方法，直到伪造品与真品无法区分。</p>
+<p>该框架可以为多种模型和优化算法生成特定的训练算法。在本文中，我们探讨了生成模型通过多层感知器传递随机噪声来生成样本的特殊情况，判别模型也是一个多层感知器。我们将此特殊情况称为对抗性网络。在这种情况下，我们可以只非常成功的反向传播和 dropout 算法 [16] 来训练这两个模型，并使用仅使用前向传播从生成模型中采样。不需要近似推理或马尔可夫链。</p>
+<hr>
+<h1 id="3-Related-work"><a href="#3-Related-work" class="headerlink" title="3 Related work"></a>3 Related work</h1><p>直到最近，大多数关于深度生成模型的工作都集中在构造概率分布函数参数规范的模型上，然后可以通过最大化对数似然来训练模型。在这一系列模型中，也许最成功的是深度玻尔兹曼机[25]。这些模型通常具有难以处理的似然函数，因此需要对似然梯度进行多次近似。这些困难推动了“生成机器”模型的开发，这些模型没有明确表示可能性，但能够从所需的分布生成样本。生成随机网络[4]是产生式机器的一个例子，可以用精确的反向传播来训练，而不是Boltzmann机器所需的大量近似。这项工作通过消除生成随机网络中使用的马尔可夫链来扩展生成机器的想法。</p>
+<p>我们的工作通过使用观察到通过生成过程反向传播导数：</p>
+<p>$$<br>\lim_{\sigma\to0}\nabla_{\boldsymbol{x}}\mathbb{E}_{\epsilon\sim\mathcal{N}(0,\sigma^2\boldsymbol{I})}f(\boldsymbol{x}+\epsilon)&#x3D;\nabla _{\boldsymbol{x}}f(\boldsymbol{x})<br>$$</p>
+<p>当我们开发这项工作时，我们不知道Kingma和Welling[18]和Rezendeet等人[23]开发了更一般的随机反向传播规则，允许人们通过方差有限的高斯分布反向传播，并反向传播到协方差参数和平均值。这些反向传播规则可以让人们学习生成器的条件方差，我们在这项工作中将其视为超参数。Kingma和Welling[18]和Rezende等人[23]使用随机反向传播来训练变分自编码器（VAEs）。与生成对抗网络一样，变分自动编码器将可微生成器网络与第二个神经网络配对。与生成对抗网络不同，VAE 中的第二个网络是一个执行近似推理的识别模型。GAN 需要通过可见单元进行微分，因此无法对离散数据进行建模，而 VAE 需要通过隐藏单元进行微分，因此无法具有离散的潜在变量。存在其他类似 VAE 的方法[12, 22]，但与我们的方法不太密切相关。</p>
+<p>以前的工作也采用了使用判别准则来训练生成模型的方法[29,13]。这些方法使用深度生成模型难以处理的标准。这些方法甚至很难近似深度模型，因为它们涉及概率的比率，而这些比率不能用下限概率的变分近似来近似。噪声对比估计（NCE）[13] 涉及通过学习使模型对区分数据和固定噪声分布有用的权重来训练生成模型。使用先前训练的模型作为噪声分布允许训练一系列质量不断提高的模型。这可以看作是一种非正式的竞争机制，在精神上类似于对抗网络游戏中使用的正式竞争。NCE的关键限制是它的“鉴别器”是由噪声分布概率密度与模型分布的比值定义的，因此需要能够通过两个密度评估和反向传播的能力。</p>
+<p>以前的一些工作使用了拥有两个神经网络竞争的一般概念。最相关的工作是可预测性最小化[26]。在可预测性最小化中，神经网络中的每个隐藏单元都经过训练以与第二个网络的输出不同，后者在给定所有其他隐藏单元的值的情况下预测该隐藏单元的值。这项工作与可预测性最小化在三个重要方面有所不同：</p>
+<ol>
+<li>在这项工作中，网络之间的竞争是唯一的训练标准，并且足以训练网络。可预测性最小化只是一个正则化器，它鼓励神经网络的隐藏单元在完成其他任务时在统计上是独立的；这不是一个主要的训练标准。</li>
+<li>比赛的性质不同。在可预测性最小化中，比较了两个网络的输出，其中一个网络试图使输出相似，另一个试图使输出不同。问题的输出是单个标量。在 GAN 中，一个网络产生一个丰富的高维向量，用作另一个网络的输入，并尝试选择另一个网络不知道如何处理的输入。</li>
+<li>学习过程的规范不同。可预测性最小化被描述为一个目标函数最小化的优化问题，学习方法接近目标函数的最小值。GAN 基于极小极大游戏而不是优化问题，并且具有一个模型寻求最大化的价值函数，另一个模型寻求最小化。该游戏在一个鞍点终止，鞍点相对于一个玩家的策略是最小的，相对于另一个玩家的策略是最大的。</li>
+</ol>
+<p>生成对抗网络有时与“对抗性示例”[28]的相关概念混淆。对抗性示例是通过在分类网络的输入上使用基于梯度的优化来找到的示例，以便找到与尚未错误分类的数据相似的示例。这与目前的工作不同，因为对抗性示例不是训练生成模型的机制。相反，对抗性示例主要是分析工具，表明神经网络以有趣的方式表现，通常自信地以高置信度对两幅图像进行分类，即使它们之间的差异是人类观察者无法察觉的。这种对抗性示例的存在确实表明生成对抗网络训练可能是低效的，因为它们表明可以使现代判别网络自信地识别一个类，而不模拟该类的任何人类可感知属性。</p>
+<hr>
+<h1 id="4-Adversarial-nets"><a href="#4-Adversarial-nets" class="headerlink" title="4 Adversarial nets"></a>4 Adversarial nets</h1><p>当模型都是<code>MLP</code>时，对抗性建模框架最容易应用。为了学习生成器在数据$x$上的分布$p_g$，我们定义了输入噪声变量$p_z(z)$的先验，然后将映射到数据空间的映射表示为$G(z;θ_g)$，其中$G$是一个可微函数，由参数为$θ_g$的多层感知器表示。我们还定义了一个输出单个标量的第二个多层感知器$D(x;θ_d)$。$D(x) $表示$  x  $来自数据而不是$p_g$的概率。我们训练$D$以最大化将正确标签分配给来自$G $的训练示例和样本的概率。我们同时训练$  G  $以最小化$ log(1 − D(G(z)))$。换句话说，$D $和$  G  $进行以下具有价值函数$  V (G, D)  $的两人极小极大游戏：</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image.png"></p>
+<p>在下一节中，我们对对抗网络进行了理论分析，本质上表明训练标准允许人们恢复数据生成分布，因为$  G  $和$  D  $被赋予足够的容量，即在非参数限制下。有关该方法的正式、更具教学性的解释，请参见图 1。在实践中，我们必须使用迭代数值方法实现游戏。在训练的内环中优化$  D  $以完成在计算上是令人望而却步的，并且在有限的数据集上会导致过度拟合。相反，我们在优化$  D  $的$  k  $步和优化$  G  $的一步之间交替。这导致$  D  $保持在其最优解附近，只要$  G  $变化足够缓慢。该过程在算法 1 中正式介绍。</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image_QDpF3BBGAI.png"></p>
+<blockquote>
+<p>图 1：生成对抗网络是通过同时更新判别分布（$D$、蓝色、虚线）来训练的，以便它将样本与数据生成分布（黑色、虚线）$p_x$的样本与生成分布$ p_g (G)$（绿色、实线）的样本区分开来。在这种情况下，较低的水平线是均匀采样$  z  $的域。上面的水平线是$  x  $的域的一部分。向上箭头表示映射$  x &#x3D; G(z)  $如何在转换后的样本上施加非均匀分布$ p_g$。$G$在高密度区域收缩，在$ p_g$密度较低的区域扩展。<br>(a) 考虑收敛附近的对抗性对：$ p_g$类似于$ p_{data}$，$D $是部分准确的分类器<br>(b) 在算法$D$的内部循环中，被训练以区分样本和数据，收敛到$D^*(x)&#x3D;\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_{g}(\boldsymbol{x})}$<br>(c) 在对$G$进行更新后，$D $的梯度引导$  G(z)  $流向更有可能被归类为数据的区域<br>(d) 经过几个步骤的训练，如果$  G  $和$  D  $有足够的容量，它们将达到一个点，此时两者都不能改善，因为$p_g &#x3D; p_{data}$。鉴别器无法区分两个分布，即$ D(x) &#x3D; \frac{1}{2}$</p>
+</blockquote>
+<p>在实践中，公式 1 可能无法为$  G  $提供足够的梯度才能很好地学习。早期在学习时，当$  G  $很差时，$D$可以高置信度拒绝样本，因为它们与训练数据明显不同。在这种情况下，$log(1−D(G(z))) $饱和。我们可以训练$ G$以最大化$  log D(G(z))  $而不是训练$  G  $以最小化$ log(1−D(G(z)))$。这个目标函数导致$  G  $和$D$的动力学的相同不动点，但在学习早期提供了更强的梯度。</p>
+<hr>
+<h1 id="5-Theoretical-Results"><a href="#5-Theoretical-Results" class="headerlink" title="5 Theoretical Results"></a>5 Theoretical Results</h1><p>生成器$  G  $隐含地将概率分布$  p_g  $定义为当$  z ∼ p_z  $时获得的样本$  G(z)  $的分布。因此，如果有足够的容量和训练时间，我们希望算法 1 收敛到$ p_{data}$的良好估计器。本节的结果是在非参数设置中完成的，例如我们通过研究概率密度函数空间中的收敛来表示具有无限容量的模型。</p>
+<p>我们将在第 4.1 节中展示，这个极小极大游戏对于$p_{g}&#x3D;p_{\text {data }}$具有全局最优值。然后，我们将在第 4.2 节中展示算法 1 优化等式 1，从而获得所需的结果。</p>
+<h2 id="5-1-p-g-p-text-data-的全局最优性"><a href="#5-1-p-g-p-text-data-的全局最优性" class="headerlink" title="$5.1 p_{g}&#x3D;p_{\text {data }}$的全局最优性"></a>$5.1 p_{g}&#x3D;p_{\text {data }}$的全局最优性</h2><p>我们首先考虑任何给定生成器$  G  $的最优鉴别器$ D$。</p>
+<p><strong>命题1：</strong>对于$G$固定，最优鉴别器$D$为：</p>
+<p>$$<br>D_{G}^{*}(\boldsymbol{x})&#x3D;\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {data }}(\boldsymbol{x})+p_{g}(\boldsymbol{x})} \quad \quad (2)<br>$$</p>
+<p><strong>证明：</strong>鉴别器$  D  $的训练标准，给定任何生成器$ G$，是最大化$ V (G, D)$：</p>
+<p>$$<br>\begin{aligned} V(G, D) &amp; &#x3D;\int_{\boldsymbol{x}} p_{\text {data }}(\boldsymbol{x}) \log (D(\boldsymbol{x})) d x+\int_{\boldsymbol{z}} p_{\boldsymbol{z}}(\boldsymbol{z}) \log (1-D(g(\boldsymbol{z}))) dz \\ &amp; &#x3D;\int_{\boldsymbol{x}} p_{\text {data }}(\boldsymbol{x}) \log (D(\boldsymbol{x}))+p_{g}(\boldsymbol{x}) \log (1-D(\boldsymbol{x})) d x\end{aligned} \quad \quad (3)<br>$$</p>
+<p>对于任何$(a, b) \in \mathbb{R}^{2} \backslash{0,0}$，函数$y \rightarrow a \log (y)+b \log (1-y)$在$\frac{a}{ a+b }$处达到的最大值位于$ [0, 1]$。判别器$D$不需要在$\operatorname{Supp}\left(p_{\text {data }}\right) \cup \operatorname{Supp}\left(p_{g}\right)$之外定义，包括证明。</p>
+<p>请注意，$D$的训练目标可以解释为最大化估计条件概率$P(Y&#x3D;y \mid \boldsymbol{x})$的对数似然，其中$  Y  $表示$  x  $是来自$  pdata(y &#x3D; 1)  $还是来自$ pg (y &#x3D; 0)$。方程式（1）中的极小极大博弈现在可以重新表述为：</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image1.png"></p>
+<p><strong>定理1</strong>：当且仅当$P_g &#x3D; P_{data}$时，虚拟训练准则$C(G)$的全局最小值。此时，$C(G) $达到值$ - log 4$。</p>
+<p><strong>证明：</strong>对于$P_g &#x3D; P_{data}$，$D_{G}^{*}(\boldsymbol{x})&#x3D;\frac{1}{2}$，（考虑式2）。因此，通过检查公式4，在$D_{G}^{*}(\boldsymbol{x})&#x3D;\frac{1}{2}$时，我们发现$C(G)&#x3D;\log \frac{1}{2}+\log \frac{1}{2}&#x3D;-\log 4$。要了解这是$  C(G)  $的最佳可能值，仅针对$P_g &#x3D; P_{data}$达到，观察到：</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image3.png"></p>
+<p>并且通过从$C(G)&#x3D;V\left(D_{G}^{*}, G\right)$中减去这个表达式，我们得到：</p>
+<p>$$<br>C(G)&#x3D;-\log (4)+K L\left(p_{\text {data }} | \frac{p_{\text {data }}+p_{g}}{2}\right)+K L\left(p_{g} | \frac{p_{\text {data }}+p_{g}}{2}\right) \quad \quad (5)<br>$$</p>
+<p>其中 KL 是 Kullback-Leibler 散度。我们在先前的表达式中认识到模型分布和数据生成过程之间的 Jensen-Shannon 散度：</p>
+<p>$$<br>C(G)&#x3D;-\log (4)+2 \cdot J S D\left(p_{\text {data }} | p_{g}\right) \quad \quad (6)<br>$$</p>
+<h2 id="5-2-算法1的收敛性"><a href="#5-2-算法1的收敛性" class="headerlink" title="5.2 算法1的收敛性"></a>5.2 算法1的收敛性</h2><blockquote>
+<p>算法 1 生成对抗网络的小批量随机梯度下降训练。应用于鉴别器$  k  $的步数是一个超参数。在我们的实验中，我们使用了$ k &#x3D; 1$，这是最便宜的选择。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> number_of_training_iterations <span class="keyword">do</span>:</span><br><span class="line">    <span class="keyword">for</span> k_steps <span class="keyword">do</span>:</span><br><span class="line">        从噪声先验<span class="built_in">Pg</span>(z)中采样m个噪声样本的minibatch&#123;<span class="built_in">z</span>(<span class="number">1</span>),., <span class="built_in">z</span>(m)&#125;</span><br><span class="line">        从噪声先验<span class="built_in">Pdata</span>(x)中采样m个噪声样本的minibatch&#123;<span class="built_in">x</span>(<span class="number">1</span>),., <span class="built_in">x</span>(m)&#125;</span><br><span class="line">        通过使用随机梯度来更新鉴别器D</span><br><span class="line">            ∇θd <span class="number">1</span>/m ∑i=<span class="number">1</span>~m [<span class="built_in">logD</span>(<span class="built_in">x</span>(i)) + <span class="built_in">log</span>(<span class="number">1</span> − <span class="built_in">D</span>(<span class="built_in">G</span>(<span class="built_in">z</span>(i))))]</span><br><span class="line">    end <span class="keyword">for</span></span><br><span class="line">    从噪声先验<span class="built_in">Pg</span>(z)中采样m个噪声样本的minibatch&#123;<span class="built_in">z</span>(<span class="number">1</span>),., <span class="built_in">z</span>(m)&#125;</span><br><span class="line">    通过使用随机梯度来更新生成器G</span><br><span class="line">        ∇θg <span class="number">1</span>/m ∑i=<span class="number">1</span>~m <span class="built_in">log</span>(<span class="number">1</span>−<span class="built_in">D</span>(<span class="built_in">G</span>(<span class="built_in">z</span>(i))))</span><br><span class="line">end <span class="keyword">for</span></span><br><span class="line">基于梯度的更新可以使用任何标准的基于梯度的学习规则.我们在实验中使用了动量法</span><br></pre></td></tr></table></figure>
+
+<p><strong>命题2：</strong>如果$G$和$D$有足够的容量，在算法1的每一步，允许鉴别器D在给定G的情况下达到其最优，并更新$P_g$以提高准则：</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image2.png"></p>
+<p>然后$P_g$收敛到$P_{data}$。</p>
+<p><strong>证明：</strong>考虑$  V (G, D) &#x3D; U (P_g , D)  $作为$P_g$的函数，如上述标准中所做的那样。请注意，$U (P_g , D) $在$P_g$中是凸的。凸函数上确界的子导数包括函数在达到最大值的点的导数。换句话说，如果$f(x)&#x3D; \text{sup}_{α \in {A}} f_α(x)$和$  fα(x)  $对于每个$  α  $在$  x  $中是凸的，那么如果$ β &#x3D; arg \sup_α∈A f_α(x)$，则$∂fβ (x) ∈ ∂f$。这相当于在给定相应的$  G  $的情况下计算最优$  D  $处$P_g$的梯度下降更新。$\sup_D U (p_g, D)$在pg中是凸的，具有唯一的全局最优，如算法1所示，因此$P_g$的更新足够小，$P_g$收敛到$P_x$，结束证明。</p>
+<p>在实践中，对抗网络通过函数$  G(z; θg )  $表示有限的分布族$P_g$，我们优化了$  θg  $而不是$P_g$本身，因此证明不适用。然而，多层感知器在实践中的出色表现表明，尽管它们缺乏理论保证，但它们是一个合理的模型。</p>
+<hr>
+<h1 id="6-Experiments"><a href="#6-Experiments" class="headerlink" title="6 Experiments"></a>6 Experiments</h1><p>我们训练了一系列数据集，包括MNIST[21]、多伦多人脸数据库(TFD)[27]和CIFAR-10[19]。生成器网络使用整流器线性激活[17,8]和sigmoid激活的混合，而鉴别器网络使用maxout[9]激活。Dropout [16] 用于训练鉴别器网络。虽然我们的理论框架允许在生成器的中间层使用 dropout 和其他噪声，但我们使用噪声作为输入来仅输入生成器网络的最底层。</p>
+<p>我们通过将高斯$  Parzen  $窗口拟合到$  G  $生成的样本并在该分布下报告对数似然来估计$ p_g$下测试集数据的概率。高斯的$  σ  $参数是通过对验证集的交叉验证获得的。该过程在Breuleux等人[7]中引入，并用于精确似然不可处理的各种生成模型[24,3,4]。结果如表1所示。</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image_osk9Vvx3Kc.png"></p>
+<blockquote>
+<p>表 1：Parzen 基于窗口的对数似然估计。MNIST 上报告的数字是测试集上样本的平均对数似然，其标准误差是跨示例计算的平均值。在 TFD 上，我们计算了数据集折叠的标准误差，并使用每个折叠的验证集选择了不同的$ σ$。在 TFD 上，$ σ$在每个折叠上交叉验证，并计算每个折叠的平均对数似然。对于 MNIST，我们与数据集的实值（而不是二进制）版本的其他模型进行比较。</p>
+</blockquote>
+<p>这种估计可能性的方法方差有些高，在高维空间中表现不佳，但它是我们知识可用的最佳方法。可以采样但不估计可能性的生成模型的进步直接激发了对如何评估此类模型的进一步研究。</p>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image_U5D7a1sNk_.png"></p>
+<blockquote>
+<p>图2：来自模型的样本的可视化。最右边的列显示了相邻样本最近的训练示例，以证明模型没有记住训练集。样本是公平的随机抽取，而不是精心挑选。与深度生成模型的大多数其他可视化不同，这些图像显示了来自模型分布的实际样本，而不是给定隐藏单元样本的条件均值。此外，这些样本不相关，因为采样过程不依赖于马尔可夫链混合。<br>a) MNIST b) TFD c) CIFAR-10（全连接模型） d) CIFAR-10（卷积鉴别器和“反卷积”生成器）</p>
+</blockquote>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image_iqgh45Du10.png"></p>
+<blockquote>
+<p>图3：通过在完整模型的$  z  $空间中的坐标之间进行线性插值获得的数字。</p>
+</blockquote>
+<p>在图 2 和图 3 中，我们展示了训练后从生成器网络中抽取的样本。虽然我们没有声称这些样本比现有方法生成的样本更好，但我们相信这些样本与文献中更好的生成模型至少具有竞争力，并强调了对抗框架的潜力。</p>
+<hr>
+<h1 id="7-Advantages-and-disadvantages"><a href="#7-Advantages-and-disadvantages" class="headerlink" title="7 Advantages and disadvantages"></a>7 Advantages and disadvantages</h1><p>与以前的建模框架相比，这个新框架具有优点和缺点。缺点是$p_g(x)$没有明确的表示，在训练过程中，$D$必须与$G$很好地同步（特别是，$G$不能在不更新$D$的情况下训练太多，以避免“Helvetica场景”，其中$G$将太多的$z$值折叠到相同的$x$值，以便有足够的多样性来建模$p_{data}$），就像Boltzmann机器的负链必须在学习步骤之间保持迄今为止。优点是不需要马尔可夫链，只使用backprop来获得梯度，在学习过程中不需要推理，并且可以将各种各样的函数合并到模型中。表 2 总结了生成对抗网络与其他生成建模方法的比较。</p>
+<blockquote>
+<p>表 2：生成建模的挑战：总结了不同深度生成建模方法遇到的困难，用于涉及模型的每个主要操作。</p>
+</blockquote>
+<p><img src="/2024/09/15/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB4%EF%BC%9AGAN/image_9HyUW2ElcB.png"></p>
+<p>上述优点主要是计算。对抗模型也可以从生成器网络中获得一些统计优势，而不是直接使用数据示例进行更新，而只有梯度流过鉴别器。这意味着输入的组件不会直接复制到生成器的参数中。对抗网络的另一个优点是它们可以表示非常尖锐甚至退化的分布，而基于马尔可夫链的方法要求分布有些模糊，以便链能够在模式之间混合。</p>
+<hr>
+<h1 id="8-Conclusions-and-future-work"><a href="#8-Conclusions-and-future-work" class="headerlink" title="8 Conclusions and future work"></a>8 Conclusions and future work</h1><p>该框架允许许多直接的扩展：</p>
+<ol>
+<li>通过将$  c  $作为$  G  $和$  D  $的输入，可以获得条件生成模型$ p(x | c)$</li>
+<li>可以通过训练辅助网络来预测给定$  x  $的$  z  $来执行学习的近似推理。这类似于wake-sleep算法[15]训练的推理网络，但优点是在生成器网络完成训练后，推理网络可以针对固定的生成器网络进行训练</li>
+<li>可以近似对所有条件$ p(\boldsymbol{x}_{S} \mid \boldsymbol{x}) $进行建模，其中$S$是$x$的索引的子集，通过训练一组共享参数的条件模型。本质上，可以使用对抗网络来实现确定性MP-DBM[10]的随机扩展</li>
+<li><strong>半监督学习：</strong>当可用的标记数据有限时，来自鉴别器或推理网络的特征可以提高分类器的性能</li>
+<li><strong>效率改进：</strong>通过设计更好的协调$  G  $和$  D  $的方法或在训练期间确定更好的分布来采样$ z$，可以大大加快训练速度</li>
+</ol>
+<p>本文证明了对抗性建模框架的可行性，表明这些研究方向可能被证明是有用的。</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>GAN</tag>
       </tags>
   </entry>
 </search>
