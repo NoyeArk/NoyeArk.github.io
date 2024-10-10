@@ -1294,95 +1294,6 @@
       </tags>
   </entry>
   <entry>
-    <title>WSS推荐系统学习笔记1</title>
-    <url>/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
-    <content><![CDATA[<h1 id="1-评价推荐系统的指标"><a href="#1-评价推荐系统的指标" class="headerlink" title="1 评价推荐系统的指标"></a>1 评价推荐系统的指标</h1><h2 id="1-1-消费指标"><a href="#1-1-消费指标" class="headerlink" title="1.1 消费指标"></a>1.1 消费指标</h2><ul>
-<li>点击率 &#x3D; 点击次数 &#x2F; 曝光次数</li>
-<li>点赞率 &#x3D; 点赞次数 &#x2F; 点击次数</li>
-<li>收藏率 &#x3D; 收藏次数 &#x2F; 点击次数</li>
-<li>转发率 &#x3D; 转发次数 &#x2F; 点击次数</li>
-<li>阅读完成率 &#x3D; 滑动到底次数 &#x2F; 点击次数 × f(笔记长度)</li>
-</ul>
-<p>上面只是短期消费指标，不是最重要的指标。衡量推荐系统的好坏最重要的指标是北极星指标。</p>
-<h2 id="1-2-北极星指标"><a href="#1-2-北极星指标" class="headerlink" title="1.2 北极星指标"></a>1.2 北极星指标</h2><p>北极星指标是衡量推荐系统好坏的根本指标。</p>
-<ol>
-<li>用户规模：日活用户数（DAU）、月活用户数（MAU）</li>
-<li>消费：人均使用推荐的时长、人均阅读笔记的数量</li>
-<li>发布：发布渗透率、人均发布量</li>
-</ol>
-<hr>
-<h1 id="2-实验流程"><a href="#2-实验流程" class="headerlink" title="2 实验流程"></a>2 实验流程</h1><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_2PCDMM3kdO.png"></p>
-<p><strong>离线实验</strong>： 收集历史数据，在历史数据上做训练、测试。算法没有部署到产品中，没有跟用户交互。</p>
-<p><strong>小流量AB测试</strong>：把算法部署到实际产品中，用户实际跟算法做交互。</p>
-<hr>
-<h1 id="3-推荐系统的链路"><a href="#3-推荐系统的链路" class="headerlink" title="3 推荐系统的链路"></a>3 推荐系统的链路</h1><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_sru3QNekMN.png"></p>
-<p>推荐系统的目标是从几亿个物品中选出几十个物品展示给用户。</p>
-<h2 id="3-1-召回"><a href="#3-1-召回" class="headerlink" title="3.1 召回"></a>3.1 召回</h2><p>有很多召回通道，快速从上亿篇笔记中取出几千篇笔记，作为候选集。</p>
-<blockquote>
-<p>召回通道：协同过滤、双塔模型、关注的作者等等。</p>
-</blockquote>
-<h2 id="3-2-粗排、精排"><a href="#3-2-粗排、精排" class="headerlink" title="3.2 粗排、精排"></a>3.2 粗排、精排</h2><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_9NxdSiMd5H.png"></p>
-<p>首先是粗排，用小规模的神经网络给几千篇笔记打分，选出分数最高的几百篇。之后是精排，用大规模神经网络给几百篇笔记打分。</p>
-<p>精排和粗排十分相似，唯一的区别就是精排的模型更大，用的特征更多。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_I2j-a7Fxt_.png"></p>
-<p>首先把特征送入神经网络，之后输出很多数值，比如点击率、点赞率、收藏率和转发率。这些数值都是神经网络对用户行为的预估，数值越大，说明用户对笔记越感兴趣。</p>
-<p>最后对数值进行加权和，得到分数，这个分数决定了这个笔记是否会展示给用户，以及笔记展示的位置靠前还是靠后。</p>
-<h2 id="3-3-重排"><a href="#3-3-重排" class="headerlink" title="3.3 重排"></a>3.3 重排</h2><p>重排最重要的功能是做多样性抽样（比如MMR、DPP），从几百篇中选出几十篇。抽样的时候有2个依据，一个是精排的分数，另一个是多样性。做完抽样之后，会用规则打散相似笔记。</p>
-<p>重排的另一个目的是插入广告和运营推广内容，根据生态要求调整顺序。重排的规则比较复杂。</p>
-<hr>
-<h1 id="4-A-B测试"><a href="#4-A-B测试" class="headerlink" title="4 A&#x2F;B测试"></a>4 A&#x2F;B测试</h1><p>所有对模型和策略的改进都需要通过AB测试，用实验数据来验证模型和策略是否有效。</p>
-<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量A&#x2F;B测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN的深度取值$€{1,2,3}$，需要用A&#x2F;B 测试选取最优参数。</p>
-<h2 id="4-1-随机分桶"><a href="#4-1-随机分桶" class="headerlink" title="4.1 随机分桶"></a>4.1 随机分桶</h2><p>分$b&#x3D;10$个桶，每个桶中有10%的用户。首先用哈希函数把用户 ID 映射成某个区间内的整数，然后把这些整数均匀随机分成$b$个桶。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_0Oc3Y2_Bo2.png"></p>
-<p>计算每个桶的业务指标，比如DAU、人均使用推荐的时长点击率、等等。如果某个实验组指标显著优于对照组，则说明对应的策略有效，值得推全。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_ekqWmpu5fr.png"></p>
-<h2 id="4-2-分层实验"><a href="#4-2-分层实验" class="headerlink" title="4.2 分层实验"></a>4.2 分层实验</h2><p>信息流产品的公司有很多部门和团队，大家都需要做 A&#x2F;B 测试。</p>
-<ul>
-<li>推荐系统(召回、粗排、精排、重排)</li>
-<li>用户界面</li>
-<li>广告</li>
-</ul>
-<p>如果把用户随机分成 10 组，1 组做对照，9 组做实验，那么只能同时做 9 组实验。会遇到流量不够用的情况，这时可以使用分层实验来进行解决。</p>
-<p><strong>分层实验：</strong>召回、粗排、精排、重排、用户界面、广告（例如 GNN 召回通道属于召回层）。</p>
-<p><strong>同层互斥：</strong>GNN 实验占了召回层的 4 个桶，其他召回实验只能用剩余的 6 个桶。</p>
-<p><strong>不同层正交：</strong>每⼀层独⽴随机对⽤户做分桶。每⼀层都可以独立用 100% 的⽤户做实验。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_i8Dm7u7VdE.png"></p>
-<h3 id="4-2-1-同层互斥"><a href="#4-2-1-同层互斥" class="headerlink" title="4.2.1 同层互斥"></a>4.2.1 同层互斥</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_KY8C1kNwCu.png"></p>
-<h3 id="4-2-2-不同层正交"><a href="#4-2-2-不同层正交" class="headerlink" title="4.2.2 不同层正交"></a>4.2.2 不同层正交</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_cPNpZ_jsoI.png"></p>
-<h2 id="4-3-互斥-vs-正交"><a href="#4-3-互斥-vs-正交" class="headerlink" title="4.3 互斥 vs 正交"></a>4.3 互斥 vs 正交</h2><p>如果所有实验都正交，则可以同时做无数组实验。</p>
-<p>同类的策略（例如精排模型的两种结构）天然互斥，对于⼀个⽤户，只能⽤其中⼀种。</p>
-<p>同类的策略（例如添加两条召回通道）效果会相互增强（$1+1&gt;2$）或相互抵消（$1+1&lt;2$）。互斥可以避免同类策略相互⼲扰。</p>
-<p>不同类型的策略（例如添加召回通道、优化粗排模型）通常不会相互干扰（$1+1&#x3D;2$），可以作为正交的两层。</p>
-<h2 id="4-4-Holdout机制"><a href="#4-4-Holdout机制" class="headerlink" title="4.4 Holdout机制"></a>4.4 Holdout机制</h2><p>每个实验（召回、粗排、精排、重排）独立汇报对业务指标的提升。公司考察⼀个部门（比如推荐系统）在⼀段时间内对业务指标总体的提升。</p>
-<p>取 10% 的用户作为 holdout 桶，推荐系统使⽤剩余90%的用户做实验，两者互斥。</p>
-<p>10% holdout 桶 vs 90% 实验桶的 diff（需要归一化）为整个部门的业务指标收益。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_80K5eKqTyh.png"></p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_a7aJj3m1oG.png"></p>
-<p>每个考核周期结束之后，清除 holdout 桶，让推全实验从 90% 用户扩大到 100% 用户。重新随机划分用户，得到 holdout 桶和实验桶，开始下⼀轮考核周期。</p>
-<p>新的 holdout 桶与实验桶各种业务指标的 diff 接近 0。随着召回、粗排、精排、重排实验上线和推全，diff会逐渐扩大。</p>
-<h2 id="4-5-实验推全和反转实验"><a href="#4-5-实验推全和反转实验" class="headerlink" title="4.5 实验推全和反转实验"></a>4.5 实验推全和反转实验</h2><h3 id="4-5-1-实验推全"><a href="#4-5-1-实验推全" class="headerlink" title="4.5.1 实验推全"></a>4.5.1 实验推全</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_BUHxknVEyP.png"></p>
-<p>推荐系统中所有业务都是从小流量开始的，如果推荐系统中所有diff正向，则可以推全。例如，首先在20%的用户进行测试，如果有效，则把这个实验给关掉。之后新开一层。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_RYL-OAKfVz.png"></p>
-<p>小流量测试时，新策略只作用于20%的用户，会微弱的提升实验桶和holdout桶的diff。推全之后，新策略作用于90%的用户，会将这个diff扩大9倍。</p>
-<h3 id="4-5-2-反转实验"><a href="#4-5-2-反转实验" class="headerlink" title="4.5.2 反转实验"></a>4.5.2 反转实验</h3><p>有的指标（点击、交互）<strong>立刻受到新策略影响</strong>，有的指标（留存）有<strong>滞后性</strong>，需要长期观测。</p>
-<p>实验观测到显著收益后尽快推全新策略。目的是腾出桶供其他实验使用，或需要基于新策略做后续的开发。</p>
-<p>用反转实验解决上述矛盾，既可以尽快推全，也可以长期观测实验指标。具体做法是在推全的新层中开一个旧策略的桶，长期观测实验指标。</p>
-<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/image_UCbxfin_Ix.png"></p>
-<p>可以把反转桶保留很久，长期观察新策略与旧策略的diff。</p>
-<hr>
-<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h1><p><strong>分层实验</strong>：同层互斥（不允许两个实验同时影响⼀位用户）、不同层正交（实验有重叠的用户）。</p>
-<p><strong>Holdout</strong>：保留 10% 的⽤户，完全不受实验影响，可以考察整个部门对业务指标的贡献。</p>
-<p><strong>实验推全</strong>：新建⼀个推全层，与其他层正交。</p>
-<p><strong>反转实验</strong>：在新的推全层上，保留⼀个⼩的反转桶，使⽤旧策略。长期观测新旧策略的 diff。</p>
-]]></content>
-      <categories>
-        <category>推荐系统</category>
-      </categories>
-      <tags>
-        <tag>推荐系统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>6.5华为机试</title>
     <url>/2024/06/05/6.5%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E5%9B%9E%E9%A1%BE/</url>
     <content><![CDATA[<ul>
@@ -13335,6 +13246,332 @@
       </categories>
       <tags>
         <tag>高等数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSS推荐系统学习笔记1：概要</title>
+    <url>/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/</url>
+    <content><![CDATA[<h1 id="1-评价推荐系统的指标"><a href="#1-评价推荐系统的指标" class="headerlink" title="1 评价推荐系统的指标"></a>1 评价推荐系统的指标</h1><h2 id="1-1-消费指标"><a href="#1-1-消费指标" class="headerlink" title="1.1 消费指标"></a>1.1 消费指标</h2><ul>
+<li>点击率 &#x3D; 点击次数 &#x2F; 曝光次数</li>
+<li>点赞率 &#x3D; 点赞次数 &#x2F; 点击次数</li>
+<li>收藏率 &#x3D; 收藏次数 &#x2F; 点击次数</li>
+<li>转发率 &#x3D; 转发次数 &#x2F; 点击次数</li>
+<li>阅读完成率 &#x3D; 滑动到底次数 &#x2F; 点击次数 × f(笔记长度)</li>
+</ul>
+<p>上面只是短期消费指标，不是最重要的指标。衡量推荐系统的好坏最重要的指标是北极星指标。</p>
+<h2 id="1-2-北极星指标"><a href="#1-2-北极星指标" class="headerlink" title="1.2 北极星指标"></a>1.2 北极星指标</h2><p>北极星指标是衡量推荐系统好坏的根本指标。</p>
+<ol>
+<li>用户规模：日活用户数（DAU）、月活用户数（MAU）</li>
+<li>消费：人均使用推荐的时长、人均阅读笔记的数量</li>
+<li>发布：发布渗透率、人均发布量</li>
+</ol>
+<hr>
+<h1 id="2-实验流程"><a href="#2-实验流程" class="headerlink" title="2 实验流程"></a>2 实验流程</h1><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_2PCDMM3kdO.png"></p>
+<p><strong>离线实验</strong>： 收集历史数据，在历史数据上做训练、测试。算法没有部署到产品中，没有跟用户交互。</p>
+<p><strong>小流量AB测试</strong>：把算法部署到实际产品中，用户实际跟算法做交互。</p>
+<hr>
+<h1 id="3-推荐系统的链路"><a href="#3-推荐系统的链路" class="headerlink" title="3 推荐系统的链路"></a>3 推荐系统的链路</h1><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_sru3QNekMN.png"></p>
+<p>推荐系统的目标是从几亿个物品中选出几十个物品展示给用户。</p>
+<h2 id="3-1-召回"><a href="#3-1-召回" class="headerlink" title="3.1 召回"></a>3.1 召回</h2><p>有很多召回通道，快速从上亿篇笔记中取出几千篇笔记，作为候选集。</p>
+<blockquote>
+<p>召回通道：协同过滤、双塔模型、关注的作者等等。</p>
+</blockquote>
+<h2 id="3-2-粗排、精排"><a href="#3-2-粗排、精排" class="headerlink" title="3.2 粗排、精排"></a>3.2 粗排、精排</h2><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_9NxdSiMd5H.png"></p>
+<p>首先是粗排，用小规模的神经网络给几千篇笔记打分，选出分数最高的几百篇。之后是精排，用大规模神经网络给几百篇笔记打分。</p>
+<p>精排和粗排十分相似，唯一的区别就是精排的模型更大，用的特征更多。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_I2j-a7Fxt_.png"></p>
+<p>首先把特征送入神经网络，之后输出很多数值，比如点击率、点赞率、收藏率和转发率。这些数值都是神经网络对用户行为的预估，数值越大，说明用户对笔记越感兴趣。</p>
+<p>最后对数值进行加权和，得到分数，这个分数决定了这个笔记是否会展示给用户，以及笔记展示的位置靠前还是靠后。</p>
+<h2 id="3-3-重排"><a href="#3-3-重排" class="headerlink" title="3.3 重排"></a>3.3 重排</h2><p>重排最重要的功能是做多样性抽样（比如MMR、DPP），从几百篇中选出几十篇。抽样的时候有2个依据，一个是精排的分数，另一个是多样性。做完抽样之后，会用规则打散相似笔记。</p>
+<p>重排的另一个目的是插入广告和运营推广内容，根据生态要求调整顺序。重排的规则比较复杂。</p>
+<hr>
+<h1 id="4-A-B测试"><a href="#4-A-B测试" class="headerlink" title="4 A&#x2F;B测试"></a>4 A&#x2F;B测试</h1><p>所有对模型和策略的改进都需要通过AB测试，用实验数据来验证模型和策略是否有效。</p>
+<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量A&#x2F;B测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN的深度取值$€{1,2,3}$，需要用A&#x2F;B 测试选取最优参数。</p>
+<h2 id="4-1-随机分桶"><a href="#4-1-随机分桶" class="headerlink" title="4.1 随机分桶"></a>4.1 随机分桶</h2><p>分$b&#x3D;10$个桶，每个桶中有10%的用户。首先用哈希函数把用户 ID 映射成某个区间内的整数，然后把这些整数均匀随机分成$b$个桶。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_0Oc3Y2_Bo2.png"></p>
+<p>计算每个桶的业务指标，比如DAU、人均使用推荐的时长点击率、等等。如果某个实验组指标显著优于对照组，则说明对应的策略有效，值得推全。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_ekqWmpu5fr.png"></p>
+<h2 id="4-2-分层实验"><a href="#4-2-分层实验" class="headerlink" title="4.2 分层实验"></a>4.2 分层实验</h2><p>信息流产品的公司有很多部门和团队，大家都需要做 A&#x2F;B 测试。</p>
+<ul>
+<li>推荐系统(召回、粗排、精排、重排)</li>
+<li>用户界面</li>
+<li>广告</li>
+</ul>
+<p>如果把用户随机分成 10 组，1 组做对照，9 组做实验，那么只能同时做 9 组实验。会遇到流量不够用的情况，这时可以使用分层实验来进行解决。</p>
+<p><strong>分层实验：</strong>召回、粗排、精排、重排、用户界面、广告（例如 GNN 召回通道属于召回层）。</p>
+<p><strong>同层互斥：</strong>GNN 实验占了召回层的 4 个桶，其他召回实验只能用剩余的 6 个桶。</p>
+<p><strong>不同层正交：</strong>每⼀层独⽴随机对⽤户做分桶。每⼀层都可以独立用 100% 的⽤户做实验。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_i8Dm7u7VdE.png"></p>
+<h3 id="4-2-1-同层互斥"><a href="#4-2-1-同层互斥" class="headerlink" title="4.2.1 同层互斥"></a>4.2.1 同层互斥</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_KY8C1kNwCu.png"></p>
+<h3 id="4-2-2-不同层正交"><a href="#4-2-2-不同层正交" class="headerlink" title="4.2.2 不同层正交"></a>4.2.2 不同层正交</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_cPNpZ_jsoI.png"></p>
+<h2 id="4-3-互斥-vs-正交"><a href="#4-3-互斥-vs-正交" class="headerlink" title="4.3 互斥 vs 正交"></a>4.3 互斥 vs 正交</h2><p>如果所有实验都正交，则可以同时做无数组实验。</p>
+<p>同类的策略（例如精排模型的两种结构）天然互斥，对于⼀个⽤户，只能⽤其中⼀种。</p>
+<p>同类的策略（例如添加两条召回通道）效果会相互增强（$1+1&gt;2$）或相互抵消（$1+1&lt;2$）。互斥可以避免同类策略相互⼲扰。</p>
+<p>不同类型的策略（例如添加召回通道、优化粗排模型）通常不会相互干扰（$1+1&#x3D;2$），可以作为正交的两层。</p>
+<h2 id="4-4-Holdout机制"><a href="#4-4-Holdout机制" class="headerlink" title="4.4 Holdout机制"></a>4.4 Holdout机制</h2><p>每个实验（召回、粗排、精排、重排）独立汇报对业务指标的提升。公司考察⼀个部门（比如推荐系统）在⼀段时间内对业务指标总体的提升。</p>
+<p>取 10% 的用户作为 holdout 桶，推荐系统使⽤剩余90%的用户做实验，两者互斥。</p>
+<p>10% holdout 桶 vs 90% 实验桶的 diff（需要归一化）为整个部门的业务指标收益。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_80K5eKqTyh.png"></p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_a7aJj3m1oG.png"></p>
+<p>每个考核周期结束之后，清除 holdout 桶，让推全实验从 90% 用户扩大到 100% 用户。重新随机划分用户，得到 holdout 桶和实验桶，开始下⼀轮考核周期。</p>
+<p>新的 holdout 桶与实验桶各种业务指标的 diff 接近 0。随着召回、粗排、精排、重排实验上线和推全，diff会逐渐扩大。</p>
+<h2 id="4-5-实验推全和反转实验"><a href="#4-5-实验推全和反转实验" class="headerlink" title="4.5 实验推全和反转实验"></a>4.5 实验推全和反转实验</h2><h3 id="4-5-1-实验推全"><a href="#4-5-1-实验推全" class="headerlink" title="4.5.1 实验推全"></a>4.5.1 实验推全</h3><p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_BUHxknVEyP.png"></p>
+<p>推荐系统中所有业务都是从小流量开始的，如果推荐系统中所有diff正向，则可以推全。例如，首先在20%的用户进行测试，如果有效，则把这个实验给关掉。之后新开一层。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_RYL-OAKfVz.png"></p>
+<p>小流量测试时，新策略只作用于20%的用户，会微弱的提升实验桶和holdout桶的diff。推全之后，新策略作用于90%的用户，会将这个diff扩大9倍。</p>
+<h3 id="4-5-2-反转实验"><a href="#4-5-2-反转实验" class="headerlink" title="4.5.2 反转实验"></a>4.5.2 反转实验</h3><p>有的指标（点击、交互）<strong>立刻受到新策略影响</strong>，有的指标（留存）有<strong>滞后性</strong>，需要长期观测。</p>
+<p>实验观测到显著收益后尽快推全新策略。目的是腾出桶供其他实验使用，或需要基于新策略做后续的开发。</p>
+<p>用反转实验解决上述矛盾，既可以尽快推全，也可以长期观测实验指标。具体做法是在推全的新层中开一个旧策略的桶，长期观测实验指标。</p>
+<p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_UCbxfin_Ix.png"></p>
+<p>可以把反转桶保留很久，长期观察新策略与旧策略的diff。</p>
+<hr>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h1><p><strong>分层实验</strong>：同层互斥（不允许两个实验同时影响⼀位用户）、不同层正交（实验有重叠的用户）。</p>
+<p><strong>Holdout</strong>：保留 10% 的⽤户，完全不受实验影响，可以考察整个部门对业务指标的贡献。</p>
+<p><strong>实验推全</strong>：新建⼀个推全层，与其他层正交。</p>
+<p><strong>反转实验</strong>：在新的推全层上，保留⼀个⼩的反转桶，使⽤旧策略。长期观测新旧策略的 diff。</p>
+]]></content>
+      <categories>
+        <category>推荐系统</category>
+      </categories>
+      <tags>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSS推荐系统学习笔记2：召回1</title>
+    <url>/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/</url>
+    <content><![CDATA[<h1 id="1-基于物品的协同过滤ItemCF"><a href="#1-基于物品的协同过滤ItemCF" class="headerlink" title="1 基于物品的协同过滤ItemCF"></a>1 基于物品的协同过滤ItemCF</h1><h2 id="1-1-ItemCF的原理"><a href="#1-1-ItemCF的原理" class="headerlink" title="1.1 ItemCF的原理"></a>1.1 ItemCF的原理</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_JSfOuoA4D3.png"></p>
+<p>推荐系统如何知道《笑傲江湖》与《鹿鼎记》相似？</p>
+<ol>
+<li>看过《笑傲江湖》的⽤户也看过《⿅⿍记》</li>
+<li>给《笑傲江湖》好评的⽤户也给《⿅⿍记》好评</li>
+</ol>
+<h2 id="1-2-ItemCF的实现"><a href="#1-2-ItemCF的实现" class="headerlink" title="1.2 ItemCF的实现"></a>1.2 ItemCF的实现</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_PpDTNAaz9C.png"></p>
+<p>预估用户对候选物品的兴趣：</p>
+<p>$$<br>\sum_{j} \operatorname{like}\left(\right. user, item \left._{j}\right) \times \operatorname{sim}\left(\right. item _{j}, item )<br>$$</p>
+<blockquote>
+<p>左边是用户对物品的兴趣，右边是两个物品之间的相似度</p>
+</blockquote>
+<p>根据上面的公式进行计算即可得到：</p>
+<p>$$<br>2 \times 0.1+1 \times 0.4+4 \times 0.2+3 \times 0.6&#x3D;3.2<br>$$</p>
+<p>表示用户对候选物品的兴趣，比如有多个候选物品，则可以计算用户对每一个物品的候选分数，然后选出分数较高的几个物品。</p>
+<h2 id="1-3-物品的相似度"><a href="#1-3-物品的相似度" class="headerlink" title="1.3 物品的相似度"></a>1.3 物品的相似度</h2><p>两个物品的受众重合度越⾼，两个物品越相似。例如，喜欢《射雕英雄传》和《神雕侠侣》的读者重合度很⾼，则可以认为《射雕英雄传》和《神雕侠侣》相似。</p>
+<blockquote>
+<p>两个物品不相似：红色物品和绿色物品的用户之间没有交集</p>
+</blockquote>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_JUdf5r8sIG.png"></p>
+<blockquote>
+<p>两个物品相似：红色物品和绿色物品的用户之间有交集</p>
+</blockquote>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_X-nZu9_nl1.png"></p>
+<h3 id="1-3-1-计算物品相似度"><a href="#1-3-1-计算物品相似度" class="headerlink" title="1.3.1 计算物品相似度"></a>1.3.1 计算物品相似度</h3><p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}<em>{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}</em>{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}$，则两个物品的相似度：</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{|\mathcal{V}|}{\sqrt{\left|\mathcal{W}<em>{1}\right| \cdot\left|\mathcal{W}</em>{2}\right|}}<br>$$</p>
+<blockquote>
+<p>注： 公式没有考虑喜欢的程度 $like(user, item)$，喜欢就记为1，不喜欢就记为0</p>
+</blockquote>
+<p>考虑用户喜欢物品的程度：</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\sum_{v \in \mathcal{V}} \operatorname{like}\left(v, i_{1}\right) \cdot \operatorname{like}\left(v, i_{2}\right)}{\sqrt{\sum_{u_{1} \in \mathcal{W}<em>{1}} \operatorname{like}^{2}\left(u</em>{1}, i_{1}\right)} \cdot \sqrt{\sum_{u_{2} \in \mathcal{W}<em>{2}} \operatorname{like}^{2}\left(u</em>{2}, i_{2}\right)}}<br>$$</p>
+<p>上述公式就是余弦相似度，把每个物品表示为一个向量，向量的每个元素表示每个用户的兴趣分数。</p>
+<h2 id="1-4-小结"><a href="#1-4-小结" class="headerlink" title="1.4 小结"></a>1.4 小结</h2><p><strong>ItemCF 的基本思想</strong>是根据物品之间的相似度做推荐。即如果⽤户喜欢物品 $item_1$，⽽且物品 $item_1$ 与 $item_2$ 相似，那么⽤户很可能喜欢物品 $item_2$。</p>
+<p>所以需要预估⽤户对候选物品的兴趣：</p>
+<p>$$<br>\sum_{j} like \left(\right. user, item \left._{j}\right) \times \operatorname{sim}\left(\right. item _{j}, item )<br>$$</p>
+<p>计算两个物品的相似度：把每个物品表示为⼀个稀疏向量，向量每个元素对应⼀个⽤户。相似度 $sim$ 就是两个向量夹角的余弦。</p>
+<h2 id="1-5-ItemCF-召回的完整流程"><a href="#1-5-ItemCF-召回的完整流程" class="headerlink" title="1.5 ItemCF 召回的完整流程"></a>1.5 ItemCF 召回的完整流程</h2><h3 id="1-5-1-事先做离线计算"><a href="#1-5-1-事先做离线计算" class="headerlink" title="1.5.1 事先做离线计算"></a>1.5.1 事先做离线计算</h3><p><strong>建⽴“用户 → 物品”的索引：</strong></p>
+<ul>
+<li>记录每个⽤户最近点击、交互过的物品ID</li>
+<li>给定任意⽤户ID，可以找到他近期感兴趣的物品列表</li>
+</ul>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_3xYvOBHZfB.png"></p>
+<p><strong>建⽴“物品 → 物品”的索引：</strong></p>
+<ul>
+<li>计算物品之间两两相似度</li>
+<li>对于每个物品，索引它最相似的 k 个物品</li>
+<li>给定任意物品ID，可以快速找到它最相似的 k 个物品</li>
+</ul>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_5Foi9x3EcG.png"></p>
+<h3 id="1-5-2-线上做召回"><a href="#1-5-2-线上做召回" class="headerlink" title="1.5.2 线上做召回"></a>1.5.2 线上做召回</h3><p>可以按照以下步骤线上做推荐：</p>
+<ol>
+<li>给定⽤户ID，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
+<li>对于last-n列表中每个物品，通过“物品 → 物品”的索引，找到 top-k 相似物品</li>
+<li>对于取回的相似物品（最多有 $nk$ 个），⽤公式预估⽤户对物品的兴趣分数</li>
+<li>返回分数最⾼的100个物品，作为推荐结果</li>
+</ol>
+<p>索引的意义在于避免枚举所有的物品。⽤索引离线计算量⼤，线上计算量⼩。</p>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_4K4c3CZNCD.png"></p>
+<h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6 总结"></a>1.6 总结</h2><h3 id="1-6-1-ItemCF的原理"><a href="#1-6-1-ItemCF的原理" class="headerlink" title="1.6.1 ItemCF的原理"></a>1.6.1 ItemCF的原理</h3><p>用户喜欢物品 $i_1$，那么用户喜欢与物品 $i_1$ 相似的物品 $i_2$。</p>
+<p><strong>物品相似度：</strong>如果喜欢 $i_1$、$i_2$的用户有很大的重叠，那么 $i_1$ 与 $i_2$ 相似。公式如下：</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\left|\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}\right|}{\sqrt{\left|W_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
+<h3 id="1-6-2-ItemCF召回通道"><a href="#1-6-2-ItemCF召回通道" class="headerlink" title="1.6.2 ItemCF召回通道"></a>1.6.2 ItemCF召回通道</h3><p>维护两个索引：</p>
+<ol>
+<li>用户 → 物品列表：⽤户最近交互过的 $n$ 个物品</li>
+<li>物品 → 物品列表：相似度最⾼的 $k$ 个物品</li>
+</ol>
+<p>线上做召回：</p>
+<ol>
+<li>利⽤两个索引，每次取回 $nk$ 个物品</li>
+<li>预估⽤户对每个物品的兴趣分数：</li>
+</ol>
+<p>$$<br>\sum_{j} \operatorname{like}\left(\right. user, item \left._{j}\right) \times \operatorname{sim}\left(\right. item _{j}, item )<br>$$</p>
+<ol>
+<li>返回分数最高的100个物品，作为召回结果</li>
+</ol>
+<hr>
+<h1 id="2-Swing召回通道"><a href="#2-Swing召回通道" class="headerlink" title="2 Swing召回通道"></a>2 Swing召回通道</h1><h2 id="2-1-原理介绍"><a href="#2-1-原理介绍" class="headerlink" title="2.1 原理介绍"></a>2.1 原理介绍</h2><p>Swing模型的原理就是给用户设置权重，解决小圈子问题。</p>
+<p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}<em>{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}</em>{2}$，定义两个用户的重合度：</p>
+<p>$$<br>\operatorname{overlap}\left(u_{1}, u_{2}\right)&#x3D;\left|\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}\right|<br>$$</p>
+<p>⽤户 $u_1$ 和 $u_2$ 的重合度⾼，则他们可能来⾃⼀个⼩圈⼦，要降低他们的权重。</p>
+<p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}<em>{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}</em>{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}$，则两个物品的相似度：</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\sum_{u_{1} \in \mathcal{V}} \sum_{u_{2} \in \mathcal{V}} \frac{1}{\alpha+\operatorname{overlap}\left(u_{1}, u_{2}\right)}<br>$$</p>
+<h2 id="2-2-总结"><a href="#2-2-总结" class="headerlink" title="2.2 总结"></a>2.2 总结</h2><p>Swing 与 ItemCF 唯⼀的区别在于<strong>物品相似度</strong>。</p>
+<ul>
+<li><strong>ItemCF：</strong>两个物品重合的⽤户⽐例⾼，则判定两个物品相似。</li>
+<li><strong>Swing：</strong>额外考虑重合的⽤户是否来⾃⼀个⼩圈⼦。</li>
+</ul>
+<p>同时喜欢两个物品的用户记作集合 $\mathcal{V}$，对于 $\mathcal{V}$中的用户 $u_1$和 $u_2$，重合度记作$\operatorname{overlap}\left(u_{1}, u_{2}\right)$。两个用户重合度大，则可能来自一个小圈子，权重降低。</p>
+<hr>
+<h1 id="3-基于用户的协同过滤UserCF"><a href="#3-基于用户的协同过滤UserCF" class="headerlink" title="3 基于用户的协同过滤UserCF"></a>3 基于用户的协同过滤UserCF</h1><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_ZljfSvUGwd.png"></p>
+<p>推荐系统如何找到跟我兴趣非常相似的网友呢？</p>
+<ol>
+<li>⽅法⼀：点击、点赞、收藏、转发的笔记有很⼤的重合。</li>
+<li>⽅法⼆：关注的作者有很⼤的重合。</li>
+</ol>
+<h2 id="3-1-UserCF-的实现"><a href="#3-1-UserCF-的实现" class="headerlink" title="3.1 UserCF 的实现"></a>3.1 UserCF 的实现</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_qV5IKglIkG.png"></p>
+<p>预估⽤户对候选物品的兴趣：</p>
+<p>$$<br>\sum_{j} \operatorname{sim}\left(u s e r, u \operatorname{user}_{j}\right) \times \operatorname{like}\left(\right. user _{j}, item )<br>$$</p>
+<p>根据上述公式计算的结果如下，表示左边用户对右边物品的兴趣。</p>
+<p>$$<br>0.9 \times 0+0.7 \times 1+0.7 \times 3+0.4 \times 0 &#x3D; 2.8<br>$$</p>
+<h2 id="3-2-用户之间的相似度"><a href="#3-2-用户之间的相似度" class="headerlink" title="3.2 用户之间的相似度"></a>3.2 用户之间的相似度</h2><blockquote>
+<p>两个用户不相似：喜欢的物品没有重合</p>
+</blockquote>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_X-Q_f_8YFo.png"></p>
+<blockquote>
+<p>两个用户相似：喜欢的物品有重合</p>
+</blockquote>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_6zG73OGyFP.png"></p>
+<h3 id="3-2-1-计算用户相似度"><a href="#3-2-1-计算用户相似度" class="headerlink" title="3.2.1 计算用户相似度"></a>3.2.1 计算用户相似度</h3><p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}<em>{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}</em>{2}$，定义交集$I&#x3D;\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}$。定义两个用户的重合度：</p>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{|I|}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<h3 id="3-2-2-降低热门物品权重"><a href="#3-2-2-降低热门物品权重" class="headerlink" title="3.2.2 降低热门物品权重"></a>3.2.2 降低热门物品权重</h3><p>越热门的物品，对于计算用户相似度是没有价值的。反过来，重合的物品越冷门，说明两个人兴趣更加相似。所以需要降低热门物品的权重。</p>
+<p>修改相似度计算公式如下：</p>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\sum_{l \in I} \frac{1}{\log \left(1+n_{l}\right)}}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<ul>
+<li>$n_l$ ：喜欢物品 $l$ 的用户数量，反映物品的热门程度</li>
+</ul>
+<h2 id="3-3-UserCF完整召回流程"><a href="#3-3-UserCF完整召回流程" class="headerlink" title="3.3 UserCF完整召回流程"></a>3.3 UserCF完整召回流程</h2><h3 id="3-3-1-事先做离线计算"><a href="#3-3-1-事先做离线计算" class="headerlink" title="3.3.1 事先做离线计算"></a>3.3.1 事先做离线计算</h3><p><strong>建⽴“⽤户 → 物品”的索引</strong>：</p>
+<ul>
+<li>记录每个用户最近点击、交互过的物品ID</li>
+<li>给定任意用户ID，可以找到他近期感兴趣的物品列表</li>
+</ul>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_ch8L7Vpfu5.png"></p>
+<p><strong>建⽴“⽤户 → ⽤户”的索引</strong>：</p>
+<ul>
+<li>对于每个用户，索引他最相似的 $k$ 个用户</li>
+<li>给定任意用户ID，可以快速找到他最相似的 $k$ 个用户</li>
+</ul>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_Hk8aaNPO5z.png"></p>
+<h3 id="3-3-2-线上做召回"><a href="#3-3-2-线上做召回" class="headerlink" title="3.3.2 线上做召回"></a>3.3.2 线上做召回</h3><ol>
+<li>给定⽤户ID，通过“⽤户 → ⽤户”索引，找到 top-k 相似⽤户</li>
+<li>对于每个 top-k 相似⽤户，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
+<li>对于取回的 $nk$ 个相似物品，⽤公式预估⽤户对每个物品的兴趣分数</li>
+<li>返回分数最⾼的100个物品，作为召回结果</li>
+</ol>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_rTwrj0ruku.png"></p>
+<h2 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h2><p><strong>UserCF 的基本思想：</strong>用户 $u_1$ 跟用户 $u_2$ 相似，而且  $u_2$ 喜欢某物品，那么 $u_1$也可能喜欢该物品。</p>
+<p><strong>用户相似度：</strong>如果用户 $u_1$ 跟用户 $u_2$喜欢的物品有很大重叠，那么 $u_1$ 和 $u_2$相似，计算公式为：</p>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\left|\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}\right|}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<hr>
+<h1 id="4-离散特征的处理"><a href="#4-离散特征的处理" class="headerlink" title="4 离散特征的处理"></a>4 离散特征的处理</h1><p>离散特征在推荐系统中很常见，常见的离散特征如下：</p>
+<ol>
+<li>性别：男、⼥两种类别。</li>
+<li>国籍：中国、美国、印度等200个国家。</li>
+<li>英⽂单词：常见的英文单词有几万个。</li>
+<li>物品ID：小红书有几亿篇笔记，每篇笔记有⼀个ID。</li>
+<li>⽤户ID：小红书有几亿个⽤户，每个用户有⼀个ID。</li>
+</ol>
+<p>离散特征的处理分两步：</p>
+<ol>
+<li><strong>建立字典</strong>：把类别映射成序号。</li>
+<li><strong>向量化</strong>：把序号映射成向量。<ul>
+<li>One-hot编码：把序号映射成⾼维稀疏向量</li>
+<li>Embedding：把序号映射成低维稠密向量</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-1-独热编码"><a href="#4-1-独热编码" class="headerlink" title="4.1 独热编码"></a>4.1 独热编码</h2><p>独热编码是用和物品类别数量一样维数的向量表示来类别，例如使用2维向量来表示性别：</p>
+<ul>
+<li>未知 → 0 → [0, 0]</li>
+<li>男 → 1 → [1, 0]</li>
+<li>女 → 2 → [0, 1]</li>
+</ul>
+<h3 id="4-1-1-优点"><a href="#4-1-1-优点" class="headerlink" title="4.1.1 优点"></a>4.1.1 优点</h3><ol>
+<li><strong>解决分类数据处理问题：</strong>独热编码将离散分类特征转换为机器学习算法易于处理的二进制格式，提高了算法对离散特征的处理能力。</li>
+<li><strong>避免引入数值偏误：</strong>通过将每个类别映射到独立的二进制向量，独热编码消除了类别间可能存在的错误数值关系，从而避免了算法基于这些关系做出不准确的预测。</li>
+</ol>
+<h3 id="4-1-2-缺点"><a href="#4-1-2-缺点" class="headerlink" title="4.1.2 缺点"></a>4.1.2 缺点</h3><ol>
+<li><strong>维度增加：</strong>当类别数量较多时，独热编码会显著增加特征空间的维度，可能导致计算复杂性和过拟合问题。</li>
+<li><strong>信息损失风险：</strong>独热编码可能无法充分捕捉类别间的潜在关系或顺序信息，从而在某些情况下导致有用信息的丢失。</li>
+</ol>
+<h2 id="4-2-Embedding"><a href="#4-2-Embedding" class="headerlink" title="4.2 Embedding"></a>4.2 Embedding</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_-LkqBiMHPZ.png"></p>
+<p>Embedding把每个序号映射成一个低维向量，参数数量计算如下：</p>
+<p>$$<br>参数数量&#x3D;向量维度 \times 类别数量<br>$$</p>
+<p>例如，设 Embedding 得到的向量都是 4 维的，一共有200个国籍，那么参数数量为$4 \times 200&#x3D;800$。</p>
+<h3 id="4-2-1-Embedding得到的向量的物理意义"><a href="#4-2-1-Embedding得到的向量的物理意义" class="headerlink" title="4.2.1 Embedding得到的向量的物理意义"></a>4.2.1 Embedding得到的向量的物理意义</h3><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_lR517m69Na.png"></p>
+<p>图中的一个点是每个物品的Embedding，相邻的点关系越接近。可以通过将两个无法比较的文字映射成向量，接下来就能实现对他们的计算。</p>
+<h2 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3 总结"></a>4.3 总结</h2><p>离散特征处理有两种方法：独热编码和词嵌入。而当类别很大的时候，使用词嵌入。</p>
+<hr>
+<h1 id="5-矩阵补充"><a href="#5-矩阵补充" class="headerlink" title="5 矩阵补充"></a>5 矩阵补充</h1><h2 id="5-1-模型结构"><a href="#5-1-模型结构" class="headerlink" title="5.1 模型结构"></a>5.1 模型结构</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_7iyIgycPzI.png"></p>
+<p>上面这个图展示了如何使用Embedding做推荐，模型的输入是一个用户ID和物品ID，模型的输出是一个实数，是用户对物品兴趣的预估值。这个数越大，表示用户对物品越感兴趣。这个模型就是矩阵补充模型。</p>
+<h2 id="5-2-模型训练"><a href="#5-2-模型训练" class="headerlink" title="5.2 模型训练"></a>5.2 模型训练</h2><p>开始训练之前，要准备一个数据集：（用户ID，物品ID，兴趣分数）的集合，记作$\Omega&#x3D;{(u, i, y)}$。</p>
+<p>数据集中的兴趣分数是系统记录的，分数最低是0分，最高是4分，比如：</p>
+<ul>
+<li>曝光但是没有点击记0分</li>
+<li>点击、点赞、收藏、转发各记1分</li>
+</ul>
+<p>之后把用户ID和物品ID映射成向量，例如第 $u$ 号用户映射为向量 $a_u$，第 $i$ 号物品映射为向量 $b_i$。就变成了一个优化问题的求解，得到参数 $A$ 和 $B$：</p>
+<p>$$<br>\min <em>{A, B} \sum</em>{(u, i, y) \in \Omega}\left(y-\left\langle a_{u}, {b}_{i}\right\rangle\right)^{2}.<br>$$</p>
+<h2 id="5-3-为什么是矩阵补充"><a href="#5-3-为什么是矩阵补充" class="headerlink" title="5.3 为什么是矩阵补充"></a>5.3 为什么是矩阵补充</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_oKXXZXCBXg.png"></p>
+<p>可以上述上述内容看成一个矩阵，其中绿色位置表示曝光给用户的物品；灰色位置表示没有曝光。之后可以计算出还未曝光的物品对于用户的吸引力，从而进行推荐。</p>
+<p>但是矩阵补充方法在实践中的效果并不是很好，原因如下：</p>
+<ol>
+<li><p>仅⽤ID embedding，没利⽤物品、⽤户属性。</p>
+<p>物品属性有类⽬、关键词、地理位置、作者信息；</p>
+<p>⽤户属性有性别、年龄、地理定位、感兴趣的类⽬；</p>
+<p>双塔模型可以看做矩阵补充的升级版。</p>
+</li>
+<li><p>负样本的选取方式不对。</p>
+<p>样本是用户—物品的二元组，记作$(u,i)$。</p>
+<p>正样本：曝光之后，有点击、交互等行为。（正确的做法）；</p>
+<p>负样本：曝光之后，没有点击、交互。（错误的做法）；</p>
+</li>
+<li><p>做训练的方法不好。</p>
+<p>做向量的内积$\left\langle\mathbf{a}<em>{1}, \mathbf{b}</em>{j}\right\rangle$不如余弦相似度，用均方损失（回归），不如用交叉熵损失（分类）。</p>
+</li>
+</ol>
+<h2 id="5-4-线上服务"><a href="#5-4-线上服务" class="headerlink" title="5.4 线上服务"></a>5.4 线上服务</h2><p>在训练好模型之后，可以把模型用作推荐系统中的召回通道。做完训练之后，要把模型存储在正确的地方，便于做召回。</p>
+<p>训练得到矩阵 $A$ 和 $B$：</p>
+<ol>
+<li>$A$ 的每一列对应一个用户</li>
+<li>$B$ 的每一列对应一个物品</li>
+</ol>
+<p>把矩阵 $A$ 的列存储到 key-value 表，其中 key 是用户 ID，value 是 $A$ 的一列，给定用户 ID，返回一个向量（用户的 embedding）。而矩阵 $B$ 的存储和索引比较复杂。</p>
+<p>之后可以做线上服务，具体来说，把⽤户 ID 作为 key，查询 key-value 表，得到该⽤户的向量，记作 $a$。查找用户 $a$ 最有可能感兴趣的 $k$ 各物品，作为召回结果。</p>
+<p>其中第 $i$ 号物品的 embedding 向量记作 $b_i$，内积 $\left\langle\mathrm{a}, \mathrm{b}_{i}\right\rangle$ 是用户对第 $i $ 号物品兴趣的预估，并计算返回内积最大的 $k$ 个物品。</p>
+<blockquote>
+<p>如果枚举所有物品，时间复杂度正比于物品数量</p>
+</blockquote>
+<h2 id="5-5-近似最近邻查找"><a href="#5-5-近似最近邻查找" class="headerlink" title="5.5 近似最近邻查找"></a>5.5 近似最近邻查找</h2><p>在⽤户向量 $a$ 作为 query，查找使得 $\left\langle\mathrm{a}, \mathrm{b}_{i}\right\rangle$ 最⼤化的物品 $i$时，暴力枚举速度太慢，实践中使用近似最近邻查找（Approximate Nearest Neighbor Search）。</p>
+<p>Milvus、Faiss、HnswLib 等向量数据库均⽀持近似最近邻查找。</p>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_eFQa1u_QlR.png"></p>
+<p>在对数据上线之前，先对数据做预处理，把数据划分为很多区域，至于如何划分，取决于衡量距离的方法。划分后每个区域用一个向量表示，这些向量的长度都是1，并建立索引，把每个区域的向量作为 key，区域中所有点作为 value。给定一个向量，可以快速取回这个向量中所有的点。</p>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_yY7g1kfwyL.png"></p>
+<p>给定一个向量 $a$，可以把 $a$ 和区域中所有向量做对比，并计算他们的相似度，这一步的计算开销不大。找出最相似的一个向量，并把这个向量所有点给取出来，再和向量 $a$ 计算相似度。</p>
+<p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_S8I2UBtOQf.png"></p>
+<p>最后找到最相似的 $k$ 个物品，那么这 $k$ 个物品就是最近邻查找的结果，并进行返回。</p>
+]]></content>
+      <categories>
+        <category>推荐系统</category>
+      </categories>
+      <tags>
+        <tag>推荐系统</tag>
       </tags>
   </entry>
 </search>
