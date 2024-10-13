@@ -13286,14 +13286,14 @@
 <p>重排的另一个目的是插入广告和运营推广内容，根据生态要求调整顺序。重排的规则比较复杂。</p>
 <hr>
 <h1 id="4-A-B测试"><a href="#4-A-B测试" class="headerlink" title="4 A&#x2F;B测试"></a>4 A&#x2F;B测试</h1><p>所有对模型和策略的改进都需要通过AB测试，用实验数据来验证模型和策略是否有效。</p>
-<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量A&#x2F;B测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN的深度取值$€{1,2,3}$，需要用A&#x2F;B 测试选取最优参数。</p>
+<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量 A&#x2F;B 测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN的深度取值 $\{1,2,3\}$，需要用 A&#x2F;B 测试选取最优参数。</p>
 <h2 id="4-1-随机分桶"><a href="#4-1-随机分桶" class="headerlink" title="4.1 随机分桶"></a>4.1 随机分桶</h2><p>分$b&#x3D;10$个桶，每个桶中有10%的用户。首先用哈希函数把用户 ID 映射成某个区间内的整数，然后把这些整数均匀随机分成$b$个桶。</p>
 <p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_0Oc3Y2_Bo2.png"></p>
 <p>计算每个桶的业务指标，比如DAU、人均使用推荐的时长点击率、等等。如果某个实验组指标显著优于对照组，则说明对应的策略有效，值得推全。</p>
 <p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_ekqWmpu5fr.png"></p>
 <h2 id="4-2-分层实验"><a href="#4-2-分层实验" class="headerlink" title="4.2 分层实验"></a>4.2 分层实验</h2><p>信息流产品的公司有很多部门和团队，大家都需要做 A&#x2F;B 测试。</p>
 <ul>
-<li>推荐系统(召回、粗排、精排、重排)</li>
+<li>推荐系统（召回、粗排、精排、重排）</li>
 <li>用户界面</li>
 <li>广告</li>
 </ul>
@@ -13364,13 +13364,13 @@
 <p>两个物品相似：红色物品和绿色物品的用户之间有交集</p>
 </blockquote>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_X-nZu9_nl1.png"></p>
-<h3 id="1-3-1-计算物品相似度"><a href="#1-3-1-计算物品相似度" class="headerlink" title="1.3.1 计算物品相似度"></a>1.3.1 计算物品相似度</h3><p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}<em>{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}</em>{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}$，则两个物品的相似度：</p>
-<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{|\mathcal{V}|}{\sqrt{\left|\mathcal{W}<em>{1}\right| \cdot\left|\mathcal{W}</em>{2}\right|}}<br>$$</p>
+<h3 id="1-3-1-计算物品相似度"><a href="#1-3-1-计算物品相似度" class="headerlink" title="1.3.1 计算物品相似度"></a>1.3.1 计算物品相似度</h3><p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}_{1}$ ，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}_{2}$，定义交集 $\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{|\mathcal{V}|}{\sqrt{\left|\mathcal{W}_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
 <blockquote>
 <p>注： 公式没有考虑喜欢的程度 $like(user, item)$，喜欢就记为1，不喜欢就记为0</p>
 </blockquote>
 <p>考虑用户喜欢物品的程度：</p>
-<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\sum_{v \in \mathcal{V}} \operatorname{like}\left(v, i_{1}\right) \cdot \operatorname{like}\left(v, i_{2}\right)}{\sqrt{\sum_{u_{1} \in \mathcal{W}<em>{1}} \operatorname{like}^{2}\left(u</em>{1}, i_{1}\right)} \cdot \sqrt{\sum_{u_{2} \in \mathcal{W}<em>{2}} \operatorname{like}^{2}\left(u</em>{2}, i_{2}\right)}}<br>$$</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\sum_{v \in \mathcal{V}} \operatorname{like}\left(v, i_{1}\right) \cdot \operatorname{like}\left(v, i_{2}\right)}{\sqrt{\sum_{u_{1} \in \mathcal{W}_{1}} \operatorname{like}^{2}\left(u_{1}, i_{1}\right)} \cdot \sqrt{\sum_{u_{2} \in \mathcal{W}_{2}} \operatorname{like}^{2}\left(u_{2}, i_{2}\right)}}<br>$$</p>
 <p>上述公式就是余弦相似度，把每个物品表示为一个向量，向量的每个元素表示每个用户的兴趣分数。</p>
 <h2 id="1-4-小结"><a href="#1-4-小结" class="headerlink" title="1.4 小结"></a>1.4 小结</h2><p><strong>ItemCF 的基本思想</strong>是根据物品之间的相似度做推荐。即如果⽤户喜欢物品 $item_1$，⽽且物品 $item_1$ 与 $item_2$ 相似，那么⽤户很可能喜欢物品 $item_2$。</p>
 <p>所以需要预估⽤户对候选物品的兴趣：</p>
@@ -13378,8 +13378,8 @@
 <p>计算两个物品的相似度：把每个物品表示为⼀个稀疏向量，向量每个元素对应⼀个⽤户。相似度 $sim$ 就是两个向量夹角的余弦。</p>
 <h2 id="1-5-ItemCF-召回的完整流程"><a href="#1-5-ItemCF-召回的完整流程" class="headerlink" title="1.5 ItemCF 召回的完整流程"></a>1.5 ItemCF 召回的完整流程</h2><h3 id="1-5-1-事先做离线计算"><a href="#1-5-1-事先做离线计算" class="headerlink" title="1.5.1 事先做离线计算"></a>1.5.1 事先做离线计算</h3><p><strong>建⽴“用户 → 物品”的索引：</strong></p>
 <ul>
-<li>记录每个⽤户最近点击、交互过的物品ID</li>
-<li>给定任意⽤户ID，可以找到他近期感兴趣的物品列表</li>
+<li>记录每个⽤户最近点击、交互过的物品 ID</li>
+<li>给定任意⽤户 ID，可以找到他近期感兴趣的物品列表</li>
 </ul>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_3xYvOBHZfB.png"></p>
 <p><strong>建⽴“物品 → 物品”的索引：</strong></p>
@@ -13391,16 +13391,16 @@
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_5Foi9x3EcG.png"></p>
 <h3 id="1-5-2-线上做召回"><a href="#1-5-2-线上做召回" class="headerlink" title="1.5.2 线上做召回"></a>1.5.2 线上做召回</h3><p>可以按照以下步骤线上做推荐：</p>
 <ol>
-<li>给定⽤户ID，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
-<li>对于last-n列表中每个物品，通过“物品 → 物品”的索引，找到 top-k 相似物品</li>
+<li>给定⽤户 ID，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
+<li>对于 last-n 列表中每个物品，通过“物品 → 物品”的索引，找到 top-k 相似物品</li>
 <li>对于取回的相似物品（最多有 $nk$ 个），⽤公式预估⽤户对物品的兴趣分数</li>
-<li>返回分数最⾼的100个物品，作为推荐结果</li>
+<li>返回分数最⾼的 100 个物品，作为推荐结果</li>
 </ol>
 <p>索引的意义在于避免枚举所有的物品。⽤索引离线计算量⼤，线上计算量⼩。</p>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_4K4c3CZNCD.png"></p>
 <h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6 总结"></a>1.6 总结</h2><h3 id="1-6-1-ItemCF的原理"><a href="#1-6-1-ItemCF的原理" class="headerlink" title="1.6.1 ItemCF的原理"></a>1.6.1 ItemCF的原理</h3><p>用户喜欢物品 $i_1$，那么用户喜欢与物品 $i_1$ 相似的物品 $i_2$。</p>
 <p><strong>物品相似度：</strong>如果喜欢 $i_1$、$i_2$的用户有很大的重叠，那么 $i_1$ 与 $i_2$ 相似。公式如下：</p>
-<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\left|\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}\right|}{\sqrt{\left|W_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
+<p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\left|\mathcal{W}_{1} \cap \mathcal{W}_{2}\right|}{\sqrt{\left|W_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
 <h3 id="1-6-2-ItemCF召回通道"><a href="#1-6-2-ItemCF召回通道" class="headerlink" title="1.6.2 ItemCF召回通道"></a>1.6.2 ItemCF召回通道</h3><p>维护两个索引：</p>
 <ol>
 <li>用户 → 物品列表：⽤户最近交互过的 $n$ 个物品</li>
@@ -13417,17 +13417,17 @@
 </ol>
 <hr>
 <h1 id="2-Swing召回通道"><a href="#2-Swing召回通道" class="headerlink" title="2 Swing召回通道"></a>2 Swing召回通道</h1><h2 id="2-1-原理介绍"><a href="#2-1-原理介绍" class="headerlink" title="2.1 原理介绍"></a>2.1 原理介绍</h2><p>Swing模型的原理就是给用户设置权重，解决小圈子问题。</p>
-<p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}<em>{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}</em>{2}$，定义两个用户的重合度：</p>
-<p>$$<br>\operatorname{overlap}\left(u_{1}, u_{2}\right)&#x3D;\left|\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}\right|<br>$$</p>
+<p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}_{2}$，定义两个用户的重合度：</p>
+<p>$$<br>\operatorname{overlap}\left(u_{1}, u_{2}\right)&#x3D;\left|\mathcal{J}_{1} \cap \mathcal{J}_{2}\right|<br>$$</p>
 <p>⽤户 $u_1$ 和 $u_2$ 的重合度⾼，则他们可能来⾃⼀个⼩圈⼦，要降低他们的权重。</p>
-<p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}<em>{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}</em>{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}<em>{1} \cap \mathcal{W}</em>{2}$，则两个物品的相似度：</p>
+<p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}_{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}_{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
 <p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\sum_{u_{1} \in \mathcal{V}} \sum_{u_{2} \in \mathcal{V}} \frac{1}{\alpha+\operatorname{overlap}\left(u_{1}, u_{2}\right)}<br>$$</p>
-<h2 id="2-2-总结"><a href="#2-2-总结" class="headerlink" title="2.2 总结"></a>2.2 总结</h2><p>Swing 与 ItemCF 唯⼀的区别在于<strong>物品相似度</strong>。</p>
+<h2 id="2-2-总结"><a href="#2-2-总结" class="headerlink" title="2.2 总结"></a>2.2 总结</h2><p><code>Swing</code> 与 <code>ItemCF</code> 唯⼀的区别在于<strong>物品相似度</strong>。</p>
 <ul>
 <li><strong>ItemCF：</strong>两个物品重合的⽤户⽐例⾼，则判定两个物品相似。</li>
 <li><strong>Swing：</strong>额外考虑重合的⽤户是否来⾃⼀个⼩圈⼦。</li>
 </ul>
-<p>同时喜欢两个物品的用户记作集合 $\mathcal{V}$，对于 $\mathcal{V}$中的用户 $u_1$和 $u_2$，重合度记作$\operatorname{overlap}\left(u_{1}, u_{2}\right)$。两个用户重合度大，则可能来自一个小圈子，权重降低。</p>
+<p>同时喜欢两个物品的用户记作集合 $\mathcal{V}$，对于 $\mathcal{V}$ 中的用户 $u_1$ 和 $u_2$，重合度记作 $\operatorname{overlap}\left(u_{1}, u_{2}\right)$。两个用户重合度大，则可能来自一个小圈子，权重降低。</p>
 <hr>
 <h1 id="3-基于用户的协同过滤UserCF"><a href="#3-基于用户的协同过滤UserCF" class="headerlink" title="3 基于用户的协同过滤UserCF"></a>3 基于用户的协同过滤UserCF</h1><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_ZljfSvUGwd.png"></p>
 <p>推荐系统如何找到跟我兴趣非常相似的网友呢？</p>
@@ -13437,7 +13437,7 @@
 </ol>
 <h2 id="3-1-UserCF-的实现"><a href="#3-1-UserCF-的实现" class="headerlink" title="3.1 UserCF 的实现"></a>3.1 UserCF 的实现</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_qV5IKglIkG.png"></p>
 <p>预估⽤户对候选物品的兴趣：</p>
-<p>$$<br>\sum_{j} \operatorname{sim}\left(u s e r, u \operatorname{user}_{j}\right) \times \operatorname{like}\left(\right. user _{j}, item )<br>$$</p>
+<p>$$<br>\sum_{j} \operatorname{sim}\left(u s e r, \operatorname{user}_{j}\right) \times \operatorname{like}\left(\right. user _{j}, item )<br>$$</p>
 <p>根据上述公式计算的结果如下，表示左边用户对右边物品的兴趣。</p>
 <p>$$<br>0.9 \times 0+0.7 \times 1+0.7 \times 3+0.4 \times 0 &#x3D; 2.8<br>$$</p>
 <h2 id="3-2-用户之间的相似度"><a href="#3-2-用户之间的相似度" class="headerlink" title="3.2 用户之间的相似度"></a>3.2 用户之间的相似度</h2><blockquote>
@@ -13448,11 +13448,14 @@
 <p>两个用户相似：喜欢的物品有重合</p>
 </blockquote>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_6zG73OGyFP.png"></p>
-<h3 id="3-2-1-计算用户相似度"><a href="#3-2-1-计算用户相似度" class="headerlink" title="3.2.1 计算用户相似度"></a>3.2.1 计算用户相似度</h3><p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}<em>{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}</em>{2}$，定义交集$I&#x3D;\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}$。定义两个用户的重合度：</p>
-<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{|I|}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<h3 id="3-2-1-计算用户相似度"><a href="#3-2-1-计算用户相似度" class="headerlink" title="3.2.1 计算用户相似度"></a>3.2.1 计算用户相似度</h3><p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}_{2}$，定义交集 $I&#x3D;\mathcal{J}_{1} \cap \mathcal{J}_{2}$。定义两个用户的重合度：</p>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{|I|}{\sqrt{\left|\mathcal{J}_{1}\right| \cdot\left|\mathcal{J}_{2}\right|}}<br>$$</p>
 <h3 id="3-2-2-降低热门物品权重"><a href="#3-2-2-降低热门物品权重" class="headerlink" title="3.2.2 降低热门物品权重"></a>3.2.2 降低热门物品权重</h3><p>越热门的物品，对于计算用户相似度是没有价值的。反过来，重合的物品越冷门，说明两个人兴趣更加相似。所以需要降低热门物品的权重。</p>
 <p>修改相似度计算公式如下：</p>
-<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\sum_{l \in I} \frac{1}{\log \left(1+n_{l}\right)}}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<blockquote>
+<p>为什么这里要用 $log$ 呢？</p>
+</blockquote>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\sum_{l \in I} \frac{1}{\log \left(1+n_{l}\right)}}{\sqrt{\left|\mathcal{J}_{1}\right| \cdot\left|\mathcal{J}_{2}\right|}}<br>$$</p>
 <ul>
 <li>$n_l$ ：喜欢物品 $l$ 的用户数量，反映物品的热门程度</li>
 </ul>
@@ -13475,9 +13478,9 @@
 <li>返回分数最⾼的100个物品，作为召回结果</li>
 </ol>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_rTwrj0ruku.png"></p>
-<h2 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h2><p><strong>UserCF 的基本思想：</strong>用户 $u_1$ 跟用户 $u_2$ 相似，而且  $u_2$ 喜欢某物品，那么 $u_1$也可能喜欢该物品。</p>
-<p><strong>用户相似度：</strong>如果用户 $u_1$ 跟用户 $u_2$喜欢的物品有很大重叠，那么 $u_1$ 和 $u_2$相似，计算公式为：</p>
-<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\left|\mathcal{J}<em>{1} \cap \mathcal{J}</em>{2}\right|}{\sqrt{\left|\mathcal{J}<em>{1}\right| \cdot\left|\mathcal{J}</em>{2}\right|}}<br>$$</p>
+<h2 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h2><p><strong>UserCF 的基本思想：</strong>用户 $u_1$ 跟用户 $u_2$ 相似，而且  $u_2$ 喜欢某物品，那么 $u_1$ 也可能喜欢该物品。</p>
+<p><strong>用户相似度：</strong>如果用户 $u_1$ 跟用户 $u_2$ 喜欢的物品有很大重叠，那么 $u_1$ 和 $u_2$ 相似，计算公式为：</p>
+<p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{\left|\mathcal{J}_{1} \cap \mathcal{J}_{2}\right|}{\sqrt{\left|\mathcal{J}_{1}\right| \cdot\left|\mathcal{J}_{2}\right|}}<br>$$</p>
 <hr>
 <h1 id="4-离散特征的处理"><a href="#4-离散特征的处理" class="headerlink" title="4 离散特征的处理"></a>4 离散特征的处理</h1><p>离散特征在推荐系统中很常见，常见的离散特征如下：</p>
 <ol>
@@ -13511,7 +13514,7 @@
 <li><strong>信息损失风险：</strong>独热编码可能无法充分捕捉类别间的潜在关系或顺序信息，从而在某些情况下导致有用信息的丢失。</li>
 </ol>
 <h2 id="4-2-Embedding"><a href="#4-2-Embedding" class="headerlink" title="4.2 Embedding"></a>4.2 Embedding</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_-LkqBiMHPZ.png"></p>
-<p>Embedding把每个序号映射成一个低维向量，参数数量计算如下：</p>
+<p>Embedding 把每个序号映射成一个低维向量，参数数量计算如下：</p>
 <p>$$<br>参数数量&#x3D;向量维度 \times 类别数量<br>$$</p>
 <p>例如，设 Embedding 得到的向量都是 4 维的，一共有200个国籍，那么参数数量为$4 \times 200&#x3D;800$。</p>
 <h3 id="4-2-1-Embedding得到的向量的物理意义"><a href="#4-2-1-Embedding得到的向量的物理意义" class="headerlink" title="4.2.1 Embedding得到的向量的物理意义"></a>4.2.1 Embedding得到的向量的物理意义</h3><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_lR517m69Na.png"></p>
@@ -13520,14 +13523,14 @@
 <hr>
 <h1 id="5-矩阵补充"><a href="#5-矩阵补充" class="headerlink" title="5 矩阵补充"></a>5 矩阵补充</h1><h2 id="5-1-模型结构"><a href="#5-1-模型结构" class="headerlink" title="5.1 模型结构"></a>5.1 模型结构</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_7iyIgycPzI.png"></p>
 <p>上面这个图展示了如何使用Embedding做推荐，模型的输入是一个用户ID和物品ID，模型的输出是一个实数，是用户对物品兴趣的预估值。这个数越大，表示用户对物品越感兴趣。这个模型就是矩阵补充模型。</p>
-<h2 id="5-2-模型训练"><a href="#5-2-模型训练" class="headerlink" title="5.2 模型训练"></a>5.2 模型训练</h2><p>开始训练之前，要准备一个数据集：（用户ID，物品ID，兴趣分数）的集合，记作$\Omega&#x3D;{(u, i, y)}$。</p>
+<h2 id="5-2-模型训练"><a href="#5-2-模型训练" class="headerlink" title="5.2 模型训练"></a>5.2 模型训练</h2><p>开始训练之前，要准备一个数据集：（用户ID，物品ID，兴趣分数）的集合，记作 $\Omega&#x3D;{(u, i, y)}$。</p>
 <p>数据集中的兴趣分数是系统记录的，分数最低是0分，最高是4分，比如：</p>
 <ul>
 <li>曝光但是没有点击记0分</li>
 <li>点击、点赞、收藏、转发各记1分</li>
 </ul>
-<p>之后把用户ID和物品ID映射成向量，例如第 $u$ 号用户映射为向量 $a_u$，第 $i$ 号物品映射为向量 $b_i$。就变成了一个优化问题的求解，得到参数 $A$ 和 $B$：</p>
-<p>$$<br>\min <em>{A, B} \sum</em>{(u, i, y) \in \Omega}\left(y-\left\langle a_{u}, {b}_{i}\right\rangle\right)^{2}.<br>$$</p>
+<p>之后把用户 ID 和物品 ID 映射成向量，例如第 $u$ 号用户映射为向量 $a_u$，第 $i$ 号物品映射为向量 $b_i$。就变成了一个优化问题的求解，得到参数 $A$ 和 $B$：</p>
+<p>$$<br>\min_{A, B} \sum_{(u, i, y) \in \Omega}\left(y-\left\langle a_{u}, {b}_{i}\right\rangle\right)^{2}.<br>$$</p>
 <h2 id="5-3-为什么是矩阵补充"><a href="#5-3-为什么是矩阵补充" class="headerlink" title="5.3 为什么是矩阵补充"></a>5.3 为什么是矩阵补充</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_oKXXZXCBXg.png"></p>
 <p>可以上述上述内容看成一个矩阵，其中绿色位置表示曝光给用户的物品；灰色位置表示没有曝光。之后可以计算出还未曝光的物品对于用户的吸引力，从而进行推荐。</p>
 <p>但是矩阵补充方法在实践中的效果并不是很好，原因如下：</p>
@@ -13538,12 +13541,12 @@
 <p>双塔模型可以看做矩阵补充的升级版。</p>
 </li>
 <li><p>负样本的选取方式不对。</p>
-<p>样本是用户—物品的二元组，记作$(u,i)$。</p>
-<p>正样本：曝光之后，有点击、交互等行为。（正确的做法）；</p>
-<p>负样本：曝光之后，没有点击、交互。（错误的做法）；</p>
+<p>样本是用户—物品的二元组，记作 $(u,i)$。</p>
+<p>正样本：曝光之后，有点击、交互等行为（正确的做法）；</p>
+<p>负样本：曝光之后，没有点击、交互（错误的做法）；</p>
 </li>
 <li><p>做训练的方法不好。</p>
-<p>做向量的内积$\left\langle\mathbf{a}<em>{1}, \mathbf{b}</em>{j}\right\rangle$不如余弦相似度，用均方损失（回归），不如用交叉熵损失（分类）。</p>
+<p>做向量的内积 $\left\langle\mathbf{a}_{1}, \mathbf{b}_{j}\right\rangle$ 不如余弦相似度，用均方损失（回归），不如用交叉熵损失（分类）。</p>
 </li>
 </ol>
 <h2 id="5-4-线上服务"><a href="#5-4-线上服务" class="headerlink" title="5.4 线上服务"></a>5.4 线上服务</h2><p>在训练好模型之后，可以把模型用作推荐系统中的召回通道。做完训练之后，要把模型存储在正确的地方，便于做召回。</p>
