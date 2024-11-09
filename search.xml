@@ -15467,4 +15467,132 @@
         <tag>读书记录</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux服务器使用clash配置VPN</title>
+    <url>/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/</url>
+    <content><![CDATA[<p>之前配置过服务器的VPN，但是最近在一个新的服务器上重新配置的时候总是不成功。经过一番努力，最终成功配置VPN，特此记录。</p>
+<h1>1 下载 clash 安装包</h1>
+<p>首先需要为服务器下载 clash 安装包，进入 <a href="https://www.clash.la/releases/" title="Clash Releases">Clash Releases</a> 网站选择红色的两个其中之一进行下载。</p>
+<p><img src="image_AHo0i1Jn31.png" alt=""></p>
+<p>如果服务器有界面，则可以直接使用服务器的浏览器进行下载。如果没有，则先使用自己的电脑下载后，传输到服务器中。</p>
+<p><img src="image_yOvzv2wA8g.png" alt=""></p>
+<p>下载之后进行解压，得到文件 clash-linux-amd64-v3-v1.18.0。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip clash-linux-amd64-v3-v1.18.0.gz</span><br></pre></td></tr></table></figure>
+<p>使用 mv 命令将其重命名为 clash，方便之后使用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> clash-linux-amd64-v3-v1.18.0 clash</span><br></pre></td></tr></table></figure>
+<p>之后增加 clash 程序执行的权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x clash</span><br></pre></td></tr></table></figure>
+<p>此时还不能运行 clash，因为我们还少两个文件：</p>
+<ol>
+<li>config.yaml：配置文件</li>
+<li>Country.mmdb：包含 IP 地址到国家的映射，Clash 利用这个文件来识别用户的 IP 地址所在的国家或地区</li>
+</ol>
+<p>接下来分别介绍如何获取这两个文件。</p>
+<hr>
+<h1>2 获取 config.yaml</h1>
+<p>config.yaml为clash的代理规则和clash的一些其他设置。代理规则不需要我们自己编写，通过订阅地址直接下载即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O config.yaml <span class="string">&quot;你的订阅链接&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果使用的是 cv2 机场，则有两种方法可以获得 clash 的订阅链接。</p>
+<h2 id="2-1-方法一">2.1 方法一</h2>
+<p>打开自己电脑的 clash ，然后选择“配置”这一栏，把鼠标放在配置文件上停留，就会出现一个链接，这个链接就是你的订阅链接。</p>
+<p><img src="image_lLH163PvHV.png" alt=""></p>
+<h2 id="2-2-方法二">2.2 方法二</h2>
+<p>打开网页 <a href="cv2.store" title="cv2.store">cv2.store</a> 进行登录，然后选择左侧的“下载和教程”，点击“Linux”。</p>
+<p><img src="image_IhSI0vKE1L.png" alt=""></p>
+<p>图中所示的链接就是你的订阅链接。</p>
+<p><img src="image_tMjtPCKDVw.png" alt=""></p>
+<p>到这里，我们就获得了属于自己的配置文件，现在一共有 clash 和 config.yaml 这两个文件，接下来需要获取 Country.mmdb。</p>
+<p><img src="image_TuJbPPcC-G.png" alt=""></p>
+<hr>
+<h1>3 获取 Country.mmdb</h1>
+<p>目前版本的 clash 不会自动生成MMDB文件，所以需要使用命令行下载。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O Country.mmdb https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb</span><br></pre></td></tr></table></figure>
+<p>这里需要访问 github，如果下载速度较慢，可以先下载到自己电脑上，然后将该文件上传到服务器中。</p>
+<p><img src="image_vmUuUkxCPK.png" alt=""></p>
+<hr>
+<h1>4 运行 clash</h1>
+<p>现在需要的两个文件我们都获取了，使用以下命令运行 clash：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./clash -d .</span><br></pre></td></tr></table></figure>
+<p>运行 clash 之后还需要修改系统代理，这样流量才能走 clash。</p>
+<h2 id="4-1-临时修改">4.1 临时修改</h2>
+<p>在终端运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-永久修改">4.2 永久修改</h2>
+<ol>
+<li>运行 <code>cd ~</code> 切换到 root 账户目录</li>
+<li>运行 <code>vim .bashrc</code> 编辑，添加系统代理</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+<p>添加后进行保存。</p>
+<p><img src="image_oZ5oDUjdiA.png" alt=""></p>
+<h2 id="4-3-测试是否配置成功">4.3 测试是否配置成功</h2>
+<h3 id="4-3-1-命令行测试">4.3.1 命令行测试</h3>
+<p>如果运行 <code>wget </code><a href="http://google.com" title="google.com">google.com</a> 后能够得到一个 html 文件，则说明配置成功。</p>
+<p><img src="image_DXcBm2lh9g.png" alt=""></p>
+<h3 id="4-3-2-图形化测试">4.3.2 图形化测试</h3>
+<p>如果服务器只有命令行，没有图形化桌面，可以为服务器配置一个图形化桌面。</p>
+<p>VNC（Virtual Network Computing ）是一种图形化的桌面共享协议，它使用远程帧缓冲协议 (RFB) 来远程控制另一台计算机，它将键盘和鼠标事件从一台计算机传输到另一台计算机，通过网络向另一个方向转发图形屏幕更新。 对于一般性的GUI程序运行需求，我们其实可以借助VNC在不安装完整桌面环境的情况下方便快捷的实现，下面介绍如何借助turbovnc工具，在实例中运行一个GUI程序并在本地电脑进行显示：</p>
+<p>首先需要给服务器安装VNC和必要的一些图形显式库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装基本的依赖包</span></span><br><span class="line">apt update &amp;&amp; apt install -y libglu1-mesa-dev mesa-utils xterm xauth x11-xkb-utils xfonts-base xkb-data libxtst6 libxv1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装libjpeg-turbo和turbovnc</span></span><br><span class="line"><span class="built_in">export</span> TURBOVNC_VERSION=2.2.5</span><br><span class="line"><span class="built_in">export</span> LIBJPEG_VERSION=2.0.90</span><br><span class="line">wget http://aivc.ks3-cn-beijing.ksyun.com/packages/libjpeg-turbo/libjpeg-turbo-official_<span class="variable">$&#123;LIBJPEG_VERSION&#125;</span>_amd64.deb</span><br><span class="line">wget http://aivc.ks3-cn-beijing.ksyun.com/packages/turbovnc/turbovnc_<span class="variable">$&#123;TURBOVNC_VERSION&#125;</span>_amd64.deb</span><br><span class="line">dpkg -i libjpeg-turbo-official_<span class="variable">$&#123;LIBJPEG_VERSION&#125;</span>_amd64.deb</span><br><span class="line">dpkg -i turbovnc_<span class="variable">$&#123;TURBOVNC_VERSION&#125;</span>_amd64.deb</span><br><span class="line"><span class="built_in">rm</span> -rf *.deb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动VNC服务端，这一步可能涉及vnc密码配置（注意不是实例的账户密码）。另外如果出现报错xauth未找到，那么使用apt install xauth再安装一次</span></span><br><span class="line"><span class="built_in">rm</span> -rf /tmp/.X1*  <span class="comment"># 如果再次启动，删除上一次的临时文件，否则无法正常启动</span></span><br><span class="line">USER=root /opt/TurboVNC/bin/vncserver :1 -desktop X -auth /root/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 120000 -rfbauth /root/.vnc/passwd -fp /usr/share/fonts/X11/misc/,/usr/share/fonts -rfbport 6006</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查是否启动，如果有vncserver的进程，证明已经启动</span></span><br><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
+<p>以上启动Server时，手动设置了rfbport=6006端口，下面通过SSH隧道将实例中的6006端口代理到本地。</p>
+<p>在本地电脑的终端（cmd/powershell/terminal等）中执行代理命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -CNg -L 6006:127.0.0.1:6006 用户名@IP地址 -p 端口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要把用户名和IP地址换成自己服务器的用户和地址，关口是SSH指令访问的服务器的端口，请找到自己实例的ssh指令<strong>做相应替换</strong>。</li>
+<li><code>6006:127.0.0.1:6006</code>是指代理实例内<code>6006</code>端口到本地的<code>6006</code>端口。</li>
+</ul>
+<p><img src="image_Y96mdXap3p.png" alt=""></p>
+<p>执行上述命令后，没有任何日志是正常的，只要没有要求重新输入密码或错误退出。</p>
+<p>之后使用turbovnc客户端进行连接，地址为上述获取的地址，一切顺利的话，输入密码就能看到VNC连接成功后的图形化界面，以及正在运行在实例中的GUI程序；</p>
+<p><img src="image_IA8amnFyyA.png" alt=""></p>
+<p>如上图所示，可以访问谷歌浏览器，所以VPN配置成功。</p>
+<hr>
+<h1>5 clash 自启动和后台运行</h1>
+<h2 id="5-1-配置自运行">5.1 配置自运行</h2>
+<p>上面的方式是在终端运行 clash，当我们把终端关闭之后，clash 也会关闭，所以可以使用进程的方式来运行 clash 进行解决。</p>
+<p>在<code>/etc/systemd/system/</code>目录新建一个<code>clash.service</code>文件，并且直接进入vim编辑器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/systemd/system/clash.service</span><br></pre></td></tr></table></figure>
+<p><code>clash.service</code> 文件内容如下：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Clash daemon, A rule-based proxy in Go.</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="attr">Restart</span>=always</span><br><span class="line"><span class="attr">ExecStart</span>=你的clash程序的绝对路径 -d config.yaml文件的绝对路径</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>之后保存，然后开始启动 clash 服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start clash</span><br></pre></td></tr></table></figure>
+<p>使用命令查看一下是否正常运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status clash</span><br></pre></td></tr></table></figure>
+<p><img src="image_gJIsqj35L-.png" alt=""></p>
+<h2 id="5-2-systemctl-常用命令">5.2 systemctl 常用命令</h2>
+<ol>
+<li>
+<p><code>systemctl status clash</code> ：查看clash服务</p>
+</li>
+<li>
+<p><code>systemctl start clash</code> ：启动clash服务</p>
+</li>
+<li>
+<p><code>systemctl stop clash</code> ：停止clash服务</p>
+</li>
+<li>
+<p><code>systemctl restart clash</code> ：重启clash服务</p>
+</li>
+<li>
+<p><code>systemctl enable clash</code> ：设置开机自启clash服务</p>
+</li>
+<li>
+<p><code>systemctl daemon-reload</code> ：如果修改了<code>clash.service</code>文件，需要此命令来重载被修改的服务文件</p>
+</li>
+</ol>
+<p><code>systemctl</code> 是一个用于初始化系统和服务管理的命令行工具，属于 <code>systemd</code> 系统管理守护进程的一部分。它是现代 Linux 发行版中管理服务和系统状态的主要工具。</p>
+<hr>
+<h1>6 参考文档</h1>
+<ol>
+<li><a href="https://www.fuxi.info/archives/273" title="https://www.fuxi.info/archives/273">Linux中安装Clash并且实现全局代理（纯命令行）</a></li>
+<li><a href="https://blog.myxuechao.com/post/36#%EF%BC%884%EF%BC%89%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%90%86%E6%95%88%E6%9E%9C" title="https://blog.myxuechao.com/post/36#%EF%BC%884%EF%BC%89%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%90%86%E6%95%88%E6%9E%9C">Linux 服务器安装 Clash代理</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>clash</tag>
+      </tags>
+  </entry>
 </search>
