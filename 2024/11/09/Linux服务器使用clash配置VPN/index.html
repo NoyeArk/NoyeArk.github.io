@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://clash-apps.com/wp-content/uploads/2023/12/image-1698930167429-1.webp">
 <meta property="article:published_time" content="2024-11-09T07:56:15.000Z">
-<meta property="article:modified_time" content="2024-11-09T08:00:50.519Z">
+<meta property="article:modified_time" content="2024-11-09T08:43:13.586Z">
 <meta property="article:author" content="弘树">
 <meta property="article:tag" content="clash">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-11-09 16:00:50'
+  postUpdate: '2024-11-09 16:43:13'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -201,7 +201,7 @@
 <p><img src="image_oZ5oDUjdiA.png" alt=""></p>
 <h2 id="4-3-测试是否配置成功">4.3 测试是否配置成功</h2>
 <h3 id="4-3-1-命令行测试">4.3.1 命令行测试</h3>
-<p>如果运行 <code>wget </code><a target="_blank" rel="noopener" href="http://google.com" title="google.com">google.com</a> 后能够得到一个 html 文件，则说明配置成功。</p>
+<p>如果运行 <code>wget google.com</code> 后能够得到一个 html 文件，则说明配置成功。</p>
 <p><img src="image_DXcBm2lh9g.png" alt=""></p>
 <h3 id="4-3-2-图形化测试">4.3.2 图形化测试</h3>
 <p>如果服务器只有命令行，没有图形化桌面，可以为服务器配置一个图形化桌面。</p>
@@ -235,24 +235,12 @@
 <p><img src="image_gJIsqj35L-.png" alt=""></p>
 <h2 id="5-2-systemctl-常用命令">5.2 systemctl 常用命令</h2>
 <ol>
-<li>
-<p><code>systemctl status clash</code> ：查看clash服务</p>
-</li>
-<li>
-<p><code>systemctl start clash</code> ：启动clash服务</p>
-</li>
-<li>
-<p><code>systemctl stop clash</code> ：停止clash服务</p>
-</li>
-<li>
-<p><code>systemctl restart clash</code> ：重启clash服务</p>
-</li>
-<li>
-<p><code>systemctl enable clash</code> ：设置开机自启clash服务</p>
-</li>
-<li>
-<p><code>systemctl daemon-reload</code> ：如果修改了<code>clash.service</code>文件，需要此命令来重载被修改的服务文件</p>
-</li>
+<li><code>systemctl status clash</code> ：查看clash服务</li>
+<li><code>systemctl start clash</code> ：启动clash服务</li>
+<li><code>systemctl stop clash</code> ：停止clash服务</li>
+<li><code>systemctl restart clash</code> ：重启clash服务</li>
+<li><code>systemctl enable clash</code> ：设置开机自启clash服务</li>
+<li><code>systemctl daemon-reload</code> ：如果修改了<code>clash.service</code>文件，需要此命令来重载被修改的服务文件</li>
 </ol>
 <p><code>systemctl</code> 是一个用于初始化系统和服务管理的命令行工具，属于 <code>systemd</code> 系统管理守护进程的一部分。它是现代 Linux 发行版中管理服务和系统状态的主要工具。</p>
 <hr>
