@@ -12695,8 +12695,8 @@
     <content><![CDATA[<h1 id="1-基于物品的协同过滤ItemCF"><a href="#1-基于物品的协同过滤ItemCF" class="headerlink" title="1 基于物品的协同过滤ItemCF"></a>1 基于物品的协同过滤ItemCF</h1><h2 id="1-1-ItemCF的原理"><a href="#1-1-ItemCF的原理" class="headerlink" title="1.1 ItemCF的原理"></a>1.1 ItemCF的原理</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_JSfOuoA4D3.png"></p>
 <p>推荐系统如何知道《笑傲江湖》与《鹿鼎记》相似？</p>
 <ol>
-<li>看过《笑傲江湖》的⽤户也看过《⿅⿍记》</li>
-<li>给《笑傲江湖》好评的⽤户也给《⿅⿍记》好评</li>
+<li>看过《笑傲江湖》的用户也看过《⿅⿍记》</li>
+<li>给《笑傲江湖》好评的用户也给《⿅⿍记》好评</li>
 </ol>
 <h2 id="1-2-ItemCF的实现"><a href="#1-2-ItemCF的实现" class="headerlink" title="1.2 ItemCF的实现"></a>1.2 ItemCF的实现</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_PpDTNAaz9C.png"></p>
 <p>预估用户对候选物品的兴趣：</p>
@@ -12716,7 +12716,7 @@
 <p>两个物品相似：红色物品和绿色物品的用户之间有交集</p>
 </blockquote>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_X-nZu9_nl1.png"></p>
-<h3 id="1-3-1-计算物品相似度"><a href="#1-3-1-计算物品相似度" class="headerlink" title="1.3.1 计算物品相似度"></a>1.3.1 计算物品相似度</h3><p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}_{1}$ ，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}_{2}$，定义交集 $\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
+<h3 id="1-3-1-计算物品相似度"><a href="#1-3-1-计算物品相似度" class="headerlink" title="1.3.1 计算物品相似度"></a>1.3.1 计算物品相似度</h3><p>喜欢物品 $i_1$ 的用户记作集合 $\mathcal{W}_{1}$ ，喜欢物品 $i_2$ 的用户记作集合 $\mathcal{W}_{2}$，定义交集 $\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
 <p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{|\mathcal{V}|}{\sqrt{\left|\mathcal{W}_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
 <blockquote>
 <p>注： 公式没有考虑喜欢的程度 $like(user, item)$，喜欢就记为1，不喜欢就记为0</p>
@@ -12724,44 +12724,44 @@
 <p>考虑用户喜欢物品的程度：</p>
 <p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\sum_{v \in \mathcal{V}} \operatorname{like}\left(v, i_{1}\right) \cdot \operatorname{like}\left(v, i_{2}\right)}{\sqrt{\sum_{u_{1} \in \mathcal{W}_{1}} \operatorname{like}^{2}\left(u_{1}, i_{1}\right)} \cdot \sqrt{\sum_{u_{2} \in \mathcal{W}_{2}} \operatorname{like}^{2}\left(u_{2}, i_{2}\right)}}<br>$$</p>
 <p>上述公式就是余弦相似度，把每个物品表示为一个向量，向量的每个元素表示每个用户的兴趣分数。</p>
-<h2 id="1-4-小结"><a href="#1-4-小结" class="headerlink" title="1.4 小结"></a>1.4 小结</h2><p><strong>ItemCF 的基本思想</strong>是根据物品之间的相似度做推荐。即如果⽤户喜欢物品 $item_1$，⽽且物品 $item_1$ 与 $item_2$ 相似，那么⽤户很可能喜欢物品 $item_2$。</p>
-<p>所以需要预估⽤户对候选物品的兴趣：</p>
+<h2 id="1-4-小结"><a href="#1-4-小结" class="headerlink" title="1.4 小结"></a>1.4 小结</h2><p><strong>ItemCF 的基本思想</strong>是根据物品之间的相似度做推荐。即如果用户喜欢物品 $item_1$，⽽且物品 $item_1$ 与 $item_2$ 相似，那么用户很可能喜欢物品 $item_2$。</p>
+<p>所以需要预估用户对候选物品的兴趣：</p>
 <p>$$<br>\sum_{j} like \left(\right. user, item \left._{j}\right) \times \operatorname{sim}\left(\right. item _{j}, item )<br>$$</p>
-<p>计算两个物品的相似度：把每个物品表示为⼀个稀疏向量，向量每个元素对应⼀个⽤户。相似度 $sim$ 就是两个向量夹角的余弦。</p>
+<p>计算两个物品的相似度：把每个物品表示为⼀个稀疏向量，向量每个元素对应⼀个用户。相似度 $sim$ 就是两个向量夹角的余弦。</p>
 <h2 id="1-5-ItemCF-召回的完整流程"><a href="#1-5-ItemCF-召回的完整流程" class="headerlink" title="1.5 ItemCF 召回的完整流程"></a>1.5 ItemCF 召回的完整流程</h2><h3 id="1-5-1-事先做离线计算"><a href="#1-5-1-事先做离线计算" class="headerlink" title="1.5.1 事先做离线计算"></a>1.5.1 事先做离线计算</h3><p><strong>建⽴“用户 → 物品”的索引：</strong></p>
 <ul>
-<li>记录每个⽤户最近点击、交互过的物品 ID</li>
-<li>给定任意⽤户 ID，可以找到他近期感兴趣的物品列表</li>
+<li>记录每个用户最近点击、交互过的物品 ID</li>
+<li>给定任意用户 ID，可以找到他近期感兴趣的物品列表</li>
 </ul>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_3xYvOBHZfB.png"></p>
 <p><strong>建⽴“物品 → 物品”的索引：</strong></p>
 <ul>
 <li>计算物品之间两两相似度</li>
-<li>对于每个物品，索引它最相似的 k 个物品</li>
-<li>给定任意物品ID，可以快速找到它最相似的 k 个物品</li>
+<li>对于每个物品，索引它最相似的 $k$ 个物品</li>
+<li>给定任意物品 ID，可以快速找到它最相似的 $k$ 个物品</li>
 </ul>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_5Foi9x3EcG.png"></p>
 <h3 id="1-5-2-线上做召回"><a href="#1-5-2-线上做召回" class="headerlink" title="1.5.2 线上做召回"></a>1.5.2 线上做召回</h3><p>可以按照以下步骤线上做推荐：</p>
 <ol>
-<li>给定⽤户 ID，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
+<li>给定用户 ID，通过“用户 → 物品”索引，找到用户近期感兴趣的物品列表（last-n）</li>
 <li>对于 last-n 列表中每个物品，通过“物品 → 物品”的索引，找到 top-k 相似物品</li>
-<li>对于取回的相似物品（最多有 $nk$ 个），⽤公式预估⽤户对物品的兴趣分数</li>
+<li>对于取回的相似物品（最多有 $nk$ 个），用公式预估用户对物品的兴趣分数</li>
 <li>返回分数最⾼的 100 个物品，作为推荐结果</li>
 </ol>
-<p>索引的意义在于避免枚举所有的物品。⽤索引离线计算量⼤，线上计算量⼩。</p>
+<p>索引的意义在于避免枚举所有的物品。用索引离线计算量⼤，线上计算量⼩。</p>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_4K4c3CZNCD.png"></p>
 <h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6 总结"></a>1.6 总结</h2><h3 id="1-6-1-ItemCF的原理"><a href="#1-6-1-ItemCF的原理" class="headerlink" title="1.6.1 ItemCF的原理"></a>1.6.1 ItemCF的原理</h3><p>用户喜欢物品 $i_1$，那么用户喜欢与物品 $i_1$ 相似的物品 $i_2$。</p>
 <p><strong>物品相似度：</strong>如果喜欢 $i_1$、$i_2$的用户有很大的重叠，那么 $i_1$ 与 $i_2$ 相似。公式如下：</p>
 <p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\frac{\left|\mathcal{W}_{1} \cap \mathcal{W}_{2}\right|}{\sqrt{\left|W_{1}\right| \cdot\left|\mathcal{W}_{2}\right|}}<br>$$</p>
 <h3 id="1-6-2-ItemCF召回通道"><a href="#1-6-2-ItemCF召回通道" class="headerlink" title="1.6.2 ItemCF召回通道"></a>1.6.2 ItemCF召回通道</h3><p>维护两个索引：</p>
 <ol>
-<li>用户 → 物品列表：⽤户最近交互过的 $n$ 个物品</li>
+<li>用户 → 物品列表：用户最近交互过的 $n$ 个物品</li>
 <li>物品 → 物品列表：相似度最⾼的 $k$ 个物品</li>
 </ol>
 <p>线上做召回：</p>
 <ol>
-<li>利⽤两个索引，每次取回 $nk$ 个物品</li>
-<li>预估⽤户对每个物品的兴趣分数：</li>
+<li>利用两个索引，每次取回 $nk$ 个物品</li>
+<li>预估用户对每个物品的兴趣分数：</li>
 </ol>
 <p>$$<br>\sum_{j} \operatorname{like}\left(\right. user, item \left._{j}\right) \times \operatorname{sim}\left(\right. item _{j}, item )<br>$$</p>
 <ol>
@@ -12769,15 +12769,15 @@
 </ol>
 <hr>
 <h1 id="2-Swing召回通道"><a href="#2-Swing召回通道" class="headerlink" title="2 Swing召回通道"></a>2 Swing召回通道</h1><h2 id="2-1-原理介绍"><a href="#2-1-原理介绍" class="headerlink" title="2.1 原理介绍"></a>2.1 原理介绍</h2><p>Swing模型的原理就是给用户设置权重，解决小圈子问题。</p>
-<p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}_{2}$，定义两个用户的重合度：</p>
+<p>喜欢物品 $u_1$ 的用户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的用户记作集合 $\mathcal{J}_{2}$，定义两个用户的重合度：</p>
 <p>$$<br>\operatorname{overlap}\left(u_{1}, u_{2}\right)&#x3D;\left|\mathcal{J}_{1} \cap \mathcal{J}_{2}\right|<br>$$</p>
-<p>⽤户 $u_1$ 和 $u_2$ 的重合度⾼，则他们可能来⾃⼀个⼩圈⼦，要降低他们的权重。</p>
-<p>喜欢物品 $i_1$ 的⽤户记作集合 $\mathcal{W}_{1}$，喜欢物品 $i_2$ 的⽤户记作集合 $\mathcal{W}_{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
+<p>用户 $u_1$ 和 $u_2$ 的重合度⾼，则他们可能来⾃⼀个⼩圈⼦，要降低他们的权重。</p>
+<p>喜欢物品 $i_1$ 的用户记作集合 $\mathcal{W}_{1}$，喜欢物品 $i_2$ 的用户记作集合 $\mathcal{W}_{2}$，定义交集$\mathcal{V}&#x3D;\mathcal{W}_{1} \cap \mathcal{W}_{2}$，则两个物品的相似度：</p>
 <p>$$<br>\operatorname{sim}\left(i_{1}, i_{2}\right)&#x3D;\sum_{u_{1} \in \mathcal{V}} \sum_{u_{2} \in \mathcal{V}} \frac{1}{\alpha+\operatorname{overlap}\left(u_{1}, u_{2}\right)}<br>$$</p>
 <h2 id="2-2-总结"><a href="#2-2-总结" class="headerlink" title="2.2 总结"></a>2.2 总结</h2><p><code>Swing</code> 与 <code>ItemCF</code> 唯⼀的区别在于<strong>物品相似度</strong>。</p>
 <ul>
-<li><strong>ItemCF：</strong>两个物品重合的⽤户⽐例⾼，则判定两个物品相似。</li>
-<li><strong>Swing：</strong>额外考虑重合的⽤户是否来⾃⼀个⼩圈⼦。</li>
+<li><strong>ItemCF：</strong>两个物品重合的用户⽐例⾼，则判定两个物品相似。</li>
+<li><strong>Swing：</strong>额外考虑重合的用户是否来⾃⼀个⼩圈⼦。</li>
 </ul>
 <p>同时喜欢两个物品的用户记作集合 $\mathcal{V}$，对于 $\mathcal{V}$ 中的用户 $u_1$ 和 $u_2$，重合度记作 $\operatorname{overlap}\left(u_{1}, u_{2}\right)$。两个用户重合度大，则可能来自一个小圈子，权重降低。</p>
 <hr>
@@ -12788,7 +12788,7 @@
 <li>⽅法⼆：关注的作者有很⼤的重合。</li>
 </ol>
 <h2 id="3-1-UserCF-的实现"><a href="#3-1-UserCF-的实现" class="headerlink" title="3.1 UserCF 的实现"></a>3.1 UserCF 的实现</h2><p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_qV5IKglIkG.png"></p>
-<p>预估⽤户对候选物品的兴趣：</p>
+<p>预估用户对候选物品的兴趣：</p>
 <p>$$<br>\sum_{j} \operatorname{sim}\left(u s e r, \operatorname{user}_{j}\right) \times \operatorname{like}\left(\right. user _{j}, item )<br>$$</p>
 <p>根据上述公式计算的结果如下，表示左边用户对右边物品的兴趣。</p>
 <p>$$<br>0.9 \times 0+0.7 \times 1+0.7 \times 3+0.4 \times 0 &#x3D; 2.8<br>$$</p>
@@ -12800,7 +12800,7 @@
 <p>两个用户相似：喜欢的物品有重合</p>
 </blockquote>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_6zG73OGyFP.png"></p>
-<h3 id="3-2-1-计算用户相似度"><a href="#3-2-1-计算用户相似度" class="headerlink" title="3.2.1 计算用户相似度"></a>3.2.1 计算用户相似度</h3><p>喜欢物品 $u_1$ 的⽤户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的⽤户记作集合 $\mathcal{J}_{2}$，定义交集 $I&#x3D;\mathcal{J}_{1} \cap \mathcal{J}_{2}$。定义两个用户的重合度：</p>
+<h3 id="3-2-1-计算用户相似度"><a href="#3-2-1-计算用户相似度" class="headerlink" title="3.2.1 计算用户相似度"></a>3.2.1 计算用户相似度</h3><p>喜欢物品 $u_1$ 的用户记作集合 $\mathcal{J}_{1}$，喜欢物品 $u_2$ 的用户记作集合 $\mathcal{J}_{2}$，定义交集 $I&#x3D;\mathcal{J}_{1} \cap \mathcal{J}_{2}$。定义两个用户的重合度：</p>
 <p>$$<br>\operatorname{sim}\left(u_{1}, u_{2}\right)&#x3D;\frac{|I|}{\sqrt{\left|\mathcal{J}_{1}\right| \cdot\left|\mathcal{J}_{2}\right|}}<br>$$</p>
 <h3 id="3-2-2-降低热门物品权重"><a href="#3-2-2-降低热门物品权重" class="headerlink" title="3.2.2 降低热门物品权重"></a>3.2.2 降低热门物品权重</h3><p>越热门的物品，对于计算用户相似度是没有价值的。反过来，重合的物品越冷门，说明两个人兴趣更加相似。所以需要降低热门物品的权重。</p>
 <p>修改相似度计算公式如下：</p>
@@ -12811,23 +12811,23 @@
 <ul>
 <li>$n_l$ ：喜欢物品 $l$ 的用户数量，反映物品的热门程度</li>
 </ul>
-<h2 id="3-3-UserCF完整召回流程"><a href="#3-3-UserCF完整召回流程" class="headerlink" title="3.3 UserCF完整召回流程"></a>3.3 UserCF完整召回流程</h2><h3 id="3-3-1-事先做离线计算"><a href="#3-3-1-事先做离线计算" class="headerlink" title="3.3.1 事先做离线计算"></a>3.3.1 事先做离线计算</h3><p><strong>建⽴“⽤户 → 物品”的索引</strong>：</p>
+<h2 id="3-3-UserCF完整召回流程"><a href="#3-3-UserCF完整召回流程" class="headerlink" title="3.3 UserCF完整召回流程"></a>3.3 UserCF完整召回流程</h2><h3 id="3-3-1-事先做离线计算"><a href="#3-3-1-事先做离线计算" class="headerlink" title="3.3.1 事先做离线计算"></a>3.3.1 事先做离线计算</h3><p><strong>建⽴“用户 → 物品”的索引</strong>：</p>
 <ul>
-<li>记录每个用户最近点击、交互过的物品ID</li>
-<li>给定任意用户ID，可以找到他近期感兴趣的物品列表</li>
+<li>记录每个用户最近点击、交互过的物品 ID</li>
+<li>给定任意用户 ID，可以找到他近期感兴趣的物品列表</li>
 </ul>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_ch8L7Vpfu5.png"></p>
-<p><strong>建⽴“⽤户 → ⽤户”的索引</strong>：</p>
+<p><strong>建⽴“用户 → 用户”的索引</strong>：</p>
 <ul>
 <li>对于每个用户，索引他最相似的 $k$ 个用户</li>
-<li>给定任意用户ID，可以快速找到他最相似的 $k$ 个用户</li>
+<li>给定任意用户 ID，可以快速找到他最相似的 $k$ 个用户</li>
 </ul>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_Hk8aaNPO5z.png"></p>
 <h3 id="3-3-2-线上做召回"><a href="#3-3-2-线上做召回" class="headerlink" title="3.3.2 线上做召回"></a>3.3.2 线上做召回</h3><ol>
-<li>给定⽤户ID，通过“⽤户 → ⽤户”索引，找到 top-k 相似⽤户</li>
-<li>对于每个 top-k 相似⽤户，通过“⽤户 → 物品”索引，找到⽤户近期感兴趣的物品列表（last-n）</li>
-<li>对于取回的 $nk$ 个相似物品，⽤公式预估⽤户对每个物品的兴趣分数</li>
-<li>返回分数最⾼的100个物品，作为召回结果</li>
+<li>给定用户 ID，通过“用户 → 用户”索引，找到 top-k 相似用户</li>
+<li>对于每个 top-k 相似用户，通过“用户 → 物品”索引，找到用户近期感兴趣的物品列表（last-n）</li>
+<li>对于取回的 $nk$ 个相似物品，用公式预估用户对每个物品的兴趣分数</li>
+<li>返回分数最⾼的 100 个物品，作为召回结果</li>
 </ol>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_rTwrj0ruku.png"></p>
 <h2 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h2><p><strong>UserCF 的基本思想：</strong>用户 $u_1$ 跟用户 $u_2$ 相似，而且  $u_2$ 喜欢某物品，那么 $u_1$ 也可能喜欢该物品。</p>
@@ -12840,7 +12840,7 @@
 <li>国籍：中国、美国、印度等200个国家。</li>
 <li>英⽂单词：常见的英文单词有几万个。</li>
 <li>物品ID：小红书有几亿篇笔记，每篇笔记有⼀个ID。</li>
-<li>⽤户ID：小红书有几亿个⽤户，每个用户有⼀个ID。</li>
+<li>用户ID：小红书有几亿个用户，每个用户有⼀个ID。</li>
 </ol>
 <p>离散特征的处理分两步：</p>
 <ol>
@@ -12887,9 +12887,9 @@
 <p>可以上述上述内容看成一个矩阵，其中绿色位置表示曝光给用户的物品；灰色位置表示没有曝光。之后可以计算出还未曝光的物品对于用户的吸引力，从而进行推荐。</p>
 <p>但是矩阵补充方法在实践中的效果并不是很好，原因如下：</p>
 <ol>
-<li><p>仅⽤ID embedding，没利⽤物品、⽤户属性。</p>
+<li><p>仅用ID embedding，没利用物品、用户属性。</p>
 <p>物品属性有类⽬、关键词、地理位置、作者信息；</p>
-<p>⽤户属性有性别、年龄、地理定位、感兴趣的类⽬；</p>
+<p>用户属性有性别、年龄、地理定位、感兴趣的类⽬；</p>
 <p>双塔模型可以看做矩阵补充的升级版。</p>
 </li>
 <li><p>负样本的选取方式不对。</p>
@@ -12908,12 +12908,12 @@
 <li>$B$ 的每一列对应一个物品</li>
 </ol>
 <p>把矩阵 $A$ 的列存储到 key-value 表，其中 key 是用户 ID，value 是 $A$ 的一列，给定用户 ID，返回一个向量（用户的 embedding）。而矩阵 $B$ 的存储和索引比较复杂。</p>
-<p>之后可以做线上服务，具体来说，把⽤户 ID 作为 key，查询 key-value 表，得到该⽤户的向量，记作 $a$。查找用户 $a$ 最有可能感兴趣的 $k$ 各物品，作为召回结果。</p>
+<p>之后可以做线上服务，具体来说，把用户 ID 作为 key，查询 key-value 表，得到该用户的向量，记作 $a$。查找用户 $a$ 最有可能感兴趣的 $k$ 各物品，作为召回结果。</p>
 <p>其中第 $i$ 号物品的 embedding 向量记作 $b_i$，内积 $\left\langle\mathrm{a}, \mathrm{b}_{i}\right\rangle$ 是用户对第 $i $ 号物品兴趣的预估，并计算返回内积最大的 $k$ 个物品。</p>
 <blockquote>
 <p>如果枚举所有物品，时间复杂度正比于物品数量</p>
 </blockquote>
-<h2 id="5-5-近似最近邻查找"><a href="#5-5-近似最近邻查找" class="headerlink" title="5.5 近似最近邻查找"></a>5.5 近似最近邻查找</h2><p>在⽤户向量 $a$ 作为 query，查找使得 $\left\langle\mathrm{a}, \mathrm{b}_{i}\right\rangle$ 最⼤化的物品 $i$时，暴力枚举速度太慢，实践中使用近似最近邻查找（Approximate Nearest Neighbor Search）。</p>
+<h2 id="5-5-近似最近邻查找"><a href="#5-5-近似最近邻查找" class="headerlink" title="5.5 近似最近邻查找"></a>5.5 近似最近邻查找</h2><p>在用户向量 $a$ 作为 query，查找使得 $\left\langle\mathrm{a}, \mathrm{b}_{i}\right\rangle$ 最⼤化的物品 $i$时，暴力枚举速度太慢，实践中使用近似最近邻查找（Approximate Nearest Neighbor Search）。</p>
 <p>Milvus、Faiss、HnswLib 等向量数据库均⽀持近似最近邻查找。</p>
 <p><img src="/2024/10/10/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9A%E5%8F%AC%E5%9B%9E1/image_eFQa1u_QlR.png"></p>
 <p>在对数据上线之前，先对数据做预处理，把数据划分为很多区域，至于如何划分，取决于衡量距离的方法。划分后每个区域用一个向量表示，这些向量的长度都是1，并建立索引，把每个区域的向量作为 key，区域中所有点作为 value。给定一个向量，可以快速取回这个向量中所有的点。</p>
@@ -14796,17 +14796,19 @@
     <title>Linux服务器使用clash配置VPN</title>
     <url>/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/</url>
     <content><![CDATA[<p>之前配置过服务器的VPN，但是最近在一个新的服务器上重新配置的时候总是不成功。经过一番努力，最终成功配置VPN，特此记录。</p>
-<h1>1 下载 clash 安装包</h1>
-<p>首先需要为服务器下载 clash 安装包，进入 <a href="https://www.clash.la/releases/" title="Clash Releases">Clash Releases</a> 网站选择红色的两个其中之一进行下载。</p>
-<p><img src="image_AHo0i1Jn31.png" alt=""></p>
+<h1 id="1-下载-clash-安装包"><a href="#1-下载-clash-安装包" class="headerlink" title="1 下载 clash 安装包"></a>1 下载 clash 安装包</h1><p>首先需要为服务器下载 clash 安装包，进入 <a href="https://www.clash.la/releases/" title="Clash Releases">Clash Releases</a> 网站选择红色的两个其中之一进行下载。</p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_AHo0i1Jn31.png"></p>
 <p>如果服务器有界面，则可以直接使用服务器的浏览器进行下载。如果没有，则先使用自己的电脑下载后，传输到服务器中。</p>
-<p><img src="image_yOvzv2wA8g.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_yOvzv2wA8g.png"></p>
 <p>下载之后进行解压，得到文件 clash-linux-amd64-v3-v1.18.0。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip clash-linux-amd64-v3-v1.18.0.gz</span><br></pre></td></tr></table></figure>
+
 <p>使用 mv 命令将其重命名为 clash，方便之后使用。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> clash-linux-amd64-v3-v1.18.0 clash</span><br></pre></td></tr></table></figure>
+
 <p>之后增加 clash 程序执行的权限：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x clash</span><br></pre></td></tr></table></figure>
+
 <p>此时还不能运行 clash，因为我们还少两个文件：</p>
 <ol>
 <li>config.yaml：配置文件</li>
@@ -14814,78 +14816,76 @@
 </ol>
 <p>接下来分别介绍如何获取这两个文件。</p>
 <hr>
-<h1>2 获取 config.yaml</h1>
-<p>config.yaml为clash的代理规则和clash的一些其他设置。代理规则不需要我们自己编写，通过订阅地址直接下载即可。</p>
+<h1 id="2-获取-config-yaml"><a href="#2-获取-config-yaml" class="headerlink" title="2 获取 config.yaml"></a>2 获取 config.yaml</h1><p>config.yaml为clash的代理规则和clash的一些其他设置。代理规则不需要我们自己编写，通过订阅地址直接下载即可。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O config.yaml <span class="string">&quot;你的订阅链接&quot;</span></span><br></pre></td></tr></table></figure>
+
 <p>如果使用的是 cv2 机场，则有两种方法可以获得 clash 的订阅链接。</p>
-<h2 id="2-1-方法一">2.1 方法一</h2>
-<p>打开自己电脑的 clash ，然后选择“配置”这一栏，把鼠标放在配置文件上停留，就会出现一个链接，这个链接就是你的订阅链接。</p>
-<p><img src="image_lLH163PvHV.png" alt=""></p>
-<h2 id="2-2-方法二">2.2 方法二</h2>
-<p>打开网页 <a href="cv2.store" title="cv2.store">cv2.store</a> 进行登录，然后选择左侧的“下载和教程”，点击“Linux”。</p>
-<p><img src="image_IhSI0vKE1L.png" alt=""></p>
+<h2 id="2-1-方法一"><a href="#2-1-方法一" class="headerlink" title="2.1 方法一"></a>2.1 方法一</h2><p>打开自己电脑的 clash ，然后选择“配置”这一栏，把鼠标放在配置文件上停留，就会出现一个链接，这个链接就是你的订阅链接。</p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_lLH163PvHV.png"></p>
+<h2 id="2-2-方法二"><a href="#2-2-方法二" class="headerlink" title="2.2 方法二"></a>2.2 方法二</h2><p>打开网页 <a href="cv2.store" title="cv2.store">cv2.store</a> 进行登录，然后选择左侧的“下载和教程”，点击“Linux”。</p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_IhSI0vKE1L.png"></p>
 <p>图中所示的链接就是你的订阅链接。</p>
-<p><img src="image_tMjtPCKDVw.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_tMjtPCKDVw.png"></p>
 <p>到这里，我们就获得了属于自己的配置文件，现在一共有 clash 和 config.yaml 这两个文件，接下来需要获取 Country.mmdb。</p>
-<p><img src="image_TuJbPPcC-G.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_TuJbPPcC-G.png"></p>
 <hr>
-<h1>3 获取 Country.mmdb</h1>
-<p>目前版本的 clash 不会自动生成MMDB文件，所以需要使用命令行下载。</p>
+<h1 id="3-获取-Country-mmdb"><a href="#3-获取-Country-mmdb" class="headerlink" title="3 获取 Country.mmdb"></a>3 获取 Country.mmdb</h1><p>目前版本的 clash 不会自动生成MMDB文件，所以需要使用命令行下载。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O Country.mmdb https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb</span><br></pre></td></tr></table></figure>
+
 <p>这里需要访问 github，如果下载速度较慢，可以先下载到自己电脑上，然后将该文件上传到服务器中。</p>
-<p><img src="image_vmUuUkxCPK.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_vmUuUkxCPK.png"></p>
 <hr>
-<h1>4 运行 clash</h1>
-<p>现在需要的两个文件我们都获取了，使用以下命令运行 clash：</p>
+<h1 id="4-运行-clash"><a href="#4-运行-clash" class="headerlink" title="4 运行 clash"></a>4 运行 clash</h1><p>现在需要的两个文件我们都获取了，使用以下命令运行 clash：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./clash -d .</span><br></pre></td></tr></table></figure>
+
 <p>运行 clash 之后还需要修改系统代理，这样流量才能走 clash。</p>
-<h2 id="4-1-临时修改">4.1 临时修改</h2>
-<p>在终端运行以下命令：</p>
+<h2 id="4-1-临时修改"><a href="#4-1-临时修改" class="headerlink" title="4.1 临时修改"></a>4.1 临时修改</h2><p>在终端运行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
-<h2 id="4-2-永久修改">4.2 永久修改</h2>
-<ol>
+
+<h2 id="4-2-永久修改"><a href="#4-2-永久修改" class="headerlink" title="4.2 永久修改"></a>4.2 永久修改</h2><ol>
 <li>运行 <code>cd ~</code> 切换到 root 账户目录</li>
 <li>运行 <code>vim .bashrc</code> 编辑，添加系统代理</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:7890</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
 <p>添加后进行保存。</p>
-<p><img src="image_oZ5oDUjdiA.png" alt=""></p>
-<h2 id="4-3-测试是否配置成功">4.3 测试是否配置成功</h2>
-<h3 id="4-3-1-命令行测试">4.3.1 命令行测试</h3>
-<p>如果运行 <code>wget google.com</code> 后能够得到一个 html 文件，则说明配置成功。</p>
-<p><img src="image_DXcBm2lh9g.png" alt=""></p>
-<h3 id="4-3-2-图形化测试">4.3.2 图形化测试</h3>
-<p>如果服务器只有命令行，没有图形化桌面，可以为服务器配置一个图形化桌面。</p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_oZ5oDUjdiA.png"></p>
+<h2 id="4-3-测试是否配置成功"><a href="#4-3-测试是否配置成功" class="headerlink" title="4.3 测试是否配置成功"></a>4.3 测试是否配置成功</h2><h3 id="4-3-1-命令行测试"><a href="#4-3-1-命令行测试" class="headerlink" title="4.3.1 命令行测试"></a>4.3.1 命令行测试</h3><p>如果运行 <code>wget google.com</code> 后能够得到一个 html 文件，则说明配置成功。</p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_DXcBm2lh9g.png"></p>
+<h3 id="4-3-2-图形化测试"><a href="#4-3-2-图形化测试" class="headerlink" title="4.3.2 图形化测试"></a>4.3.2 图形化测试</h3><p>如果服务器只有命令行，没有图形化桌面，可以为服务器配置一个图形化桌面。</p>
 <p>VNC（Virtual Network Computing ）是一种图形化的桌面共享协议，它使用远程帧缓冲协议 (RFB) 来远程控制另一台计算机，它将键盘和鼠标事件从一台计算机传输到另一台计算机，通过网络向另一个方向转发图形屏幕更新。 对于一般性的GUI程序运行需求，我们其实可以借助VNC在不安装完整桌面环境的情况下方便快捷的实现，下面介绍如何借助turbovnc工具，在实例中运行一个GUI程序并在本地电脑进行显示：</p>
 <p>首先需要给服务器安装VNC和必要的一些图形显式库：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装基本的依赖包</span></span><br><span class="line">apt update &amp;&amp; apt install -y libglu1-mesa-dev mesa-utils xterm xauth x11-xkb-utils xfonts-base xkb-data libxtst6 libxv1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装libjpeg-turbo和turbovnc</span></span><br><span class="line"><span class="built_in">export</span> TURBOVNC_VERSION=2.2.5</span><br><span class="line"><span class="built_in">export</span> LIBJPEG_VERSION=2.0.90</span><br><span class="line">wget http://aivc.ks3-cn-beijing.ksyun.com/packages/libjpeg-turbo/libjpeg-turbo-official_<span class="variable">$&#123;LIBJPEG_VERSION&#125;</span>_amd64.deb</span><br><span class="line">wget http://aivc.ks3-cn-beijing.ksyun.com/packages/turbovnc/turbovnc_<span class="variable">$&#123;TURBOVNC_VERSION&#125;</span>_amd64.deb</span><br><span class="line">dpkg -i libjpeg-turbo-official_<span class="variable">$&#123;LIBJPEG_VERSION&#125;</span>_amd64.deb</span><br><span class="line">dpkg -i turbovnc_<span class="variable">$&#123;TURBOVNC_VERSION&#125;</span>_amd64.deb</span><br><span class="line"><span class="built_in">rm</span> -rf *.deb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动VNC服务端，这一步可能涉及vnc密码配置（注意不是实例的账户密码）。另外如果出现报错xauth未找到，那么使用apt install xauth再安装一次</span></span><br><span class="line"><span class="built_in">rm</span> -rf /tmp/.X1*  <span class="comment"># 如果再次启动，删除上一次的临时文件，否则无法正常启动</span></span><br><span class="line">USER=root /opt/TurboVNC/bin/vncserver :1 -desktop X -auth /root/.Xauthority -geometry 1920x1080 -depth 24 -rfbwait 120000 -rfbauth /root/.vnc/passwd -fp /usr/share/fonts/X11/misc/,/usr/share/fonts -rfbport 6006</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查是否启动，如果有vncserver的进程，证明已经启动</span></span><br><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
-<p>以上启动Server时，手动设置了rfbport=6006端口，下面通过SSH隧道将实例中的6006端口代理到本地。</p>
-<p>在本地电脑的终端（cmd/powershell/terminal等）中执行代理命令：</p>
+
+<p>以上启动Server时，手动设置了rfbport&#x3D;6006端口，下面通过SSH隧道将实例中的6006端口代理到本地。</p>
+<p>在本地电脑的终端（cmd&#x2F;powershell&#x2F;terminal等）中执行代理命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -CNg -L 6006:127.0.0.1:6006 用户名@IP地址 -p 端口</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>需要把用户名和IP地址换成自己服务器的用户和地址，关口是SSH指令访问的服务器的端口，请找到自己实例的ssh指令<strong>做相应替换</strong>。</li>
 <li><code>6006:127.0.0.1:6006</code>是指代理实例内<code>6006</code>端口到本地的<code>6006</code>端口。</li>
 </ul>
-<p><img src="image_Y96mdXap3p.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_Y96mdXap3p.png"></p>
 <p>执行上述命令后，没有任何日志是正常的，只要没有要求重新输入密码或错误退出。</p>
 <p>之后使用turbovnc客户端进行连接，地址为上述获取的地址，一切顺利的话，输入密码就能看到VNC连接成功后的图形化界面，以及正在运行在实例中的GUI程序；</p>
-<p><img src="image_IA8amnFyyA.png" alt=""></p>
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_IA8amnFyyA.png"></p>
 <p>如上图所示，可以访问谷歌浏览器，所以VPN配置成功。</p>
 <hr>
-<h1>5 clash 自启动和后台运行</h1>
-<h2 id="5-1-配置自运行">5.1 配置自运行</h2>
-<p>上面的方式是在终端运行 clash，当我们把终端关闭之后，clash 也会关闭，所以可以使用进程的方式来运行 clash 进行解决。</p>
+<h1 id="5-clash-自启动和后台运行"><a href="#5-clash-自启动和后台运行" class="headerlink" title="5 clash 自启动和后台运行"></a>5 clash 自启动和后台运行</h1><h2 id="5-1-配置自运行"><a href="#5-1-配置自运行" class="headerlink" title="5.1 配置自运行"></a>5.1 配置自运行</h2><p>上面的方式是在终端运行 clash，当我们把终端关闭之后，clash 也会关闭，所以可以使用进程的方式来运行 clash 进行解决。</p>
 <p>在<code>/etc/systemd/system/</code>目录新建一个<code>clash.service</code>文件，并且直接进入vim编辑器。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/systemd/system/clash.service</span><br></pre></td></tr></table></figure>
+
 <p><code>clash.service</code> 文件内容如下：</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Clash daemon, A rule-based proxy in Go.</span><br><span class="line"><span class="attr">After</span>=network.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=simple</span><br><span class="line"><span class="attr">Restart</span>=always</span><br><span class="line"><span class="attr">ExecStart</span>=你的clash程序的绝对路径 -d config.yaml文件的绝对路径</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+
 <p>之后保存，然后开始启动 clash 服务：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start clash</span><br></pre></td></tr></table></figure>
+
 <p>使用命令查看一下是否正常运行：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status clash</span><br></pre></td></tr></table></figure>
-<p><img src="image_gJIsqj35L-.png" alt=""></p>
-<h2 id="5-2-systemctl-常用命令">5.2 systemctl 常用命令</h2>
-<ol>
+
+<p><img src="/2024/11/09/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8clash%E9%85%8D%E7%BD%AEVPN/image_gJIsqj35L-.png"></p>
+<h2 id="5-2-systemctl-常用命令"><a href="#5-2-systemctl-常用命令" class="headerlink" title="5.2 systemctl 常用命令"></a>5.2 systemctl 常用命令</h2><ol>
 <li><code>systemctl status clash</code> ：查看clash服务</li>
 <li><code>systemctl start clash</code> ：启动clash服务</li>
 <li><code>systemctl stop clash</code> ：停止clash服务</li>
@@ -14895,8 +14895,7 @@
 </ol>
 <p><code>systemctl</code> 是一个用于初始化系统和服务管理的命令行工具，属于 <code>systemd</code> 系统管理守护进程的一部分。它是现代 Linux 发行版中管理服务和系统状态的主要工具。</p>
 <hr>
-<h1>6 参考文档</h1>
-<ol>
+<h1 id="6-参考文档"><a href="#6-参考文档" class="headerlink" title="6 参考文档"></a>6 参考文档</h1><ol>
 <li><a href="https://www.fuxi.info/archives/273" title="https://www.fuxi.info/archives/273">Linux中安装Clash并且实现全局代理（纯命令行）</a></li>
 <li><a href="https://blog.myxuechao.com/post/36#%EF%BC%884%EF%BC%89%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%90%86%E6%95%88%E6%9E%9C" title="https://blog.myxuechao.com/post/36#%EF%BC%884%EF%BC%89%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%90%86%E6%95%88%E6%9E%9C">Linux 服务器安装 Clash代理</a></li>
 </ol>
@@ -15668,7 +15667,7 @@
   <entry>
     <title>读书记录4：人间失格</title>
     <url>/2024/11/15/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%954%EF%BC%9A%E4%BA%BA%E9%97%B4%E5%A4%B1%E6%A0%BC/</url>
-    <content><![CDATA[<h1 id="《人间失格》"><a href="#《人间失格》" class="headerlink" title="《人间失格》"></a>《人间失格》</h1><p><img src="/2024/11/15/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%954%EF%BC%9A%E4%BA%BA%E9%97%B4%E5%A4%B1%E6%A0%BC/image_9dSThQdwpI.png"></p>
+    <content><![CDATA[<p><img src="/2024/11/15/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%954%EF%BC%9A%E4%BA%BA%E9%97%B4%E5%A4%B1%E6%A0%BC/image_9dSThQdwpI.png"></p>
 <blockquote>
 <p>《人间失格》（又名《丧失为人的资格》）日本小说家太宰治创作的中篇小说，发表于1948年，是一部半自传体的小说。</p>
 </blockquote>
@@ -15757,31 +15756,31 @@
   <entry>
     <title>机器学习模型的可解释性</title>
     <url>/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/</url>
-    <content><![CDATA[<h1 id="1-模型可解释性介绍"><a href="#1-模型可解释性介绍" class="headerlink" title="1 模型可解释性介绍"></a>1 模型可解释性介绍</h1><p>如果机器学习的模型具有解释力的话，也可以凭借这个结果去修正我们的模型。未来的目标是指导为什么模型预测的结果很差，并且使用可解释的机器学习修正它。</p>
+    <content><![CDATA[<h1 id="1-模型可解释性介绍"><a href="#1-模型可解释性介绍" class="headerlink" title="1 模型可解释性介绍"></a>1 模型可解释性介绍</h1><p>如果机器学习的模型具有解释力的话，也可以凭借这个结果去修正我们的模型。未来的目标是知道为什么模型预测的结果很差，并且使用可解释的机器学习修正它。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_T9_WdXzTb-.png"></p>
 <h2 id="1-1-Interpretable-v-s-Powerful"><a href="#1-1-Interpretable-v-s-Powerful" class="headerlink" title="1.1 Interpretable v.s. Powerful"></a>1.1 Interpretable v.s. Powerful</h2><p>一些模型的解释性是很好的，例如线性模型，但是这种模型的能力较差。深度神经网络很难去解释，就像黑箱一样，但是效果远比线性模型要好。</p>
-<p>就像决策树，该算法的可解释性和效果都很好，所以是不是我们只要使用决策树就可以了？当然不是，因为决策树也可以变得很复杂。就像在打 Kaggle 比赛时，通过不会使用一棵决策树，一般会用随机森林，这时候时好多棵决策树共同决定的结果。</p>
+<p>就像决策树算法的可解释性和效果都很好，所以是不是我们只要使用决策树就可以了？当然不是，因为决策树也可以变得很复杂。就像在打 Kaggle 比赛时，通过不会使用一棵决策树，一般会用随机森林，这时候是很多棵决策树共同决定的结果。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_PcTlKW37Hj.png"></p>
 <h2 id="1-2-可解释ML的目标"><a href="#1-2-可解释ML的目标" class="headerlink" title="1.2 可解释ML的目标"></a>1.2 可解释ML的目标</h2><p>可解释性一定要完全了解ML模型是如何工作的吗？例如，我们不完全知道大脑是如何工作的，但我们相信人类的决定。</p>
-<p>一个好的可解释性就是给人一个理由去相信这么解释是对的。</p>
-<h2 id="1-3-可解释性的分类"><a href="#1-3-可解释性的分类" class="headerlink" title="1.3 可解释性的分类"></a>1.3 可解释性的分类</h2><p>可解释性分为局部可解释性和全局可解释性。</p>
+<p>一个好的可解释性就是给人一个理由去相信这么解释是对的，重点是人类能够理解模型是如何运行的。</p>
+<h2 id="1-3-可解释性的分类"><a href="#1-3-可解释性的分类" class="headerlink" title="1.3 可解释性的分类"></a>1.3 可解释性的分类</h2><p>机器学习模型的可解释性分为局部可解释性和全局可解释性，以下图为例对局部可解释性和全局可解释性进行介绍：</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_iggdXVLUdI.png"></p>
 <ul>
 <li>局部可解释性：为什么这张图片是一只猫</li>
 <li>全局可解释性：什么样的图片是一个猫</li>
 </ul>
 <hr>
-<h1 id="2-局部可解释性"><a href="#2-局部可解释性" class="headerlink" title="2 局部可解释性"></a>2 局部可解释性</h1><h2 id="2-1-可视化模型学到的内容"><a href="#2-1-可视化模型学到的内容" class="headerlink" title="2.1 可视化模型学到的内容"></a>2.1 可视化模型学到的内容</h2><p>如何判断哪个 component 是重要的？比如给定一个 $x$，可以是图像、文本，然后由 $\left{x_{1}, \cdots, x_{n}, \cdots, x_{N}\right}$ 构成，接下来把每个 $x_i$ 给去掉，看一下模型对于剩下的 $x$ 能否进行正确的预测。</p>
-<p>如果去掉一个 $x_i$ 后模型的性能下降较多，则说明 $x_i$ 这个 component 比较重要。</p>
+<h1 id="2-局部可解释性"><a href="#2-局部可解释性" class="headerlink" title="2 局部可解释性"></a>2 局部可解释性</h1><h2 id="2-1-可视化模型学到的内容"><a href="#2-1-可视化模型学到的内容" class="headerlink" title="2.1 可视化模型学到的内容"></a>2.1 可视化模型学到的内容</h2><p>如何判断哪个 component 是重要的？比如给定一个 $x$，可以是图像、文本，然后由 ${x_{1}, \cdots, x_{n}, \cdots, x_{N}}$ 构成，接下来把每个 $x_i$ 给去掉，看一下模型对于剩下的 $x$ 能否进行正确的预测。如果去掉一个 $x_i$ 后模型的性能下降较多，则说明对于模型来说 $x_i$ 这个 component 比较重要。</p>
+<p>下图通过对图片中的不同部位进行 mask 后再进行预测的结果，越接近红色则准确率越高，越接近蓝色准确率越低。比如第一个图，可以看到小狗的脸部大多为蓝色，说明把小狗的脸部遮掩之后模型预测出小狗的准确率较低，说明模型是根据脸部来进行分类的。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_ZEbYYtILsM.png"></p>
-<h3 id="2-1-1-Saliency-Map"><a href="#2-1-1-Saliency-Map" class="headerlink" title="2.1.1 Saliency Map"></a>2.1.1 Saliency Map</h3><p>也可以计算图像中每个点的梯度，相当于求偏导 $\left|\frac{\partial e}{\partial x_{n}}\right|$，这个值越高，则显示为白色，否则越接近黑色。</p>
+<h3 id="2-1-1-Saliency-Map"><a href="#2-1-1-Saliency-Map" class="headerlink" title="2.1.1 Saliency Map"></a>2.1.1 Saliency Map</h3><p>除了上面对 $x$ 进行 mask 的方法，也可以计算图像中每个点的梯度，相当于求偏导 $\left|\frac{\partial e}{\partial x_{n}}\right|$，这个值越高，则显示为白色，否则越接近黑色。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_morPfQ3koZ.png"></p>
-<h3 id="2-1-2-SmoothGrad"><a href="#2-1-2-SmoothGrad" class="headerlink" title="2.1.2 SmoothGrad"></a>2.1.2 SmoothGrad</h3><p>使用上面的方法画出来的图叫做 Saliency Map。但是有时候使用 Saliency Map 画出来的图也会有一些杂讯，如下：</p>
+<h3 id="2-1-2-SmoothGrad"><a href="#2-1-2-SmoothGrad" class="headerlink" title="2.1.2 SmoothGrad"></a>2.1.2 SmoothGrad</h3><p>使用上面的方法画出来的图叫做 Saliency Map，但是有时候使用 Saliency Map 画出来的图也会有一些杂讯，如下：</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_nmJJQitlJg.png"></p>
-<p>这时候可以使用 SmoothGrad，具体做法是在输入图像中随机添加噪声，得到噪声图像的显著性图，并对其进行平均。可以看到使用 SmoothGrad 方法画出的图比较清晰整洁。</p>
-<p>只看 Gradient 也不能完全反映一个 Component 的重要性，比如，如果通过大象的鼻子来判断是否是一个大象。当鼻子的长度长到一定长度的时候，就算再长，也不会对是不是大象造成很大的影响。</p>
+<p>这时候可以使用 SmoothGrad，具体做法是在输入图像中随机添加噪声，得到噪声图像的 Saliency Map 并对其进行平均。可以看到使用 SmoothGrad 方法画出的图比较清晰整洁。</p>
+<p>但是只看 Gradient 也不能完全反映一个 component 的重要性。比如，如果通过大象的鼻子来判断是否是一个大象。当鼻子的长度长到一定长度的时候，就算再长，也不会对是不是大象造成很大的影响。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_4JzTU1npr2.png"></p>
-<p>所以只看偏微分有时也不能完全判断一个 Component 的重要性，还有一个方法 IG 效果更好，这里不多做介绍。</p>
+<p>所以只看偏微分有时也不能完全判断一个 component 的重要性，还有一个方法 IG 效果更好，这里不多做介绍。</p>
 <h2 id="2-2-模型如何处理输入数据"><a href="#2-2-模型如何处理输入数据" class="headerlink" title="2.2 模型如何处理输入数据"></a>2.2 模型如何处理输入数据</h2><p>第一种方法可以通过人眼去观察模型输出的结果，比如可以把隐藏层的输出拿出来，然后降维到 2D，人去观察。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_KXyqTmJweg.png"></p>
 <p>除了人眼观察之外，还有一种技术叫 Probing，是探针的意思。把探针插入到网络中，比如要看一下 Bert 中某一层到底学到了什么东西，可以训练一个分类器（探针），这个分类器是要根据一个向量决定这个词汇它的词性是什么。</p>
@@ -15797,8 +15796,8 @@
 <p>因为要最大化一个变量，所以可以使用梯度上升。训练好这个 Digit classifier 之后，把每个 filter 对应的 $X^*$ 可视化出来：</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_38-N0lYPkD.png"></p>
 <p>如果直接看最后的 image classifier，可以找一个图片 $X$，这个图片可以让某一个类别的分数越高越好。</p>
-<p>$$<br>X^{*}&#x3D;\arg \max <em>{X} y</em>{i}<br>$$</p>
-<p>结果如下，例如图片0可以让分类器认为图片0的概率最高。</p>
+<p>$$<br>X^{*}&#x3D;\arg \max _{X} y_{i}<br>$$</p>
+<p>结果如下，例如图片 0 可以让分类器认为图片 0 的概率最高。</p>
 <p><img src="/2024/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7/image_rybU6dasc_.png"></p>
 <p>可以发现，人看不懂的一堆杂讯模型认为是不同的数字，所以在求解 $X$ 的时候，要加上一些限制，即：</p>
 <p>$$<br>X^{*}&#x3D;\arg \max y_{i}+R(X)<br>$$</p>
@@ -15823,6 +15822,78 @@
       </categories>
       <tags>
         <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读书记录5：罪与罚</title>
+    <url>/2024/11/27/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%955%EF%BC%9A%E7%BD%AA%E4%B8%8E%E7%BD%9A/</url>
+    <content><![CDATA[<p><img src="/2024/11/27/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%955%EF%BC%9A%E7%BD%AA%E4%B8%8E%E7%BD%9A/image_sqnGoBTYtx.png"></p>
+<blockquote>
+<p>《罪与罚》是俄国作家陀思妥耶夫斯基创作的长篇小说，也是其代表作，于1866年的1月开始刊登在《俄国导报》上，1867年2月连载结束。</p>
+</blockquote>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><p>当时在看这本书的时候，一度不知道这本书要讲什么，后来看着看着就明白了。在看之前就知道这是一本压抑小说，看完了后给我的影响是巨大的。</p>
+<hr>
+<h1 id="2-经典语录"><a href="#2-经典语录" class="headerlink" title="2 经典语录"></a>2 经典语录</h1><ol>
+<li>人这种卑鄙的东西，什么都会习惯的。</li>
+<li>我唯一担心的是我们明天的生活能否配得上今天所承受的苦难。</li>
+<li>“你为何不骂我，却拥抱我？” “因为世界没有比你更不快乐的人了。”</li>
+<li>有时，一个人遇上强盗，整整半小时感到死亡的恐惧，最后，刀架到脖子上，反倒什么都不怕了。</li>
+<li>大家都杀人，在世界上，现在杀人，过去也杀人，血像瀑布一样地流，像香槟酒一样地流，为了这，有人在神殿里被戴上桂冠，以后又被称作人类的恩主。</li>
+<li>我只想证明一件事，就是，那时魔鬼引诱我，后来又告诉我，说我没有权利走那条路，因为我不过是个虱子，和所有其余的人一样。</li>
+<li>世界上没有什么比直言不讳更难，也没有什么比阿谀奉承更容易的了。</li>
+<li>要知道，女人就是这样，爱你也是她，害你也是她，两者并行不悖。</li>
+<li>平凡的人必须听话，没有犯法的权利，因为，您要知道，他们是平凡的人。不平凡的人却有权犯各式各样的罪，有权任意违法，为非作歹，而这只是因为，他们是不平凡的人。</li>
+<li>他是那样经常陷入沉思，离群索居，甚至还怕见到任何人。</li>
+</ol>
+<hr>
+<h1 id="3-良心的惩罚比苦刑更重"><a href="#3-良心的惩罚比苦刑更重" class="headerlink" title="3 良心的惩罚比苦刑更重"></a>3 良心的惩罚比苦刑更重</h1><p>拉斯柯尔尼科夫，一个出身低微的法律系大学生，因为交不起学费不得不中途辍学。他生活在圣彼得堡的一个混乱不堪的街区，因为失业和极度贫困而抬不起头来，他欠了女房东一身的债，生怕见她的面，甚至也怕见任何人。</p>
+<p>妈妈来信说，妹妹为了资助他上大学而打算嫁给一个45岁的有钱人，这件事尤其让他感到羞愧和压抑。此时，穿着破烂的拉斯柯尔尼科夫精神紧张又蔑视一切，心里充满了愤怒，能让他感受到优越感的只有他在杂志上发表的一篇描述“超人”理论的文章。</p>
+<p>在这篇文章中，他将人分成凡人和超人两类。凡人必须俯首帖耳地生活，没有犯法的权利；而像拿破仑这样的超人，可以为了崇高的目标准许自己的良心逾越某些障碍，包括杀人。</p>
+<p><img src="/2024/11/27/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%955%EF%BC%9A%E7%BD%AA%E4%B8%8E%E7%BD%9A/image_VwNzMMLCeo.png"></p>
+<p>拉斯柯尔尼科夫认为自己是一个“超人”，因此要做一桩需要胆量才能做的大事，以摆脱现在的窘迫状态。他把目光锁定在以典当谋利的老太婆身上。这个老太婆干瘪瘦小，目光尖锐凶恶，对待穷人苛刻至极，对拉斯柯尔尼科夫也是百般刁难。</p>
+<p>他坚信，除掉这个老太婆，用她的财富来开启自己的事业，帮助更多穷困的好人，是一种正义的行为。</p>
+<p>于是，在一个闷热的七月，拉斯柯尔尼科夫偷了房东的一把斧头，以典当物品为借口，砍死了老太婆，正当他准备逃离现场时，老太婆的妹妹突然归来。惊慌失措的拉斯柯尔尼科夫再次举起斧头……</p>
+<p>尼采在《善恶的彼岸》里说：“<strong>真正的罪恶不在于你做了什么，而在于你对自己的行为怎么想。</strong>”</p>
+<p>杀完人的拉斯柯尔尼科夫失魂落魄，他才明白自己根本不是什么超人，而只是个再普通不过的凡人。他无法用他的“超人”理论解释他的行为，可怕的心魔开始缠住他。</p>
+<p>他发烧、昏睡、做噩梦、食欲不振、疑神疑鬼、整个人精神恍惚。</p>
+<p>一个有良心的人，如果认识到自己的错误，就一定会痛苦。对他来说，这是比苦刑还重的惩罚。这个曾经很有同情心的青年，正在承受良心对他的折磨。</p>
+<hr>
+<h1 id="4-直面过错才能自我救赎"><a href="#4-直面过错才能自我救赎" class="headerlink" title="4 直面过错才能自我救赎"></a>4 直面过错才能自我救赎</h1><p>拉斯科尔尼科夫一直非常同情弱者，拥有改变社会不公的远大理想。然而，命运却以意想不到的方式将他推向了黑暗的深渊。</p>
+<p>他原本打算用他的超人理论，以消灭剥削之名来解释他杀害老太婆的行为，但当他为了掩盖罪行，用斧子砍死了老太婆的妹妹的时候，一切都变了味，他的信念崩塌了。</p>
+<p>拉斯柯尔尼科夫离家、杀人又悄悄地回家，全过程并没有目击者，他扔掉了凶器，妥善地藏起了从老太婆那里抢来的东西，然后就一直在出租屋里发烧和昏睡。</p>
+<p>怀疑他的警察很同情他，也认同他的人品，坦言并不掌握任何证据，只是希望他能自首以减轻刑罚，此时，他也渐渐从最初的慌张和悔恨中苏醒过来，他平时的为人、所掌握的法律知识和逐渐冷静的神经有很大的机会帮助他瞒天过海。</p>
+<p>可是，拉斯柯尔尼科夫过不了自己的心关。他即便能够逃脱现实的审判，却逃脱不了心中的法官对自己的审判。</p>
+<p><img src="/2024/11/27/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%955%EF%BC%9A%E7%BD%AA%E4%B8%8E%E7%BD%9A/image_nWzygKK8LW.png"></p>
+<p>在心理学经典名著《蛤蟆先生去看心理医生》有一句非常经典的话： &#x20;</p>
+<p>“<strong>没有一种批判比自我批判更强烈，也没有一个法官比我们自己更严苛。心中的法官会严厉地惩罚自己，甚至会施以极刑，即便对自己轻判，这种谴责和惩罚也可能伴随一生，变成无期徒刑。</strong>”</p>
+<p>给拉斯柯尔尼科夫判处极刑的不是警察和法庭，而是他自己。</p>
+<p>一个自己把自己定义为罪犯的人，每说一次谎就等同于在伤痕累累的心上再抽上一鞭子。痛苦并不可怕，逃避才是最可怕的。 &#x20;</p>
+<p>一个有良知而心存善良的人，如果犯下了大的过错，只有一个办法能够救赎自己，那就是诚实地直面自己的阴暗面，为自己的错误承担应该承担的责任，哪怕这个责任是下地狱。 &#x20;</p>
+<p>在掩盖罪恶的谎言中苟活，不如诚实坦荡地赴死，毕竟人活的不只是躯体，还有灵魂。</p>
+<hr>
+<h1 id="5-诚实和爱能创造奇迹"><a href="#5-诚实和爱能创造奇迹" class="headerlink" title="5 诚实和爱能创造奇迹"></a>5 诚实和爱能创造奇迹</h1><p>拉斯科尔尼科夫在犯罪之后，一方面很想坦白真相以摆脱内心的巨大痛苦，另一方面他也非常害怕说出真相后无法面对非常爱他的妈妈和妹妹以及可能被判以绞刑的可怕后果。</p>
+<p>这种内心剧烈的挣扎让他掉进了深不见底的深渊之中。此时，他遇到了善良的索尼娅。索尼娅靠出卖身体养活全家，她所从事的是见不得人的职业，但她却拥有圣洁的心灵。</p>
+<p>拉斯科尔尼科夫杀人之前，在自己已经很穷的情况下，依然把身上的铜币偷偷地留给了更加穷困的索尼雅一家，因此，索尼雅坚信拉斯科尔尼科夫是一个善良的人，她爱斯科尔尼科夫。</p>
+<p>虽然，拉斯科尔尼科夫知道警方手里没有他杀人的罪证，但是，他爱索尼娅，他冒着失去恋人的风险，诚实地向她坦白了一切。 &#x20;</p>
+<p>索尼雅鼓励拉斯科尔尼科夫去自首，她冷静地拉斯科尔尼科夫说：“<strong>甘愿受苦，藉此赎罪，这就是你应该做的。</strong>”</p>
+<p>随后她又深情地补充道：“<strong>我们一块儿去受苦，我们一块儿戴着十字架！……我们一块儿祈祷，一块儿上路。</strong>”</p>
+<p><img src="/2024/11/27/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%955%EF%BC%9A%E7%BD%AA%E4%B8%8E%E7%BD%9A/image_P5DEHHKukl.png"></p>
+<p>索尼雅的深厚的爱，促使拉斯科尔尼科夫最终放弃了逃脱法律惩罚的心理，他鼓起勇气向警方自首……</p>
+<p>拉斯科尔尼科夫在法庭上表达了对自己行为的深刻懊悔，他不但不为自己辩护，甚至表现出一种要加重自己罪名的愿望，这样的一种心理反倒唤醒了法庭陪审团的同情心。法庭认为他犯罪时神志不清，主动自首并真诚忏悔，还有同学证明他曾经用自己仅有的一点点钱接济过一个比他还穷的大学生……</p>
+<p>准备赴死的拉斯科尔尼科夫在自己的诚实、索尼雅的爱和陪审团的慈悲的共同作用下，只被判决服二等苦役劳动，为期八年。</p>
+<p>每个人都可能跌入人生的深渊，谎言和逃避只能让我们越陷越深，直面过错才能自我救赎，诚实和爱能创造奇迹！</p>
+<hr>
+<h1 id="6-个人感受"><a href="#6-个人感受" class="headerlink" title="6 个人感受"></a>6 个人感受</h1><p>人这一生不就是为了找到一个地方，可以让自己的心灵得到救赎吗？这可能是一个地方，也可能是一件事情，也可能是一个人。罗佳犯罪后，始终过不去自己心里的那道坎，并为了受尽了内心的折磨，所以这也是上帝给他的惩罚吧，我想这也是为什么这本书叫《罪与罚》的原因吧。</p>
+<p>在书中有很多关于人物的心理描写，甚是精彩，以后若有机会再读第二遍。人的内心真的是一个奇妙的东西，只要自己的内心充实，无论你所处的环境怎样，都不会动摇我的生活感觉。我感觉我现在就是一种自得其乐的状态，我挺喜欢的。</p>
+<p>看了这几本书之后，愈发感觉人的灵魂和肉体其实是两个独立又统一的部分。灵魂是最重要的，倘若你的灵魂丰富，即使你的外观天生有缺陷，你也会吸引很多人和你交流，他们会被你的个人魅力吸引。如果你的外观很美很标准，但是心灵有缺陷，你是做不成事情的。</p>
+<p>我要修炼自己的灵魂，感觉最近自己的灵魂愈发充盈，就像打游戏升级一样，等级越来越高。同时，我也要保护好自己的肉体，因为只有灵魂是没有用的，需要一个肉体去承载，去完成灵魂想要做的事情，并且肉体是灵魂状态的最佳体现。</p>
+<p>现在我十分佩服能写出这么多优秀文学作品的作家，我觉得他们能够捕捉生活中转瞬即逝的情感变化，希望以后有机会我可以在现场见到他们，等我老了也可能学习写作吧……</p>
+]]></content>
+      <categories>
+        <category>读书记录</category>
+      </categories>
+      <tags>
+        <tag>读书记录</tag>
       </tags>
   </entry>
 </search>
