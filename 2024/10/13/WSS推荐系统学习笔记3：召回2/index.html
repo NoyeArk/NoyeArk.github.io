@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://p9.itc.cn/q_70/images03/20221127/7220ef93170a4e5ba2464cd7eb714630.jpeg">
 <meta property="article:published_time" content="2024-10-13T02:11:57.000Z">
-<meta property="article:modified_time" content="2024-10-22T00:53:01.860Z">
+<meta property="article:modified_time" content="2024-12-02T02:09:13.748Z">
 <meta property="article:author" content="弘树">
 <meta property="article:tag" content="推荐系统">
 <meta name="twitter:card" content="summary">
@@ -44,7 +44,7 @@
   },
   isPhotoFigcaption: false,
   islazyload: false,
-  isAnchor: true,
+  isAnchor: false,
   percent: {
     toc: true,
     rightside: true,
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-10-22 08:53:01'
+  postUpdate: '2024-12-02 10:09:13'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -172,8 +172,8 @@
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_NbS8YNpj40.png"></p>
 <p>双塔模型的不同之处在于使用了除了 ID 之外的更多的信息来进行处理，如下图所示，可以看到整体结构就像两个塔一样：</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_nJszoNsLB1.png"></p>
-<p>两个塔的输出都是一个向量，之后再计算这两个向量的余弦相似度，余弦相似度的大小介于$[-1, 1]$。</p>
-<h2 id="1-2-模型训练"><a href="#1-2-模型训练" class="headerlink" title="1.2 模型训练"></a>1.2 模型训练</h2><p>双塔模型的训练可以有以下3种方法：</p>
+<p>两个塔的输出都是一个向量，之后再计算这两个向量的余弦相似度，余弦相似度的大小介于 $[-1, 1]$。</p>
+<h2 id="1-2-模型训练"><a href="#1-2-模型训练" class="headerlink" title="1.2 模型训练"></a>1.2 模型训练</h2><p>双塔模型的训练可以有以下 3 种方法：</p>
 <ol>
 <li><code>Pointwise</code>：独⽴看待每个正样本、负样本，做简单的二元分类</li>
 <li><code>Pairwise</code>：每次取一个正样本、一个负样本</li>
@@ -209,7 +209,7 @@
 </ol>
 <p>这里鼓励 $\cos \left(\mathrm{a}, \mathrm{b}^{+}\right)$ 尽量大，$\cos \left(\mathrm{a}, {b}_{1}^{-}\right), \cdots, \cos \left(\mathrm{a}, {b}_{n}^{-}\right)$ 尽量小。</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_u9NxkYKc6S.png"></p>
-<p>训练的时候把 $n+1$ 个分数输入 <code>Softmax</code> 激活函数，输出 $n+1$ 个分数，这些分数都介于 $0 \sim 1$ 之间。</p>
+<p>训练的时候把 $n+1$ 个分数输入 <code>softmax</code> 激活函数，输出 $n+1$ 个分数，这些分数都介于 $0 \sim 1$ 之间。</p>
 <ul>
 <li>左边的 $s^+$ 表示正样本的分数，这个分数越大越好，最好能接近1</li>
 <li>右边的 $s^-_1 \sim s^-_n$ 表示负样本的分数，希望这些分数越小越好，最好能接近0</li>
@@ -281,16 +281,16 @@
 <p><strong>线上召回：</strong>查找用户最感兴趣的 $k$ 个物品。</p>
 <ol>
 <li>给定用户 ID 和画像，线上用神经网络算用户向量 $a$</li>
-<li>最近邻查找：把向量 $a$ 作为 query，调⽤向量数据库做最近邻查找，之后返回余弦相似度最大的 $k$ 个物品，作为召回结果</li>
+<li>最近邻查找：把向量 $a$ 作为 query，调用向量数据库做最近邻查找，之后返回余弦相似度最大的 $k$ 个物品，作为召回结果</li>
 </ol>
 <h2 id="3-1-离线存储"><a href="#3-1-离线存储" class="headerlink" title="3.1 离线存储"></a>3.1 离线存储</h2><p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_V8P2cHLjGj.png"></p>
-<p>训练得到两个塔之后，就可以做线上召回，把物品ID送入NN之后，得到特征 $b$，并把 $\langle 特征向量b, 物品ID \rangle$ 保存到向量数据库中。</p>
+<p>训练得到两个塔之后，就可以做线上召回，把物品 ID 送入神经网络之后，得到特征 $b$，并把 $\langle 特征向量 $b$, 物品 ID \rangle$ 保存到向量数据库中。</p>
 <h2 id="3-2-线上召回"><a href="#3-2-线上召回" class="headerlink" title="3.2 线上召回"></a>3.2 线上召回</h2><p>对于用户塔来说，不用事先计算和存储用户向量，而是等用户发起推荐请求的时候，调用神经网络在线上实时计算一个特征向量 $a$，然后把向量 $a$ 作为 $query$ 去数据库中做检索，查找最近邻。</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_gUOKDq37Aa.png"></p>
 <h2 id="3-3-模型更新"><a href="#3-3-模型更新" class="headerlink" title="3.3 模型更新"></a>3.3 模型更新</h2><p><strong>全量更新：</strong>今天凌晨，用昨天全天的数据训练模型。是在昨天模型参数的基础上做训练，而不是随机初始化。</p>
 <p>用昨天的数据训练 1 epoch，即每天数据只用⼀遍。之后发布新的用户塔神经网络和物品向量，供线上召回使用。全量更新对数据流、系统的要求比较低。</p>
 <p><strong>增量更新：</strong>做 online learning 更新模型参数。</p>
-<p>由于用户兴趣会随时发⽣变化，所以实时收集线上数据做流式处理，生成 TFRecord 文件。即对模型做 online learning，增量更新 ID Embedding 参数（不更新神经网络其他部分的参数）。之后发布 ID Embedding，供⽤户塔在线上计算用户向量。</p>
+<p>由于用户兴趣会随时发生变化，所以实时收集线上数据做流式处理，生成 TFRecord 文件。即对模型做 online learning，增量更新 ID Embedding 参数（不更新神经网络其他部分的参数）。之后发布 ID Embedding，供⽤户塔在线上计算用户向量。</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_ru4lvg1Vql.png"></p>
 <blockquote>
 <p>问题：能否只做增量更新，不做全量更新？</p>
@@ -303,7 +303,7 @@
 <p>随机打乱优于按顺序排列数据，所以全量训练优于增量训练。</p>
 <hr>
 <h1 id="4-自监督学习改进双塔模型"><a href="#4-自监督学习改进双塔模型" class="headerlink" title="4 自监督学习改进双塔模型"></a>4 自监督学习改进双塔模型</h1><p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_qebXNapf8n.png"></p>
-<p>双塔模型整体分为两个塔：用户塔和物品塔。之后将两个塔输出的向量做余弦相似度的计算，得到用户 $a$ 对物品 $b$ 的感兴趣的分数。</p>
+<p>双塔模型整体分为两个塔：用户塔和物品塔，之后将两个塔输出的向量做余弦相似度的计算，得到用户 $a$ 对物品 $b$ 的感兴趣的分数。</p>
 <p><strong>双塔模型的问题：</strong></p>
 <ol>
 <li><strong>推荐系统的头部效应严重：</strong>少部分物品占据大部分点击，大部分物品的点击次数不高。</li>
@@ -315,21 +315,21 @@
 <p>但是不同物品的表征应该距离比较远，不相似。</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_AINx1vDQ7i.png"></p>
 <p>物品 $i$ 的两个向量表征 $b^{\prime}_i$ 和 $b^{\prime \prime}_i$ 有较高的相似度，物品 $i$ 和 $j$ 的两个向量表征 $b^{\prime}_i$ 和 $b^{\prime \prime}_j$ 有较低的相似度，所以鼓励 $\cos \left({b}_{i}^{\prime}, {b}_{i}^{\prime \prime}\right)$ 尽量大，$\cos \left({b}_{i}^{\prime}, {b}_{j}^{\prime \prime}\right)$ 尽量小。</p>
-<h2 id="4-2-特征变换方式"><a href="#4-2-特征变换方式" class="headerlink" title="4.2 特征变换方式"></a>4.2 特征变换方式</h2><h3 id="4-2-1-Random-Mask"><a href="#4-2-1-Random-Mask" class="headerlink" title="4.2.1 Random Mask"></a>4.2.1 Random Mask</h3><p>随机选⼀些离散特征（⽐如类⽬），把它们遮住。例如：某物品的类⽬特征是 $\mathcal{U} &#x3D; {数码,摄影}$，Mask 后的类⽬特征是 $\mathcal{U}^{\prime}&#x3D;{ default }$。</p>
+<h2 id="4-2-特征变换方式"><a href="#4-2-特征变换方式" class="headerlink" title="4.2 特征变换方式"></a>4.2 特征变换方式</h2><h3 id="4-2-1-Random-Mask"><a href="#4-2-1-Random-Mask" class="headerlink" title="4.2.1 Random Mask"></a>4.2.1 Random Mask</h3><p>随机选⼀些离散特征（⽐如类⽬），把它们遮住。例如：某物品的类⽬特征是 $\mathcal{U} &#x3D; \{数码,摄影\}$，Mask 后的类⽬特征是 $\mathcal{U}^{\prime}&#x3D;\{ default \}$。</p>
 <p>相当于 Mask 之后该物品的类目特征就没有了。</p>
 <h3 id="4-2-2-Dropout"><a href="#4-2-2-Dropout" class="headerlink" title="4.2.2 Dropout"></a>4.2.2 Dropout</h3><p>⼀个物品可以有多个类⽬，那么类⽬是⼀个多值离散特征。Dropout 是指随机丢弃特征中 50% 的值，只对多值离散特征生效。</p>
-<p>例如：某物品的类⽬特征是 $\mathcal{U} &#x3D; {美妆,摄影}$，Mask 后的类⽬特征是 $\mathcal{U}^{\prime}&#x3D;{ 美妆}$。</p>
+<p>例如：某物品的类⽬特征是 $\mathcal{U} &#x3D; \{美妆,摄影\}$，Mask 后的类⽬特征是 $\mathcal{U}^{\prime}&#x3D;\{ 美妆\}$。</p>
 <blockquote>
 <p>注意：Random Mask 是把整个类目信息全部丢掉，但是 Dropout 是丢失一部分信息</p>
 </blockquote>
 <h3 id="4-2-3-互补特征（complementary）"><a href="#4-2-3-互补特征（complementary）" class="headerlink" title="4.2.3 互补特征（complementary）"></a>4.2.3 互补特征（complementary）</h3><p>假设物品⼀共有 4 种特征：ID，类⽬，关键词，城市，将其随机分为两组：</p>
-<p>$$<br>{ ID，关键词 } 和 { 类目，城市 }<br>$$</p>
+<p>$$<br>\{ ID，关键词 \} 和 \{ 类目，城市 \}<br>$$</p>
 <p>之后分别将其中某一组给 mask 掉，送入物品塔，得到不同的物品表征，则希望输出的两个向量相似。</p>
 <p><img src="/2024/10/13/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%EF%BC%9A%E5%8F%AC%E5%9B%9E2/image_1hrYpHDGH8.png"></p>
 <h3 id="4-2-4-Mask-一组关联的特征"><a href="#4-2-4-Mask-一组关联的特征" class="headerlink" title="4.2.4 Mask 一组关联的特征"></a>4.2.4 Mask 一组关联的特征</h3><p>把一组相关的特征中只保留一个特征，例如：</p>
 <ul>
-<li>受众性别：$\mathcal{U}&#x3D;{ 男, 女, 中性 }$</li>
-<li>类目：$\mathcal{V}&#x3D;{ 美妆，数码，足球，摄影，科技， \cdots}$</li>
+<li>受众性别：$\mathcal{U}&#x3D;\{ 男, 女, 中性 \}$</li>
+<li>类目：$\mathcal{V}&#x3D;\{ 美妆，数码，足球，摄影，科技， \cdots\}$</li>
 </ul>
 <p>则 $u &#x3D; 女$ 和 $v &#x3D; 美妆$ 同时出现的概率 $p(u, v)$ 大，而 $u &#x3D; 女$ 和 $v &#x3D; 数码$ 同时出现的概率 $p(u, v)$ 小。</p>
 <p>离线计算特征两两之间的关联，用互信息（mutual information）衡量：</p>
@@ -339,7 +339,7 @@
 <li><strong>优点：</strong>比 random mask、dropout、互补特征等方法效果更好。</li>
 <li><strong>缺点：</strong>方法复杂，实现的难度⼤，不容易维护。</li>
 </ul>
-<h2 id="4-3-模型训练"><a href="#4-3-模型训练" class="headerlink" title="4.3 模型训练"></a>4.3 模型训练</h2><p>首先从从全体物品中均匀抽样，得到 $m$ 个物品，作为⼀个batch。双塔模型是根据用户点击量进行抽样的，而这里是进行随机抽样，热门和冷门物品被抽到的概率相同。</p>
+<h2 id="4-3-模型训练"><a href="#4-3-模型训练" class="headerlink" title="4.3 模型训练"></a>4.3 模型训练</h2><p>首先从从全体物品中均匀抽样，得到 $m$ 个物品，作为⼀个 batch。双塔模型是根据用户点击量进行抽样的，而这里是进行随机抽样，热门和冷门物品被抽到的概率相同。</p>
 <p>之后做两类特征变换，物品塔输出两组向量：</p>
 <p>$$<br>\mathbf{b}_{1}^{\prime}, \mathbf{b}_{2}^{\prime}, \cdots, \mathbf{b}_{m}^{\prime} \quad 和 \quad \mathbf{b}_{1}^{\prime \prime}, \mathbf{b}_{2}^{\prime \prime}, \cdots, \mathbf{b}_{m}^{\prime \prime}<br>$$</p>
 <p>其中第 $i$ 个物品自监督学习的损失函数为：</p>

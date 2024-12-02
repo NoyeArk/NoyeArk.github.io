@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.uisdc.com/wp-content/uploads/2023/04/ysbanner-202300411-1-1.jpg">
 <meta property="article:published_time" content="2024-10-08T08:28:21.000Z">
-<meta property="article:modified_time" content="2024-10-12T12:13:32.744Z">
+<meta property="article:modified_time" content="2024-12-02T01:01:27.468Z">
 <meta property="article:author" content="弘树">
 <meta property="article:tag" content="推荐系统">
 <meta name="twitter:card" content="summary">
@@ -44,7 +44,7 @@
   },
   isPhotoFigcaption: false,
   islazyload: false,
-  isAnchor: true,
+  isAnchor: false,
   percent: {
     toc: true,
     rightside: true,
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-10-12 20:13:32'
+  postUpdate: '2024-12-02 09:01:27'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -199,11 +199,11 @@
 <h2 id="3-3-重排"><a href="#3-3-重排" class="headerlink" title="3.3 重排"></a>3.3 重排</h2><p>重排最重要的功能是做多样性抽样（比如MMR、DPP），从几百篇中选出几十篇。抽样的时候有2个依据，一个是精排的分数，另一个是多样性。做完抽样之后，会用规则打散相似笔记。</p>
 <p>重排的另一个目的是插入广告和运营推广内容，根据生态要求调整顺序。重排的规则比较复杂。</p>
 <hr>
-<h1 id="4-A-B测试"><a href="#4-A-B测试" class="headerlink" title="4 A&#x2F;B测试"></a>4 A&#x2F;B测试</h1><p>所有对模型和策略的改进都需要通过AB测试，用实验数据来验证模型和策略是否有效。</p>
-<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量 A&#x2F;B 测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN的深度取值 $\{1,2,3\}$，需要用 A&#x2F;B 测试选取最优参数。</p>
-<h2 id="4-1-随机分桶"><a href="#4-1-随机分桶" class="headerlink" title="4.1 随机分桶"></a>4.1 随机分桶</h2><p>分$b&#x3D;10$个桶，每个桶中有10%的用户。首先用哈希函数把用户 ID 映射成某个区间内的整数，然后把这些整数均匀随机分成$b$个桶。</p>
+<h1 id="4-A-B测试"><a href="#4-A-B测试" class="headerlink" title="4 A&#x2F;B测试"></a>4 A&#x2F;B测试</h1><p>所有对模型和策略的改进都需要通过 A&#x2F;B 测试，用实验数据来验证模型和策略是否有效。</p>
+<p>召回团队实现了一种 GNN 召回通道，离线实验结果正向。下一步是做线上的小流量 A&#x2F;B 测试，考察新的召回通道对线上指标的影响。模型中有一些参数，比如 GNN 的深度取值 $\{1,2,3\}$，需要用 A&#x2F;B 测试选取最优参数。</p>
+<h2 id="4-1-随机分桶"><a href="#4-1-随机分桶" class="headerlink" title="4.1 随机分桶"></a>4.1 随机分桶</h2><p>分 $b&#x3D;10$ 个桶，每个桶中有 10% 的用户。首先用哈希函数把用户 ID 映射成某个区间内的整数，然后把这些整数均匀随机分成 $b$ 个桶。</p>
 <p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_0Oc3Y2_Bo2.png"></p>
-<p>计算每个桶的业务指标，比如DAU、人均使用推荐的时长点击率、等等。如果某个实验组指标显著优于对照组，则说明对应的策略有效，值得推全。</p>
+<p>计算每个桶的业务指标，比如 DAU、人均使用推荐的时长点击率等等。如果某个实验组指标显著优于对照组，则说明对应的策略有效，值得推全。</p>
 <p><img src="/2024/10/08/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9A%E6%A6%82%E8%A6%81/image_ekqWmpu5fr.png"></p>
 <h2 id="4-2-分层实验"><a href="#4-2-分层实验" class="headerlink" title="4.2 分层实验"></a>4.2 分层实验</h2><p>信息流产品的公司有很多部门和团队，大家都需要做 A&#x2F;B 测试。</p>
 <ul>
