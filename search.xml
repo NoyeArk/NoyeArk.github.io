@@ -1451,39 +1451,43 @@
   <entry>
     <title>WSS推荐系统学习笔记10：物品冷启动2</title>
     <url>/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/</url>
-    <content><![CDATA[<h1 id="1-Look-Alike-人群扩散"><a href="#1-Look-Alike-人群扩散" class="headerlink" title="1 Look-Alike 人群扩散"></a>1 Look-Alike 人群扩散</h1><h2 id="1-1-在互联网广告中的应用"><a href="#1-1-在互联网广告中的应用" class="headerlink" title="1.1 在互联网广告中的应用"></a>1.1 在互联网广告中的应用</h2><p>Look-Alike 起源于互联网广告。假设一个广告主是特斯拉，它们知道Tesla Model 3 典型⽤户有以下特点：</p>
+    <content><![CDATA[<h1>1 Look-Alike 人群扩散</h1>
+<h2 id="1-1-在互联网广告中的应用">1.1 在互联网广告中的应用</h2>
+<p>Look-Alike 起源于互联网广告。假设一个广告主是特斯拉，它们知道Tesla Model 3 典型用户有以下特点：</p>
 <ul>
-<li>年龄25~35</li>
+<li>年龄 25~35</li>
 <li>本科学历以上</li>
 <li>关注科技数码</li>
-<li>喜欢苹果电⼦产品</li>
+<li>喜欢苹果电子产品</li>
 </ul>
 <p>把具有上述特点的用户给圈起来，重点在这些用户中投放广告。满足所有条件的用户被称为种子用户，这样的用户数量不是很多。广告主想给一百万个人投放广告，但是我们只圈出几万人，该如何找到其他的目标用户？</p>
-<p>可以用到Look-Alike 人群扩散，对种子用户进行人群扩散找到 Look-Alike 用户，Look-Alike 是一个框架，如何进行扩散，有各种各样的方法。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_oLjjCWEet5.png"></p>
-<p>最重要的问题在于如何计算两个⽤户的相似度，有一些简单的方法：</p>
+<p>可以用到 Look-Alike 人群扩散，对种子用户进行人群扩散找到 Look-Alike 用户，Look-Alike 是一个框架，如何进行扩散，有各种各样的方法。</p>
+<p><img src="image_oLjjCWEet5.png" alt=""></p>
+<p>最重要的问题在于如何计算两个用户的相似度，有一些简单的方法：</p>
 <ul>
-<li>UserCF：两个⽤户有共同的兴趣点</li>
-<li>Embedding：两个⽤户向量的cosine较⼤</li>
+<li>UserCF：两个用户有共同的兴趣点</li>
+<li>Embedding：两个用户向量的cosine较大</li>
 </ul>
-<h2 id="1-2-用于新笔记召回"><a href="#1-2-用于新笔记召回" class="headerlink" title="1.2 用于新笔记召回"></a>1.2 用于新笔记召回</h2><p>在冷启动中，如果用户有点击、点赞、收藏、转发等行为，说明⽤户对笔记可能感兴趣。把有交互的⽤户作为新笔记的种⼦⽤户，如果一个用户和种子用户相似，可以把这个笔记推荐给他，用 Look-Alike 在相似⽤户中扩散。</p>
+<h2 id="1-2-用于新笔记召回">1.2 用于新笔记召回</h2>
+<p>在冷启动中，如果用户有点击、点赞、收藏、转发等行为，说明用户对笔记可能感兴趣。把有交互的用户作为新笔记的种子用户，如果一个用户和种子用户相似，可以把这个笔记推荐给他，用 Look-Alike 在相似用户中扩散。</p>
 <p>系统对新笔记的推荐不太准，有交互行为的用户数量很少，一旦有交互行为，我们要充分利用这种信号，可以把这些有交互行为的用户向量取均值得到一个新向量，把这个新向量作为该笔记的特征向量。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_jB9ut7ApkX.png"></p>
-<p>这个特征向量是做近线更新的，意思就是不用实时进行更新，能做到分钟级更新即可。这个特征向量是有交互的⽤户的向量的平均，每当有⽤户交互该物品，更新笔记的特征向量。</p>
-<p><strong>线上召回</strong>：把新笔记的特征向量都放在向量数据库里，向量数据库通常支持最近邻查找。之后用户发出推荐请求时，拿用户的特征向量作为 $query$ 在向量数据库中做最近邻查找，取回几十篇笔记，这个过程叫做 Look-Alike。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_9d6IQ3PHVv.png"></p>
+<p><img src="image_jB9ut7ApkX.png" alt=""></p>
+<p>这个特征向量是做近线更新的，意思就是不用实时进行更新，能做到分钟级更新即可。这个特征向量是有交互的用户的向量的平均，每当有用户交互该物品，更新笔记的特征向量。</p>
+<p><strong>线上召回</strong>：把新笔记的特征向量都放在向量数据库里，向量数据库通常支持最近邻查找。之后用户发出推荐请求时，拿用户的特征向量作为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">query</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 在向量数据库中做最近邻查找，取回几十篇笔记，这个过程叫做 Look-Alike。</p>
+<p><img src="image_9d6IQ3PHVv.png" alt=""></p>
 <hr>
-<h1 id="2-流量调控"><a href="#2-流量调控" class="headerlink" title="2 流量调控"></a>2 流量调控</h1><p><strong>冷启动的优化点：</strong></p>
+<h1>2 流量调控</h1>
+<p><strong>冷启动的优化点：</strong></p>
 <ol>
 <li>优化全链路（包括召回和排序）</li>
 <li>流量调控（流量怎么在新物品、老物品中分配）</li>
 </ol>
 <p>为什么给新笔记流量倾斜？扶持新笔记的目的如下：</p>
 <ol>
-<li><strong>促进发布，增⼤内容池</strong>：新笔记获得的曝光越多，作者创作积极性越⾼，反映在发布渗透率、⼈均发布量。</li>
-<li><strong>挖掘优质笔记</strong>：做探索，让每篇新笔记都能获得⾜够曝光，挖掘的能⼒反映在⾼热笔记占⽐。</li>
+<li><strong>促进发布，增大内容池</strong>：新笔记获得的曝光越多，作者创作积极性越高，反映在发布渗透率、人均发布量。</li>
+<li><strong>挖掘优质笔记</strong>：做探索，让每篇新笔记都能获得足够曝光，挖掘的能⼒反映在高热笔记占比。</li>
 </ol>
-<p>举例说明工业界大致怎么对新发布的物品做扶持。假设推荐系统只分发年龄 &lt; 30 天的笔记，假设采⽤⾃然分发，则新笔记（年龄 &lt; 24 小时）的曝光占⽐为 $\frac{1}{30}$<strong>。</strong>因此要扶持新笔记，让新笔记的曝光占⽐远⼤于 $\frac{1}{30}$。</p>
+<p>举例说明工业界大致怎么对新发布的物品做扶持。假设推荐系统只分发年龄 &lt; 30 天的笔记，假设采用自然分发，则新笔记（年龄 &lt; 24 小时）的曝光占比为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>30</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>**。**因此要扶持新笔记，让新笔记的曝光占比远大于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>30</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>。</p>
 <p>流量调控技术的发展：</p>
 <ol>
 <li>在推荐结果中强插新笔记（最原始）</li>
@@ -1491,78 +1495,91 @@
 <li>通过提权，对新笔记做保量</li>
 <li>差异化保量</li>
 </ol>
-<h2 id="2-1-新笔记提权（boost）"><a href="#2-1-新笔记提权（boost）" class="headerlink" title="2.1 新笔记提权（boost）"></a>2.1 新笔记提权（boost）</h2><p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_4pjI0rgs8m.png"></p>
-<p>给新笔记提权的目标是让新笔记有更多机会曝光。如果做⾃然分发，24小时新笔记占⽐为 $\frac{1}{30}$。因此做⼈为⼲涉，让新笔记占⽐⼤幅提升。粗排和重排都是漏斗，如果要做人为干涉，一般时干涉粗排、重排环节，给新笔记提权。</p>
-<p>优点是容易实现，投⼊产出⽐好，在前期没有足够多的人力的时候这种方案比较好。</p>
+<h2 id="2-1-新笔记提权-boost">2.1 新笔记提权（boost）</h2>
+<p><img src="image_4pjI0rgs8m.png" alt=""></p>
+<p>给新笔记提权的目标是让新笔记有更多机会曝光。如果做自然分发，24 小时新笔记占比为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>30</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>。因此做人为干涉，让新笔记占比大幅提升。粗排和重排都是漏斗，如果要做人为干涉，一般时干涉粗排、重排环节，给新笔记提权。</p>
+<p>优点是容易实现，投⼊产出比好，在前期没有足够多的人力的时候这种方案比较好。</p>
 <p>缺点：</p>
 <ol>
 <li>曝光量对提权系数很敏感</li>
 <li>很难精确控制曝光量，容易过度曝光和不充分曝光</li>
 </ol>
-<h2 id="2-2-新笔记保量"><a href="#2-2-新笔记保量" class="headerlink" title="2.2 新笔记保量"></a>2.2 新笔记保量</h2><p><strong>保量</strong>：对于一篇新笔记，不论笔记质量⾼低，都保证在前 24 ⼩时获得 100 次曝光。最原始的保量是在原有提权系数的基础上，乘以额外的提权的系数，需要差异化对待不同的曝光时间，⽐如：</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_Nr_qEWtMTx.png"></p>
-<h3 id="2-2-1-动态提权保量"><a href="#2-2-1-动态提权保量" class="headerlink" title="2.2.1 动态提权保量"></a>2.2.1 动态提权保量</h3><p>动态提权保量是更先进的保量方法，可以用下⾯四个值计算提权系数：</p>
+<h2 id="2-2-新笔记保量">2.2 新笔记保量</h2>
+<p><strong>保量</strong>：对于一篇新笔记，不论笔记质量高低，都保证在前 24 小时获得 100 次曝光。最原始的保量是在原有提权系数的基础上，乘以额外的提权的系数，需要差异化对待不同的曝光时间，比如：</p>
+<p><img src="image_Nr_qEWtMTx.png" alt=""></p>
+<h3 id="2-2-1-动态提权保量">2.2.1 动态提权保量</h3>
+<p>动态提权保量是更先进的保量方法，可以用下面四个值计算提权系数：</p>
 <ul>
-<li>目标时间：⽐如 24 ⼩时</li>
-<li>目标曝光：⽐如 100 次</li>
-<li>发布时间：⽐如笔记已经发布 12 ⼩时</li>
-<li>已有曝光：⽐如笔记已经获得 20 次曝光</li>
+<li>目标时间：比如 24 小时</li>
+<li>目标曝光：比如 100 次</li>
+<li>发布时间：比如笔记已经发布 12 小时</li>
+<li>已有曝光：比如笔记已经获得 20 次曝光</li>
 </ul>
-<p>$$<br>提权系数 &#x3D;f\left(\frac{\text { 发布时间 }}{\text { 目标时间 }},\frac{\text { 已有曝光 }}{\text { 目标曝光 }}\right)&#x3D;f(0.5,0.2)<br>$$</p>
-<h3 id="2-2-2-保量的难点"><a href="#2-2-2-保量的难点" class="headerlink" title="2.2.2 保量的难点"></a>2.2.2 保量的难点</h3><blockquote>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>提权系数</mtext><mo>=</mo><mi>f</mi><mrow><mo fence="true">(</mo><mfrac><mtext> 发布时间 </mtext><mtext> 目标时间 </mtext></mfrac><mo separator="true">,</mo><mfrac><mtext> 已有曝光 </mtext><mtext> 目标曝光 </mtext></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0.5</mn><mo separator="true">,</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">提权系数 =f\left(\frac{\text { 发布时间 }}{\text { 目标时间 }},\frac{\text { 已有曝光 }}{\text { 目标曝光 }}\right)=f(0.5,0.2)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">权</span><span class="mord cjk_fallback">系</span><span class="mord cjk_fallback">数</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">目标时间</span><span class="mord"> </span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">发布时间</span><span class="mord"> </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">目标曝光</span><span class="mord"> </span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">已有曝光</span><span class="mord"> </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">2</span><span class="mclose">)</span></span></span></span></span></p>
+<h3 id="2-2-2-保量的难点">2.2.2 保量的难点</h3>
+<blockquote>
 <p>保量成功率远低于 100%</p>
 </blockquote>
-<p>实际操作中，很多笔记在24⼩时达不到100次曝光。造成效果不好的原因有很多，可能在推荐链路上存在问题，比如召回、排序存在不⾜。也有可能是排序模型的问题，对新笔记的预估不准。还有可能提权系数调得不好，导致曝光不足。</p>
+<p>实际操作中，很多笔记在 24 小时达不到 100 次曝光。造成效果不好的原因有很多，可能在推荐链路上存在问题，比如召回、排序存在不足。也有可能是排序模型的问题，对新笔记的预估不准。还有可能提权系数调得不好，导致曝光不足。</p>
 <p>此外线上环境变化也会导致保量失败，例如新增召回通道、升级排序模型、改变重排打散规则。线上环境变换之后，往往需要调整提权系数，很麻烦。</p>
-<p>是否可以给所有新笔记⼀个很⼤的提权系数（⽐如 4 倍），直到达成 100 次曝光为⽌。这样的保量成功率很⾼，为什么不⽤这种⽅法呢？是否给新笔记分数 boost 越多，对新笔记越有利？</p>
+<p>是否可以给所有新笔记⼀个很大的提权系数（比如 4 倍），直到达成 100 次曝光为止。这样的保量成功率很高，为什么不用这种方法呢？是否给新笔记分数 boost 越多，对新笔记越有利？</p>
 <p>好处：分数提升越多，曝光次数越多。</p>
 <p>坏处：把笔记推荐给不太合适的受众。</p>
 <ul>
 <li>点击率、点赞率等指标会偏低</li>
 <li>长期会受推荐系统打压，难以成长为热门笔记</li>
 </ul>
-<h2 id="2-3-差异化保量"><a href="#2-3-差异化保量" class="headerlink" title="2.3 差异化保量"></a>2.3 差异化保量</h2><p><strong>简单的保量</strong>不论新笔记质量⾼低，都做扶持，在前 24 ⼩时给 100 次曝光。<strong>差异化保量有区别，</strong>不同笔记有不同保量⽬标，普通笔记保 100 次曝光，内容优质的笔记保 100~500 次曝光。</p>
-<p>差异化保量保证每篇笔记都有一个基础保量，比如 24 ⼩时 100 次曝光。依据是笔记内容质量和作者质量。</p>
+<h2 id="2-3-差异化保量">2.3 差异化保量</h2>
+<p><strong>简单的保量</strong>不论新笔记质量高低，都做扶持，在前 24 小时给 100 次曝光。**差异化保量有区别，**不同笔记有不同保量目标，普通笔记保 100 次曝光，内容优质的笔记保 100~500 次曝光。</p>
+<p>差异化保量保证每篇笔记都有一个基础保量，比如 24 小时 100 次曝光。依据是笔记内容质量和作者质量。</p>
 <ul>
-<li>内容质量：⽤模型评价内容质量⾼低，给予额外保量⽬标，上限是加 200 次曝光。</li>
-<li>作者质量：根据作者历史上的笔记质量，给予额外保量⽬标，上限是加 200 次曝光。</li>
+<li>内容质量：用模型评价内容质量高低，给予额外保量目标，上限是加 200 次曝光。</li>
+<li>作者质量：根据作者历史上的笔记质量，给予额外保量目标，上限是加 200 次曝光。</li>
 </ul>
 <p>那么⼀篇笔记在前 24 次小时最少有 100 次保量，最多有 500 次保量。达到保量目标之后就会停止扶持，让新笔记自由分发，跟老笔记公平竞争。</p>
 <hr>
-<h1 id="3-冷启的-AB-测试"><a href="#3-冷启的-AB-测试" class="headerlink" title="3 冷启的 AB 测试"></a>3 冷启的 AB 测试</h1><p>在冷启的 AB 测试中，既要看作者侧指标，也要看用户侧指标。其中作者侧指标包括发布渗透率、人均发布量。这些指标可以反映作者的发布意愿。用户侧指标包括对新笔记的点击率、交互率。</p>
+<h1>3 冷启的 AB 测试</h1>
+<p>在冷启的 AB 测试中，既要看作者侧指标，也要看用户侧指标。其中作者侧指标包括发布渗透率、人均发布量，这些指标可以反映作者的发布意愿。用户侧指标包括对新笔记的点击率、交互率。</p>
 <p>除此之外，还要看大盘指标：消费时长、日活、月活。不希望冷启推荐的新笔记引起用户的反感，导致用户不活跃。</p>
-<p>推荐系统标准的冷启测试如下，把用户分为两组，每组包含 50% 的用户，上面是实验组，下面是对照组，右边是全体的笔记，不分组。在给实验组的用户做推荐的时候使用新的策略，给对照组的用户做推荐使用旧的策略。</p>
+<p>推荐系统标准的冷启测试如下，把用户分为两组，每组包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>50</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">50\\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span><span class="mspace newline"></span></span></span> 的用户，上面是实验组，下面是对照组，右边是全体的笔记，不分组。在给实验组的用户做推荐的时候使用新的策略，给对照组的用户做推荐使用旧的策略。</p>
 <p>在实验的过程中，对比两组消费指标的 diff。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_3rbuYIgiS1.png"></p>
-<h2 id="3-1-用户侧实验"><a href="#3-1-用户侧实验" class="headerlink" title="3.1 用户侧实验"></a>3.1 用户侧实验</h2><p>例如要考察策略对新笔记点击率或用户消费时长的影响，这种方法有个缺点：假设冷启要求做保量，要至少给新笔记 100 次曝光。还做个假设，新笔记曝光越多，用户使用 APP 时长越低。</p>
-<p>现在使用一个新策略，即把新笔记排序时的权重增大两倍，这样让新笔记能获得更多的曝光。很明显这样的测试结果（只看消费指标）肯定会变差，AB 测试的 diff 是负数（策略组不如对照组）。如果推全，实际上的 diff 会缩小（比如 -2% → -1%）。</p>
+<p><img src="image_3rbuYIgiS1.png" alt=""></p>
+<h2 id="3-1-用户侧实验">3.1 用户侧实验</h2>
+<p>例如要考察策略对新笔记点击率或用户消费时长的影响，这种方法有个缺点：假设冷启要求做保量，要至少给新笔记 100 次曝光。还做个假设，新笔记曝光越多，用户使用 APP 时长越低。</p>
+<p>现在使用一个新策略，即把新笔记排序时的权重增大两倍，这样让新笔记能获得更多的曝光。很明显这样的测试结果（只看消费指标）肯定会变差，AB 测试的 diff 是负数（策略组不如对照组）。如果推全，实际上的 diff 会缩小（比如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>2</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">-2\\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">2</span></span><span class="mspace newline"></span></span></span> → <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">-1\\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span><span class="mspace newline"></span></span></span>）。</p>
 <p>为什么会变小？因为在做实验的时候，新笔记更多的曝光给实验组，导致实验组的消费指标变差，同时新笔记更少的曝光给对照组，所以对照组的消费指标会变好，所以实验组和对照组的 diff 会变得更大。所以在推全之后，这个 diff 相对于原来会变小。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_nOrdxaLGXA.png"></p>
-<h2 id="3-2-作者侧实验"><a href="#3-2-作者侧实验" class="headerlink" title="3.2 作者侧实验"></a>3.2 作者侧实验</h2><h3 id="3-2-1-方案一"><a href="#3-2-1-方案一" class="headerlink" title="3.2.1 方案一"></a>3.2.1 方案一</h3><p>不对全体老笔记和用户做分组，但是要区别对待新笔记和老笔记。将新笔记按照作者分为两组，上面是实验组使用新策略，下面是对照组，使用老策略。</p>
-<p>缺点在于新笔记之间会抢流量，比如在测试的时候发布指标涨了 2%，但是在推全之后并没有什么变化。首先设定：</p>
+<p><img src="image_nOrdxaLGXA.png" alt=""></p>
+<h2 id="3-2-作者侧实验">3.2 作者侧实验</h2>
+<h3 id="3-2-1-方案一">3.2.1 方案一</h3>
+<p>不对全体老笔记和用户做分组，但是要区别对待新笔记和老笔记。将新笔记按照作者分为两组，上面是实验组使用新策略，下面是对照组，使用老策略。</p>
+<p>缺点在于新笔记之间会抢流量，比如在测试的时候发布指标涨了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">2\\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span><span class="mspace newline"></span></span></span>，但是在推全之后并没有什么变化。首先设定：</p>
 <ol>
-<li>新⽼笔记⾛各⾃队列，新老笔记没有竞争</li>
-<li>重排分给新笔记 1&#x2F;3 流量，分给⽼笔记 2&#x2F;3 流量</li>
+<li>新老笔记走各自队列，新老笔记没有竞争</li>
+<li>重排分给新笔记 1/3 流量，分给老笔记 2/3 流量</li>
 </ol>
-<p>现在上一个新策略，把新笔记的权重增⼤两倍。在这种策略下没有任何变化，因为新笔记只和新笔记竞争，把所有新笔记的权重扩大两倍，相当于没有扩大，所以不会改变发布侧指标。但是 AB测试的diff是正数（策略组优于对照组），显示有正向收益，这是不合理的。</p>
-<p>实验组给新笔记提权，对照组没有提权，那么实验组的新笔记会抢走对照组的曝光，因此实验组的发布指标会涨，对照组的发布指标会跌，这就产生了 diff。很显然，把新策略推全之后，diff会消失（⽐如 2% → 0）。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_MNmqKeWlkh.png"></p>
-<h3 id="3-2-2-方案二"><a href="#3-2-2-方案二" class="headerlink" title="3.2.2 方案二"></a>3.2.2 方案二</h3><p>方案二和方案一的区别在于用户被分成了两组，上面是实验组，下面是对照组，实验组的用户只能看到实验组的新笔记，对照组的用户只能看到对照组的新笔记。</p>
-<p>⽅案二⽐⽅案一的优缺点：</p>
+<p>现在上一个新策略，把新笔记的权重增大两倍。在这种策略下没有任何变化，因为新笔记只和新笔记竞争，把所有新笔记的权重扩大两倍，相当于没有扩大，所以不会改变发布侧指标。但是 A/B 测试的 diff 是正数（策略组优于对照组），显示有正向收益，这是不合理的。</p>
+<p>实验组给新笔记提权，对照组没有提权，那么实验组的新笔记会抢走对照组的曝光，因此实验组的发布指标会涨，对照组的发布指标会跌，这就产生了 diff。很显然，把新策略推全之后，diff 会消失（比如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">2\\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span><span class="mspace newline"></span></span></span> → 0）。</p>
+<p><img src="image_MNmqKeWlkh.png" alt=""></p>
+<h3 id="3-2-2-方案二">3.2.2 方案二</h3>
+<p>方案二和方案一的区别在于用户被分成了两组，上面是实验组，下面是对照组，实验组的用户只能看到实验组的新笔记，对照组的用户只能看到对照组的新笔记。</p>
+<p>方案二比方案一的优缺点：</p>
 <ol>
 <li>优点：新笔记的两个桶不抢流量，作者侧实验结果更可信</li>
-<li>缺点：新笔记池减⼩⼀半，推荐结果变差，对⽤户体验造成负⾯影响</li>
+<li>缺点：新笔记池减小⼀半，推荐结果变差，对用户体验造成负面影响</li>
 </ol>
-<p>相同：新笔记和⽼笔记抢流量，作者侧AB测试结果与推全结果有些差异。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_UZDQ47Jt9J.png"></p>
-<h3 id="3-2-3-方案三"><a href="#3-2-3-方案三" class="headerlink" title="3.2.3 方案三"></a>3.2.3 方案三</h3><p>这种方案不太可行，相当于把小红书分为两个 APP，内容质量减半，消费指标一定会大跌。</p>
-<p><img src="/2024/10/24/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A82/image_FPQgpJ8uNN.png"></p>
-<h2 id="3-3-总结"><a href="#3-3-总结" class="headerlink" title="3.3 总结"></a>3.3 总结</h2><p>冷启的AB测试需要观测作者发布指标和⽤户消费指标，这是因为冷启有两个目标，一个是激励作者发布，另一个是让用户满意。</p>
-<p>各种AB测试的⽅案都有缺陷。设计⽅案的时候，问⾃⼰⼏个问题：</p>
+<p>相同：新笔记和老笔记抢流量，作者侧 A/B 测试结果与推全结果有些差异。</p>
+<p><img src="image_UZDQ47Jt9J.png" alt=""></p>
+<h3 id="3-2-3-方案三">3.2.3 方案三</h3>
+<p>这种方案不太可行，相当于把小红书分为两个 APP，内容质量减半，消费指标一定会大跌。</p>
+<p><img src="image_FPQgpJ8uNN.png" alt=""></p>
+<h2 id="3-3-总结">3.3 总结</h2>
+<p>冷启的AB测试需要观测作者发布指标和用户消费指标，这是因为冷启有两个目标，一个是激励作者发布，另一个是让用户满意。</p>
+<p>各种AB测试的方案都有缺陷。设计方案的时候，问自⼰⼏个问题：</p>
 <ul>
 <li>实验组、对照组新笔记会不会抢流量？</li>
-<li>新笔记、⽼笔记怎么抢流量？</li>
-<li>同时隔离笔记、⽤户，会不会让内容池变小？</li>
+<li>新笔记、老笔记怎么抢流量？</li>
+<li>同时隔离笔记、用户，会不会让内容池变小？</li>
 <li>如果对新笔记做保量，会发⽣什么？</li>
 </ul>
 ]]></content>
@@ -1576,149 +1593,176 @@
   <entry>
     <title>WSS推荐系统学习笔记11：涨指标的方法1</title>
     <url>/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/</url>
-    <content><![CDATA[<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><h2 id="1-1-推荐系统的评价指标"><a href="#1-1-推荐系统的评价指标" class="headerlink" title="1.1 推荐系统的评价指标"></a>1.1 推荐系统的评价指标</h2><p>⽇活⽤户数（DAU）和留存是最核⼼的指标，⽬前⼯业界最常⽤ LT7 和 LT30 衡量留存。</p>
-<p>假设某用户今天（$t_0$）登录 APP，未来 7 天（$t_0 \sim t_6$）中有 4 天登录 APP，那么该⽤户今天（$t_0$）的 LT7 等于 4。对于所有今天登录的用户，取 LT7 的平均就是整个 APP 今天的 LT7指标。LT30 的定义也是类似的，很显然有 $1 ≤ \operatorname{LT7} ≤ 7$ 和 $1 ≤ \operatorname{LT30} ≤ 30$。</p>
-<p>像抖音小红书这样的推荐系统，算法工程师最重要的目标就是提升 LT。LT 的增长通常意味着⽤户体验提升（除⾮ LT 增长且 DAU下降）。假设 APP 禁⽌低活⽤户登录，则 DAU 下降，LT 增长。由于 LT 存在这种问题，所以如果模型或者策略的 LT 有所提升，还要看一下 DAU，要确保 DAU 不下降。</p>
-<p>其他核⼼指标：⽤户使⽤时长、总阅读数（即总点击数）、总曝光数。这些指标的重要性低于 DAU 和留存。比如时长增长，LT 通常会增长。但是时长增长，阅读数、曝光数可能会下降。</p>
+    <content><![CDATA[<h1>1 概述</h1>
+<h2 id="1-1-推荐系统的评价指标">1.1 推荐系统的评价指标</h2>
+<p>日活用户数（DAU）和留存是最核⼼的指标，目前工业界最常用 LT7 和 LT30 衡量留存。</p>
+<p>假设某用户今天（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）登录 APP，未来 7 天（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>∼</mo><msub><mi>t</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">t_0 \sim t_6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）中有 4 天登录 APP，那么该用户今天（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）的 LT7 等于 4。对于所有今天登录的用户，取 LT7 的平均就是整个 APP 今天的 LT7指标。LT30 的定义也是类似的，很显然有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi mathvariant="normal">LT7</mi><mo>⁡</mo><mo>≤</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 ≤ \operatorname{LT7} ≤ 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mop"><span class="mord mathrm">L</span><span class="mord mathrm">T</span><span class="mord mathrm">7</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi mathvariant="normal">LT30</mi><mo>⁡</mo><mo>≤</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">1 ≤ \operatorname{LT30} ≤ 30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mop"><span class="mord mathrm">L</span><span class="mord mathrm">T</span><span class="mord mathrm">3</span><span class="mord mathrm">0</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span></span></span></span>。</p>
+<p>像抖音小红书这样的推荐系统，算法工程师最重要的目标就是提升 LT。LT 的增长通常意味着用户体验提升（除非 LT 增长且 DAU下降）。假设 APP 禁止低活用户登录，则 DAU 下降，LT 增长。由于 LT 存在这种问题，所以如果模型或者策略的 LT 有所提升，还要看一下 DAU，要确保 DAU 不下降。</p>
+<p>其他核⼼指标：用户使用时长、总阅读数（即总点击数）、总曝光数。这些指标的重要性低于 DAU 和留存。比如时长增长，LT 通常会增长。但是时长增长，阅读数、曝光数可能会下降。</p>
 <p>非核⼼指标：点击率、交互率、等等。这些指标下跌也没有关系，只要核心指标上涨就行。对于 UGC 平台，物品都是普通用户创作的，UGC 平台会把发布量和发布渗透率也是核⼼指标。</p>
-<h2 id="1-2-涨指标的方法有哪些"><a href="#1-2-涨指标的方法有哪些" class="headerlink" title="1.2 涨指标的方法有哪些"></a>1.2 涨指标的方法有哪些</h2><ol>
+<h2 id="1-2-涨指标的方法有哪些">1.2 涨指标的方法有哪些</h2>
+<ol>
 <li>改进召回模型，添加新的召回模型。</li>
 <li>改进粗排和精排模型。</li>
 <li>提升召回、粗排、精排中的多样性。</li>
-<li>特殊对待新⽤户、低活⽤户等特殊⼈群。</li>
-<li>利⽤关注、转发、评论这三种交互⾏为。</li>
+<li>特殊对待新用户、低活用户等特殊⼈群。</li>
+<li>利用关注、转发、评论这三种交互行为。</li>
 </ol>
 <p>前两种方法主要是模型，在之前的课程中讲的比较详细。后面三部分都是工业界的经验，参考资料较少。</p>
 <hr>
-<h1 id="2-召回改进"><a href="#2-召回改进" class="headerlink" title="2 召回改进"></a>2 召回改进</h1><h2 id="2-1-召回模型-召回通道"><a href="#2-1-召回模型-召回通道" class="headerlink" title="2.1 召回模型 &amp; 召回通道"></a>2.1 召回模型 &amp; 召回通道</h2><p>推荐系统有⼏⼗条召回通道，它们的召回总量是固定的。总量越⼤，指标越好，粗排计算量越大。</p>
-<p>双塔模型（two-tower）和 item-to-item（I2I）是最重要的两类召回模型，占据召回的⼤部分配额。有很多小众的模型，占据的配额很少，但很有用。在召回总量不变的前提下，添加某些召回模型可以提升核心指标。</p>
-<p>添加新的召回模型可以涨指标，添加内容池也可以涨指标。有很多内容池，⽐如30天物品、1天物品、6小时物品、新⽤户优质内容池、分⼈群内容池。同⼀个模型可以⽤于多个内容池，得到多条召回通道。例如，训练一个双塔模型可以用在多个内容池上，不会增加训练的计算量。</p>
-<h2 id="2-2-双塔模型"><a href="#2-2-双塔模型" class="headerlink" title="2.2 双塔模型"></a>2.2 双塔模型</h2><h3 id="2-2-1-方向1：优化正负样本"><a href="#2-2-1-方向1：优化正负样本" class="headerlink" title="2.2.1 方向1：优化正负样本"></a>2.2.1 方向1：优化正负样本</h3><p>正负样本对训练双塔模型的作用非常大，是一个主要的优化点。</p>
+<h1>2 召回改进</h1>
+<h2 id="2-1-召回模型-召回通道">2.1 召回模型 &amp; 召回通道</h2>
+<p>推荐系统有⼏⼗条召回通道，它们的召回总量是固定的。总量越大，指标越好，粗排计算量越大。</p>
+<p>双塔模型（two-tower）和 item-to-item（I2I）是最重要的两类召回模型，占据召回的大部分配额。有很多小众的模型，占据的配额很少，但很有用。在召回总量不变的前提下，添加某些召回模型可以提升核心指标。</p>
+<p>添加新的召回模型可以涨指标，添加内容池也可以涨指标。有很多内容池，比如 30 天物品、1 天物品、6 小时物品、新用户优质内容池、分⼈群内容池。同⼀个模型可以用于多个内容池，得到多条召回通道。例如，训练一个双塔模型可以用在多个内容池上，不会增加训练的计算量。</p>
+<h2 id="2-2-双塔模型">2.2 双塔模型</h2>
+<h3 id="2-2-1-方向1：优化正负样本">2.2.1 方向1：优化正负样本</h3>
+<p>正负样本对训练双塔模型的作用非常大，是一个主要的优化点。</p>
 <ul>
 <li><strong>简单正样本</strong>：有点击的（用户，物品）二元组</li>
 <li><strong>简单负样本</strong>：随机组合的（用户，物品）二元组，从全体物品库中进行随机抽样</li>
 <li><strong>困难负样本</strong>：排序靠后的（用户，物品）二元组，在排序阶段被淘汰</li>
 </ul>
-<h3 id="2-2-2-方向2：改进神经网络结构"><a href="#2-2-2-方向2：改进神经网络结构" class="headerlink" title="2.2.2 方向2：改进神经网络结构"></a>2.2.2 方向2：改进神经网络结构</h3><p>Baseline：⽤户塔、物品塔分别是全连接⽹络，各输出⼀个向量，分别作为⽤户、物品的表征。改进如下：</p>
+<h3 id="2-2-2-方向2：改进神经网络结构">2.2.2 方向2：改进神经网络结构</h3>
+<p>Baseline：用户塔、物品塔分别是全连接⽹络，各输出⼀个向量，分别作为用户、物品的表征。改进如下：</p>
 <ol>
-<li>⽤户塔、物品塔分别⽤ DCN 代替全连接⽹络。</li>
-<li>在⽤户塔中使⽤用户行为序列（last-n），可以对用户行为序列建模。</li>
-<li>使⽤多向量模型代替单向量模型（标准的双塔模型也叫单向量模型）。</li>
+<li>用户塔、物品塔分别用 DCN 代替全连接⽹络。</li>
+<li>在用户塔中使用用户行为序列（last-n），可以对用户行为序列建模。</li>
+<li>使用多向量模型代替单向量模型（标准的双塔模型也叫单向量模型）。</li>
 </ol>
 <p>下图所示的是多向量双塔模型：右边是物品塔，和单向量模型没有区别。物品塔只输出一个向量，作为物品的表征。左边是用户塔，输出很多向量，每个形状都和物品塔输出的向量形状相同，可以做内积或计算余弦相似度，分别作为对点击率、点赞率和完播率的预测。</p>
 <p>如果是单向量模型相当于做二分类，只区分正负样本，但是多向量模型有点像排序中的多目标模型。</p>
-<p><img src="/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/image_m5vYKpRNmb.png"></p>
-<h3 id="2-2-3-方向3：改进模型的训练方法"><a href="#2-2-3-方向3：改进模型的训练方法" class="headerlink" title="2.2.3 方向3：改进模型的训练方法"></a>2.2.3 方向3：改进模型的训练方法</h3><p>Baseline：做⼆分类，让模型学会区分正样本和负样本。</p>
+<p><img src="image_m5vYKpRNmb.png" alt=""></p>
+<h3 id="2-2-3-方向3：改进模型的训练方法">2.2.3 方向3：改进模型的训练方法</h3>
+<p>Baseline：做⼆分类，让模型学会区分正样本和负样本。</p>
 <ol>
 <li>结合⼆分类、batch 内负采样（对于 batch 内负采样，需要做纠偏）</li>
-<li>使⽤⾃监督学习⽅法，让冷门物品的 Embedding 学得更好</li>
+<li>使用⾃监督学习⽅法，让冷门物品的 Embedding 学得更好</li>
 </ol>
-<h2 id="2-3-Item-to-Item"><a href="#2-3-Item-to-Item" class="headerlink" title="2.3 Item-to-Item"></a>2.3 Item-to-Item</h2><p>I2I 是⼀⼤类模型，基于相似物品做召回。最常见的⽤法是 U2I2I (user → item → item)。已知⽤户 $u$ 喜欢物品 $i_1$（⽤户历史上交互过的物品），寻找 $i_1$ 的相似物品 $i_2$（即 I2I），将 $i_2$ 推荐给 $u$。</p>
+<h2 id="2-3-item-to-item">2.3 Item-to-Item</h2>
+<p>I2I 是⼀大类模型，基于相似物品做召回。最常见的用法是 U2I2I (user → item → item)。已知用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 喜欢物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（用户历史上交互过的物品），寻找 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的相似物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">i_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>（即 I2I），将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">i_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 推荐给 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>。</p>
 <p>I2I 是基于相似度做召回，如何计算物品相似度？</p>
 <ol>
-<li><p>ItemCF 及其变体</p>
-<p>⼀些⽤户同时喜欢物品 $i_1$ 和 $i_2$，则认为 $i_1$ 和 $i_2$ 相似。</p>
-<p>ItemCF 、Online ItemCF、Swing、Online Swing 都是基于相同的思想， 线上同时使⽤上述 4 种 I2I 模型，各分配⼀定配额。</p>
+<li>
+<p>ItemCF 及其变体</p>
+<p>⼀些用户同时喜欢物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">i_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，则认为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">i_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 相似。</p>
+<p>ItemCF 、Online ItemCF、Swing、Online Swing 都是基于相同的思想， 线上同时使用上述 4 种 I2I 模型，各分配⼀定配额。</p>
 </li>
-<li><p>基于物品向量表征，计算向量相似度</p>
+<li>
+<p>基于物品向量表征，计算向量相似度</p>
 <p>双塔模型、图神经⽹络均可计算物品向量表征。</p>
 </li>
 </ol>
-<h2 id="2-4-小众的召回模型"><a href="#2-4-小众的召回模型" class="headerlink" title="2.4 小众的召回模型"></a>2.4 小众的召回模型</h2><h3 id="2-4-1-类似-I2I-的模型"><a href="#2-4-1-类似-I2I-的模型" class="headerlink" title="2.4.1 类似 I2I 的模型"></a>2.4.1 类似 I2I 的模型</h3><ol>
-<li>U2U2I（user → user → item）：已知⽤户 $u_1$ 与 $u_2$ 相似，且 $u_2$ 喜欢物品 $i$，那么给⽤户 $u_1$ 推荐物品 $i$。</li>
-<li>U2A2I（user → author → item）：已知⽤户 $u$ 喜欢作者 $a$，且 $a$ 发布物品 $i$，那么给⽤户 $u$ 推荐物品 $i$。</li>
-<li>U2A2A2I（user → author → author → item）：已知⽤户 $u$ 喜欢作者 $a_1$，且 $a_1$ 与 $a_2$ 相似，$a_2$ 发布物品 $i$，那么给⽤户 $u$ 推荐物品 $i$。</li>
+<h2 id="2-4-小众的召回模型">2.4 小众的召回模型</h2>
+<h3 id="2-4-1-类似-i2i-的模型">2.4.1 类似 I2I 的模型</h3>
+<ol>
+<li>U2U2I（user → user → item）：已知用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">u_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">u_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 相似，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">u_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 喜欢物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，那么给用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">u_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 推荐物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>。</li>
+<li>U2A2I（user → author → item）：已知用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 喜欢作者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 发布物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，那么给用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 推荐物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>。</li>
+<li>U2A2A2I（user → author → author → item）：已知用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 喜欢作者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 相似，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 发布物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，那么给用户 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 推荐物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>。</li>
 </ol>
-<h3 id="2-4-2-更复杂的模型"><a href="#2-4-2-更复杂的模型" class="headerlink" title="2.4.2 更复杂的模型"></a>2.4.2 更复杂的模型</h3><ol>
+<h3 id="2-4-2-更复杂的模型">2.4.2 更复杂的模型</h3>
+<ol>
 <li>Path-based Deep Network (PDN)</li>
 <li>Deep Retrieval</li>
 <li>Sparse-Interest Network (SINE)</li>
 <li>Multi-task Multi-view Graph Representation Learning (M2GRL)</li>
 </ol>
 <hr>
-<h1 id="3-排序改进"><a href="#3-排序改进" class="headerlink" title="3 排序改进"></a>3 排序改进</h1><p>通过改进粗排和精排模型，有助于提升召回、粗排和精排中的多样性。排序模型包括粗排和精排，有以下五个部分：</p>
+<h1>3 排序改进</h1>
+<p>通过改进粗排和精排模型，有助于提升召回、粗排和精排中的多样性。排序模型包括粗排和精排，有以下五个部分：</p>
 <ol>
 <li>精排模型的改进</li>
 <li>粗排模型的改进</li>
-<li>⽤户⾏为序列建模</li>
+<li>用户行为序列建模</li>
 <li>在线学习</li>
 <li>⽼汤模型</li>
 </ol>
-<h2 id="3-1-精排模型的改进"><a href="#3-1-精排模型的改进" class="headerlink" title="3.1 精排模型的改进"></a>3.1 精排模型的改进</h2><p>下面两个神经网络称为基座，把原始特征映射到数值向量。绿色和蓝色向量做全连接之后，同时输入到多个全连接网络，这些全连接网络通常只有两层。</p>
+<h2 id="3-1-精排模型的改进">3.1 精排模型的改进</h2>
+<p>下面两个神经网络称为基座，把原始特征映射到数值向量。绿色和蓝色向量做全连接之后，同时输入到多个全连接网络，这些全连接网络通常只有两层。</p>
 <p>精排模型的基座和上面的多目标预估都有很多可以改进的地方。</p>
-<p><img src="/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/image_kc7qKbkzRW.png"></p>
-<h3 id="3-1-1-基座"><a href="#3-1-1-基座" class="headerlink" title="3.1.1 基座"></a>3.1.1 基座</h3><p>基座的输⼊包括离散特征和连续特征，输出⼀个向量，作为多⽬标预估的输⼊。</p>
+<p><img src="image_kc7qKbkzRW.png" alt=""></p>
+<h3 id="3-1-1-基座">3.1.1 基座</h3>
+<p>基座的输⼊包括离散特征和连续特征，输出⼀个向量，作为多目标预估的输⼊。</p>
 <ol>
-<li><strong>改进 1</strong>：基座中的全连接网络加宽加深，计算量更⼤，预测更准确</li>
-<li><strong>改进 2</strong>：做⾃动的特征交叉，⽐如 bilinear 和 LHUC</li>
+<li><strong>改进 1</strong>：基座中的全连接网络加宽加深，计算量更大，预测更准确</li>
+<li><strong>改进 2</strong>：做⾃动的特征交叉，比如 bilinear 和 LHUC</li>
 <li><strong>改进 3</strong>：特征工程，比如添加统计特征、多模态内容特征，需要算法工程师根据自己的经验做特征</li>
 </ol>
-<h3 id="3-1-2-多目标预估"><a href="#3-1-2-多目标预估" class="headerlink" title="3.1.2 多目标预估"></a>3.1.2 多目标预估</h3><p>基于基座输出的向量，同时预估点击率等多个⽬标。</p>
+<h3 id="3-1-2-多目标预估">3.1.2 多目标预估</h3>
+<p>基于基座输出的向量，同时预估点击率等多个目标。</p>
 <ol>
-<li><p>改进 1：增加新的预估⽬标，并把预估结果加⼊融合公式。</p>
-<p>最标准的⽬标包括点击率、点赞率、收藏率、转发率、评论率、关注率、完播率……还可以寻找更多⽬标，比如进⼊评论区、给他⼈写的评论点赞……预估新的目标之后，把新的预估⽬标加入融合公式，排序的时候会用到这些目标。</p>
+<li>
+<p>改进 1：增加新的预估目标，并把预估结果加⼊融合公式。</p>
+<p>最标准的目标包括点击率、点赞率、收藏率、转发率、评论率、关注率、完播率……还可以寻找更多目标，比如进⼊评论区、给他⼈写的评论点赞……预估新的目标之后，把新的预估目标加入融合公式，排序的时候会用到这些目标。</p>
 </li>
-<li><p>改进 2：MMoE、PLE 等结构可能有效，但往往无效。</p>
+<li>
+<p>改进 2：MMoE、PLE 等结构可能有效，但往往无效。</p>
 </li>
-<li><p>改进 3：纠正 position bias 可能有效，也可能无效。</p>
+<li>
+<p>改进 3：纠正 position bias 可能有效，也可能无效。</p>
 </li>
 </ol>
-<h2 id="3-2-粗排模型的改进"><a href="#3-2-粗排模型的改进" class="headerlink" title="3.2 粗排模型的改进"></a>3.2 粗排模型的改进</h2><p>粗排的打分量⽐精排大 10 倍，那么单个物品的计算量就要相应的减少 10 倍，因此粗排模型必须够快。</p>
+<h2 id="3-2-粗排模型的改进">3.2 粗排模型的改进</h2>
+<p>粗排的打分量比精排大 10 倍，那么单个物品的计算量就要相应的减少 10 倍，因此粗排模型必须够快。</p>
 <ul>
-<li>简单模型：多向量双塔模型，同时预估点击率等多个⽬标。</li>
+<li>简单模型：多向量双塔模型，同时预估点击率等多个目标。</li>
 <li>复杂模型：三塔模型效果好，但工程实现难度较大。</li>
 </ul>
 <p>除了改进粗排的模型结构，通常可以采用粗精排一致性建模：蒸馏精排训练粗排，让粗排与精排更⼀致。</p>
 <blockquote>
 <p>方法1：pointwise 蒸馏。</p>
 </blockquote>
-<p>设 $y$ 是用户真实行为，设 $p$ 是精排的预估，用 $\frac{y+p}{2}$ 作为粗排拟合的目标。如果不做蒸馏，那么会直接使用 $y$ 作为拟合的目标。</p>
-<p>例如：对于点击率目标，用户有点击（$y&#x3D;1$），精排预估 $p&#x3D;0.6$，则用 $\frac{y+p}{2}&#x3D;0.8$ 作为粗排拟合的点击率目标。</p>
+<p>设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 是用户真实行为，设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 是精排的预估，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>y</mi><mo>+</mo><mi>p</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{y+p}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.199439em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 作为粗排拟合的目标。如果不做蒸馏，那么会直接使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 作为拟合的目标。</p>
+<p>例如：对于点击率目标，用户有点击（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>），精排预估 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">p=0.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span></span></span></span>，则用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>y</mi><mo>+</mo><mi>p</mi></mrow><mn>2</mn></mfrac><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">\frac{y+p}{2}=0.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.199439em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">8</span></span></span></span> 作为粗排拟合的点击率目标。</p>
 <blockquote>
 <p>方法2：pairwise 或 listwise 蒸馏。</p>
 </blockquote>
-<p>给定 $k$ 个候选物品，按照精排预估做排序。做 learning to rank（LTR）训练粗排模型，让粗排拟合物品的序（而⾮值）。</p>
-<p>例如，对于物品 $i$ 和 $j$，精排预估点击率为 $p_i$ &gt; $p_j$。LTR ⿎励粗排预估点击率满⾜ $q_i$ &gt; $q_j$，否则有惩罚。LTR 通常使⽤ pairwise logistic loss 作为损失函数。</p>
+<p>给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个候选物品，按照精排预估做排序。做 learning to rank（LTR）训练粗排模型，让粗排拟合物品的序（而非值）。</p>
+<p>例如，对于物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>，精排预估点击率为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> &gt; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>。LTR ⿎励粗排预估点击率满⾜ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> &gt; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">q_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，否则有惩罚。LTR 通常使用 pairwise logistic loss 作为损失函数。</p>
 <ol>
 <li>优点：粗精排⼀致性建模可以提升核⼼指标</li>
-<li>缺点：如果精排出bug，精排预估值 $p$ 有偏，会污染粗排训练数据</li>
+<li>缺点：如果精排出bug，精排预估值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 有偏，会污染粗排训练数据</li>
 </ol>
-<h2 id="3-3-用户行为序列建模"><a href="#3-3-用户行为序列建模" class="headerlink" title="3.3 用户行为序列建模"></a>3.3 用户行为序列建模</h2><p>在排序模型优化到一定长度之后，涨指标会越来越难。这时候涨指标最主要的途径就是用户行为序列建模。</p>
-<p>最简单的⽅法是对物品向量取平均，作为⼀种用户特征，表示用户曾经对什么样的物品感兴趣。DIN 使用注意力机制，对物品向量做加权平均。工业界⽬前沿着 SIM 的⽅向发展。先⽤类目等属性筛选物品，然后⽤ DIN 对物品向量做加权平均。</p>
-<p><img src="/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/image_XQgyGTildD.png"></p>
+<h2 id="3-3-用户行为序列建模">3.3 用户行为序列建模</h2>
+<p>在排序模型优化到一定长度之后，涨指标会越来越难。这时候涨指标最主要的途径就是用户行为序列建模。</p>
+<p>最简单的⽅法是对物品向量取平均，作为⼀种用户特征，表示用户曾经对什么样的物品感兴趣。DIN 使用注意力机制，对物品向量做加权平均。工业界目前沿着 SIM 的⽅向发展。先用类目等属性筛选物品，然后用 DIN 对物品向量做加权平均。</p>
+<p><img src="image_XQgyGTildD.png" alt=""></p>
 <p>接下来介绍一下改进用户行为序列建模的几个方向。</p>
 <ol>
 <li><strong>改进1</strong>：增加序列长度，让预测更准确，但是会增加计算成本和推理时间。增加序列长度最大的难点还是工程架构，工程架构弱的话做不到长序列。</li>
 <li><strong>改进2</strong>：筛选的方法，比如用类目、物品向量表征聚类。</li>
 </ol>
 <p>具体做法如下：离线用多模态神经网络（BERT、CLIP等）提取物品内容特征，将物品表征为向量。离线将物品向量聚为 1000 类，每个物品有⼀个聚类序号，聚类通常使用层次聚类。</p>
-<p>在线上做排序时，用户行为序列中有 $n&#x3D;1,000,000$ 个物品。某候选物品的聚类序号是 70，对 $n$ 个物品做筛选，只保留聚类序号为 70 的物品。$n$ 个物品中只有数千个被保留下来。线上同时有好几种筛选⽅法，取筛选结果的并集。</p>
+<p>在线上做排序时，用户行为序列中有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>000</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">n=1,000,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span> 个物品。某候选物品的聚类序号是 70，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个物品做筛选，只保留聚类序号为 70 的物品。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个物品中只有数千个被保留下来。线上同时有好几种筛选⽅法，取筛选结果的并集。</p>
 <ol>
-<li><strong>改进3</strong>：对⽤户行为序列中的物品，使用 ID 以外的⼀些特征，最简单的方法是对 ID 做 Embedding。</li>
+<li><strong>改进3</strong>：对用户行为序列中的物品，使用 ID 以外的⼀些特征，最简单的方法是对 ID 做 Embedding。</li>
 </ol>
 <p>概括：沿着 SIM 的⽅向发展，让原始的序列尽量长，然后做筛选降低序列长度，最后将筛选结果输入 DIN，对物品向量作加权平均。</p>
-<h2 id="3-4-在线学习"><a href="#3-4-在线学习" class="headerlink" title="3.4 在线学习"></a>3.4 在线学习</h2><p><img src="/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/image_C41fTulh2x.png"></p>
+<h2 id="3-4-在线学习">3.4 在线学习</h2>
+<p><img src="image_C41fTulh2x.png" alt=""></p>
 <p>需要在凌晨做全量更新，也需要全天不间断做增量更新。在完成全量更新之后，之前增量训练得到的模型可以丢弃，然后基于全量更新得到的模型继续进行增量更新。</p>
-<p>在线学习对推荐系统的指标提升非常大，但是也会消耗更多的算力。设在线学习需要 $10,000$ CPU core 的算力增量更新⼀个精排模型，那么推荐系统⼀共需要多少额外的算力给在线学习？</p>
-<p>如果不做 AB 测试，整个推荐系统多花 1w 个 CPU 核心就够了，但是为了做 AB 测试，线上同时运行多个不同的模型。每个模型都需要做在线学习，全天 24 小时计算梯度更新模型。如果线上有 $m$ 个模型，则需要 $m$ 套在线学习的机器。</p>
-<p>线上有 $m$ 个模型，并非都是给测试新模型用的。$m$ 个模型中 1 个是 holdout，1 个是推全的模型，$m - 2$ 个测试的新模型。</p>
-<p><img src="/2024/10/27/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011%EF%BC%9A%E6%B6%A8%E6%8C%87%E6%A0%87%E7%9A%84%E6%96%B9%E6%B3%951/image_0C95DDZwC7.png"></p>
-<p>每套在线学习的机器成本都很大，因此 $m$ 数量很小，制约模型开发迭代的效率。在线学习对指标的提升巨大，但是会制约模型开发迭代的效率。最好在模型相对成熟之后再考虑在线学习。</p>
-<h2 id="3-5-老汤模型"><a href="#3-5-老汤模型" class="headerlink" title="3.5 老汤模型"></a>3.5 老汤模型</h2><p>不论做不做新模型，每天都会用新产生的数据对模型做 1 epoch 的训练。久而久之，老模型训练得非常好，很难被超过。对模型做改进，重新训练，很难追上老模型……</p>
+<p>在线学习对推荐系统的指标提升非常大，但是也会消耗更多的算力。设在线学习需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">10,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span> CPU core 的算力增量更新⼀个精排模型，那么推荐系统⼀共需要多少额外的算力给在线学习？</p>
+<p>如果不做 AB 测试，整个推荐系统多花 1w 个 CPU 核心就够了，但是为了做 AB 测试，线上同时运行多个不同的模型。每个模型都需要做在线学习，全天 24 小时计算梯度更新模型。如果线上有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 个模型，则需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 套在线学习的机器。</p>
+<p>线上有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 个模型，并非都是给测试新模型用的。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 个模型中 1 个是 holdout，1 个是推全的模型，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m - 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 个测试的新模型。</p>
+<p><img src="image_0C95DDZwC7.png" alt=""></p>
+<p>每套在线学习的机器成本都很大，因此 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 数量很小，制约模型开发迭代的效率。在线学习对指标的提升巨大，但是会制约模型开发迭代的效率。最好在模型相对成熟之后再考虑在线学习。</p>
+<h2 id="3-5-老汤模型">3.5 老汤模型</h2>
+<p>不论做不做新模型，每天都会用新产生的数据对模型做 1 epoch 的训练。久而久之，老模型训练得非常好，很难被超过。对模型做改进，重新训练，很难追上老模型……</p>
 <blockquote>
 <p><strong>问题 1</strong>：如何快速判断新模型结构是否优于老模型？（不需要追上线上的老模型，只需要判断新老模型谁的结构更优）</p>
 </blockquote>
 <p>对于新、老模型结构，都随机初始化模型全连接层。Embedding 层可以是随机初始化，也可以是复用老模型训练好的参数。这样处理 Embedding 层，新老模型的区别就只是模型结构而已。</p>
-<p>在做完模型初始化之后，用 $n$ 天的数据训练新老模型（从旧到新，训练 1 epoch），如果新模型显著优于老模型，新模型很可能更优。只是比较新老模型结构谁更好，而非真正追平老模型。</p>
+<p>在做完模型初始化之后，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 天的数据训练新老模型（从旧到新，训练 1 epoch），如果新模型显著优于老模型，新模型很可能更优。只是比较新老模型结构谁更好，而非真正追平老模型。</p>
 <blockquote>
 <p><strong>问题 2</strong>：如何更快追平、超过线上的老模型？（只有几十天的数据，新模型就能追上训练上百天的老模型）</p>
 </blockquote>
 <p>已经得出初步结论，认为新模型很可能优于老模型。用几十天的数据训练新模型，早日追平老模型。</p>
 <ol>
 <li><strong>方法 1</strong>：尽可能多地复用老模型训练好的 embedding 层，避免随机初始化 embedding 层（Embedding 层是对用户、物品特点的“记忆”，比全连接层学得慢）。</li>
-<li><strong>方法 2</strong>：用老模型做 teacher，蒸馏新模型（用户真实行为是 $y$，老模型的预测是 $p$，用 $\frac{y+p}{2}$ 作为训练新模型的目标）。在训练新模型的初期做蒸馏，可以大幅加速收敛，让新模型追得更快。</li>
+<li><strong>方法 2</strong>：用老模型做 teacher，蒸馏新模型（用户真实行为是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>，老模型的预测是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>y</mi><mo>+</mo><mi>p</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{y+p}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.199439em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.854439em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 作为训练新模型的目标）。在训练新模型的初期做蒸馏，可以大幅加速收敛，让新模型追得更快。</li>
 </ol>
-<h2 id="3-6-总结"><a href="#3-6-总结" class="headerlink" title="3.6 总结"></a>3.6 总结</h2><p>精排模型：改进模型基座（加宽加深、特征交叉、特征工程），改进多⽬标预估（增加新⽬标、MMoE、position bias）。</p>
+<h2 id="3-6-总结">3.6 总结</h2>
+<p>精排模型：改进模型基座（加宽加深、特征交叉、特征工程），改进多目标预估（增加新目标、MMoE、position bias）。</p>
 <p>粗排模型：三塔模型（取代多向量双塔模型），粗精排⼀致性建模。</p>
 <p>用户行为序列建模：沿着 SIM 的方向迭代升级，加长序列长度，改进筛选物品的方法。</p>
 <p>在线学习：对指标提升大，但是会降低模型迭代升级效率。</p>
@@ -3086,7 +3130,8 @@
   <entry>
     <title>WSS推荐系统学习笔记9：物品冷启动1</title>
     <url>/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/</url>
-    <content><![CDATA[<h1 id="1-优化目标-评价指标"><a href="#1-优化目标-评价指标" class="headerlink" title="1 优化目标&amp;评价指标"></a>1 优化目标&amp;评价指标</h1><p>UGC 比 PGC 更难，因为用户上传的内容质量良莠不齐，而且量很大，很难用人工去评判，很难让运营人员去调控。</p>
+    <content><![CDATA[<h1>1 优化目标&amp;评价指标</h1>
+<p>UGC 比 PGC 更难，因为用户上传的内容质量良莠不齐，而且量很大，很难用人工去评判，很难让运营人员去调控。</p>
 <p>为什么要特殊对待新笔记？因为新笔记刚刚那个发布，缺少与用户的交互，导致推荐的难度大、效果差。此外，扶持新发布、低曝光的笔记，可以增强作者发布意愿。</p>
 <p>优化冷启的目标：</p>
 <ol>
@@ -3097,7 +3142,8 @@
 <p>冷启动的评价指标主要包含作者侧、用户侧和内容侧：</p>
 <ol>
 <li>作者侧指标：发布渗透率、人均发布量。</li>
-<li>用户侧指标：<ul>
+<li>用户侧指标：
+<ul>
 <li>新笔记指标：新笔记的点击率、交互率。</li>
 <li>大盘指标：消费时长、日活、月活。</li>
 </ul>
@@ -3106,36 +3152,44 @@
 </ol>
 <p>作者侧和用户侧指标是工业界通用的，技术比较好的大厂都会用这两类指标。内容侧指标只有少数几家在用。</p>
 <p>冷启动的优化点为优化全链路（包括召回和排序）和流量调控（流量怎么在新物品、老物品中分配）。</p>
-<h2 id="1-1-作者侧指标"><a href="#1-1-作者侧指标" class="headerlink" title="1.1 作者侧指标"></a>1.1 作者侧指标</h2><p>作者侧指标主要有发布渗透率和人均发布量。</p>
-<h3 id="1-1-1-发布渗透率"><a href="#1-1-1-发布渗透率" class="headerlink" title="1.1.1 发布渗透率"></a>1.1.1 发布渗透率</h3><blockquote>
-<p>发布渗透率 &#x3D; 当日发布人数 &#x2F; 日活人数</p>
+<h2 id="1-1-作者侧指标">1.1 作者侧指标</h2>
+<p>作者侧指标主要有发布渗透率和人均发布量。</p>
+<h3 id="1-1-1-发布渗透率">1.1.1 发布渗透率</h3>
+<blockquote>
+<p>发布渗透率 = 当日发布人数 / 日活人数</p>
 </blockquote>
 <p>在某一天，用户成为作者的比例就称为<strong>发布渗透率</strong>。一个用户只要发布⼀篇或以上，就算⼀个发布人数。</p>
-<p>例如，当日发布人数 &#x3D; 100万，日活人数 &#x3D; 2000万，则发布渗透率 &#x3D; 100 &#x2F; 2000 &#x3D; 5%。</p>
-<h3 id="1-1-2-人均发布量"><a href="#1-1-2-人均发布量" class="headerlink" title="1.1.2 人均发布量"></a>1.1.2 人均发布量</h3><blockquote>
-<p>人均发布量 &#x3D; 当日发布笔记数 &#x2F; 日活人数</p>
+<p>例如，当日发布人数 = 100万，日活人数 = 2000万，则发布渗透率 = 100 / 2000 = 5%。</p>
+<h3 id="1-1-2-人均发布量">1.1.2 人均发布量</h3>
+<blockquote>
+<p>人均发布量 = 当日发布笔记数 / 日活人数</p>
 </blockquote>
-<p>例如，每日发布笔记数 &#x3D; 200万，日活人数 &#x3D; 2000万，则人均发布量 &#x3D; 200 &#x2F; 2000 &#x3D; 0.1。</p>
+<p>例如，每日发布笔记数 = 200万，日活人数 = 2000万，则人均发布量 = 200 / 2000 = 0.1。</p>
 <p>有时，一个作者一天可能发布多个笔记，这不影响发布渗透量，但是会影响人均发布量。</p>
 <p>发布渗透率、人均发布量反映出作者的发布积极性。冷启的重要优化目标是提高作者的积极性，促进发布，增大内容池。新笔记获得的曝光越多，首次曝光和交互出现得越早，作者发布积极性越高。所以要把流量向新笔记倾斜，让新笔记获得更多的曝光。同时也要优化新笔记的链路，让新笔记出现交互尽量快。</p>
-<h2 id="1-2-用户侧指标"><a href="#1-2-用户侧指标" class="headerlink" title="1.2 用户侧指标"></a>1.2 用户侧指标</h2><p>用户侧指标主要有新笔记的消费指标和大盘指标。</p>
-<h3 id="1-2-1-新笔记的消费指标"><a href="#1-2-1-新笔记的消费指标" class="headerlink" title="1.2.1 新笔记的消费指标"></a>1.2.1 新笔记的消费指标</h3><p>新笔记的的消费指标主要有点击率、交互率。但是由于曝光的基尼系数很大，少数头部新笔记占据了大部分的曝光。整体的消费指标不能反映出大部分新笔记的情况。</p>
+<h2 id="1-2-用户侧指标">1.2 用户侧指标</h2>
+<p>用户侧指标主要有新笔记的消费指标和大盘指标。</p>
+<h3 id="1-2-1-新笔记的消费指标">1.2.1 新笔记的消费指标</h3>
+<p>新笔记的的消费指标主要有点击率、交互率。但是由于曝光的基尼系数很大，少数头部新笔记占据了大部分的曝光。整体的消费指标不能反映出大部分新笔记的情况。</p>
 <p>所以最好是把高曝光和低曝光新笔记分开，分别考察它们的消费指标：</p>
 <ul>
 <li>高曝光：比如 &gt; 1000 次曝光</li>
 <li>低曝光：比如 &lt; 1000 次曝光</li>
 </ul>
-<h3 id="1-2-2-大盘消费指标"><a href="#1-2-2-大盘消费指标" class="headerlink" title="1.2.2 大盘消费指标"></a>1.2.2 大盘消费指标</h3><p>另一类用户侧指标是大盘消费指标，也就是不区分新笔记和老笔记，做新笔记推荐的实验的时候，要考虑大盘的消费时长、日活、月活等指标。</p>
+<h3 id="1-2-2-大盘消费指标">1.2.2 大盘消费指标</h3>
+<p>另一类用户侧指标是大盘消费指标，也就是不区分新笔记和老笔记，做新笔记推荐的实验的时候，要考虑大盘的消费时长、日活、月活等指标。</p>
 <p>在优化冷启时，不是要提高大盘的消费指标，而是要确保新的策略不会显著伤害大盘的指标。</p>
-<p>大力扶持低曝光新笔记会发⽣什么？</p>
+<p>大力扶持低曝光新笔记会发生什么？</p>
 <ol>
 <li>作者侧发布指标变好</li>
 <li>用户侧大盘消费指标变差</li>
 </ol>
-<h2 id="1-3-内容侧指标"><a href="#1-3-内容侧指标" class="headerlink" title="1.3 内容侧指标"></a>1.3 内容侧指标</h2><p>还有一类叫做内容侧指标，有的大厂会考察此类指标。内容侧指标主要是高热笔记占比，高热笔记可以定义为前 30 天获得 1000+ 次点击。</p>
+<h2 id="1-3-内容侧指标">1.3 内容侧指标</h2>
+<p>还有一类叫做内容侧指标，有的大厂会考察此类指标。内容侧指标主要是高热笔记占比，高热笔记可以定义为前 30 天获得 1000+ 次点击。</p>
 <p>高热笔记占比越高，说明冷启阶段挖掘优质笔记的能力越强。</p>
 <hr>
-<h1 id="2-简单的召回通道"><a href="#2-简单的召回通道" class="headerlink" title="2 简单的召回通道"></a>2 简单的召回通道</h1><p>新笔记⾃带图⽚、⽂字、地点以及算法或人⼯标注的标签。但是新笔记没有用户点击、点赞等信息，同时也没有笔记 ID embedding，缺少这个特征会对召回带来很大的困难。</p>
+<h1>2 简单的召回通道</h1>
+<p>新笔记自带图片、文字、地点以及算法或人工标注的标签。但是新笔记没有用户点击、点赞等信息，同时也没有笔记 ID embedding，缺少这个特征会对召回带来很大的困难。</p>
 <p>冷启召回的困难：</p>
 <ol>
 <li>缺少用户交互，还没学好笔记 ID embedding，导致双塔模型效果不好。</li>
@@ -3146,27 +3200,30 @@
 </blockquote>
 <p>ItemCF 做召回的原理是判断两篇笔记的相似度有多高，要根据与笔记交互过的用户来判定两篇笔记的相似度。下图中红色框内的用户与两篇笔记都有交互，是重合的。两个笔记的用户重合度越高，说明两篇笔记的相似度越高。</p>
 <p>但是新笔记还没有和任何用户进行交互，所以不能计算和其他笔记的相似度，所以 ItemCF 不适用于冷启动。</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_9qlRvj0IR4.png"></p>
+<p><img src="image_9qlRvj0IR4.png" alt=""></p>
 <p>召回通道：</p>
 <ol>
 <li>ItemCF召回（不适用）</li>
 <li>双塔模型（改造后适用）</li>
 <li>类目、关键词召回（适用）：在笔记刚发布时最有用</li>
 <li>聚类召回（适用）</li>
-<li>Look-Alike召回（适用）</li>
+<li>Look-Alike 召回（适用）</li>
 </ol>
-<h2 id="2-1-双塔模型"><a href="#2-1-双塔模型" class="headerlink" title="2.1 双塔模型"></a>2.1 双塔模型</h2><p>由于新笔记的 ID Embedding 需要从用户和笔记的交互中学习，但是新笔记还没有和用户交互过，所以这个嵌入还没有学好，直接用双塔模型做新笔记的召回效果不是很好。</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_nIwtxAMPKg.png"></p>
-<h3 id="2-1-1-ID-Embedding"><a href="#2-1-1-ID-Embedding" class="headerlink" title="2.1.1 ID Embedding"></a>2.1.1 ID Embedding</h3><blockquote>
-<p><strong>改进方案 1：</strong>新笔记使用 default embedding。</p>
-</blockquote>
-<p>物品塔做 ID embedding 时，让所有新笔记共享⼀个 ID，⽽不是用⾃⼰真正的 ID。</p>
-<p>Default embedding：共享的 ID 对应的 embedding向量。这个默认嵌入是学出来的，而不是全零初始化或默认初始化。新笔记发布之后逐渐会有点击和交互，到下次模型训练的时候，新笔记才有⾃⼰的 ID embedding 向量。</p>
+<h2 id="2-1-双塔模型">2.1 双塔模型</h2>
+<p>由于新笔记的 ID Embedding 需要从用户和笔记的交互中学习，但是新笔记还没有和用户交互过，所以这个嵌入还没有学好，直接用双塔模型做新笔记的召回效果不是很好。</p>
+<p><img src="image_nIwtxAMPKg.png" alt=""></p>
+<h3 id="2-1-1-id-embedding">2.1.1 ID Embedding</h3>
 <blockquote>
-<p><strong>改进<strong><strong>方</strong></strong>案 2：</strong>利用相似笔记 embedding 向量。</p>
+<p><strong>改进方案 1</strong>：新笔记使用 default embedding。</p>
 </blockquote>
-<p>查找 top k 内容最相似的高曝笔记。把 $k$ 个高曝笔记的 embedding 向量取平均，作为新笔记的 embedding。之所以用高曝光笔记，是因为它们的 ID embedding 学的比较好。</p>
-<h3 id="2-1-2-多个向量召回池"><a href="#2-1-2-多个向量召回池" class="headerlink" title="2.1.2 多个向量召回池"></a>2.1.2 多个向量召回池</h3><p>多个召回池，让新笔记有更多曝光机会。</p>
+<p>物品塔做 ID embedding 时，让所有新笔记共享⼀个 ID，而不是用自己真正的 ID。</p>
+<p>Default embedding：共享的 ID 对应的 embedding 向量。这个默认嵌入是学出来的，而不是全零初始化或默认初始化。新笔记发布之后逐渐会有点击和交互，到下次模型训练的时候，新笔记才有自己的 ID embedding 向量。</p>
+<blockquote>
+<p><strong>改进方案 2</strong>：利用相似笔记 embedding 向量。</p>
+</blockquote>
+<p>查找 top k 内容最相似的高曝笔记。把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个高曝笔记的 embedding 向量取平均，作为新笔记的 embedding。之所以用高曝光笔记，是因为它们的 ID embedding 学的比较好。</p>
+<h3 id="2-1-2-多个向量召回池">2.1.2 多个向量召回池</h3>
+<p>多个召回池，让新笔记有更多曝光机会。</p>
 <ul>
 <li>1 小时新笔记</li>
 <li>6 小时新笔记</li>
@@ -3174,40 +3231,53 @@
 <li>30 天笔记</li>
 </ul>
 <p>上面这些召回池都共享同⼀个双塔模型，那么多个召回池不增加训练的代价。</p>
-<h2 id="2-2-类目召回"><a href="#2-2-类目召回" class="headerlink" title="2.2 类目召回"></a>2.2 类目召回</h2><p>凡是做信息流社交电商的互联网公司，都是维护每一个用户的画像，画像中记录了用户的兴趣点，比如感兴趣的类目和关键词。这些类目和关键词可以用于召回。</p>
-<p>系统维护类目索引：类目 → 笔记列表（按时间倒排），要用这个索引召回新笔记。之后在做召回时，取出用户感兴趣的类目。然后用类目索引做召回：用户画像 → 类目 → 笔记列表，取回笔记列表上前 k 篇笔记（即最新的 k 篇）。</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_vD7eSzR3t3.png"></p>
-<h2 id="2-3-关键词召回"><a href="#2-3-关键词召回" class="headerlink" title="2.3 关键词召回"></a>2.3 关键词召回</h2><p>关键词召回和类目召回类似，唯一的区别是用关键词代替类目。系统维护关键词索引：关键词 → 笔记列表（按时间倒排），然后根据用户画像上的关键词做召回。</p>
+<h2 id="2-2-类目召回">2.2 类目召回</h2>
+<p>凡是做信息流社交电商的互联网公司，都是维护每一个用户的画像，画像中记录了用户的兴趣点，比如感兴趣的类目和关键词，这些类目和关键词可以用于召回。</p>
+<p>系统维护类目索引：类目 → 笔记列表（按时间倒排），要用这个索引召回新笔记。之后在做召回时，取出用户感兴趣的类目。然后用类目索引做召回：用户画像 → 类目 → 笔记列表，取回笔记列表上前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 篇笔记（即最新的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 篇）。</p>
+<p><img src="image_vD7eSzR3t3.png" alt=""></p>
+<h2 id="2-3-关键词召回">2.3 关键词召回</h2>
+<p>关键词召回和类目召回类似，唯一的区别是用关键词代替类目。系统维护关键词索引：关键词 → 笔记列表（按时间倒排），然后根据用户画像上的关键词做召回。</p>
 <p><strong>类目召回和关键词召回的缺点：</strong></p>
 <ol>
-<li>只对刚刚发布的新笔记有效：取回某类目&#x2F;关键词下最新的 $k$ 篇笔记，发布几小时之后，就再没有机会被召回</li>
+<li>只对刚刚发布的新笔记有效：取回某类目/关键词下最新的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 篇笔记，发布几小时之后，就再没有机会被召回</li>
 <li>弱个性化，不够精准：按照用户感兴趣的类目或关键词是很宽泛的</li>
 </ol>
 <hr>
-<h1 id="3-聚类召回"><a href="#3-聚类召回" class="headerlink" title="3 聚类召回"></a>3 聚类召回</h1><p>聚类召回在物品冷启动的时候特别有用。</p>
-<h2 id="3-1-基本思想"><a href="#3-1-基本思想" class="headerlink" title="3.1 基本思想"></a>3.1 基本思想</h2><p>如果用户喜欢⼀篇笔记，那么他会喜欢内容相似的笔记。可以事先训练⼀个神经⽹络，基于笔记的类目和图⽂内容，把笔记映射到向量。</p>
-<p>对笔记向量做聚类，划分为 1000 cluster，记录每个 cluster 的中⼼⽅向（k-means 聚类，用余弦相似度）。</p>
-<h3 id="3-1-1-聚类索引"><a href="#3-1-1-聚类索引" class="headerlink" title="3.1.1 聚类索引"></a>3.1.1 聚类索引</h3><p>当⼀篇新笔记发布之后，用神经⽹络把它映射到⼀个特征向量。然后把这个向量从 1000 个向量（对应 1000 个 cluster）中找到最相似的向量，作为新笔记的 cluster。</p>
+<h1>3 聚类召回</h1>
+<p>聚类召回在物品冷启动的时候特别有用。</p>
+<h2 id="3-1-基本思想">3.1 基本思想</h2>
+<p>如果用户喜欢⼀篇笔记，那么他会喜欢内容相似的笔记。可以事先训练⼀个神经网络，基于笔记的类目和图文内容，把笔记映射到向量。</p>
+<p>对笔记向量做聚类，划分为 1000 cluster，记录每个 cluster 的中心方向（k-means 聚类，用余弦相似度）。</p>
+<h3 id="3-1-1-聚类索引">3.1.1 聚类索引</h3>
+<p>当⼀篇新笔记发布之后，用神经网络把它映射到⼀个特征向量。然后把这个向量从 1000 个向量（对应 1000 个 cluster）中找到最相似的向量，作为新笔记的 cluster。</p>
 <p>把新笔记的 ID 添加到索引上，索引是从 cluster 到笔记 ID 列表（按时间倒排）。</p>
-<h3 id="3-1-2-线上召回"><a href="#3-1-2-线上召回" class="headerlink" title="3.1.2 线上召回"></a>3.1.2 线上召回</h3><p>当用户在刷小红书发起推荐请求，此时系统根据用户ID，找到他的 last-n 交互的笔记列表，把这些笔记作为种子笔记，去召回相似的笔记。</p>
-<p>用神经网络把每篇种⼦笔记映射到向量，寻找最相似的cluster（这样知道了用户对哪些 cluster 感兴趣）。之后从每个 cluster 的笔记列表中，取回最新发布的 $m$ 篇笔记，最多取回 $mn$ 篇笔记。</p>
-<h2 id="3-2-内容相似度模型"><a href="#3-2-内容相似度模型" class="headerlink" title="3.2 内容相似度模型"></a>3.2 内容相似度模型</h2><h3 id="3-2-1-提取图文特征"><a href="#3-2-1-提取图文特征" class="headerlink" title="3.2.1 提取图文特征"></a>3.2.1 提取图文特征</h3><p>用 CNN 提取图片的特征输出一个向量，用 BERT 提取文字的特征输出一个向量，把这两个向量做拼接，然后输入全连接层，最后得到笔记的特征向量。这个向量是对笔记图文特征的表征。</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_kJlJ-xaORW.png"></p>
-<h3 id="3-2-2-两篇笔记内容相似度"><a href="#3-2-2-两篇笔记内容相似度" class="headerlink" title="3.2.2 两篇笔记内容相似度"></a>3.2.2 两篇笔记内容相似度</h3><p>把左边的笔记送入刚才的神经网络，得到这个笔记的特征向量 $a$，同样的操作，把右边的笔记也送入神经网络，得到特征向量 $b$，这两个神经网络是相同的。</p>
-<p>最后计算向量 $a$ 和 $b$ 的余弦相似度 $\cos (a, b)$。</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_ypJX0n7Sg4.png"></p>
-<h3 id="3-2-3-训练内容相似度模型"><a href="#3-2-3-训练内容相似度模型" class="headerlink" title="3.2.3 训练内容相似度模型"></a>3.2.3 训练内容相似度模型</h3><p>每个训练样本都是一个三元组：&lt; 正样本，种子样本，负样样本 &gt;。把这三个样本送入神经网络，神经网络的参数都是相同的，然后得到向量 $b^+$、$a$ 和 $b^-$，分别计算 $\cos \left(\mathrm{a}, \mathrm{b}^{+}\right)$ 和 $\cos \left(\mathrm{a}, \mathrm{b}^{-}\right)$。</p>
-<p><strong>做训练的目标：</strong>鼓励 $\cos \left(a, b^{+}\right)$ 大于 $\cos \left(a, b^{-}\right)$</p>
+<h3 id="3-1-2-线上召回">3.1.2 线上召回</h3>
+<p>当用户在刷小红书发起推荐请求，此时系统根据用户 ID，找到他的 last-n 交互的笔记列表，把这些笔记作为种子笔记，去召回相似的笔记。</p>
+<p>用神经网络把每篇种子笔记映射到向量，寻找最相似的 cluster（这样知道了用户对哪些 cluster 感兴趣）。之后从每个 cluster 的笔记列表中，取回最新发布的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 篇笔记，最多取回 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">mn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span></span></span></span> 篇笔记。</p>
+<h2 id="3-2-内容相似度模型">3.2 内容相似度模型</h2>
+<h3 id="3-2-1-提取图文特征">3.2.1 提取图文特征</h3>
+<p>用 CNN 提取图片的特征输出一个向量，用 BERT 提取文字的特征输出一个向量，把这两个向量做拼接，然后输入全连接层，最后得到笔记的特征向量。这个向量是对笔记图文特征的表征。</p>
+<p><img src="image_kJlJ-xaORW.png" alt=""></p>
+<h3 id="3-2-2-两篇笔记内容相似度">3.2.2 两篇笔记内容相似度</h3>
+<p>把左边的笔记送入刚才的神经网络，得到这个笔记的特征向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>，同样的操作，把右边的笔记也送入神经网络，得到特征向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，这两个神经网络是相同的。</p>
+<p>最后计算向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 的余弦相似度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\cos (a, b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span></span></span></span>。</p>
+<p><img src="image_ypJX0n7Sg4.png" alt=""></p>
+<h3 id="3-2-3-训练内容相似度模型">3.2.3 训练内容相似度模型</h3>
+<p>每个训练样本都是一个三元组：&lt; 正样本，种子样本，负样样本 &gt;。把这三个样本送入神经网络，神经网络的参数都是相同的，然后得到向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">b^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">b^-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span>，分别计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi mathvariant="normal">a</mi><mo separator="true">,</mo><msup><mi mathvariant="normal">b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\cos \left(\mathrm{a}, \mathrm{b}^{+}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathrm">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi mathvariant="normal">a</mi><mo separator="true">,</mo><msup><mi mathvariant="normal">b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\cos \left(\mathrm{a}, \mathrm{b}^{-}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathrm">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span>。</p>
+<p><strong>做训练的目标</strong>：鼓励 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi>a</mi><mo separator="true">,</mo><msup><mi>b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\cos \left(a, b^{+}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span> 大于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi>a</mi><mo separator="true">,</mo><msup><mi>b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\cos \left(a, b^{-}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></p>
 <p>Triplet hinge loss：</p>
-<p>$$<br>L\left(\mathbf{a}, \mathbf{b}^{+}, \mathbf{b}^{-}\right)&#x3D;\max \left{0, \cos \left(\mathbf{a}, \mathbf{b}^{-}\right)+m-\cos \left(\mathbf{a}, \mathbf{b}^{+}\right)\right}<br>$$</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo stretchy="false">)</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mspace linebreak="newline"></mspace><mrow><mn>0</mn><mo separator="true">,</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo stretchy="false">)</mo><mo>+</mo><mi>m</mi><mo>−</mo><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace></mrow></mrow><annotation encoding="application/x-tex">L(\mathbf{a}, \mathbf{b}^{+}, \mathbf{b}^{-})=\max \\{0, \cos (\mathbf{a}, \mathbf{b}^{-})+m-\cos (\mathbf{a}, \mathbf{b}^{+})\\}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.071331em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1.071331em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace newline"></span></span></span></span></span></span></p>
 <p>Triplet logistic loss：</p>
-<p>$$<br>L\left(\mathbf{a}, \mathbf{b}^{+}, \mathbf{b}^{-}\right)&#x3D;\log \left(1+\exp \left(\cos \left(\mathbf{a}, \mathbf{b}^{-}\right)-\cos \left(\mathbf{a}, \mathbf{b}^{+}\right)\right)\right)<br>$$</p>
-<p><img src="/2024/10/22/WSS%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09%EF%BC%9A%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A81/image_LWsGiNlEli.png"></p>
-<h3 id="3-2-4-正负样本的选取"><a href="#3-2-4-正负样本的选取" class="headerlink" title="3.2.4 正负样本的选取"></a>3.2.4 正负样本的选取</h3><blockquote>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo fence="true">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo fence="true">)</mo></mrow><mo>=</mo><mi>log</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mn>1</mn><mo>+</mo><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">−</mo></msup><mo fence="true">)</mo></mrow><mo>−</mo><mi>cos</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mi mathvariant="bold">a</mi><mo separator="true">,</mo><msup><mi mathvariant="bold">b</mi><mo lspace="0em" rspace="0em">+</mo></msup><mo fence="true">)</mo></mrow><mo fence="true">)</mo></mrow><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">L\left(\mathbf{a}, \mathbf{b}^{+}, \mathbf{b}^{-}\right)=\log \left(1+\exp \left(\cos \left(\mathbf{a}, \mathbf{b}^{-}\right)-\cos \left(\mathbf{a}, \mathbf{b}^{+}\right)\right)\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mop">exp</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathbf">a</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.821331em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span></span></p>
+<p><img src="image_LWsGiNlEli.png" alt=""></p>
+<h3 id="3-2-4-正负样本的选取">3.2.4 正负样本的选取</h3>
+<blockquote>
 <p><strong>&lt; 种子笔记，正样本 &gt;</strong></p>
 </blockquote>
 <p>方法一：人工标注⼆元组的相似度，但是人工标注的代价太大</p>
-<p>方法二：算法⾃动选正样本，可以设置如下的筛选条件</p>
+<p>方法二：算法自动选正样本，可以设置如下的筛选条件</p>
 <ol>
 <li>只用高曝光笔记作为⼆元组（因为有充⾜的用户交互信息）</li>
 <li>两篇笔记有相同的⼆级类目，比如都是“菜谱教程”</li>
@@ -3221,9 +3291,10 @@
 <li>字数较多（神经网络提出的文本信息有效）</li>
 <li>笔记质量高，避免图文无关</li>
 </ol>
-<h2 id="3-3-总结"><a href="#3-3-总结" class="headerlink" title="3.3 总结"></a>3.3 总结</h2><p><strong>基本思想：</strong>根据用户的点赞、收藏、转发记录，推荐内容相似的笔记。</p>
+<h2 id="3-3-总结">3.3 总结</h2>
+<p><strong>基本思想</strong>：根据用户的点赞、收藏、转发记录，推荐内容相似的笔记。</p>
 <ul>
-<li>线下训练：多模态神经⽹络把图⽂内容映射到向量</li>
+<li>线下训练：多模态神经网络把图文内容映射到向量</li>
 <li>线上服务：用户喜欢的笔记 → 特征向量 → 最近的 Cluster → 新笔记</li>
 </ul>
 ]]></content>
