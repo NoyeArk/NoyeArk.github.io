@@ -552,335 +552,6 @@
       </tags>
   </entry>
   <entry>
-    <title>6.13华为二面</title>
-    <url>/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%BA%8C%E9%9D%A2%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<ul>
-<li>面试时间：2024年6月13日14:15~14:50</li>
-<li>面试公司：华为</li>
-<li>面试类型：业务主管面</li>
-</ul>
-<hr>
-<h1 id="1-整体感受"><a href="#1-整体感受" class="headerlink" title="1 整体感受"></a>1 整体感受</h1><p>面试官没有开摄像头，不知道面试官的表情，感觉有点不得劲哈哈。</p>
-<p><img src="/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%BA%8C%E9%9D%A2%E5%9B%9E%E9%A1%BE/image_zrlpFcI-Bi.png"></p>
-<p>整体来说感觉还行，这次面试没有问很多技术上的问题，更多是对你价值观一些的问题，还有会深挖一些简历上的东西，所以应该对简历上的内容非常熟悉。</p>
-<p>而且，面试官真的很好，我面试中说到了我早上8点之前就到实验室，然后除了吃饭之外，基本上都在实验室，晚上10点才离开，然后面试官就开始鼓励我，他说“你的这个习惯真的很好，一定要坚持下去，因为等你到中年发现，你一生中的很多成就都是在你青年的时候获得的，所以在你青年的时候一定要多做一些事情，这样你才有所收获”。</p>
-<p>面试结束了，之后也没有其他的面试了，就只有等待结果了，希望自己可以通过，真的很想去华为实习，这个经历真的很nice。</p>
-<h2 id="1-1-自己做的不错的地方"><a href="#1-1-自己做的不错的地方" class="headerlink" title="1.1 自己做的不错的地方"></a>1.1 自己做的不错的地方</h2><ol>
-<li>面试官问什么就答什么，可以适当拓展，但是不要说太多了，要不然面试官可能都不想听下去</li>
-<li>回答的逻辑也比较好，有条理，可以让面试官抓到重点</li>
-<li>感觉自己的面试经验经过这几次面试已经提升了很多了</li>
-</ol>
-<hr>
-<h1 id="2-提问的问题"><a href="#2-提问的问题" class="headerlink" title="2 提问的问题"></a>2 提问的问题</h1><blockquote>
-<p>问：你能介绍一下论文中的创新点吗？</p>
-</blockquote>
-<p>答：blblbl，感觉面试官不太懂这个，但是只要你讲出自信，他就没啥问题要问你了</p>
-<blockquote>
-<p>问：你能说一下你这个实验是怎么做的吗？</p>
-</blockquote>
-<p>答：我是在学校机房开了20~30台机器做的，每组算法之间对战了1000局游戏</p>
-<blockquote>
-<p>问：最后的效果怎么样？</p>
-</blockquote>
-<p>答：最后的效果对比MCTS的胜率是55%，然后对比传统的博弈搜索算法AlphaBeta和Minimax的效果会好很多，然后我分析了一下为什么效果只有略微的提升。</p>
-<ol>
-<li>由于实验部分是在海克斯棋游戏上进行，棋盘大小是19×19，状态空间较大，所以搜索得到的结点之间的联系较弱，不能形成非常有效的关系。</li>
-<li>另外，实验的计算资源也有限，没有搜索很长时间，所以搜索的结点数也较小，如果搜索时间越长，效果就会越好。</li>
-</ol>
-<blockquote>
-<p>问：你平时了解咨询的主要途径有哪些？</p>
-</blockquote>
-<p>答：主要是通过github，它有一个流行仓库的功能，所以我会经常看一些这种仓库，除此之外，会经常看一些IT人写的技术博客，另外也会看一些类似华为公司的产品发布会或者技术文档。</p>
-<blockquote>
-<p>问：你刚才说你主要通过github看一些东西，那能举一个例子吗？</p>
-</blockquote>
-<p>答：我最近在github上学习了上海人工智能实验室的书生·浦语大模型，它有一个技术文档，并且会分配给你免费的算力，你可以部署它的一些模型。另外，它还有茴香豆，就是在群聊中的一个AI小助手，它会识别群友的问题是否是有效的问题，如果是有效的，那么它就会进行回答，否则它就当作没看见。</p>
-<blockquote>
-<p>问：你想通过这次实习得到什么，或者说你对这次实习的期待是什么？</p>
-</blockquote>
-<p>答：我最想通过这次实习提升自己的能力，总感觉自己在学校中学习到的和在工业界真正能应用的还是有差距的，因此我想通过这次实习提升自己这方面的能力。此外，我经常在学校中，我知道学校中的东西和在社会上的东西其实是有很大差距的，所以这也是我期待的地方。</p>
-<blockquote>
-<p>问：你能说一下对华为的认识，价值观之类的吗？</p>
-</blockquote>
-<p>答：我认为华为是一个很有野心的公司，blblblb………</p>
-<blockquote>
-<p>问：你未来的职业规划是什么？</p>
-</blockquote>
-<p>答：我的成绩比较优异，所以能拿到学校的推免资格，明年毕业后应该继续读研，研究方向应该也是深度学习方向。</p>
-]]></content>
-      <categories>
-        <category>找工作</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-        <tag>华为</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6.13华为一面</title>
-    <url>/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%B8%80%E9%9D%A2%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<ul>
-<li>面试时间：2024年6月13日9:00~9:50</li>
-<li>面试公司：华为</li>
-<li>面试类型：技术面</li>
-</ul>
-<hr>
-<h1 id="1-整体感受"><a href="#1-整体感受" class="headerlink" title="1 整体感受"></a>1 整体感受</h1><p>感觉面试官一进来就很面善哈哈哈哈，整体感觉面试过程很让人舒服，面试官说话的语气也很好。</p>
-<p>面完整体感觉还是挺不错的，希望能通过这一轮面试。</p>
-<p><img src="/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%B8%80%E9%9D%A2%E5%9B%9E%E9%A1%BE/image.png"></p>
-<h2 id="1-1-需要加强的地方"><a href="#1-1-需要加强的地方" class="headerlink" title="1.1 需要加强的地方"></a>1.1 需要加强的地方</h2><ol>
-<li>需要了解一下C++和Python语言的特性，面试真的会被问到</li>
-<li>基础知识还是挺重要的，系统能力应该注意</li>
-</ol>
-<hr>
-<h1 id="2-提问的问题"><a href="#2-提问的问题" class="headerlink" title="2 提问的问题"></a>2 提问的问题</h1><p>首先让你进行自我介绍，感觉现在自己自我介绍一点都不紧张，很放松，达到了自己想要的效果。</p>
-<h2 id="2-1-针对简历"><a href="#2-1-针对简历" class="headerlink" title="2.1 针对简历"></a>2.1 针对简历</h2><blockquote>
-<p>问：你当过就业市场部副部长，还举办过第一届双选会？</p>
-</blockquote>
-<p>答：是的，（说完之后面试官笑了笑，哈哈哈哈，感觉挺逗的，当时我应该再回复几句就更好了哈哈哈，面试官人真好）</p>
-<blockquote>
-<p>问：你简历中参加了博弈大赛，获得了两个项目的一等奖，能具体说一下队伍分工吗？</p>
-</blockquote>
-<p>答：我们队伍一共3个人，我作为队长主要负责整体进度规划和核心代码撰写，另一个人主要负责神经网络的训练，最后一个人主要负责棋力水平的测试。</p>
-<blockquote>
-<p>问：你说你们训练使用了分布式训练，能具体说一下吗？</p>
-</blockquote>
-<p>答：我们学校的机房中机器大部分都是没有GPU的机器，只有CPU，所以我们使用机房中的20~30台机器收集数据，并将收集好的数据给实验室中的一台3060ti的服务器进行训练</p>
-<blockquote>
-<p>问：你们这个3060ti服务器上有几张卡？</p>
-</blockquote>
-<p>答：只有一张卡</p>
-<blockquote>
-<p>问：只有一张卡（面试官此时有些惊讶），那你们训练了多少时间啊？网络的参数大概有多少？</p>
-</blockquote>
-<p>答：训练了3个星期左右，网络参数的话没太关注，因为我们使用的是AlphaGo的网络结构，没有进行改进。</p>
-<h3 id="2-1-1-网络的参数规模"><a href="#2-1-1-网络的参数规模" class="headerlink" title="2.1.1 网络的参数规模"></a>2.1.1 网络的参数规模</h3><ul>
-<li><code>Number of parameter: 3.08M</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">total = <span class="built_in">sum</span>([param.nelement() <span class="keyword">for</span> param <span class="keyword">in</span> self.trainer.net_work.parameters()])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Number of parameter: %.2fM&quot;</span> % (total/<span class="number">1e6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------------------------------------------</span></span><br><span class="line">NetWork(</span><br><span class="line">  (first_net): RestNet8B96C(</span><br><span class="line">    (conv): Conv2d(<span class="number">1</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (bn): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    (relu): ReLU()</span><br><span class="line">    (residues): Sequential(</span><br><span class="line">      (<span class="number">0</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">1</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">2</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">3</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">4</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">5</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">6</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">7</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">    (policy_head): PolicyHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">48</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">48</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (conv2): Conv2d(<span class="number">48</span>, <span class="number">1</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">1</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">    (value_head): ValueHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (fc): Linear(in_features=<span class="number">96</span>, out_features=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">  (second_net): RestNet8B96C(</span><br><span class="line">    (conv): Conv2d(<span class="number">1</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (bn): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    (relu): ReLU()</span><br><span class="line">    (residues): Sequential(</span><br><span class="line">      (<span class="number">0</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">1</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">2</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">3</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">4</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">5</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">6</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">7</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">    (policy_head): PolicyHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">48</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">48</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (conv2): Conv2d(<span class="number">48</span>, <span class="number">1</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">1</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">    (value_head): ValueHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (fc): Linear(in_features=<span class="number">96</span>, out_features=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<blockquote>
-<p>问：你了解过什么深度学习框架吗？</p>
-</blockquote>
-<p>答：主要使用过pytorch框架</p>
-<blockquote>
-<p>问：那你知道pytorch中有一个关于分布式计算的接口叫什么吗？</p>
-</blockquote>
-<p>答：这个不太清楚，因为实验室资源有限，确实没有使用过这个功能（此时面试官哈哈哈哈笑了，感觉很放松耶）</p>
-<h3 id="2-1-2-torch-distributed"><a href="#2-1-2-torch-distributed" class="headerlink" title="2.1.2 torch.distributed"></a>2.1.2 torch.distributed</h3><p>torch.distributed包为在一台或多台机器上运行的多个计算节点上的多进程并行结构提供PyTorch支持和通信原语。 torch.nn.parallel.DistributedDataParallel()类就是基于此功能构建的，作为任何PyTorch模型的包装来提供同步分布式训练。这不同于 Multiprocessing package - torch.multiprocessing 和 torch.nn.DataParallel() 提供的并行结构，因为它支持多台联网的机器而且用户必须显式地为每个进程启动主要训练脚本的副本。</p>
-<h2 id="2-2-C-代码知识"><a href="#2-2-C-代码知识" class="headerlink" title="2.2 C++代码知识"></a>2.2 C++代码知识</h2><blockquote>
-<p>问：你主要使用什么语言多一点？</p>
-</blockquote>
-<p>答：C++吧</p>
-<blockquote>
-<p>问：你上面不是有个项目，涉及神经网络吗，那不应该是python吗？</p>
-</blockquote>
-<p>答：是的，但是我写算法题什么的都是使用C++，而且那个也是去年做的项目了，所以现在对C++比较熟悉一些</p>
-<blockquote>
-<p>问：那我问你一些关于C++语法的问题吧，你知道C++11引进了什么特性吗？</p>
-</blockquote>
-<p>答：（当时其实心里一点底都没有，但当时只能硬说了）我记得有一个auto关键字，好像还有一个lamda表达式</p>
-<hr>
-<h3 id="2-2-1-C-11新特性"><a href="#2-2-1-C-11新特性" class="headerlink" title="2.2.1 C++11新特性"></a>2.2.1 C++11新特性</h3><ol>
-<li>nullptr：替代 NULL，专门用来区分空指针、0。nullptr 的类型为 nullptr_t，能够隐式的转换为任何指针或成员指针的类型，也能和他们进行相等或者不等的比较。</li>
-<li>类型推导：C++11 引入了 auto 和 decltype 这两个关键字实现了类型推导，让编译器来操心变量的类型。<ul>
-<li>&#x20;auto 进行类型推导</li>
-<li>decltype 关键字是为了解决 auto 关键字只能对变量进行类型推导的缺陷而出现的，它可以使编译器自动分析表达式的类型并得到它的类型，最关键是它不会去计算表达式的值。它的用法和 sizeof 很相似：<code>decltype(表达式)</code></li>
-</ul>
-</li>
-<li>区间迭代 - 基于范围的 for 循环</li>
-<li>Lambda表达式： Lambda 表达式实际上就是提供了一个类似<strong>匿名函数</strong>的特性，而匿名函数则是<strong>在需要一个函数，但是又不想费力去命名一个函数的情况下</strong>去使用的。</li>
-<li>正则表达式：提供了正则表达式库，用于操作 std::string 对象</li>
-</ol>
-<hr>
-<blockquote>
-<p>问：既然说到lamda表达式，那你能说说lamda表达式什么吗？</p>
-</blockquote>
-<p>答：（这个真的一点都不知道）我主要是在python中使用过，C++中很少使用，….</p>
-<blockquote>
-<p>问：那你说用了lamda表达式有什么感受吗？</p>
-</blockquote>
-<p>答：感觉代码更短更简洁了（面试官笑了，我也笑了哈哈哈哈）</p>
-<h3 id="2-2-2-Lamda表达式"><a href="#2-2-2-Lamda表达式" class="headerlink" title="2.2.2 Lamda表达式"></a>2.2.2 Lamda表达式</h3><p>Lambda表达式是一种在被调用的位置或作为参数传递给函数的位置定义匿名函数对象（闭包）的简便方法。Lambda表达式的基本语法如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">[capture list] (parameter list) -&gt; <span class="keyword">return</span> type &#123; function body &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>capture list 是捕获列表</strong>，用于指定 Lambda表达式可以访问的外部变量，以及是按值还是按引用的方式访问。捕获列表可以为空，表示不访问任何外部变量，也可以使用默认捕获模式 &amp; 或 &#x3D; 来表示按引用或按值捕获所有外部变量，还可以混合使用具体的变量名和默认捕获模式来指定不同的捕获方式。</li>
-<li><strong>parameter list 是参数列表</strong>，用于表示 Lambda表达式的参数，可以为空，表示没有参数，也可以和普通函数一样指定参数的类型和名称，还可以在 c++14 中使用 auto 关键字来实现泛型参数。</li>
-<li><strong>return type 是返回值类型</strong>，用于指定 Lambda表达式的返回值类型，可以省略，表示由编译器根据函数体推导，也可以使用 -&gt; 符号显式指定，还可以在 c++14 中使用 auto 关键字来实现泛型返回值。</li>
-<li><strong>function body 是函数体</strong>，用于表示 Lambda表达式的具体逻辑，可以是一条语句，也可以是多条语句，还可以在 c++14 中使用 constexpr 来实现编译期计算。</li>
-</ul>
-<h4 id="2-2-2-1-Lambda表达式的捕获方式"><a href="#2-2-2-1-Lambda表达式的捕获方式" class="headerlink" title="2.2.2.1 Lambda表达式的捕获方式"></a>2.2.2.1 Lambda表达式的捕获方式</h4><ul>
-<li>值捕获（capture by value）：在捕获列表中使用变量名，表示将该变量的值拷贝到 Lambda 表达式中，作为一个数据成员。值捕获的变量在 Lambda 表达式定义时就已经确定，不会随着外部变量的变化而变化。值捕获的变量默认不能在 Lambda 表达式中修改，除非使用 mutable 关键字。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [x] (<span class="type">int</span> y) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y; &#125;; <span class="comment">// 值捕获 x</span></span><br><span class="line">x = <span class="number">20</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 15，不受外部 x 的影响</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>引用捕获（capture by reference）：在捕获列表中使用 &amp; 加变量名，表示将该变量的引用传递到 Lambda 表达式中，作为一个数据成员。引用捕获的变量在 Lambda 表达式调用时才确定，会随着外部变量的变化而变化。引用捕获的变量可以在 Lambda 表达式中修改，但要注意生命周期的问题，避免悬空引用的出现。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [&amp;x] (<span class="type">int</span> y) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y; &#125;; <span class="comment">// 引用捕获 x</span></span><br><span class="line">x = <span class="number">20</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 25，受外部 x 的影响</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>隐式捕获（implicit capture）：在捕获列表中使用 <code>=</code> 或 <code>&amp;</code>，表示按值或按引用捕获 Lambda 表达式中使用的所有外部变量。这种方式可以简化捕获列表的书写，避免过长或遗漏。隐式捕获可以和显式捕获混合使用，但不能和同类型的显式捕获一起使用。例如：</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [=, &amp;y] (<span class="type">int</span> z) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y + z; &#125;; <span class="comment">// 隐式按值捕获 x，显式按引用捕获 y</span></span><br><span class="line">x = <span class="number">30</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">y = <span class="number">40</span>; <span class="comment">// 修改外部的 y</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 55，不受外部 x 的影响，受外部 y 的影响</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-2-2-Lambda表达式的优点"><a href="#2-2-2-2-Lambda表达式的优点" class="headerlink" title="2.2.2.2 Lambda表达式的优点"></a>2.2.2.2 Lambda表达式的优点</h4><ol>
-<li><p>简洁：Lambda表达式可以省略函数名和类名，直接定义和使用，使得代码更加简洁和清晰。</p>
-</li>
-<li><p>灵活：Lambda表达式可以捕获外部变量，可以作为函数参数，也可以作为函数返回值，使得代码更加灵活和方便。</p>
-</li>
-<li><p>安全：Lambda表达式可以控制外部变量的访问方式，可以避免全局变量的定义，可以避免悬空指针和无效引用的产生，使得代码更加安全和稳定。</p>
-</li>
-</ol>
-<hr>
-<blockquote>
-<p>问：NULL和nullptr有什么区别？</p>
-</blockquote>
-<p>答：nullptr应该是指空指针，NULL应该是指无效的数据类型（当时这个一点不知道哈哈哈哈）</p>
-<blockquote>
-<p>问：你一般用哪个？</p>
-</blockquote>
-<p>答：我只使用后面那个，前面那个只听说了，自己没有使用过</p>
-<h3 id="2-2-3-C-中NULL和nullptr的区别"><a href="#2-2-3-C-中NULL和nullptr的区别" class="headerlink" title="2.2.3 C++中NULL和nullptr的区别"></a>2.2.3 C++中NULL和nullptr的区别</h3><p>在编写C程序的时候只看到过NULL，而在C++的编程中，可以看到NULL和nullptr两种关键字，其实nullptr是C++11版本中新加入的，它的出现是为了解决NULL表示空指针在C++中具有二义性的问题。</p>
-<p>在C语言中，NULL通常被定义为：<code>#define NULL ((void )0)</code>，所以说NULL实际上是一个空指针，如果在C语言中写入以下代码，编译是没有问题的，因为在C语言中把空指针赋给int和char指针的时候，发生了隐式类型转换，把void指针转换成了相应类型的指针。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  *pi = <span class="literal">NULL</span>;</span><br><span class="line"><span class="type">char</span> *pc = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-<p>但是问题来了，以上代码如果使用C++编译器来编译则是会出错的，因为C++是强类型语言，void*是不能隐式转换成其他类型的指针的，所以实际上编译器提供的头文件做了相应的处理：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NULL ((void *)0)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>可见，在C++中，NULL实际上是0.因为C++中不能把void*类型的指针隐式转换成其他类型的指针，所以为了结果空指针的表示问题，C++引入了0来表示空指针，这样就有了上述代码中的NULL宏定义。</p>
-<p>但是实际上，用NULL代替0表示空指针在函数重载时会出现问题，程序执行的结果会与我们的想法不同，举例如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>* i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;func1&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;func2&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">func</span>(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">func</span>(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%B8%80%E9%9D%A2%E5%9B%9E%E9%A1%BE/image_2exPtnNPr4.png"></p>
-<p>在这段代码中，我们对函数func进行可重载，参数分别是void*类型和int类型，但是运行结果却与我们使用NULL的初衷是相违背的，因为我们本来是想用NULL来代替空指针，但是在将NULL输入到函数中时，它却选择了int形参这个函数版本，所以是有问题的，这就是用NULL代替空指针在C++程序中的二义性。</p>
-<p>为解决NULL代指空指针存在的二义性问题，在C++11版本(2011年发布)中特意引入了nullptr这一新的关键字来代指空指针，从上面的例子中我们可以看到，使用nullptr作为实参，确实选择了正确的以void*作为形参的函数版本。</p>
-<p>NULL在C++中就是0，这是因为在C++中void* 类型是不允许隐式转换成其他类型的，所以之前C++中用0来代表空指针，但是在重载整形的情况下，会出现上述的问题。所以，C++11加入了nullptr，可以保证在任何情况下都代表空指针，而不会出现上述的情况，因此，建议以后还是都用nullptr替代NULL吧，而NULL就当做0使用。</p>
-<hr>
-<blockquote>
-<p>问：引用和指针有什么区别？</p>
-</blockquote>
-<p>答：在使用上，引用使用&amp;符号，指针使用*符号。</p>
-<h3 id="2-2-4-引用和指针的关系"><a href="#2-2-4-引用和指针的关系" class="headerlink" title="2.2.4 引用和指针的关系"></a>2.2.4 引用和指针的关系</h3><p><strong>相同点</strong>：二者都是指一块区域，都可以对这个区域的值进行更改，具有更改值的类似的作用。</p>
-<p><strong>不同点</strong>：</p>
-<ol>
-<li><p>引用必须初始化，指针可以不初始化</p>
-</li>
-<li><p>引用必须与一个确定的单元关联，不可以指向空的地方，但是指针可以指向空的地方</p>
-</li>
-<li><p>引用没有占用空间，也就是只是换了个名字，在内存里面找不到引用这个地方的位置，但是指针是实实在在的存在的，需要占用一定的空间。也可以把引用视为指针常量，在编译器优化后它不占内存</p>
-<p>这个空间是指是否占用代码空间。</p>
-</li>
-<li><p>指针的大小确定，引用的大小根据所引用的类型所确定</p>
-<p>引用的大小与类型有关，如int类型它也是int，char类型它也是char，但是指针大小是具体的，它只负责指路，大小与类型无关。</p>
-</li>
-<li><p>指针可以多级引用，但是指针不可以</p>
-</li>
-<li><p>引用只能指向一个对象，但是指针可以指向多个对象（指针指向的对象是可以发生变化的）</p>
-</li>
-</ol>
-<blockquote>
-<p>问：堆和栈有什么区别？哪个的空间较大？</p>
-</blockquote>
-<p>答：堆上的空间是需要动态申请的，手动释放，而栈上的内存空间是静态申请，自动释放的</p>
-<blockquote>
-<p>问：堆的空间大概有多大，我可以在堆上申请一个1G的内存吗？</p>
-</blockquote>
-<p>答：（很不确定）应该不能吧，balabala，但是答案见下面，实际上可以</p>
-<h3 id="2-2-5-C-中堆和栈的区别"><a href="#2-2-5-C-中堆和栈的区别" class="headerlink" title="2.2.5 C++中堆和栈的区别"></a>2.2.5 C++中堆和栈的区别</h3><p>栈：是由编译器在需要时自动分配，不需要时自动清除的变量存储区。通常存放局部变量、函数参数等。</p>
-<p>堆：是由new分配的内存块，由程序员释放（编译器不管），一般一个new与一个delete对应，一个new[]与一个delete[]对应。如果程序员没有释放掉，资源将由操作系统在程序结束后自动回收。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>堆</th>
-<th>栈</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>管理方式</td>
-<td>堆中资源由程序员控制（容易产生memory leak）</td>
-<td>栈资源由编译器自动管理，无需手工控制</td>
-</tr>
-<tr>
-<td>内存管理机制</td>
-<td>系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删    除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存  空间，另外系统会将多余的部分重新放入空闲链表中）</td>
-<td>只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
-</tr>
-<tr>
-<td>空间大小</td>
-<td>堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit  系统理论上是4G），所以堆的空间比较灵活，比较大</td>
-<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在  编译时确定，VC中可设置）。</td>
-</tr>
-<tr>
-<td>碎片问题</td>
-<td>对于堆，频繁的new&#x2F;delete会造成大量碎片，使程序效率降低</td>
-<td>对于栈，它是一个先进后出的队列，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
-</tr>
-<tr>
-<td>生长方向</td>
-<td>堆向上，向高地址方向增长。</td>
-<td>栈向下，向低地址方向增长。</td>
-</tr>
-<tr>
-<td>分配方式</td>
-<td>堆都是动态分配（没有静态分配的堆）</td>
-<td>栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数分配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
-</tr>
-<tr>
-<td>分配效率</td>
-<td>堆由C&#x2F;C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
-<td>栈是极其系统提供的数据结构，计算机在底层对栈提供支持，分配专门寄存器存放栈地址，栈操作有专门指令。</td>
-</tr>
-</tbody></table>
-<p><img src="/2024/06/13/6.13%E5%8D%8E%E4%B8%BA%E4%B8%80%E9%9D%A2%E5%9B%9E%E9%A1%BE/image_JXLiVRYRqc.png"></p>
-<p>堆是自低地址向高地址扩展的数据结构（它的生长方向与内存的生长方向相同），是不连续的内存区域。因为系统是用链表来存储空闲内存地址的，且链表的遍历方向是由低地址向高地址。由此可见，堆获得的空间较灵活，也较大。堆的大小受限于计算机系统中有效的虚拟内存。一般来讲在32位系统下，堆内存可以达到2.9G的大小。（除去1G的内核空间，几乎占满3G的用户空间）</p>
-<h2 id="2-3-操作系统"><a href="#2-3-操作系统" class="headerlink" title="2.3 操作系统"></a>2.3 操作系统</h2><blockquote>
-<p>问：了解过虚拟内存吗？</p>
-</blockquote>
-<p>答：（这个讲的比较好，在此不进行赘述了）</p>
-<h2 id="2-4-数据结构"><a href="#2-4-数据结构" class="headerlink" title="2.4 数据结构"></a>2.4 数据结构</h2><blockquote>
-<p>问：了解过快速排序吗？介绍一下主要思想</p>
-</blockquote>
-<p>答：快速排序是基于分治的思想，每次把哨兵元素都放在最终排序后的的位置上（然后给了一个序列，要求写出第一次快速排序之后的结果序列）</p>
-<blockquote>
-<p>问：知道循环队列吗？说一下队列判空的条件？</p>
-</blockquote>
-<p>答：<code>Q.front == Q.rear</code>（当时听到问这个的时候特别自信，因为我复习过，所以说复习还是有用的）</p>
-<h2 id="2-5-思维题"><a href="#2-5-思维题" class="headerlink" title="2.5 思维题"></a>2.5 思维题</h2><blockquote>
-<p>问：现在给你一个无序的数组，要求求出所有数字中重复出现的最大次数是多少？</p>
-</blockquote>
-<p>答：可以遍历整个数组，然后使用一个map存储每个数字出现的次数</p>
-<blockquote>
-<p>问：如果现在给你加一个限制，要求不能使用额外的存储空间，该怎么处理？</p>
-</blockquote>
-<p>答：可以先对数字进行从小到大排序，然后使用双指针，从第i个元素开始，向后更新j，直到j指向的元素不等于i所指向的元素，然后更新答案</p>
-<hr>
-<h1 id="3-手撕代码"><a href="#3-手撕代码" class="headerlink" title="3 手撕代码"></a>3 手撕代码</h1><ul>
-<li>这次真的是牛了，面试官从9:36发题，然后说10点截止，我好像没用10分钟就做出来了，而且代码一次就跑过，没有进行任何debug。</li>
-<li>现场考代码的时候就是要保持头脑清醒，题目一般都不难，但是要注意一些边界情况。</li>
-</ul>
-<p>给定一个二进制数组 nums 和一个整数 k，如果可以翻转最多 k 个 0 ，则返回数组中连续 1 的最大个数。</p>
-<p>示例 1：</p>
-<p>输入：nums &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2</p>
-<p>输出：6</p>
-<p>解释：[1,1,1,0,0,1,1,1,1,1,1]，粗体数字从 0 翻转到 1，最长的子数组长度为 6。</p>
-<p>示例 2：</p>
-<p>输入：nums &#x3D; [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], K &#x3D; 3</p>
-<p>输出：10</p>
-<p>解释：[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]，粗体数字从 0 翻转到 1，最长的子数组长度为 10。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ans, k = <span class="number">3</span>;</span><br><span class="line"><span class="type">int</span> nums1[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;  <span class="comment">// 11</span></span><br><span class="line"><span class="type">int</span> nums2[] = &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;  <span class="comment">// 19</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dp</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> k, <span class="type">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (u &gt; <span class="number">19</span>) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">if</span> (nums2[u] == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 可能需要进行翻转</span></span><br><span class="line">        <span class="keyword">if</span> (k)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 进行翻转</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, len + <span class="number">1</span>);</span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k - <span class="number">1</span>, len + <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 不进行翻转</span></span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 没有可用的翻转</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, len);</span><br><span class="line">            <span class="comment">// 从下一个开始重新计数</span></span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums2[u] == <span class="number">1</span>)</span><br><span class="line">        <span class="comment">// 不用翻转 搜索下一个位置</span></span><br><span class="line">        <span class="built_in">dp</span>(u + <span class="number">1</span>, k, len + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">dp</span>(<span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>找工作</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-        <tag>华为</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>6.23天津大学夏令营初筛机试</title>
     <url>/2024/06/23/6.23%E5%A4%A9%E6%B4%A5%E5%A4%A7%E5%AD%A6%E5%A4%8F%E4%BB%A4%E8%90%A5%E5%88%9D%E7%AD%9B%E6%9C%BA%E8%AF%95/</url>
     <content><![CDATA[<ul>
@@ -1017,46 +688,6 @@
         <category>保研</category>
       </categories>
       <tags>
-        <tag>机考</tag>
-        <tag>算法题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6.5华为机试</title>
-    <url>/2024/06/05/6.5%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<ul>
-<li>题目设置：一共3道题，分别为100、200和300分。</li>
-<li>考试时间：19点~21点，共2h。</li>
-</ul>
-<hr>
-<h1 id="1-第一题：电影相关"><a href="#1-第一题：电影相关" class="headerlink" title="1 第一题：电影相关"></a>1 第一题：电影相关</h1><h2 id="1-1-题目描述"><a href="#1-1-题目描述" class="headerlink" title="1.1 题目描述"></a>1.1 题目描述</h2><p>题意大体是第一行n是输入数据的个数，之后每一行的数据由三个字段组成：</p>
-<ol>
-<li>字段1：这部电影的导演</li>
-<li>字段2：这部电影的主演</li>
-<li>字段3：这部电影的类型</li>
-</ol>
-<p>然后给你一个查询，由两个字段组成：</p>
-<ol>
-<li>字段1：要查询的类型，是电影的导演、主演还是类型</li>
-<li>字段2：要查询的内容</li>
-</ol>
-<p>让你把所有匹配的结果输出出来，注意id从小到大进行输出，不同id之间使用空格隔开。</p>
-<p>这道题思路感觉还是挺简单的，不用使用任何的算法，直接按照题意描述做就可以，但是最后过了85%的测试用例，不知道为什么，就先做后面了。</p>
-<hr>
-<h1 id="2-第二题：服务器"><a href="#2-第二题：服务器" class="headerlink" title="2 第二题：服务器"></a>2 第二题：服务器</h1><h2 id="2-1-题目描述"><a href="#2-1-题目描述" class="headerlink" title="2.1 题目描述"></a>2.1 题目描述</h2><p>每个服务器用一个id和所能装载的文件数来描述，之后要进行查询和删除操作，并且这个题目实际上就是对一个循环链表进行插入和删除操作。</p>
-<p>最后通过了96%的测试用例，另外这题的输入输出是真的麻烦，要自己进行处理，所以平时还是要多练自己处理输入的题目，要不然只写关键代码遇到这种题直接G了。</p>
-<hr>
-<h1 id="3-第三题：最长序列包长度"><a href="#3-第三题：最长序列包长度" class="headerlink" title="3 第三题：最长序列包长度"></a>3 第三题：最长序列包长度</h1><h2 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title="3.1 题目描述"></a>3.1 题目描述</h2><p>大体意思就是告诉你，现在有一堆数字，这些数字代表了不同包中的序列号，同一个包中的序列号范围为0~65535，当65535加1变成0，之后让你求这些包中最长的序列长度是多少，感觉这题有点像贪心，最后只通过了36%的测试用例。</p>
-<hr>
-<h1 id="4-整体感受"><a href="#4-整体感受" class="headerlink" title="4 整体感受"></a>4 整体感受</h1><p>之前也进行过拼多多的机考，感觉这几次机考的整体算法难度不是很难，但是对于我来说难度最大的就是在考试的过程中你是不能知道测试数据的，题目只会一开始告诉你2~3个测试用例，但是这肯定不能包含所有。</p>
-<p>所以说，之后在练习的时候争取先不看错误的数据，先自己想想代码的完备性是否有问题，实在想不出来了再去看，同时要总结哪些地方常出现问题。</p>
-<p>感觉经过这几次机试自己的水平也在不断提升，起码已经适应了这种考试的模式，之后只需要多加练习即可。</p>
-]]></content>
-      <categories>
-        <category>找工作</category>
-      </categories>
-      <tags>
-        <tag>华为</tag>
         <tag>机考</tag>
         <tag>算法题</tag>
       </tags>
@@ -15798,7 +15429,7 @@
   </entry>
   <entry>
     <title>论文精读6：Llama3</title>
-    <url>/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/</url>
+    <url>/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/</url>
     <content><![CDATA[<h1 id="Llama3"><a href="#Llama3" class="headerlink" title="Llama3"></a>Llama3</h1><blockquote>
 <p>现代人工智能（AI）系统是由基础模型提供动力的。本文提出了一套新的基础模型，称为Llama 3。它是一群原生支持多语言、代码、推理和工具使用的语言模型。我们最大的模型是一个稠密的Transformer，具有<code>405B</code>参数和高达<code>128K</code> tokens的上下文窗口。本文对Llama 3进行了广泛的实证评价。我们发现，Llama 3在大量任务上提供了与<code>GPT-4</code>等领先语言模型相当的水平。我们公开发布了Llama 3，包括预训练和后训练的<code>405B</code>参数语言模型的版本，以及我们的Llama Guard 3模型的输入和输出安全。本文还介绍了我们通过合成方法将图像、视频和语音能力整合到Llama 3中的实验结果。我们观察到，这种方法在图像、视频和语音识别任务上与最先进的方法相竞争。生成的模型还没有被广泛发布，因为它们还在开发中。</p>
 </blockquote>
@@ -15812,7 +15443,7 @@
 <blockquote>
 <p>表1：模型<code>Llama3</code>模型群概述。本文中的所有结果都是针对 Llama 3.1模型。</p>
 </blockquote>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_IEQpvhLCPi.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_IEQpvhLCPi.png"></p>
 <p>我们相信在开发高质量的基础模型中有三个关键因素：<strong>数据、规模和管理复杂性</strong>。我们试图在开发过程中优化这三个问题：</p>
 <ul>
 <li><strong>数据</strong>：与之前版本的Llama（Touvron et al.，2023a, b）相比，我们改进了用于预训练和后训练的数据的数量和质量。这些改进包括为训练前数据开发更仔细的预处理和管理管道，以及为训练后数据开发更严格的质量保证和过滤方法。我们在一个大约<code>15T</code>个多语言标记的语料库上对Llama 3进行了预训练，而Llama 2的标记为<code>1.8T</code>。</li>
@@ -15820,7 +15451,7 @@
 <li><strong>管理复杂性</strong>：我们做出设计选择，试图最大化我们扩展模型开发过程的能力。例如，我们选择了一个标准的稠密 Transformer 模型架构（2017），并进行了轻微的调整，而不是专家混合模型（2017）以最大化训练稳定性。同样，我们采用了相对简单的基于监督微调 (SFT)、拒绝采样 (RS) 和直接偏好优化（DPO）的后训练过程，而不是更复杂的强化学习算法（Ouyang et al., 2022; Schulman et al., 2017），它们往往不太稳定，更难扩展。</li>
 </ul>
 <p>我们工作的结果是 Llama 3：三个具有 <code>8B</code>、<code>70B</code>和 <code>405B</code>参数的多语言模型的 herd。我们在跨越广泛语言理解任务的众多基准数据集上评估 Llama 3 的性能。此外，我们执行广泛的人工评估，将 Llama 3 与竞争模型进行比较。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_oLPQA8IXeC.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_oLPQA8IXeC.png"></p>
 <blockquote>
 <p>表2：微调 Llama 3 模型在关键基准评估上的性能。该表比较了 Llama 3 的 <code>8B</code>、<code>70B</code>和 <code>405B</code>版本与竞争模型的性能。我们将三个模型大小等价类中的每一个中表现最好的模型加粗。$△$表示使用 5-shot 提示（无 <code>CoT</code>）获得的结果。◁表示没有 <code>CoT</code>获得的结果。$♢$表示使用零样本提示获得的$ 9.9%$结果。</p>
 </blockquote>
@@ -15828,7 +15459,7 @@
 <p>我们在 Llama 3 社区许可证的更新版本下公开发布所有三个 Llama 3 模型；参见 <a href="https://llama.meta.com/" title="https://llama.meta.com">https://llama.meta.com</a>。这包括我们的 405B 参数语言模型的预训练和训练后版本以及我们的 Llama Guard 模型的新版本 (Inan et al., 2023) 用于输入和输出安全。我们希望旗舰模型的公开发布将推动研究界的创新浪潮，并加速迈向人工智能 (<code>AGI</code>) 发展的途径。</p>
 <p>作为 Llama 3 开发过程的一部分，我们还为模型开发了多模态扩展，实现了图像识别、视频识别和语音理解能力。这些模型仍处于积极发展阶段，尚未准备好发布。除了我们的语言建模结果之外，本文还展示了我们对这些多模态模型的初步实验的结果。</p>
 <hr>
-<h1 id="2-General-Overview"><a href="#2-General-Overview" class="headerlink" title="2 General Overview"></a>2 General Overview</h1><p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_IuZhfqrboF.png"></p>
+<h1 id="2-General-Overview"><a href="#2-General-Overview" class="headerlink" title="2 General Overview"></a>2 General Overview</h1><p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_IuZhfqrboF.png"></p>
 <blockquote>
 <p>图1：Llama 3 的整体架构和训练说明。Llama 3是一个 Transformer 语言模型，经过训练可以预测文本序列的下一个标记。有关详细信息，请参阅文本。</p>
 </blockquote>
@@ -15884,7 +15515,7 @@
 <li>使用具有 8 个键值头的分组查询注意力（GQA）来提高推理速度并减少解码期间键值对缓存的大小。</li>
 <li>使用注意掩码来防止同一序列中不同文档之间的自注意力。我们发现这种变化在标准预训练期间的影响有限，但发现它在对非常长的序列的持续预训练中很重要。</li>
 </ul>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_wFL-K9w32l.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_wFL-K9w32l.png"></p>
 <blockquote>
 <p><em>数据可以是好几个文档的内容拼接在一起，但是计算注意力的时候只需要计算与我相关的文档内的注意力即可</em></p>
 </blockquote>
@@ -15897,7 +15528,7 @@
 <ul>
 <li>将 <code>RoPE</code>基本频率超参数增加到 500,000，这使我们能够更好地支持更长的上下文；熊等人(2023) 表明这个值对于高达 32,768 的上下文长度是有效的。</li>
 </ul>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Zi3sRvLLvz.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Zi3sRvLLvz.png"></p>
 <blockquote>
 <p>表 3：Llama 3 的关键超参数概述。我们展示了 8B、70B 和 405B 语言模型的设置。</p>
 </blockquote>
@@ -15914,7 +15545,7 @@
 </ol>
 <p>这种方法使我们能够在给定特定数量的计算最佳模型训练 FLOP 的情况下预测下游任务性能。我们使用类似的方法来选择我们的预训练数据混合（参见第 3.4 节）。</p>
 <p><strong>Scaling law experiments</strong>。具体来说，我们通过使 用$6 × 10^{18}$FLOPs 和 $10^{22}$个 FLOPs 之间的计算预算的预训练模型来构建我们的缩放定律。在每个计算预算中，我们使用每个计算预算的模型大小子集，预训练大小为 40M 和 16B 参数的模型。在这些训练运行中，我们使用余弦学习率计划、线性预热2,000 个训练步骤。根据模型的大小，峰值学习率设置为$  2 × 10^{−4}  $和$ 4 × 10^{−4}$之间。我们将余弦衰减设置为峰值的 0.1。每一步的权重衰减设置为该步骤中学习率的 0.1 倍。我们对每个计算尺度使用固定的批量大小，范围从 250K 和 4M。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_CioTFqjIYh.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_CioTFqjIYh.png"></p>
 <blockquote>
 <p>图 2：$6 × 10^{18}$和$10^{22}$个 <code>FLOPs</code>之间的缩放定律 <code>IsoFLOPs</code>曲线。损失是保留验证集上的负对数似然。我们使用二阶多项式在每个计算尺度上近似测量值。</p>
 </blockquote>
@@ -15922,13 +15553,13 @@
 <p>我们使用我们确定这种方法的计算最佳模型来预测特定计算预算的最佳训练token数量。为此，我们假设计算预算 C 和训练token的最佳数量$  N ⋆(C)  $之间存在幂律关系：</p>
 <p>$$<br>N^{\star}(C)&#x3D;A C^{\alpha}<br>$$</p>
 <p>我们使用图 2 中的数据拟合 A 和 α。我们发现$ (α, A) &#x3D; (0.53, 0.29)$，相应的拟合如图 3 所示。将得到的scaling law外推到$ 3.8 × 10^{25}$FLOPs 表明在 16.55T 令牌上训练 402B 参数模型。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_dvvCJcxqJ3.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_dvvCJcxqJ3.png"></p>
 <blockquote>
 <p>图 3 已识别的计算最佳模型中的训练令牌数量作为预训练计算预算的函数。我们还包括拟合的标度律预测。计算最优模型对应于图 2 中的抛物线最小值。</p>
 </blockquote>
 <p>一个重要的观察结果是，随着计算预算的增加，<code>IsoFLOPs</code>曲线在最小值附近变得更平坦。这意味着旗舰模型的性能对模型大小和训练令牌之间的权衡的微小变化相对稳健。基于这一观察，我们最终决定用 <code>405B</code>参数训练一个旗舰模型。</p>
 <p><strong>预测下游任务的性能</strong>。我们使用生成的计算最优模型来预测基准数据集上旗舰 Llama 3 模型的性能。首先，我们线性关联基准测试中正确答案的（归一化）负对数似然和训练 FLOP。在此分析中，我们仅使用在上述数据混合上训练多达$10^{22}$个 FLOPs 的标度律模型。接下来，我们使用缩放定律模型和 Llama 2 模型建立了对数似然和准确性之间的 sigmoidal 关系，这些模型使用 Llama 2 数据混合和标记器进行训练。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Kg78PW9ll2.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Kg78PW9ll2.png"></p>
 <blockquote>
 <p>图 4 ARC Challenge 的标度律预测. 左：ARC Challenge 基准上正确答案的归一化负对数似然作为预训练 FLOPs 的函数。右图：ARC Challenge 基准准确度作为正确答案的归一化负对数似然的函数。该分析使我们能够在预训练开始之前预测 ARC Challenge 基准上的模型性能。有关详细信息，请参阅文本。</p>
 </blockquote>
@@ -15944,14 +15575,14 @@
 <li><strong>拥塞控制</strong>。我们在关键部分使用深度缓冲交换机(Gangidi et al., 2024)，以适应集体通信模式引起的瞬态拥塞和缓冲。这种设置有助于限制由慢速服务器引起的持久拥塞和网络反向压力的影响，这在训练中很常见。最后，通过 E-ECMP 更好的负载平衡显着减少了拥塞的机会。通过这些优化，我们成功地运行了 24K GPU 集群，没有传统的拥塞控制方法，例如数据中心量化拥塞通知 (DCQCN)。</li>
 </ul>
 <h3 id="3-3-2-模型Scaling的并行"><a href="#3-3-2-模型Scaling的并行" class="headerlink" title="3.3.2 模型Scaling的并行"></a>3.3.2 模型Scaling的并行</h3><p>为了扩展我们最大模型的训练，我们使用 4D 并行性——四种不同类型的并行方法的组合——对模型进行分片。这种方法有效地将计算分布在许多 GPU 中，并确保每个 GPU 的模型参数、优化器状态、梯度和激活适合其 HBM。我们对4D并行的实现如图5所示。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Q0XyLUmHLr.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Q0XyLUmHLr.png"></p>
 <blockquote>
 <p>图 5：4D 并行性的说明。GPU按照 [TP, CP, PP, DP] 的顺序分为并行组，其中 DP 代表 FSDP。在此示例中，16 个 GPU 配置为 |TP|&#x3D;2、|CP|&#x3D;2、|PP|&#x3D;2 和 |DP|&#x3D;2 的组大小。&#x20;<br>GPU 在 4D 并行性中的位置表示为向量 [D1, D2, D3, D4]，其中 Di 是第 i 个并行维度的索引。在本例中，GPU0[TP0, CP0, PP0, DP0]和GPU1[TP1, CP0, PP0, DP0]在同一个TP组中，GPU0和GPU2在同一个CP组中，GPU0和GPU4在同一个PP组中，GPU0和GPU8在同一个DP组中。</p>
 </blockquote>
 <p>它结合了tensor并行、pipeline并行、context并行和data并行。</p>
 <p>张量并行将单个权重张量分割成不同设备上的多个块。管道并行逐层将模型垂直划分为阶段，以便不同的设备可以在完整模型管道的不同阶段并行处理。上下文并行性将输入上下文划分为段，减少了非常长的序列长度输入的内存瓶颈。我们使用完全分片的数据并行性 (FSDP; Rajbhandari et al., 2020; Ren et al., 2021; Zhao et al., 2023b)，它在实现数据并行性的同时对模型、优化器和梯度进行分片，该并行性在多个 GPU 上并行处理数据并在每个训练步骤后同步。我们对 Llama 3 个分片优化器状态和梯度使用 FSDP，但对于模型分片，我们在前向计算后不会重新分片，以避免后向传递期间的额外全聚集通信。</p>
 <p><strong>GPU利用率</strong>。通过对并行配置、硬件和软件的仔细调优，我们实现了表4所示配置的总体BF16模型FLOPs利用率(MFU;Chowdhery等人(2023))为38-43%。在DP&#x3D;64的8K GPU上，MFU略有下降至41%，而在DP&#x3D;64的8K GPU上，MFU略有下降为43%，这是由于在训练过程中保持每批全局令牌所需的每个DP组的批处理大小较低。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Km0faadOZS.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_Km0faadOZS.png"></p>
 <blockquote>
 <p>表 4 Llama 3 405B 预训练的每个阶段的缩放配置和 MFU。有关每种类型的并行性的描述，请参见图 5。</p>
 </blockquote>
@@ -15961,7 +15592,7 @@
 <li><strong>内存不平衡</strong>。现有的管道并行实现导致资源消耗不平衡。由于嵌入和预热的微批次，第一阶段消耗更多的内存。</li>
 <li><strong>计算不平衡</strong>。在模型的最后一层之后，我们需要计算输出和损失，使这个阶段成为执行延迟瓶颈。</li>
 </ol>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_AW7-1_xKM-.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_AW7-1_xKM-.png"></p>
 <blockquote>
 <p>图 6 Llama 3 中管道并行性的图示。管道并行在四个管道等级（PP 等级 0 到 3）中划分八个管道阶段（0 到 7），其中等级为 0 的 GPU 运行阶段 0 和 4，P 等级为 1 的 GPU 运行阶段 1 和 5 等。彩色块（0 到 9）表示一系列微批次，其中 M 是微批次的总数，N 是同一阶段前向和后向的连续微批次的数量。我们的关键见解是使 N 可调。</p>
 </blockquote>
@@ -15989,7 +15620,7 @@
 <p>对于 Llama 3 训练，我们通过调整分块和数据传输来解决这些低效率的子集，以适应我们的网络延迟，这对于大集群来说可能高达数十微秒。我们还允许小的控制消息以更高的优先级遍历我们的网络，特别是避免在深度缓冲核心交换机中阻塞的线头。我们正在进行的未来 Llama 版本的工作涉及对 <code>NCCLX</code>进行更深入的更改，以全面解决上述所有问题。</p>
 <h3 id="3-3-4-可靠性和操作挑战"><a href="#3-3-4-可靠性和操作挑战" class="headerlink" title="3.3.4 可靠性和操作挑战"></a>3.3.4 可靠性和操作挑战</h3><p>16K GPU训练的复杂性和潜在故障场景超过了我们操作的更大的CPU集群。此外，训练的同步特性使其不易容错——单个 GPU 故障可能需要重新启动整个作业。尽管存在这些挑战，对于 Llama 3，我们在支持自动集群维护的同时实现了超过 90% 的有效训练时间，例如固件和 Linux 内核升级（Vigraham 和 Leonhardi、2024），这导致每天至少一次训练中断。有效的训练时间衡量了在经过时间的有用训练上花费的时间。</p>
 <p>在预训练的 54 天快照期间，我们总共经历了 466 个作业中断。其中，由于固件升级或操作员发起的操作(如配置或数据集更新)的自动化维护操作，47个计划中断。剩下的 419 是意外中断。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_mGXYRuq2_p.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_mGXYRuq2_p.png"></p>
 <blockquote>
 <p>表5 Llama 3 405B预训练期间54天内的意外中断根本原因分类。约78%的意外中断归因于已确认或疑似硬件问题。</p>
 </blockquote>
@@ -16015,11 +15646,11 @@
 </ol>
 <p>在 Llama 3 405B 预训练中，我们从原始的 8K 上下文窗口开始并在最终的 128K 上下文窗口中结束，逐步增加上下文长度。这个长上下文预训练阶段使用大约 800B 训练tokens。</p>
 <h3 id="3-4-3-退火"><a href="#3-4-3-退火" class="headerlink" title="3.4.3 退火"></a>3.4.3 退火</h3><p>在对最终的 <code>40M</code>token进行预训练期间，我们将学习率线性降成 0，保持 128K token的上下文长度。在这个退火阶段，我们还调整了数据混合，以对质量非常高的数据源进行上采样；参见第 3.1.3 节。最后，我们计算退火过程中模型检查点（Polyak (1991) 平均）的平均值以产生最终的预训练模型。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_yuSn6C_uWC.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_yuSn6C_uWC.png"></p>
 <hr>
 <h1 id="4-Post-Training"><a href="#4-Post-Training" class="headerlink" title="4 Post-Training"></a>4 Post-Training</h1><p>我们通过在预训练检查点之上应用几轮训练后 6 或将模型与人工反馈对齐来生成对齐的 Llama 3 模型（Ouyang 等人，2022；Rafailova 等人、2024）。每一轮训练后都涉及监督微调 (SFT)，然后是直接偏好优化 (DPO; Rafailov et al., 2024)，通过人工注释收集或综合生成的示例。我们的训练后建模和数据方法分别在第 4.1 节和第 4.2 节中描述。我们进一步详细介绍了自定义数据管理策略，以改进第 4.3 节中的推理、编码、事实性、多语言、工具使用、长上下文和精确指令。</p>
 <h2 id="4-1-建模"><a href="#4-1-建模" class="headerlink" title="4.1 建模"></a>4.1 建模</h2><p>我们的后训练策略的主干是一个奖励模型和语言模型。我们首先使用人工注释的偏好数据在预训练的检查点之上训练奖励模型（参见第 4.1.2 节）。然后，我们使用监督微调（SFT；参见第 4.1.3 节）微调预训练的检查点，并进一步将检查点与直接偏好优化对齐（DPO；参见第 4.1.4 节）。</p>
-<p><img src="/2024/12/04/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_HUrI-qeiJu.png"></p>
+<p><img src="/2024/12/03/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB6%EF%BC%9ALlama3/image_HUrI-qeiJu.png"></p>
 <blockquote>
 <p>图 7：Llama 3 的整体训练后方法示意图。我们的后训练策略包括拒绝采样、监督微调和直接偏好优化。有关详细信息，请参阅文本。</p>
 </blockquote>
@@ -16042,6 +15673,541 @@
       <tags>
         <tag>Llama3</tag>
         <tag>大模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试记录3：MiniMax技术一面</title>
+    <url>/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="1-面试背景"><a href="#1-面试背景" class="headerlink" title="1 面试背景"></a>1 面试背景</h1><ul>
+<li>面试公司：MiniMax 大模型公司</li>
+<li>面试岗位：大模型推荐&amp;广告算法实习生</li>
+<li>面试类型：技术一面</li>
+<li>面试时间：2024年12月4日17:00~18:00</li>
+<li>面试结果：通过 😊</li>
+</ul>
+<hr>
+<h1 id="2-整体感受"><a href="#2-整体感受" class="headerlink" title="2 整体感受"></a>2 整体感受</h1><p>面试之前一点也不紧张，因为自己保研参加很多线下的面试，而且之前也参加过华为的面试等，所以心态不慌。</p>
+<p>面试官刚进来的时候，一看就知道是个强者，前面的头发快没了，而且一副中年程序员的样貌。在面试的过程中还是挺放松的，也一直和面试官讨论技术问题。最后，面试管问我还有什么问题么？我就问了很多我自己关于推荐系统的思考，感觉很 nice，面试官也和我讨论了很多。</p>
+<p>需要改进的地方：</p>
+<ol>
+<li>自我介绍再背的熟一些</li>
+<li>准备的再充分一些</li>
+</ol>
+<p>感觉自己发挥的挺好的，没有什么硬伤，还有一些小细节需要优化吧。</p>
+<hr>
+<h1 id="3-提问的问题"><a href="#3-提问的问题" class="headerlink" title="3 提问的问题"></a>3 提问的问题</h1><h2 id="3-1-针对简历"><a href="#3-1-针对简历" class="headerlink" title="3.1 针对简历"></a>3.1 针对简历</h2><blockquote>
+<p>问：你先介绍一下自己吧。</p>
+</blockquote>
+<p>balabala………</p>
+<blockquote>
+<p>问：看到你参加了天池新闻推荐系统比赛，你可以说一下你是怎么用 Embedding 进行召回的吗？</p>
+</blockquote>
+<p>我主要使用 2 种方法来进行 Embedding，分别是 Word2Vec 和 训练 YouTube DNN 得到 Embedding。</p>
+<h3 id="3-1-1-Word2Vec"><a href="#3-1-1-Word2Vec" class="headerlink" title="3.1.1 Word2Vec"></a>3.1.1 Word2Vec</h3><p>首先介绍一下 Word2Vec，Word2Vec 是一个生成对“词”的向量表达的模型。分为词袋模型和跳元模型。</p>
+<p>利用“物品序列”是由特定用户的浏览、购买等行为产生的历史行为记录序列来生成 Embedding。输入向量表达就是输入层到隐层的权重矩阵 $\mathcal{W}<em>{V \times N}$，而输出向量表达就是隐层到输出层的权重矩阵 $\mathcal{W}^{‘}</em>{N \times V}$。</p>
+<p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_WcD7o_UN5s.png"></p>
+<p>在获得输入向量矩阵 $\mathcal{W}_{V \times N}$ 后，其中每一行对应的权重向量就是通常意义上的“词向量”。于是这个权重矩阵自然转换成了 Word2Vec 的查找表（lookup table）。</p>
+<p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/clipImg_RQ3MdahKEb.png"></p>
+<p>假设语料库中的词的数量为 10000，就意味着输出层神经元有 10000 个，在每次迭代更新隐层到输出层神经元的权重时，都需要计算所有字典中的所有 10000 个词的预测误差（prediction error），在实际训练过程中几乎无法承受这样巨大的计算量。</p>
+<p>为了减轻 Word2Vec 的训练负担，往往采用负采样（Negative Sampling）的方法进行训练。相比原来需要计算所有字典中所有词的预测误差，负采样方法只需要对采样出的几个负样本计算预测误差。</p>
+<p>在此情况下， Word2Vec 模型的优化目标从一个多分类问题退化成了一个近似二分类问题，如下式所示：</p>
+<p>$$<br>E&#x3D;-\log \sigma\left(\boldsymbol{v}<em>{w</em>{o}}^{\prime}{ }^{\mathrm{T}} \boldsymbol{h}\right)-\sum_{w_{j} \in W_{\text {neg }}} \log \sigma\left(-\boldsymbol{v}<em>{w</em>{j}}^{\prime}{ }^{\mathrm{T}} \boldsymbol{h}\right)<br>$$</p>
+<p>其中 $\boldsymbol{v}<em>{w</em>{o}}^{\prime}$ 是输出词向量（即正样本），$\boldsymbol{h}$ 是隐层向量，$W_{neg}$ 是负样本集合，$\boldsymbol{v}<em>{w</em>{j}}^{\prime}$ 是负样本词向量。一般来说负样本集合的规模 $k$ 在小数据集中取 2~5，在大数据集中取 5 ~ 20，所以计算量会大大降低。</p>
+<p>实际上，加快 Word2Vec 训练速度的方法还有分层 softmax，但实现较为复杂，且最终效果没有明显由于负采样方法，因此较少采用。</p>
+<h3 id="3-1-2-YouTube-DNN"><a href="#3-1-2-YouTube-DNN" class="headerlink" title="3.1.2 YouTube DNN"></a>3.1.2 YouTube DNN</h3><p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_Ow5FnRNV0O.png"></p>
+<p>由于 YouTube DNN 最后的输出层是 softmax，该 softmax 层的参数本质上是一个 $m \times n$ 维的矩阵，其中 $m$ 指的是最后一层（ReLU 层）的维度，$n$ 指的是分类的总数，也就是 YouTube 所有视频的总数为 $n$。那么视频 Embedding 就是这个 $m \times n$ 维矩阵的各列向量。这样的 Embedding 生成方法其实和 Word2Vec 中词向量的生成方法相同。</p>
+<p>用户向量的生成就很好理解，因为输入的特征全部都是用户相关的特征，所以在使用某用户 $u$ 的特征向量作为模型输入时，最后一层 ReLU 层的输出向量可以当作该用户的 Embedding 向量。在模型训练完成后，逐个输入所有用户的特征向量到模型中，就可以得到所有用户的 Embedding 向量。</p>
+<blockquote>
+<p>问：那你得到 Embedding 之后是怎么进行召回的？</p>
+</blockquote>
+<p>在预测某用户的物品候选集时，先得到该用户的 Embedding 向量，再在物品 Embedding 空间中利用局部敏感哈希等方法搜索该用户 Embedding 向量的 TopK 近邻，就可以快速得到 $k$ 个候选视频集合。</p>
+<p>我针对新闻具有强时效性的特点，只是用了用户点击的最近 3 个新闻的 Embedding 作平均来进行召回。</p>
+<blockquote>
+<p>问：你对用户最近点击的 3 个新闻的 Embedding 取平均，然后再进行召回，取平均之后是不是会丢失掉一些信息？</p>
+</blockquote>
+<p>确实会丢失掉一些信息，因为如果用户最后点击的几个新闻都是不同类型的，mean 之后的 Embedding 所表达的信息就失真了，这一点确实应当注意。</p>
+<blockquote>
+<p>问：你选用的是 LGB 模型和 DIN 模型，LGB模型是基于树的，你能说一下这两个模型有什么区别吗？</p>
+</blockquote>
+<h3 id="3-1-3-LGB-模型"><a href="#3-1-3-LGB-模型" class="headerlink" title="3.1.3 LGB 模型"></a>3.1.3 LGB 模型</h3><p>LightGBM（Light Gradient Boosting Machine）是一款基于决策树算法的分布式梯度提升框架。为了满足工业界缩短模型计算时间的需求，LightGBM的设计思路主要是两点：</p>
+<ol>
+<li>减小数据对内存的使用，保证单个机器在不牺牲速度的情况下，尽可能地用上更多的数据</li>
+<li>减小通信的代价，提升多机并行时的效率，实现在计算上的线性加速</li>
+</ol>
+<p>由此可见，LightGBM的设计初衷就是提供一个快速高效、低内存占用、高准确度、支持并行和大规模数据处理的数据科学工具。</p>
+<p><strong>LightGBM 和 XGBoost 的区别：</strong></p>
+<ol>
+<li>树生长策略：XGB 采用 level-wise 的分裂策略，LGB 采用leaf-wise的分裂策略。<ul>
+<li>XGB 对每一层所有节点做无差别分裂，但是可能有些节点增益非常小，对结果影响不大，带来不必要的开销。</li>
+<li>Leaf-wise是在所有叶子节点中选取分裂收益最大的节点进行的，但是很容易出现过拟合问题，所以需要对最大深度做限制 。</li>
+</ul>
+</li>
+<li>分割点查找算法：XGB使用特征预排序算法，LGB使用基于直方图的切分点算法，其优势如下：<ul>
+<li>减少内存占用，比如离散为256个bin时，只需要用8位整形就可以保存一个样本被映射为哪个bin(这个bin可以说就是转换后的特征)，对比预排序的exact greedy算法来说（用int_32来存储索引+ 用float_32保存特征值），可以节省7&#x2F;8的空间。</li>
+<li>计算效率提高，预排序的Exact greedy对每个特征都需要遍历一遍数据，并计算增益，复杂度为$O(feature \times data)$。而直方图算法在建立完直方图后，只需要对每个特征遍历直方图即可，复杂度为 $O(feature \times bins)$。</li>
+<li>LGB还可以使用直方图做差加速，一个节点的直方图可以通过父节点的直方图减去兄弟节点的直方图得到，从而加速计算</li>
+</ul>
+</li>
+<li>支持离散变量：无法直接输入类别型变量，因此需要事先对类别型变量进行编码（例如独热编码），而LightGBM可以直接处理类别型变量。</li>
+<li>缓存命中率：XGB使用Block结构的一个缺点是取梯度的时候，是通过索引来获取的，而这些梯度的获取顺序是按照特征的大小顺序的，这将导致非连续的内存访问，可能使得CPU cache缓存命中率低，从而影响算法效率。而LGB是基于直方图分裂特征的，梯度信息都存储在一个个bin中，所以访问梯度是连续的，缓存命中率高。</li>
+<li>LightGBM 与 XGboost 的并行策略不同：</li>
+</ol>
+<ul>
+<li><strong>特征并行</strong>：LGB特征并行的前提是每个worker留有一份完整的数据集，但是每个worker仅在特征子集上进行最佳切分点的寻找；worker之间需要相互通信，通过比对损失来确定最佳切分点；然后将这个最佳切分点的位置进行全局广播，每个worker进行切分即可。XGB的特征并行与LGB的最大不同在于XGB每个worker节点中仅有部分的列数据，也就是垂直切分，每个worker寻找局部最佳切分点，worker之间相互通信，然后在具有最佳切分点的worker上进行节点分裂，再由这个节点广播一下被切分到左右节点的样本索引号，其他worker才能开始分裂。二者的区别就导致了LGB中worker间通信成本明显降低，只需通信一个特征分裂点即可，而XGB中要广播样本索引。</li>
+<li><strong>数据并行</strong>：传统的数据并行策略主要为水平划分数据，让不同的机器先在本地构造直方图，然后进行全局的合并，最后在合并的直方图上面寻找最优分割点。这种数据划分有一个很大的缺点：通讯开销过大。LightGBM在数据并行中使用分散规约 (Reduce scatter) 把直方图合并的任务分摊到不同的机器，降低通信和计算; 在节点分裂时利用直方图做差，进一步减少了一半的通信量。参考LightGBM的并行优化&#x20;</li>
+<li><strong>投票并行</strong>（LGB）：基于投票的数据并行则进一步优化数据并行中的通信代价，使通信代价变成常数级别。在数据量很大的时候，使用投票并行的方式只合并部分特征的直方图从而达到降低通信量的目的，可以得到非常好的加速效果。具体过程如下图所示。大致步骤为两步：<ol>
+<li>本地找出 Top K 特征，并基于投票筛选出可能是最优分割点的特征；</li>
+<li>合并时只合并每个机器选出来的特征。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-1-4-DIN-模型"><a href="#3-1-4-DIN-模型" class="headerlink" title="3.1.4 DIN 模型"></a>3.1.4 DIN 模型</h3><p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_rX2UFr2bgc.png"></p>
+<p>DIN网络结构整体上来看是在embedding层与MLP（全连接层）之间加入了activation unit。从上图能够看出，用户历史点击过的商品id（good id）只与候选广告的商品id算相关性（上图中是element-wise减，当然你也可以算内积等，甚至可以都算），用户历史点击过的商铺id只与候选广告的商铺id算相关性。</p>
+<p>以下模块是整个DIN网络的核心模块，也是该模型的创新之处，如下图所示。</p>
+<p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_FBXT02paNt.png"></p>
+<p>最后，论文中给出了一张示意图比较清晰的展示了用户历史行为item与广告item之间的attention得分，DIN这种基于attention score的设计比较soft的得到了用户历史行为中每个item对于目标广告item的贡献度。</p>
+<p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_QHvaSXeR_Z.png"></p>
+<blockquote>
+<p>问：单看这两个模型输出的结果，哪个更好呢？</p>
+</blockquote>
+<p>DIN 模型的效果更好一些，因为 DIN 模型引入了注意力机制，能够对用户兴趣进行更好的捕捉。</p>
+<blockquote>
+<p>问：模型的输出是什么？你用的什么集成学习方法进行融合的？</p>
+</blockquote>
+<p>我把推荐问题当作一个分类问题，然后每个模型的输出都是一个概率，代表选择每个候选物品的可能性。之后使用的 bagging 集成学习方法进行融合。</p>
+<h3 id="3-1-5-bagging"><a href="#3-1-5-bagging" class="headerlink" title="3.1.5 bagging"></a>3.1.5 bagging</h3><p>为了建立一个集成学习方法，我们首先要选择待聚合的基础模型。在大多数情况下（包括在众所周知的 bagging 和 boosting 方法中），我们会使用单一的基础学习算法，这样一来我们就有了以不同方式训练的同质弱学习器。</p>
+<p>这样得到的集成模型被称为「同质的」。然而，也有一些方法使用不同种类的基础学习算法：将一些异质的弱学习器组合成「异质集成模型」。</p>
+<p>很重要的一点是：我们对弱学习器的选择应该和我们聚合这些模型的方式相一致。如果我们选择具有低偏置高方差的基础模型，我们应该使用一种倾向于减小方差的聚合方法；而如果我们选择具有低方差高偏置的基础模型，我们应该使用一种倾向于减小偏置的聚合方法。</p>
+<p>Bagging 的思路是所有基础模型都一致对待，每个基础模型手里都只有一票。然后使用民主投票的方式得到最终的结果。</p>
+<p>大部分情况下，<strong>经过 bagging 得到的结果方差（variance）更小</strong>。</p>
+<p><img src="/2024/12/04/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%953%EF%BC%9AMiniMax%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_1ukcxUjxsq.png"></p>
+<p><strong>具体过程：</strong></p>
+<ol>
+<li>从原始样本集中抽取训练集。每轮从原始样本集中使用Bootstraping的方法抽取n个训练样本（在训练集中，有些样本可能被多次抽取到，而有些样本可能一次都没有被抽中）。共进行k轮抽取，得到k个训练集。（k个训练集之间是相互独立的）</li>
+<li>每次使用一个训练集得到一个模型，k个训练集共得到k个模型。（注：这里并没有具体的分类算法或回归方法，我们可以根据具体问题采用不同的分类或回归方法，如决策树、感知器等）</li>
+<li>对分类问题：将上步得到的k个模型采用投票的方式得到分类结果；对回归问题，计算上述模型的均值作为最后的结果。（所有模型的重要性相同）</li>
+</ol>
+<h2 id="3-2-其他"><a href="#3-2-其他" class="headerlink" title="3.2 其他"></a>3.2 其他</h2><blockquote>
+<p>问：你了解一些大模型的基础知识吗？或者说，你能说一下为什么大模型能 work 吗？</p>
+</blockquote>
+<p>这个感觉答的很好哈哈哈，因为之前面过一个大模型实习岗位，有些经验。balabala……</p>
+<hr>
+<h1 id="4-手撕代码"><a href="#4-手撕代码" class="headerlink" title="4 手撕代码"></a>4 手撕代码</h1><p>给你一个正整数 $n$，可以将其分解为多个正整数的和（可以分解为自身），如下：</p>
+<p>$$<br>n &#x3D; x_1 + x_2 + \cdots + x_k<br>$$</p>
+<ol>
+<li>请找出分解出的多个 $x_i$ 连乘的最大结果是多少，即求解 $\max \prod_i^k{x_i}$ 。</li>
+<li>如果可以将正整数 $n$ 分解为多个正数的和，即 $x_i$ 可以是小数，求解 $\max \prod_i^k{x_i}$。</li>
+</ol>
+<p>后来发现力扣上有一道很像的题目：<a href="https://leetcode.cn/problems/integer-break/description/" title="343. 整数拆分">343. 整数拆分</a>。但是第一问有点不一样，力扣中的题目要求至少分解为两个整数，但是面试的题目可以分解为自身。</p>
+<h2 id="4-1-问题一"><a href="#4-1-问题一" class="headerlink" title="4.1 问题一"></a>4.1 问题一</h2><p>当时看到这道题的时候懵了一下，因为之前没见过这种题。然后当时先说了可以暴力枚举每一个 $i$，之后面试官说你可以想一下有没有其他的方法。之后，我就在想可以用到什么方法，之后就突然想到其实可以使用动态规划。</p>
+<p>当时表现的挺好的，直接就说了应该可以使用动态规划，然后我把我为什么想用动态规划解决的思路给面试官讲了：</p>
+<p>当我们分解 $n$ 时，可以枚举分解结果中会出现的每一个正整数 $i$ ，然后剩下就需要找出和为 $n - i$ 的分解问题，可以发现一个大问题分解成了一个小问题，相当于找到了一个子问题。</p>
+<p>之后面试官说让我写一下代码，其实当时还不知道怎么写哈哈哈，就是有个思路，然后就开始写了……</p>
+<ol>
+<li>状态表示：$f[i]$ 表示和为 $i$ 的分解出的 $x$ 的最大连乘结果</li>
+<li>状态计算：$f[i] &#x3D; \max(f[i], j \times f[i - j])$</li>
+</ol>
+<p>由于第 $i$ 个状态需要从第 $i - j$ 个状态转移过来，所以肯定从小到大遍历，题解如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n; cin &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>, f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j ++)</span><br><span class="line">            f[i] = <span class="built_in">max</span>(f[i], j * f[i - j]);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; f[n];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当时第一遍其实写错了，具体在于第二层循环 $j$ 的范围写成了 $[1, i - 1]$，没有包含边界 $i$，这样是不对的，因为假设分解 $8$，如果 $j $ 最大为 $7$，那么就没有考虑分解为自身，所以出错。</p>
+<p>感觉当时面试官看到我这么做好像是第一次见，因为我当时第一遍写完了，面试官说他需要看一下，让我先看第二道题。之后他好像没太懂我的意思，就让我给他解释一下为什么这么做。</p>
+<p>然后运行了之后答案不对，面试官让我找一下问题出在哪里。其实我当时有点慌的，怕做不出来，然后挂了。但是当时感觉也没有什么压力，就认真的去想，然后马上就找到了问题，重新测试结果正确。</p>
+<p>然后面试官又和我讨论了一个 trick，他说 $f[0]&#x3D;1$ 是我使用的技巧，最好初始化如下：</p>
+<p>$$<br>f[i] &#x3D; 1, i \in [1, n]<br>$$</p>
+<p>只能说太细了。</p>
+<h2 id="4-2-问题二"><a href="#4-2-问题二" class="headerlink" title="4.2 问题二"></a>4.2 问题二</h2><p>第二题就有点迷，因为可以分解成很多小数。当时就一直想是不是平均分配乘积最大？然后就说了这个想法，面试官说是的，问我那应该均分成多少份？</p>
+<p>然后我当时就假设均分为 $k$ 份，写了以下表达式：</p>
+<p>$$<br>\max(\frac{n}{k})^k , k \in [1, n]<br>$$</p>
+<p>当时就想这怎么写程序求解，然后就说可以枚举每一个 $k$，之后突然意识到这不就是函数求极值的问题么，应该可以求导，找导数为 $0$ 的 $k$，面试官认可了这个思路，然后基本就结束了。</p>
+<hr>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h1><ol>
+<li>在面试的过程中抱着思考交流的心态，和面试官一起讨论技术，感觉这样很舒服。因为很少有机会能和工业界的技术人员进行交流。</li>
+<li>就算面试的过程中遇到一些不会的问题，可以大胆给出自己的思考，感觉面试中不止看重结果，你的思维逻辑也很重要。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>找工作</category>
+      </categories>
+      <tags>
+        <tag>MiniMax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试记录1：华为技术一面</title>
+    <url>/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%951%EF%BC%9A%E5%8D%8E%E4%B8%BA%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="1-面试背景"><a href="#1-面试背景" class="headerlink" title="1 面试背景"></a>1 面试背景</h1><ul>
+<li>面试公司：华为技术有限公司</li>
+<li>面试岗位：推荐搜索</li>
+<li>面试类型：技术一面</li>
+<li>面试时间：2024-06-13 9:00~10:00</li>
+<li>面试结果：通过 😊</li>
+</ul>
+<hr>
+<h1 id="2-整体感受"><a href="#2-整体感受" class="headerlink" title="2 整体感受"></a>2 整体感受</h1><p>感觉面试官一进来就很面善哈哈哈哈，整体感觉面试过程很让人舒服，面试官说话的语气也很好。</p>
+<p>面完整体感觉还是挺不错的，希望能通过这一轮面试。</p>
+<p><img src="/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%951%EF%BC%9A%E5%8D%8E%E4%B8%BA%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image.png"></p>
+<p>需要加强的地方：</p>
+<ol>
+<li>需要了解一下 C++ 和 Python 语言的特性，面试真的会被问到</li>
+<li>基础知识还是挺重要的，系统能力应该注意</li>
+</ol>
+<hr>
+<h1 id="3-提问的问题"><a href="#3-提问的问题" class="headerlink" title="3 提问的问题"></a>3 提问的问题</h1><p>首先让你进行自我介绍，感觉现在自己自我介绍一点都不紧张，很放松，达到了自己想要的效果。</p>
+<h2 id="3-1-针对简历"><a href="#3-1-针对简历" class="headerlink" title="3.1 针对简历"></a>3.1 针对简历</h2><blockquote>
+<p>问：你当过就业市场部副部长，还举办过第一届双选会？</p>
+</blockquote>
+<p>答：是的，（说完之后面试官笑了笑，哈哈哈哈，感觉挺逗的，当时我应该再回复几句就更好了哈哈哈，面试官人真好）</p>
+<blockquote>
+<p>问：你简历中参加了博弈大赛，获得了两个项目的一等奖，能具体说一下队伍分工吗？</p>
+</blockquote>
+<p>答：我们队伍一共3个人，我作为队长主要负责整体进度规划和核心代码撰写，另一个人主要负责神经网络的训练，最后一个人主要负责棋力水平的测试。</p>
+<blockquote>
+<p>问：你说你们训练使用了分布式训练，能具体说一下吗？</p>
+</blockquote>
+<p>答：我们学校的机房中机器大部分都是没有GPU的机器，只有CPU，所以我们使用机房中的20~30台机器收集数据，并将收集好的数据给实验室中的一台3060ti的服务器进行训练</p>
+<blockquote>
+<p>问：你们这个3060ti服务器上有几张卡？</p>
+</blockquote>
+<p>答：只有一张卡</p>
+<blockquote>
+<p>问：只有一张卡（面试官此时有些惊讶），那你们训练了多少时间啊？网络的参数大概有多少？</p>
+</blockquote>
+<p>答：训练了3个星期左右，网络参数的话没太关注，因为我们使用的是AlphaGo的网络结构，没有进行改进。</p>
+<h3 id="3-1-1-网络的参数规模"><a href="#3-1-1-网络的参数规模" class="headerlink" title="3.1.1 网络的参数规模"></a>3.1.1 网络的参数规模</h3><ul>
+<li><code>Number of parameter: 3.08M</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">total = <span class="built_in">sum</span>([param.nelement() <span class="keyword">for</span> param <span class="keyword">in</span> self.trainer.net_work.parameters()])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Number of parameter: %.2fM&quot;</span> % (total/<span class="number">1e6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------------------------------------------</span></span><br><span class="line">NetWork(</span><br><span class="line">  (first_net): RestNet8B96C(</span><br><span class="line">    (conv): Conv2d(<span class="number">1</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (bn): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    (relu): ReLU()</span><br><span class="line">    (residues): Sequential(</span><br><span class="line">      (<span class="number">0</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">1</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">2</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">3</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">4</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">5</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">6</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">7</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">    (policy_head): PolicyHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">48</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">48</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (conv2): Conv2d(<span class="number">48</span>, <span class="number">1</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">1</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">    (value_head): ValueHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (fc): Linear(in_features=<span class="number">96</span>, out_features=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">  (second_net): RestNet8B96C(</span><br><span class="line">    (conv): Conv2d(<span class="number">1</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (bn): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    (relu): ReLU()</span><br><span class="line">    (residues): Sequential(</span><br><span class="line">      (<span class="number">0</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">1</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">2</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">3</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">4</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">5</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">6</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">      (<span class="number">7</span>): ResidualBlock(</span><br><span class="line">        (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">        (relu): ReLU()</span><br><span class="line">        (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">    (policy_head): PolicyHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">48</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">48</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (conv2): Conv2d(<span class="number">48</span>, <span class="number">1</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">1</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">    (value_head): ValueHead(</span><br><span class="line">      (conv1): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn1): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (conv2): Conv2d(<span class="number">96</span>, <span class="number">96</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">      (bn2): BatchNorm2d(<span class="number">96</span>, eps=<span class="number">1e-05</span>, momentum=<span class="number">0.1</span>, affine=<span class="literal">True</span>, track_running_stats=<span class="literal">True</span>)</span><br><span class="line">      (relu): ReLU()</span><br><span class="line">      (fc): Linear(in_features=<span class="number">96</span>, out_features=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>问：你了解过什么深度学习框架吗？</p>
+</blockquote>
+<p>答：主要使用过pytorch框架</p>
+<blockquote>
+<p>问：那你知道pytorch中有一个关于分布式计算的接口叫什么吗？</p>
+</blockquote>
+<p>答：这个不太清楚，因为实验室资源有限，确实没有使用过这个功能（此时面试官哈哈哈哈笑了，感觉很放松耶）</p>
+<h3 id="3-1-2-torch-distributed"><a href="#3-1-2-torch-distributed" class="headerlink" title="3.1.2 torch.distributed"></a>3.1.2 torch.distributed</h3><p>torch.distributed 包为在一台或多台机器上运行的多个计算节点上的多进程并行结构提供PyTorch支持和通信原语。 torch.nn.parallel.DistributedDataParallel()类就是基于此功能构建的，作为任何PyTorch模型的包装来提供同步分布式训练。这不同于 Multiprocessing package - torch.multiprocessing 和 torch.nn.DataParallel() 提供的并行结构，因为它支持多台联网的机器而且用户必须显式地为每个进程启动主要训练脚本的副本。</p>
+<h2 id="3-2-C-代码知识"><a href="#3-2-C-代码知识" class="headerlink" title="3.2 C++ 代码知识"></a>3.2 C++ 代码知识</h2><blockquote>
+<p>问：你主要使用什么语言多一点？</p>
+</blockquote>
+<p>答：C++ 吧</p>
+<blockquote>
+<p>问：你上面不是有个项目，涉及神经网络吗，那不应该是 python 吗？</p>
+</blockquote>
+<p>答：是的，但是我写算法题什么的都是使用 C++，而且那个也是去年做的项目了，所以现在对 C++ 比较熟悉一些</p>
+<blockquote>
+<p>问：那我问你一些关于 C++ 语法的问题吧，你知道 C++11 引进了什么特性吗？</p>
+</blockquote>
+<p>答：（当时其实心里一点底都没有，但当时只能硬说了）我记得有一个 auto 关键字，好像还有一个 lamda 表达式</p>
+<hr>
+<h3 id="3-2-1-C-11新特性"><a href="#3-2-1-C-11新特性" class="headerlink" title="3.2.1 C++11新特性"></a>3.2.1 C++11新特性</h3><ol>
+<li>nullptr：替代 NULL，专门用来区分空指针、0。nullptr 的类型为 nullptr_t，能够隐式的转换为任何指针或成员指针的类型，也能和他们进行相等或者不等的比较。</li>
+<li>类型推导：C++11 引入了 auto 和 decltype 这两个关键字实现了类型推导，让编译器来操心变量的类型。<ul>
+<li>&#x20;auto 进行类型推导</li>
+<li>decltype 关键字是为了解决 auto 关键字只能对变量进行类型推导的缺陷而出现的，它可以使编译器自动分析表达式的类型并得到它的类型，最关键是它不会去计算表达式的值。它的用法和 sizeof 很相似：<code>decltype(表达式)</code></li>
+</ul>
+</li>
+<li>区间迭代 - 基于范围的 for 循环</li>
+<li>Lambda表达式： Lambda 表达式实际上就是提供了一个类似<strong>匿名函数</strong>的特性，而匿名函数则是<strong>在需要一个函数，但是又不想费力去命名一个函数的情况下</strong>去使用的。</li>
+<li>正则表达式：提供了正则表达式库，用于操作 std::string 对象</li>
+</ol>
+<hr>
+<blockquote>
+<p>问：既然说到lamda表达式，那你能说说lamda表达式什么吗？</p>
+</blockquote>
+<p>答：（这个真的一点都不知道）我主要是在python中使用过，C++中很少使用，….</p>
+<blockquote>
+<p>问：那你说用了lamda表达式有什么感受吗？</p>
+</blockquote>
+<p>答：感觉代码更短更简洁了（面试官笑了，我也笑了哈哈哈哈）</p>
+<h3 id="3-2-2-Lamda表达式"><a href="#3-2-2-Lamda表达式" class="headerlink" title="3.2.2 Lamda表达式"></a>3.2.2 Lamda表达式</h3><p>Lambda 表达式是一种在被调用的位置或作为参数传递给函数的位置定义匿名函数对象（闭包）的简便方法。Lambda表达式的基本语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">[capture list] (parameter list) -&gt; <span class="keyword">return</span> type &#123; function body &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>capture list 是捕获列表</strong>，用于指定 Lambda表达式可以访问的外部变量，以及是按值还是按引用的方式访问。捕获列表可以为空，表示不访问任何外部变量，也可以使用默认捕获模式 &amp; 或 &#x3D; 来表示按引用或按值捕获所有外部变量，还可以混合使用具体的变量名和默认捕获模式来指定不同的捕获方式。</li>
+<li><strong>parameter list 是参数列表</strong>，用于表示 Lambda表达式的参数，可以为空，表示没有参数，也可以和普通函数一样指定参数的类型和名称，还可以在 c++14 中使用 auto 关键字来实现泛型参数。</li>
+<li><strong>return type 是返回值类型</strong>，用于指定 Lambda表达式的返回值类型，可以省略，表示由编译器根据函数体推导，也可以使用 -&gt; 符号显式指定，还可以在 c++14 中使用 auto 关键字来实现泛型返回值。</li>
+<li><strong>function body 是函数体</strong>，用于表示 Lambda表达式的具体逻辑，可以是一条语句，也可以是多条语句，还可以在 c++14 中使用 constexpr 来实现编译期计算。</li>
+</ul>
+<h4 id="3-2-2-1-Lambda表达式的捕获方式"><a href="#3-2-2-1-Lambda表达式的捕获方式" class="headerlink" title="3.2.2.1 Lambda表达式的捕获方式"></a>3.2.2.1 Lambda表达式的捕获方式</h4><ul>
+<li>值捕获（capture by value）：在捕获列表中使用变量名，表示将该变量的值拷贝到 Lambda 表达式中，作为一个数据成员。值捕获的变量在 Lambda 表达式定义时就已经确定，不会随着外部变量的变化而变化。值捕获的变量默认不能在 Lambda 表达式中修改，除非使用 mutable 关键字。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [x] (<span class="type">int</span> y) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y; &#125;; <span class="comment">// 值捕获 x</span></span><br><span class="line">x = <span class="number">20</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 15，不受外部 x 的影响</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用捕获（capture by reference）：在捕获列表中使用 &amp; 加变量名，表示将该变量的引用传递到 Lambda 表达式中，作为一个数据成员。引用捕获的变量在 Lambda 表达式调用时才确定，会随着外部变量的变化而变化。引用捕获的变量可以在 Lambda 表达式中修改，但要注意生命周期的问题，避免悬空引用的出现。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [&amp;x] (<span class="type">int</span> y) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y; &#125;; <span class="comment">// 引用捕获 x</span></span><br><span class="line">x = <span class="number">20</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 25，受外部 x 的影响</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>隐式捕获（implicit capture）：在捕获列表中使用 <code>=</code> 或 <code>&amp;</code>，表示按值或按引用捕获 Lambda 表达式中使用的所有外部变量。这种方式可以简化捕获列表的书写，避免过长或遗漏。隐式捕获可以和显式捕获混合使用，但不能和同类型的显式捕获一起使用。例如：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">auto</span> f = [=, &amp;y] (<span class="type">int</span> z) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> x + y + z; &#125;; <span class="comment">// 隐式按值捕获 x，显式按引用捕获 y</span></span><br><span class="line">x = <span class="number">30</span>; <span class="comment">// 修改外部的 x</span></span><br><span class="line">y = <span class="number">40</span>; <span class="comment">// 修改外部的 y</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">f</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出 55，不受外部 x 的影响，受外部 y 的影响</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-2-Lambda表达式的优点"><a href="#3-2-2-2-Lambda表达式的优点" class="headerlink" title="3.2.2.2 Lambda表达式的优点"></a>3.2.2.2 Lambda表达式的优点</h4><ol>
+<li><p>简洁：Lambda表达式可以省略函数名和类名，直接定义和使用，使得代码更加简洁和清晰。</p>
+</li>
+<li><p>灵活：Lambda表达式可以捕获外部变量，可以作为函数参数，也可以作为函数返回值，使得代码更加灵活和方便。</p>
+</li>
+<li><p>安全：Lambda表达式可以控制外部变量的访问方式，可以避免全局变量的定义，可以避免悬空指针和无效引用的产生，使得代码更加安全和稳定。</p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>问：NULL和nullptr有什么区别？</p>
+</blockquote>
+<p>答：nullptr应该是指空指针，NULL应该是指无效的数据类型（当时这个一点不知道哈哈哈哈）</p>
+<blockquote>
+<p>问：你一般用哪个？</p>
+</blockquote>
+<p>答：我只使用后面那个，前面那个只听说了，自己没有使用过</p>
+<h3 id="3-2-3-C-中NULL和nullptr的区别"><a href="#3-2-3-C-中NULL和nullptr的区别" class="headerlink" title="3.2.3 C++中NULL和nullptr的区别"></a>3.2.3 C++中NULL和nullptr的区别</h3><p>在编写C程序的时候只看到过NULL，而在C++的编程中，可以看到NULL和nullptr两种关键字，其实nullptr是C++11版本中新加入的，它的出现是为了解决NULL表示空指针在C++中具有二义性的问题。</p>
+<p>在C语言中，NULL通常被定义为：<code>#define NULL ((void )0)</code>，所以说NULL实际上是一个空指针，如果在C语言中写入以下代码，编译是没有问题的，因为在C语言中把空指针赋给int和char指针的时候，发生了隐式类型转换，把void指针转换成了相应类型的指针。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  *pi = <span class="literal">NULL</span>;</span><br><span class="line"><span class="type">char</span> *pc = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但是问题来了，以上代码如果使用C++编译器来编译则是会出错的，因为C++是强类型语言，void*是不能隐式转换成其他类型的指针的，所以实际上编译器提供的头文件做了相应的处理：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NULL ((void *)0)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>可见，在C++中，NULL实际上是0.因为C++中不能把void*类型的指针隐式转换成其他类型的指针，所以为了结果空指针的表示问题，C++引入了0来表示空指针，这样就有了上述代码中的NULL宏定义。</p>
+<p>但是实际上，用NULL代替0表示空指针在函数重载时会出现问题，程序执行的结果会与我们的想法不同，举例如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>* i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;func1&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;func2&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">func</span>(<span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">func</span>(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%951%EF%BC%9A%E5%8D%8E%E4%B8%BA%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_2exPtnNPr4.png"></p>
+<p>在这段代码中，我们对函数func进行可重载，参数分别是void*类型和int类型，但是运行结果却与我们使用NULL的初衷是相违背的，因为我们本来是想用NULL来代替空指针，但是在将NULL输入到函数中时，它却选择了int形参这个函数版本，所以是有问题的，这就是用NULL代替空指针在C++程序中的二义性。</p>
+<p>为解决NULL代指空指针存在的二义性问题，在C++11版本(2011年发布)中特意引入了nullptr这一新的关键字来代指空指针，从上面的例子中我们可以看到，使用nullptr作为实参，确实选择了正确的以void*作为形参的函数版本。</p>
+<p>NULL在C++中就是0，这是因为在C++中void* 类型是不允许隐式转换成其他类型的，所以之前C++中用0来代表空指针，但是在重载整形的情况下，会出现上述的问题。所以，C++11加入了nullptr，可以保证在任何情况下都代表空指针，而不会出现上述的情况，因此，建议以后还是都用nullptr替代NULL吧，而NULL就当做0使用。</p>
+<hr>
+<blockquote>
+<p>问：引用和指针有什么区别？</p>
+</blockquote>
+<p>答：在使用上，引用使用&amp;符号，指针使用*符号。</p>
+<h3 id="3-2-4-引用和指针的关系"><a href="#3-2-4-引用和指针的关系" class="headerlink" title="3.2.4 引用和指针的关系"></a>3.2.4 引用和指针的关系</h3><p><strong>相同点</strong>：二者都是指一块区域，都可以对这个区域的值进行更改，具有更改值的类似的作用。</p>
+<p><strong>不同点</strong>：</p>
+<ol>
+<li><p>引用必须初始化，指针可以不初始化</p>
+</li>
+<li><p>引用必须与一个确定的单元关联，不可以指向空的地方，但是指针可以指向空的地方</p>
+</li>
+<li><p>引用没有占用空间，也就是只是换了个名字，在内存里面找不到引用这个地方的位置，但是指针是实实在在的存在的，需要占用一定的空间。也可以把引用视为指针常量，在编译器优化后它不占内存</p>
+<p>这个空间是指是否占用代码空间。</p>
+</li>
+<li><p>指针的大小确定，引用的大小根据所引用的类型所确定</p>
+<p>引用的大小与类型有关，如int类型它也是int，char类型它也是char，但是指针大小是具体的，它只负责指路，大小与类型无关。</p>
+</li>
+<li><p>指针可以多级引用，但是指针不可以</p>
+</li>
+<li><p>引用只能指向一个对象，但是指针可以指向多个对象（指针指向的对象是可以发生变化的）</p>
+</li>
+</ol>
+<blockquote>
+<p>问：堆和栈有什么区别？哪个的空间较大？</p>
+</blockquote>
+<p>答：堆上的空间是需要动态申请的，手动释放，而栈上的内存空间是静态申请，自动释放的</p>
+<blockquote>
+<p>问：堆的空间大概有多大，我可以在堆上申请一个1G的内存吗？</p>
+</blockquote>
+<p>答：（很不确定）应该不能吧，balabala，但是答案见下面，实际上可以</p>
+<h3 id="3-2-5-C-中堆和栈的区别"><a href="#3-2-5-C-中堆和栈的区别" class="headerlink" title="3.2.5 C++中堆和栈的区别"></a>3.2.5 C++中堆和栈的区别</h3><p>栈：是由编译器在需要时自动分配，不需要时自动清除的变量存储区。通常存放局部变量、函数参数等。</p>
+<p>堆：是由new分配的内存块，由程序员释放（编译器不管），一般一个new与一个delete对应，一个new[]与一个delete[]对应。如果程序员没有释放掉，资源将由操作系统在程序结束后自动回收。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>堆</th>
+<th>栈</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>管理方式</td>
+<td>堆中资源由程序员控制（容易产生memory leak）</td>
+<td>栈资源由编译器自动管理，无需手工控制</td>
+</tr>
+<tr>
+<td>内存管理机制</td>
+<td>系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删    除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存  空间，另外系统会将多余的部分重新放入空闲链表中）</td>
+<td>只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
+</tr>
+<tr>
+<td>空间大小</td>
+<td>堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit  系统理论上是4G），所以堆的空间比较灵活，比较大</td>
+<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在  编译时确定，VC中可设置）。</td>
+</tr>
+<tr>
+<td>碎片问题</td>
+<td>对于堆，频繁的new&#x2F;delete会造成大量碎片，使程序效率降低</td>
+<td>对于栈，它是一个先进后出的队列，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
+</tr>
+<tr>
+<td>生长方向</td>
+<td>堆向上，向高地址方向增长。</td>
+<td>栈向下，向低地址方向增长。</td>
+</tr>
+<tr>
+<td>分配方式</td>
+<td>堆都是动态分配（没有静态分配的堆）</td>
+<td>栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数分配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
+</tr>
+<tr>
+<td>分配效率</td>
+<td>堆由C&#x2F;C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
+<td>栈是极其系统提供的数据结构，计算机在底层对栈提供支持，分配专门寄存器存放栈地址，栈操作有专门指令。</td>
+</tr>
+</tbody></table>
+<p><img src="/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%951%EF%BC%9A%E5%8D%8E%E4%B8%BA%E6%8A%80%E6%9C%AF%E4%B8%80%E9%9D%A2/image_JXLiVRYRqc.png"></p>
+<p>堆是自低地址向高地址扩展的数据结构（它的生长方向与内存的生长方向相同），是不连续的内存区域。因为系统是用链表来存储空闲内存地址的，且链表的遍历方向是由低地址向高地址。由此可见，堆获得的空间较灵活，也较大。堆的大小受限于计算机系统中有效的虚拟内存。一般来讲在32位系统下，堆内存可以达到2.9G的大小。（除去1G的内核空间，几乎占满3G的用户空间）</p>
+<h2 id="3-3-操作系统"><a href="#3-3-操作系统" class="headerlink" title="3.3 操作系统"></a>3.3 操作系统</h2><blockquote>
+<p>问：了解过虚拟内存吗？</p>
+</blockquote>
+<p>答：（这个讲的比较好，在此不进行赘述了）</p>
+<h2 id="3-4-数据结构"><a href="#3-4-数据结构" class="headerlink" title="3.4 数据结构"></a>3.4 数据结构</h2><blockquote>
+<p>问：了解过快速排序吗？介绍一下主要思想</p>
+</blockquote>
+<p>答：快速排序是基于分治的思想，每次把哨兵元素都放在最终排序后的的位置上（然后给了一个序列，要求写出第一次快速排序之后的结果序列）</p>
+<blockquote>
+<p>问：知道循环队列吗？说一下队列判空的条件？</p>
+</blockquote>
+<p>答：<code>Q.front == Q.rear</code>（当时听到问这个的时候特别自信，因为我复习过，所以说复习还是有用的）</p>
+<h2 id="3-5-思维题"><a href="#3-5-思维题" class="headerlink" title="3.5 思维题"></a>3.5 思维题</h2><blockquote>
+<p>问：现在给你一个无序的数组，要求求出所有数字中重复出现的最大次数是多少？</p>
+</blockquote>
+<p>答：可以遍历整个数组，然后使用一个map存储每个数字出现的次数</p>
+<blockquote>
+<p>问：如果现在给你加一个限制，要求不能使用额外的存储空间，该怎么处理？</p>
+</blockquote>
+<p>答：可以先对数字进行从小到大排序，然后使用双指针，从第i个元素开始，向后更新j，直到j指向的元素不等于i所指向的元素，然后更新答案</p>
+<hr>
+<h1 id="4-手撕代码"><a href="#4-手撕代码" class="headerlink" title="4 手撕代码"></a>4 手撕代码</h1><ul>
+<li>这次真的是牛了，面试官从9:36发题，然后说10点截止，我好像没用10分钟就做出来了，而且代码一次就跑过，没有进行任何debug。</li>
+<li>现场考代码的时候就是要保持头脑清醒，题目一般都不难，但是要注意一些边界情况。</li>
+</ul>
+<p>给定一个二进制数组 nums 和一个整数 k，如果可以翻转最多 k 个 0 ，则返回数组中连续 1 的最大个数。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2</p>
+<p>输出：6</p>
+<p>解释：[1,1,1,0,0,1,1,1,1,1,1]，粗体数字从 0 翻转到 1，最长的子数组长度为 6。</p>
+<p>示例 2：</p>
+<p>输入：nums &#x3D; [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], K &#x3D; 3</p>
+<p>输出：10</p>
+<p>解释：[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]，粗体数字从 0 翻转到 1，最长的子数组长度为 10。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ans, k = <span class="number">3</span>;</span><br><span class="line"><span class="type">int</span> nums1[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;  <span class="comment">// 11</span></span><br><span class="line"><span class="type">int</span> nums2[] = &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;  <span class="comment">// 19</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dp</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> k, <span class="type">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (u &gt; <span class="number">19</span>) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">if</span> (nums2[u] == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 可能需要进行翻转</span></span><br><span class="line">        <span class="keyword">if</span> (k)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 进行翻转</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, len + <span class="number">1</span>);</span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k - <span class="number">1</span>, len + <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 不进行翻转</span></span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 没有可用的翻转</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, len);</span><br><span class="line">            <span class="comment">// 从下一个开始重新计数</span></span><br><span class="line">            <span class="built_in">dp</span>(u + <span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nums2[u] == <span class="number">1</span>)</span><br><span class="line">        <span class="comment">// 不用翻转 搜索下一个位置</span></span><br><span class="line">        <span class="built_in">dp</span>(u + <span class="number">1</span>, k, len + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">dp</span>(<span class="number">1</span>, k, <span class="number">0</span>);</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>找工作</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>华为</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试记录2：华为业务主管二面</title>
+    <url>/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%952%EF%BC%9A%E5%8D%8E%E4%B8%BA%E4%B8%9A%E5%8A%A1%E4%B8%BB%E7%AE%A1%E4%BA%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="1-面试背景"><a href="#1-面试背景" class="headerlink" title="1 面试背景"></a>1 面试背景</h1><ul>
+<li>面试公司：华为技术有限公司</li>
+<li>面试岗位：推荐搜索</li>
+<li>面试类型：业务主管二面</li>
+<li>面试时间：2024-06-13 14:15~14:50</li>
+<li>面试结果：通过 😊</li>
+</ul>
+<hr>
+<h1 id="2-整体感受"><a href="#2-整体感受" class="headerlink" title="2 整体感受"></a>2 整体感受</h1><p>面试官没有开摄像头，不知道面试官的表情，感觉有点不得劲哈哈。</p>
+<p><img src="/2024/06/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%952%EF%BC%9A%E5%8D%8E%E4%B8%BA%E4%B8%9A%E5%8A%A1%E4%B8%BB%E7%AE%A1%E4%BA%8C%E9%9D%A2/image_zrlpFcI-Bi.png"></p>
+<p>整体来说感觉还行，这次面试没有问很多技术上的问题，更多是对你价值观一些的问题，还有会深挖一些简历上的东西，所以应该对简历上的内容非常熟悉。</p>
+<p>而且，面试官真的很好，我面试中说到了我早上8点之前就到实验室，然后除了吃饭之外，基本上都在实验室，晚上10点才离开，然后面试官就开始鼓励我，他说“你的这个习惯真的很好，一定要坚持下去，因为等你到中年发现，你一生中的很多成就都是在你青年的时候获得的，所以在你青年的时候一定要多做一些事情，这样你才有所收获”。</p>
+<p>面试结束了，之后也没有其他的面试了，就只有等待结果了，希望自己可以通过，真的很想去华为实习，这个经历真的很 nice。</p>
+<p>自己做的不错的地方：</p>
+<ol>
+<li>面试官问什么就答什么，可以适当拓展，但是不要说太多了，要不然面试官可能都不想听下去</li>
+<li>回答的逻辑也比较好，有条理，可以让面试官抓到重点</li>
+<li>感觉自己的面试经验经过这几次面试已经提升了很多了</li>
+</ol>
+<hr>
+<h1 id="3-提问的问题"><a href="#3-提问的问题" class="headerlink" title="3 提问的问题"></a>3 提问的问题</h1><blockquote>
+<p>问：你能介绍一下论文中的创新点吗？</p>
+</blockquote>
+<p>答：blblbl，感觉面试官不太懂这个，但是只要你讲出自信，他就没啥问题要问你了</p>
+<blockquote>
+<p>问：你能说一下你这个实验是怎么做的吗？</p>
+</blockquote>
+<p>答：我是在学校机房开了20~30台机器做的，每组算法之间对战了1000局游戏</p>
+<blockquote>
+<p>问：最后的效果怎么样？</p>
+</blockquote>
+<p>答：最后的效果对比MCTS的胜率是55%，然后对比传统的博弈搜索算法AlphaBeta和Minimax的效果会好很多，然后我分析了一下为什么效果只有略微的提升。</p>
+<ol>
+<li>由于实验部分是在海克斯棋游戏上进行，棋盘大小是19×19，状态空间较大，所以搜索得到的结点之间的联系较弱，不能形成非常有效的关系。</li>
+<li>另外，实验的计算资源也有限，没有搜索很长时间，所以搜索的结点数也较小，如果搜索时间越长，效果就会越好。</li>
+</ol>
+<blockquote>
+<p>问：你平时了解咨询的主要途径有哪些？</p>
+</blockquote>
+<p>答：主要是通过github，它有一个流行仓库的功能，所以我会经常看一些这种仓库，除此之外，会经常看一些IT人写的技术博客，另外也会看一些类似华为公司的产品发布会或者技术文档。</p>
+<blockquote>
+<p>问：你刚才说你主要通过github看一些东西，那能举一个例子吗？</p>
+</blockquote>
+<p>答：我最近在github上学习了上海人工智能实验室的书生·浦语大模型，它有一个技术文档，并且会分配给你免费的算力，你可以部署它的一些模型。另外，它还有茴香豆，就是在群聊中的一个AI小助手，它会识别群友的问题是否是有效的问题，如果是有效的，那么它就会进行回答，否则它就当作没看见。</p>
+<blockquote>
+<p>问：你想通过这次实习得到什么，或者说你对这次实习的期待是什么？</p>
+</blockquote>
+<p>答：我最想通过这次实习提升自己的能力，总感觉自己在学校中学习到的和在工业界真正能应用的还是有差距的，因此我想通过这次实习提升自己这方面的能力。此外，我经常在学校中，我知道学校中的东西和在社会上的东西其实是有很大差距的，所以这也是我期待的地方。</p>
+<blockquote>
+<p>问：你能说一下对华为的认识，价值观之类的吗？</p>
+</blockquote>
+<p>答：我认为华为是一个很有野心的公司，blblblb………</p>
+<blockquote>
+<p>问：你未来的职业规划是什么？</p>
+</blockquote>
+<p>答：我的成绩比较优异，所以能拿到学校的推免资格，明年毕业后应该继续读研，研究方向应该也是深度学习方向。</p>
+]]></content>
+      <categories>
+        <category>找工作</category>
+      </categories>
+      <tags>
+        <tag>华为</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机试记录1：华为机试</title>
+    <url>/2024/06/05/%E6%9C%BA%E8%AF%95%E8%AE%B0%E5%BD%951%EF%BC%9A%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="1-机试背景"><a href="#1-机试背景" class="headerlink" title="1 机试背景"></a>1 机试背景</h1><ul>
+<li>机试公司：华为技术有限公司</li>
+<li>机试岗位：推荐搜索</li>
+<li>机试类型：线上机试</li>
+<li>机试时间：2024-06-05 19:00~21:00</li>
+<li>题目设置：一共 3 道题，分别为 100、200 和 300 分</li>
+<li>机试结果：通过 😊</li>
+</ul>
+<hr>
+<h1 id="2-第一题：电影相关"><a href="#2-第一题：电影相关" class="headerlink" title="2 第一题：电影相关"></a>2 第一题：电影相关</h1><h2 id="2-1-题目描述"><a href="#2-1-题目描述" class="headerlink" title="2.1 题目描述"></a>2.1 题目描述</h2><p>题意大体是第一行n是输入数据的个数，之后每一行的数据由三个字段组成：</p>
+<ol>
+<li>字段1：这部电影的导演</li>
+<li>字段2：这部电影的主演</li>
+<li>字段3：这部电影的类型</li>
+</ol>
+<p>然后给你一个查询，由两个字段组成：</p>
+<ol>
+<li>字段1：要查询的类型，是电影的导演、主演还是类型</li>
+<li>字段2：要查询的内容</li>
+</ol>
+<p>让你把所有匹配的结果输出出来，注意id从小到大进行输出，不同id之间使用空格隔开。</p>
+<p>这道题思路感觉还是挺简单的，不用使用任何的算法，直接按照题意描述做就可以，但是最后过了85%的测试用例，不知道为什么，就先做后面了。</p>
+<hr>
+<h1 id="3-第二题：服务器"><a href="#3-第二题：服务器" class="headerlink" title="3 第二题：服务器"></a>3 第二题：服务器</h1><h2 id="3-1-题目描述"><a href="#3-1-题目描述" class="headerlink" title="3.1 题目描述"></a>3.1 题目描述</h2><p>每个服务器用一个id和所能装载的文件数来描述，之后要进行查询和删除操作，并且这个题目实际上就是对一个循环链表进行插入和删除操作。</p>
+<p>最后通过了96%的测试用例，另外这题的输入输出是真的麻烦，要自己进行处理，所以平时还是要多练自己处理输入的题目，要不然只写关键代码遇到这种题直接G了。</p>
+<hr>
+<h1 id="4-第三题：最长序列包长度"><a href="#4-第三题：最长序列包长度" class="headerlink" title="4 第三题：最长序列包长度"></a>4 第三题：最长序列包长度</h1><h2 id="4-1-题目描述"><a href="#4-1-题目描述" class="headerlink" title="4.1 题目描述"></a>4.1 题目描述</h2><p>大体意思就是告诉你，现在有一堆数字，这些数字代表了不同包中的序列号，同一个包中的序列号范围为0~65535，当65535加1变成0，之后让你求这些包中最长的序列长度是多少，感觉这题有点像贪心，最后只通过了36%的测试用例。</p>
+<hr>
+<h1 id="5-整体感受"><a href="#5-整体感受" class="headerlink" title="5 整体感受"></a>5 整体感受</h1><p>之前也进行过拼多多的机考，感觉这几次机考的整体算法难度不是很难，但是对于我来说难度最大的就是在考试的过程中你是不能知道测试数据的，题目只会一开始告诉你2~3个测试用例，但是这肯定不能包含所有。</p>
+<p>所以说，之后在练习的时候争取先不看错误的数据，先自己想想代码的完备性是否有问题，实在想不出来了再去看，同时要总结哪些地方常出现问题。</p>
+<p>感觉经过这几次机试自己的水平也在不断提升，起码已经适应了这种考试的模式，之后只需要多加练习即可。</p>
+]]></content>
+      <categories>
+        <category>找工作</category>
+      </categories>
+      <tags>
+        <tag>华为</tag>
+        <tag>机考</tag>
       </tags>
   </entry>
 </search>
