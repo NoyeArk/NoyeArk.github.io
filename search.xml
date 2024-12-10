@@ -16913,4 +16913,58 @@
         <tag>读书记录</tag>
       </tags>
   </entry>
+  <entry>
+    <title>面试记录7：快手技术二面</title>
+    <url>/2024/12/11/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%957%EF%BC%9A%E5%BF%AB%E6%89%8B%E6%8A%80%E6%9C%AF%E4%BA%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h1>1 面试背景</h1>
+<ul>
+<li>面试公司：快手</li>
+<li>面试岗位：推荐算法实习生【模型算法】</li>
+<li>面试类型：技术二面</li>
+<li>面试时间：2024-12-10 14:00~15:00</li>
+<li>面试结果：通过 💯</li>
+</ul>
+<hr>
+<h1>2 整体感受</h1>
+<p>第一眼感觉面试官 30~40 岁之间，之后没有让我自我介绍，直接让我找一个自己做的好的项目介绍。当时感觉面试官有点不一样，一般都先让自我介绍。</p>
+<p>之后问了我几个问题，我都答上来了，然后就是手撕代码环节，也是很快就做出来了，最后面试官的意思基本就是通过了，问我什么时候能去之类的。总之，还是挺好的，找到了实习。</p>
+<p>后来了解到面试官是那个组的 leader 😮。</p>
+<hr>
+<h1>3 提问的问题</h1>
+<blockquote>
+<p>面试官：新闻推荐比赛的数据集规模大概是多少？</p>
+</blockquote>
+<p>数据集的话是一共有30万个用户，然后是20万个用户作为训练集，然后5万个用户作为公共的测试集，剩下的5万作为私有的测试集。然后新闻的话大概是60万个新闻。</p>
+<blockquote>
+<p>面试官：你的方案有什么创新点？</p>
+</blockquote>
+<p>首先我对传统的协同过滤进行了改进，传统的协同过滤只考虑两个物品，比如说同时被点击的次数，但是并没有考虑点击顺序和点击时间的权重。balabala……</p>
+<blockquote>
+<p>面试官：除了做一些特征工程，模型结构上有啥变化吗？</p>
+</blockquote>
+<p>balabala……</p>
+<p>总之面试官问的问题我都答上来了，在此就不赘述了。</p>
+<hr>
+<h1>4 手撕代码</h1>
+<p>一共就一道题，考的是动态规划，力扣原题<a href="https://leetcode.cn/problems/coin-change/" title="322. 零钱兑换">322. 零钱兑换</a>。因为这题之前自己做过，所以看到题目就知道用动态规划做。但是具体的状态定义也忘记了，所以当时现想的。题目如下：</p>
+<p>给你一个整数数组 <code>coins</code> ，表示不同面额的硬币；以及一个整数 <code>amount</code> ，表示总金额。</p>
+<p>计算并返回可以凑成总金额所需的 <strong>最少的硬币个数</strong> 。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code> 。可以认为每种硬币的数量是无限的。</p>
+<ol>
+<li>状态表示：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span> 表示凑成总金额为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 所需的最少硬币个数</li>
+<li>状态计算：对于每个总金额 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> ，枚举每枚硬币 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>s</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">coins[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> ，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≥</mo><mi>c</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>s</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">i \geq coins[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.79549em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> ，则:</li>
+</ol>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mi>c</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>s</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f[i] = \min(f[i], f[i - coins[j]] + 1)
+
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
+<p>代码实现如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = [inf] * (amount + <span class="number">1</span>)</span><br><span class="line">coins.sort()</span><br><span class="line">f[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(amount + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> coin <span class="keyword">in</span> coins:</span><br><span class="line">        <span class="keyword">if</span> coin &gt; i: </span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        f[i] = <span class="built_in">min</span>(f[i], f[i - coin] + <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> f[amount] == inf:</span><br><span class="line">    <span class="built_in">print</span>(-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">else</span>: </span><br><span class="line">    <span class="built_in">print</span>(f[amount]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>一开始写的时候没有写 <code>coin &gt; i</code> ，所以不对，后来发现了这个问题，然后测试用例都对了。面试官还夸我做的真快哈哈哈，拿捏了。</p>
+]]></content>
+      <categories>
+        <category>找工作</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
 </search>
