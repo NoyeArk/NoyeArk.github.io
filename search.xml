@@ -17078,4 +17078,53 @@
         <tag>PNN</tag>
       </tags>
   </entry>
+  <entry>
+    <title>论文精读8：AutoPooling</title>
+    <url>/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/</url>
+    <content><![CDATA[<h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>推荐系统中有很多多值特征，文中假设所有特征字段都是多值的，定义为以下形式：</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_ohvY7U28lm.png"></p>
+<p>传统的池化对所有特征使用统一的池化算子来压缩信息，忽略了特征分布之间的差异。因此，需要更多区分不同领域的池化方法。</p>
+<p>因此提出了 AutoPooling 来自适应学习合适的池化算子，提升模型对于多值特征的学习能力。</p>
+<hr>
+<h1 id="2-AutoPooling"><a href="#2-AutoPooling" class="headerlink" title="2 AutoPooling"></a>2 AutoPooling</h1><p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_qK16QAfnAV.png"></p>
+<p>可以自动搜索每个特征的最佳池化算子，这个过程可以看作是搜索池化层的最佳子结构，这个子结构是搜索空间中预定义的池化算子。</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_9PbUh_6R_U.png"></p>
+<p>AutoPooling（图 1 的上半部分）为池化层构建了一个池化算子搜索空间 $\mathscr{P}$，并设计了一种搜索策略来为每个字段找到最佳搜索空间。所以，最佳子结构的搜索转换为架构参数的搜索。通过这种方式，将各种池化层集成到加权和中：</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_UGld8oCzQZ.png"></p>
+<p>通过优化架构参数 $\alpha$ 找到最佳池化算子。</p>
+<p>AutoPooling 使用两阶段的方法进行训练，分为搜索阶段和重训练阶段（AP-2stage）。</p>
+<h2 id="2-1-搜索阶段"><a href="#2-1-搜索阶段" class="headerlink" title="2.1 搜索阶段"></a>2.1 搜索阶段</h2><p>将整个系统的参数分为超参数 $\alpha$ 和模型可学习的参数 $W$，搜索阶段的主要目的是得到超参数 $\alpha$ 的较优值。使用可微架构搜索 (DARTS) 技术。根据 DARTS，可以优化训练集中的主网络参数 $W$，并在验证集上优化架构参数 $\alpha$。</p>
+<p>因此将损失函数定义为两部分：训练集的损失 $\mathcal{L}<em>{\text {train }}(W, \boldsymbol{\alpha})$ 和验证集的损失 $\mathcal{L}</em>{v a l}(\boldsymbol{\alpha}, W(\boldsymbol{\alpha}))$，其中 $W(\boldsymbol{\alpha})$ 表示固定 $\alpha $ 后的网络参数 $W$。</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_AY7Ouj8GLb.png"></p>
+<p>直接对公式11进行求解计算代价比较高，因此可以采用近似的方法：</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_N-9kL08XUb.png"></p>
+<p>其中 $\beta$ 是学习率，整个过程描述如下：</p>
+<p>输入：feature 和 label</p>
+<p>输出：学习到的架构参数 $\alpha^{*}$</p>
+<ul>
+<li>若未收敛：<ol>
+<li>获取一小批验证数据</li>
+<li>通过下降 $\nabla \alpha \mathcal{L}_{v a l}\left(W^{*}, \alpha\right)$ 更新 $\alpha$</li>
+<li>获取一小批训练数据</li>
+<li>模型输出预测的值 $\hat{y}$</li>
+<li>通过下降 $\nabla W \mathcal{L}_{\text {train }}(W, \alpha)$ 更新 $W$</li>
+</ol>
+</li>
+</ul>
+<p>训练结束后，为每一个特征选择权重最大的池化方法。</p>
+<p><img src="/2025/01/22/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB8%EF%BC%9AAutoPooling/image_TJFCwNkHBn.png"></p>
+<h2 id="2-2-重训练阶段"><a href="#2-2-重训练阶段" class="headerlink" title="2.2 重训练阶段"></a>2.2 重训练阶段</h2><p>基于上述训练得到的最优池化算子，重新训练模型参数。</p>
+<p>可以发现，两阶段的方法是比较耗时的，在第二阶段只选择一个池化算子。在此基础上提出 AP-Hybrid 方法，</p>
+<h2 id="2-3-AP-Hybrid"><a href="#2-3-AP-Hybrid" class="headerlink" title="2.3 AP-Hybrid"></a>2.3 AP-Hybrid</h2><p>AP-Hybrid 只执行 AP-2 阶段的第一阶段，仅将 Softmax 函数应用于等式 8。然后，APHybrid 在训练阶段结束时混合由 DARTS 过程（算法 1）优化的架构参数 $\alpha$。通过这种方式，AP-Hybrid 可以研究多值特征的分布，并自适应地混合来自不同池化算子的信息。</p>
+<hr>
+<h1 id="3-模型结构图"><a href="#3-模型结构图" class="headerlink" title="3 模型结构图"></a>3 模型结构图</h1><p>主要的改进是在池化层，因此可以很很方便的应用于不同的模型架构中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    subgraph 输入层</span><br><span class="line">        A1[单值特征&lt;br&gt;userId/movieId/year]</span><br><span class="line">        A2[多值特征&lt;br&gt;user_genre/urb/movie_genre/movie_tag]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph Embedding层</span><br><span class="line">        B1[单值Embedding&lt;br&gt;size=16]</span><br><span class="line">        B2[多值Embedding&lt;br&gt;size=16]</span><br><span class="line">        A1 --&gt; B1</span><br><span class="line">        A2 --&gt; B2</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph 池化层</span><br><span class="line">        C1[多种池化方式]</span><br><span class="line">        C2[Sum池化]</span><br><span class="line">        C3[Mean池化]</span><br><span class="line">        C4[Max池化]</span><br><span class="line">        C5[Min池化]</span><br><span class="line">        C6[K阶池化]</span><br><span class="line">        C7[注意力池化]</span><br><span class="line">        B2 --&gt; C1</span><br><span class="line">        C1 --&gt; C2</span><br><span class="line">        C1 --&gt; C3</span><br><span class="line">        C1 --&gt; C4</span><br><span class="line">        C1 --&gt; C5</span><br><span class="line">        C1 --&gt; C6</span><br><span class="line">        C1 --&gt; C7</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph 权重融合</span><br><span class="line">        D1[Softmax权重]</span><br><span class="line">        D2[加权池化结果]</span><br><span class="line">        C2 &amp; C3 &amp; C4 &amp; C5 &amp; C6 &amp; C7 --&gt; D1</span><br><span class="line">        D1 --&gt; D2</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph DNN层</span><br><span class="line">        E1[特征拼接&lt;br&gt;单值+多值]</span><br><span class="line">        E2[FC层 64]</span><br><span class="line">        E3[FC层 32]</span><br><span class="line">        E4[FC层 1]</span><br><span class="line">        B1 --&gt; E1</span><br><span class="line">        D2 --&gt; E1</span><br><span class="line">        E1 --&gt; E2</span><br><span class="line">        E2 --&gt; E3</span><br><span class="line">        E3 --&gt; E4</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph 输出层</span><br><span class="line">        F1[Sigmoid]</span><br><span class="line">        F2[预测概率]</span><br><span class="line">        E4 --&gt; F1</span><br><span class="line">        F1 --&gt; F2</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>推荐系统</category>
+      </categories>
+      <tags>
+        <tag>AutoPooling</tag>
+      </tags>
+  </entry>
 </search>
